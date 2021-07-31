@@ -4,10 +4,14 @@
 [ext_resource path="res://UI/Leaderboard/ScoreEntry.tscn" type="PackedScene" id=2]
 
 [node name="ScrollContainer" type="ScrollContainer"]
-margin_left = 354.0
-margin_top = 634.0
-margin_right = 697.0
-margin_bottom = 693.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -241.0
+margin_top = -30.8334
+margin_right = 241.0
+margin_bottom = 28.1666
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
