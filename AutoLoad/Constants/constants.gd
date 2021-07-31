@@ -1,16 +1,15 @@
 extends Node
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var max_states = 5
+var new_state = 0
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func new_state(red_list=[]):
+	if red_list.size() >= Constants.max_states:
+		print("ERROR, too many states in the red_list Game.gd")
+		return 0
+	new_state = randi() % Constants.max_states
+	while new_state in red_list:
+		new_state = randi() % Constants.max_states
+	return new_state

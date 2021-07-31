@@ -6,24 +6,24 @@
 [ext_resource path="res://POC/assets/fireball.png" type="Texture" id=4]
 [ext_resource path="res://POC/assets/brickBrown.png" type="Texture" id=5]
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 128, 128 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ ExtResource( 1 ), SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -33,11 +33,10 @@ animations = [ {
 script = ExtResource( 2 )
 
 [node name="cible" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
-animation = "New Anim"
+frames = SubResource( 4 )
 
 [node name="fond" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
+frames = SubResource( 4 )
 
 [node name="Button" type="Button" parent="."]
 margin_right = 12.0

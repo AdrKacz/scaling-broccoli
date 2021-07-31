@@ -11,8 +11,13 @@ config_version=4
 [application]
 
 config/name="game-jam-merge"
-run/main_scene="res://POC/Character.tscn"
+run/main_scene="res://Game/Game.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Constants="*res://AutoLoad/Constants/constants.gd"
+DataStore="*res://AutoLoad/DataStore/data_store.gd"
 
 [physics]
 
