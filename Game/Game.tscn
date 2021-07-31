@@ -11,7 +11,7 @@ script = ExtResource( 5 )
 ComboScene = ExtResource( 3 )
 
 [node name="Background" parent="." instance=ExtResource( 4 )]
-position = Vector2( 360, 640 )
+position = Vector2( 362.303, 639.013 )
 
 [node name="TimeTrial" parent="." instance=ExtResource( 2 )]
 position = Vector2( 334.975, 178.017 )
