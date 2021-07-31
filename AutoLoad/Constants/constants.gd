@@ -1,7 +1,7 @@
 extends Node
 
 
-
+const can_be_background_state = true
 
 
 # ===== ===== =====
