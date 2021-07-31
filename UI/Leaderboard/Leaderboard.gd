@@ -12,7 +12,7 @@ class MyCustomSorter:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Gert the leaderboard from ddb
+	# Get the leaderboard from ddb
 	$VBoxContainer/HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items")
 
 
@@ -32,5 +32,3 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 		entry.text = "Player %s got %s" % [elt["name"], elt["price"]]
 		$VBoxContainer.add_child(entry)
 		
-		print(elt)
-	print(json.result)

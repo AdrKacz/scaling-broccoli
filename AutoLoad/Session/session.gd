@@ -13,8 +13,6 @@ var pause_menu = null
 
 func _ready():
 	randomize()
-	print("init")
-	#$HTTPRequest.connect("request_completed", self, "_on_request_completed")
 
 	
 func pause_with_opacity():
