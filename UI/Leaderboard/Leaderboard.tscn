@@ -4,14 +4,8 @@
 [ext_resource path="res://UI/Leaderboard/ScoreEntry.tscn" type="PackedScene" id=2]
 
 [node name="ScrollContainer" type="ScrollContainer"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -241.0
-margin_top = -30.8334
-margin_right = 241.0
-margin_bottom = 28.1666
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -19,15 +13,23 @@ __meta__ = {
 ScoreEntry = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 41.0
-margin_bottom = 20.0
+margin_right = 720.0
+margin_bottom = 1280.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="VBoxContainer"]
-margin_right = 41.0
+[node name="Replay" type="Button" parent="VBoxContainer"]
+margin_right = 720.0
 margin_bottom = 20.0
 text = "WEB"
 
+[node name="MainMenu" type="Button" parent="VBoxContainer"]
+margin_top = 24.0
+margin_right = 720.0
+margin_bottom = 44.0
+
 [node name="HTTPRequest" type="HTTPRequest" parent="VBoxContainer"]
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Replay" to="." method="_on_Replay_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
 [connection signal="request_completed" from="VBoxContainer/HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

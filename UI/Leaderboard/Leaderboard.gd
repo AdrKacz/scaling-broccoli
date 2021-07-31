@@ -16,11 +16,6 @@ func _ready():
 	$VBoxContainer/HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items")
 
 
-func _on_Button_pressed():
-	$VBoxContainer/HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items", ["Content-Type: application/json"], false, 3, JSON.print({"id":str(OS.get_unix_time())+","+str(randi()),"price":13,"name":"hahaha"}))
-	#$VBoxContainer/HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items", ["Content-Type: application/json"], false, 3, JSON.print({"id":"22","price":12,"name":"hahaha"}))
-
-
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	
 	var json = JSON.parse(body.get_string_from_utf8())
@@ -32,3 +27,11 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 		entry.text = "Player %s got %s" % [elt["name"], elt["price"]]
 		$VBoxContainer.add_child(entry)
 		
+
+
+func _on_MainMenu_pressed():
+	Session.main_menu()
+
+
+func _on_Replay_pressed():
+	Session.restart_game()

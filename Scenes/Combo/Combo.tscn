@@ -4,8 +4,8 @@
 [ext_resource path="res://assets/VT323/VT323-Regular.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 512
-outline_size = 16
+size = 128
+outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
