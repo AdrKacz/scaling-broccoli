@@ -16,6 +16,6 @@ func _on_ChangeTimer_timeout():
 	change_state(Constants.new_state([state]))
 	
 func change_state(new_state):
-	$State.text = str(state)
-	$Sprite.modulate = Constants.State[state]
+	$State.text = str(new_state)
+	$Sprite.modulate = Constants.State[new_state]
 	state = new_state
