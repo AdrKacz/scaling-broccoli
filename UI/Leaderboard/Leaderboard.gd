@@ -14,8 +14,8 @@ class MyCustomSorter:
 func _ready():
 	# Get the leaderboard from ddb
 	$VBoxContainer/HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items")
-
-
+	
+	
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	
 	var json = JSON.parse(body.get_string_from_utf8())
