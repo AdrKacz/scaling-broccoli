@@ -20,7 +20,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 720, 720 )
+extents = Vector2( 100, 100 )
 
 [node name="Character" type="Node2D"]
 script = ExtResource( 2 )
