@@ -19,4 +19,4 @@ func _on_UpdateUI_timeout():
 	if time <= 0:
 		print("LOST")
 		$TempsText.text = "PERDU!"
-		emit_signal("lost")
+		Session.lose()

@@ -3,6 +3,7 @@ export (PackedScene) var ComboScene
 
 var combo = 0
 var combo_list = []
+var score = 0
 
 func _ready():
 	$Background.change_state(0)
@@ -12,7 +13,8 @@ func _ready():
 func _on_Character_click(state):
 	# He won
 	if $Character.state == $Background.state:
-		print("... Win")
+		score += 1 * max(1, combo)
+		print("SCORE : ", score)
 		$TimeTrial.add_time(1 * combo)
 		add_combo()
 		$ChangeState.stop()
@@ -23,7 +25,6 @@ func _on_Character_click(state):
 	
 	# He lost
 	else:
-		print("... Wrong")
 		$Character.wrong_color()
 		reset_combo()
 		
@@ -38,7 +39,6 @@ func _on_ChangeState_timeout():
 		reset_combo()
 	var new_background_state = Constants.new_state([$Background.state])
 	$Background.change_state(new_background_state)
-	print(new_background_state, " - ", $Character.state)
 
 func reset_combo():
 	$TimeTrial.remove_time(1)
