@@ -19,5 +19,8 @@ position = Vector2( 383.047, 221.153 )
 [node name="TimeTrial" parent="." instance=ExtResource( 2 )]
 position = Vector2( 334.975, 178.017 )
 
+[node name="Corner" type="Node2D" parent="."]
+position = Vector2( 720, 1280 )
+
 [connection signal="change" from="Background" to="." method="_on_Background_change"]
 [connection signal="click" from="Character" to="." method="_on_Character_click"]

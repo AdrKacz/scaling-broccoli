@@ -13,11 +13,7 @@ func _on_Character_click(state):
 	if $Character.state == $Background.state:
 		print("  Win")
 		$TimeTrial.add_time(1 * combo)
-		combo += 1
-		if combo >= 2:
-			var comb = ComboScene.instance()
-			comb.multiplier = combo
-			add_child(comb)
+		add_combo()
 	
 	# He lost
 	else:
@@ -28,6 +24,7 @@ func _on_Character_click(state):
 		
 	# Reset character's state that isn't the background value
 	print("click on state ", state)
+	$Background.reset()
 	$Character.set_state($Background.state)
 
 # Every background change we check if we miss
@@ -37,3 +34,13 @@ func _on_Background_change(old_state):
 		print("     Miss background ")
 		$TimeTrial.remove_time(1)
 		get_tree().call_group("combo", "queue_free")
+
+func add_combo():
+	combo += 1
+	if combo >= 2:
+		var comb = ComboScene.instance()
+		comb.multiplier = combo
+		var x = randi() % int($Corner.position.x)
+		var y = randi() % int($Corner.position.y)
+		comb.position = Vector2(x, y)
+		add_child(comb)
