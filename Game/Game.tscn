@@ -16,15 +16,18 @@ position = Vector2( 360, 640 )
 [node name="TimeTrial" parent="." instance=ExtResource( 2 )]
 position = Vector2( 334.975, 178.017 )
 
-[node name="Corner" type="Node2D" parent="."]
-position = Vector2( 720, 1280 )
-
 [node name="Character" parent="." instance=ExtResource( 1 )]
 position = Vector2( 360, 640 )
 
 [node name="ChangeState" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
+
+[node name="CornersCombo" type="Node" parent="."]
+
+[node name="UpperLeft" type="Node2D" parent="CornersCombo"]
+position = Vector2( 256, 256 )
+
+[node name="LowerRight" type="Node2D" parent="CornersCombo"]
+position = Vector2( 464, 1024 )
 
 [connection signal="click" from="Character" to="." method="_on_Character_click"]
 [connection signal="timeout" from="ChangeState" to="." method="_on_ChangeState_timeout"]

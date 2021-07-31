@@ -2,6 +2,7 @@ extends Node
 
 
 const can_be_background_state = true
+const background_wait_time = 0.4
 
 
 # ===== ===== =====
