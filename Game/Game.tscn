@@ -14,7 +14,6 @@ ComboScene = ExtResource( 3 )
 position = Vector2( 360, 640 )
 
 [node name="TimeTrial" parent="." instance=ExtResource( 2 )]
-position = Vector2( 334.975, 178.017 )
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
 position = Vector2( 360, 640 )
