@@ -1,14 +1,20 @@
 extends Node
 
-
 export (String, FILE, "*.tscn") var game_path = "res://Game/Game.tscn"
 export (String, FILE, "*.tscn") var main_menu_path = "res://UI/MainMenu/MainMenu.tscn"
 export (String, FILE, "*.tscn") var leaderboard_path = "res://UI/Leaderboard/Leaderboard.tscn"
 export (PackedScene) var PauseMenu = preload("res://UI/PauseMenu/PauseMenu.tscn")
 export (PackedScene) var LoseMenu = preload("res://UI/LoseMenu/LoseMenu.tscn")
 
+
 onready var root = get_tree().get_root()
 var pause_menu = null
+
+
+func _ready():
+	randomize()
+	print("init")
+	#$HTTPRequest.connect("request_completed", self, "_on_request_completed")
 
 	
 func pause_with_opacity():
@@ -44,7 +50,10 @@ func lose():
 	root.get_child(root.get_child_count() - 1).add_child(lose_menu)
 
 func submit_score(score, name):
-	print("submitting ", score, " for ", name)
-	# TODO: wait for server answer
+	var error = $HTTPSession.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items", ["Content-Type: application/json"], false, 3, JSON.print({"id": str(score) + name + str(randi()), "price": score, "name": name}))
+
+
+
+func _on_HTTPSession_request_completed(result, response_code, headers, body):
+	get_tree().paused = false
 	get_tree().change_scene(leaderboard_path)
-	

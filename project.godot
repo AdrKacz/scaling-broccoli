@@ -18,12 +18,13 @@ config/icon="res://icon.png"
 
 Constants="*res://AutoLoad/Constants/constants.gd"
 DataStore="*res://AutoLoad/DataStore/data_store.gd"
-Session="*res://AutoLoad/Session/session.gd"
+Session="*res://AutoLoad/Session/session.tscn"
 
 [display]
 
 window/size/width=720
 window/size/height=1280
+window/size/borderless=true
 window/size/test_width=360
 window/size/test_height=640
 window/handheld/orientation="portrait"
