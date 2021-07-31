@@ -20,3 +20,6 @@ func change_state(new_state):
 	$State.text = str(state)
 	$Sprite.modulate = Constants.State[state]
 	state = new_state
+
+func wrong_color():
+	$AnimationPlayer.play("Shake")

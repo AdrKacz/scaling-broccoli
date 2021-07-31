@@ -20,6 +20,7 @@ func _on_Character_click(state):
 	# He lost
 	else:
 		print("... Wrong")
+		$Character.wrong_color()
 		$TimeTrial.remove_time(1)
 		get_tree().call_group("combo", "queue_free")
 		combo = 0
