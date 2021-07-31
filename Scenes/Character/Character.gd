@@ -10,5 +10,5 @@ func set_state(not_this_state):
 
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
-	if event is InputEventScreenTouch:
+	if event is InputEventScreenTouch and event.is_pressed():
 		emit_signal("click", state)

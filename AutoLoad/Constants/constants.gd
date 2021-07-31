@@ -1,15 +1,31 @@
 extends Node
 
 
-var max_states = 5
+
+
+
+# ===== ===== =====
+enum StateEnum {
+	RED,
+	GREEN,
+	BLUE
+}
+
+const State = {
+	StateEnum.RED: Color.red,
+	StateEnum.GREEN: Color.green,
+	StateEnum.BLUE: Color.blue,
+}
+# ==== ===== =====
 
 
 func new_state(red_list=[]):
-	var new_state = 0
-	if red_list.size() >= Constants.max_states:
+	if red_list.size() >= StateEnum.size():
 		print("ERROR, too many states in the red_list Game.gd")
-		return 0
-	new_state = randi() % Constants.max_states
-	while new_state in red_list:
-		new_state = randi() % Constants.max_states
-	return new_state
+		return null
+
+	var state = randi() % StateEnum.size()
+	while state in red_list:
+		state = randi() % StateEnum.size()
+
+	return state
