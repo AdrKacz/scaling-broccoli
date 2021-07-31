@@ -15,6 +15,7 @@ func _on_Character_click(state):
 		$TimeTrial.add_time(1 * combo)
 		add_combo()
 		$Background.reset()
+		$Character.set_state($Background.state)
 	
 	# He lost
 	else:
@@ -25,7 +26,7 @@ func _on_Character_click(state):
 		
 	# Reset character's state that isn't the background value
 	print("Click on state ", state)
-	$Character.set_state($Background.state)
+	
 
 # Every background change we check if we miss
 func _on_Background_change(old_state):

@@ -6,15 +6,19 @@ const can_be_background_state = true
 
 # ===== ===== =====
 enum StateEnum {
+	YELLOW,
 	RED,
-	GREEN,
-	BLUE
+	PURPLE,
+	BLUE,
+	GREEN
 }
 
 const State = {
-	StateEnum.RED: Color.red,
-	StateEnum.GREEN: Color.green,
-	StateEnum.BLUE: Color.blue,
+	StateEnum.YELLOW: Color("#F6C362"),
+	StateEnum.RED: Color("#DE5E59"),
+	StateEnum.PURPLE: Color("#A36DF4"),
+	StateEnum.BLUE: Color("#59C2DE"),
+	StateEnum.GREEN: Color("#6AFF63"),
 }
 # ==== ===== =====
 
