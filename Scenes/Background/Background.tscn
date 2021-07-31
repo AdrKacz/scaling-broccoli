@@ -22,5 +22,3 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 64, 64 )
 texture = ExtResource( 2 )
-
-[connection signal="timeout" from="ChangeTimer" to="." method="_on_ChangeTimer_timeout"]

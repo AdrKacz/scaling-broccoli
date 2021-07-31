@@ -22,5 +22,9 @@ position = Vector2( 720, 1280 )
 [node name="Character" parent="." instance=ExtResource( 1 )]
 position = Vector2( 360, 640 )
 
-[connection signal="change" from="Background" to="." method="_on_Background_change"]
+[node name="ChangeState" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [connection signal="click" from="Character" to="." method="_on_Character_click"]
+[connection signal="timeout" from="ChangeState" to="." method="_on_ChangeState_timeout"]

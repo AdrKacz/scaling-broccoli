@@ -4,8 +4,8 @@ signal click
 var state = 0
 
 
-func set_state(backgroud_state):
-	change_state(Constants.new_state([state] if Constants.can_be_background_state else [state, backgroud_state]))
+func set_state(background_state):
+	change_state(Constants.new_state([state] if Constants.can_be_background_state else Constants.new_state([state, background_state])))
 
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
@@ -17,8 +17,8 @@ func _input(ev):
 		
 		
 func change_state(new_state):
-	$State.text = str(state)
-	$Sprite.modulate = Constants.State[state]
+	$State.text = str(new_state)
+	$Sprite.modulate = Constants.State[new_state]
 	state = new_state
 
 func wrong_color():

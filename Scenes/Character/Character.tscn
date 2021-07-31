@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/Character/Character.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 256, 256 )
+extents = Vector2( 100, 100 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Shake"

@@ -5,7 +5,8 @@ var combo = 0
 var combo_list = []
 
 func _ready():
-	$Character.set_state($Background.state)
+	$Background.change_state(0)
+	$Character.set_state(1)
 	
 # Every time the player clicks we check
 func _on_Character_click(state):
@@ -14,28 +15,35 @@ func _on_Character_click(state):
 		print("... Win")
 		$TimeTrial.add_time(1 * combo)
 		add_combo()
-		$Background.reset()
-		$Character.set_state($Background.state)
+		$ChangeState.stop()
+		$ChangeState.start()
+		var new_background_state = Constants.new_state([$Background.state])
+		$Background.change_state(new_background_state)
+		$Character.set_state(new_background_state)
 	
 	# He lost
 	else:
 		print("... Wrong")
 		$Character.wrong_color()
-		$TimeTrial.remove_time(1)
-		get_tree().call_group("combo", "queue_free")
-		combo = 0
+		reset_combo()
 		
 	# Reset character's state that isn't the background value
 	print("Click on state ", state)
 	
 
 # Every background change we check if we miss
-func _on_Background_change(old_state):
-	print($Background.state, " - ", $Character.state)
-	if old_state == $Character.state:
+func _on_ChangeState_timeout():
+	if $Background.state == $Character.state:
 		print("     Miss background ")
-		$TimeTrial.remove_time(1)
-		get_tree().call_group("combo", "queue_free")
+		reset_combo()
+	var new_background_state = Constants.new_state([$Background.state])
+	$Background.change_state(new_background_state)
+	print(new_background_state, " - ", $Character.state)
+
+func reset_combo():
+	$TimeTrial.remove_time(1)
+	get_tree().call_group("combo", "queue_free")
+	combo = 0
 
 func add_combo():
 	combo += 1
@@ -46,3 +54,4 @@ func add_combo():
 		var y = randi() % int($Corner.position.y)
 		comb.position = Vector2(x, y)
 		add_child(comb)
+
