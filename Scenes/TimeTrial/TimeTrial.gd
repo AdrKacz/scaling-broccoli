@@ -1,9 +1,7 @@
 extends Node
 signal lost
 
-const ratio = 1280 / 720
-
-const max_wick = 400;
+const max_wick = 400
 
 var static_time = Constants.max_time
 var animated_time = Constants.max_time

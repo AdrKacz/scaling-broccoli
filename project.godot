@@ -24,7 +24,6 @@ Session="*res://AutoLoad/Session/session.tscn"
 
 window/size/width=720
 window/size/height=1280
-window/size/borderless=true
 window/size/test_width=360
 window/size/test_height=640
 window/handheld/orientation="portrait"
