@@ -1,12 +1,13 @@
 extends Node2D
 export (PackedScene) var ComboScene
+export var wait_time = Constants.background_wait_time
 
 var combo = 0
 var combo_list = []
 var score = 0
 
 func _ready():
-	$ChangeState.wait_time = Constants.background_wait_time
+	$ChangeState.wait_time = wait_time
 	$ComboTimer.wait_time = Constants.max_combo_time # NOTE Can be infinite
 
 	$ChangeState.start()
