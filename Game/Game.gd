@@ -11,20 +11,20 @@ func _ready():
 func _on_Character_click(state):
 	# He won
 	if $Character.state == $Background.state:
-		print("  Win")
+		print("... Win")
 		$TimeTrial.add_time(1 * combo)
 		add_combo()
+		$Background.reset()
 	
 	# He lost
 	else:
-		print("   Wrong")
+		print("... Wrong")
 		$TimeTrial.remove_time(1)
 		get_tree().call_group("combo", "queue_free")
 		combo = 0
 		
 	# Reset character's state that isn't the background value
-	print("click on state ", state)
-	$Background.reset()
+	print("Click on state ", state)
 	$Character.set_state($Background.state)
 
 # Every background change we check if we miss

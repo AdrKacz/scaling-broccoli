@@ -11,16 +11,16 @@ script = ExtResource( 5 )
 ComboScene = ExtResource( 3 )
 
 [node name="Background" parent="." instance=ExtResource( 4 )]
-position = Vector2( 287.591, 222.799 )
-
-[node name="Character" parent="." instance=ExtResource( 1 )]
-position = Vector2( 383.047, 221.153 )
+position = Vector2( 360, 640 )
 
 [node name="TimeTrial" parent="." instance=ExtResource( 2 )]
 position = Vector2( 334.975, 178.017 )
 
 [node name="Corner" type="Node2D" parent="."]
 position = Vector2( 720, 1280 )
+
+[node name="Character" parent="." instance=ExtResource( 1 )]
+position = Vector2( 360, 640 )
 
 [connection signal="change" from="Background" to="." method="_on_Background_change"]
 [connection signal="click" from="Character" to="." method="_on_Character_click"]
