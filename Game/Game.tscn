@@ -8,6 +8,7 @@
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 5 )
+ComboScene = ExtResource( 3 )
 
 [node name="Background" parent="." instance=ExtResource( 4 )]
 position = Vector2( 287.591, 222.799 )
@@ -15,13 +16,8 @@ position = Vector2( 287.591, 222.799 )
 [node name="Character" parent="." instance=ExtResource( 1 )]
 position = Vector2( 383.047, 221.153 )
 
-[node name="Combo" parent="." instance=ExtResource( 3 )]
-
 [node name="TimeTrial" parent="." instance=ExtResource( 2 )]
 position = Vector2( 334.975, 178.017 )
-
-[node name="ChangeBackground" type="Timer" parent="."]
-autostart = true
 
 [connection signal="change" from="Background" to="." method="_on_Background_change"]
 [connection signal="click" from="Character" to="." method="_on_Character_click"]
