@@ -20,6 +20,9 @@ position = Vector2( 360, 640 )
 
 [node name="ChangeState" type="Timer" parent="."]
 
+[node name="ComboTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="CornersCombo" type="Node" parent="."]
 
 [node name="UpperLeft" type="Node2D" parent="CornersCombo"]
@@ -30,3 +33,4 @@ position = Vector2( 464, 1024 )
 
 [connection signal="click" from="Character" to="." method="_on_Character_click"]
 [connection signal="timeout" from="ChangeState" to="." method="_on_ChangeState_timeout"]
+[connection signal="timeout" from="ComboTimer" to="." method="_on_ComboTimer_timeout"]

@@ -7,6 +7,7 @@ var score = 0
 
 func _ready():
 	$ChangeState.wait_time = Constants.background_wait_time
+	$ComboTimer.wait_time = Constants.max_combo_time # NOTE Can be infinite
 
 	$ChangeState.start()
 	$Background.change_state(0)
@@ -18,7 +19,7 @@ func _on_Character_click(state):
 	if $Character.state == $Background.state:
 		score += 1 * max(1, combo)
 		print("SCORE : ", score)
-#		$TimeTrial.add_time(1 * combo)
+#		$TimeTrial.add_time(1 * combo) # NOTE To parametize
 		add_combo()
 
 		$ChangeState.stop()
@@ -43,13 +44,14 @@ func _on_Character_click(state):
 func _on_ChangeState_timeout():
 	if $Background.state == $Character.state:
 		print("... Miss background ")
-		reset_combo()
+#		reset_combo() # NOTE To parametize
 	var new_background_state = Constants.new_state([$Background.state])
 	$Background.change_state(new_background_state)
 
 func reset_combo():
-#	$TimeTrial.remove_time(1)
-#	get_tree().call_group("combo", "queue_free")
+#	$TimeTrial.remove_time(1) # NOTE To parametize
+#	TODO : Animation to see
+	$ComboTimer.stop()
 	combo = 0
 
 func add_combo():
@@ -62,3 +64,10 @@ func add_combo():
 		var y = $CornersCombo/UpperLeft.position.y + randi() % int($CornersCombo/LowerRight.position.y - $CornersCombo/UpperLeft.position.y)
 		comb.position = Vector2(x, y)
 		add_child(comb)
+#		Add Combo Timer # NOTE To parametize
+		$ComboTimer.stop()
+		$ComboTimer.start()
+
+
+func _on_ComboTimer_timeout():
+	reset_combo()
