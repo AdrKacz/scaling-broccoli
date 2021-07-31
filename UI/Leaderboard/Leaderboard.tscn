@@ -6,7 +6,7 @@
 [node name="ScrollContainer" type="ScrollContainer"]
 margin_left = 354.0
 margin_top = 634.0
-margin_right = 491.0
+margin_right = 697.0
 margin_bottom = 693.0
 script = ExtResource( 1 )
 __meta__ = {
