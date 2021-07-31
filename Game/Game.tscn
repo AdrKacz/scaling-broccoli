@@ -11,12 +11,13 @@ script = ExtResource( 5 )
 ComboScene = ExtResource( 3 )
 
 [node name="Background" parent="." instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 360, 640 )
-
-[node name="TimeTrial" parent="." instance=ExtResource( 2 )]
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
 position = Vector2( 360, 640 )
+
+[node name="TimeTrial" parent="." instance=ExtResource( 2 )]
 
 [node name="ChangeState" type="Timer" parent="."]
 
