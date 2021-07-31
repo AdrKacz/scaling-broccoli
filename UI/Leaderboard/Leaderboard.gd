@@ -9,48 +9,23 @@ export (PackedScene) var ScoreEntry
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Wsh mec")
 	
 	#$VBoxContainer/HTTPRequest.connect("request_completed", self, "_on_request_completed")
-	
-	"""
-	for i in range(20):
-		var entry = ScoreEntry.instance()
-		entry.text = "Player %s" % i
-		$VBoxContainer.add_child(entry)
-		
-		#print(get_node("Label").text) 
-	"""
-
 	$VBoxContainer/HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items")
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
-"""
-func _on_Button_pressed():
-	print("Oui monsieur")
-	
-	print(get_node("VBoxContainer/Label").text)
-	
-	pass # Replace with function body.
-
-"""
 func _on_Button_pressed():
 	
-	#$VBoxContainer/HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items")
-	#print("Ouiiii")
-	#var headers = ["Content-Type: application/json"]
+	$VBoxContainer/HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items", ["Content-Type: application/json"], false, 3, JSON.print({"id":"ouimaiteewwwwwere","score":"12","name":"hahaha","nameee":"hahaha"}))
+	#$VBoxContainer/HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items", ["Content-Type: application/json"], false, 3, JSON.print({"id":"ouimaitre"})"{\"id\": \"le bon poulet\", \"price\": 1222345, \"name\": \"myffitem\"}")
 	
-	$VBoxContainer/HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items", ["Content-Type: application/json"], false, 3, "{\"id\": \"abcdddeffffff234\", \"price\": 1222345, \"name\": \"myffitem\"}")
-
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	
 	var json = JSON.parse(body.get_string_from_utf8())
-	#print(json.result["Items"])
 	
 	for elt in json.result["Items"]:
 		
@@ -60,7 +35,4 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 		
 		print(elt)
 	print(json.result)
-	
-	
-	#print(body.get_string_from_utf8())
-	
+
