@@ -29,7 +29,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
-""""
+"""
 func _on_Button_pressed():
 	print("Oui monsieur")
 	
@@ -37,12 +37,14 @@ func _on_Button_pressed():
 	
 	pass # Replace with function body.
 
-
+"""
 func _on_Button_pressed():
 	
-	$VBoxContainer/HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items")
-	print("Ouiiii")
-"""
+	#$VBoxContainer/HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items")
+	#print("Ouiiii")
+	#var headers = ["Content-Type: application/json"]
+	
+	$VBoxContainer/HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items", ["Content-Type: application/json"], false, 3, "{\"id\": \"abcdddeffffff234\", \"price\": 1222345, \"name\": \"myffitem\"}")
 
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
