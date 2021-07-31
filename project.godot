@@ -18,6 +18,17 @@ config/icon="res://icon.png"
 
 Constants="*res://AutoLoad/Constants/constants.gd"
 DataStore="*res://AutoLoad/DataStore/data_store.gd"
+[display]
+
+window/size/width=720
+window/size/height=1280
+window/handheld/orientation="portrait"
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [physics]
 
