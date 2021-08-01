@@ -11,7 +11,7 @@
 size = 64
 font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 512, 128 )
 modulate_color = Color( 0.862745, 0.862745, 0.862745, 1 )
@@ -20,7 +20,7 @@ modulate_color = Color( 0.862745, 0.862745, 0.862745, 1 )
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 512, 128 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 size = 32
 font_data = ExtResource( 4 )
 
@@ -97,9 +97,9 @@ alignment = 1
 margin_right = 512.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 200, 50 )
-custom_styles/focus = SubResource( 4 )
+custom_styles/focus = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 1
 max_length = 16
