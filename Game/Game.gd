@@ -24,7 +24,7 @@ func _on_Character_click(state):
 
 		# Reset timer
 		$ChangeState.stop()
-		
+
 		# Update background and character
 		var new_background_state = Constants.new_state([$Background.state])
 		$Background.change_state(new_background_state)
@@ -48,6 +48,3 @@ func _on_ChangeState_timeout():
 	# Update background
 	var new_background_state = Constants.new_state([$Background.state])
 	$Background.change_state(new_background_state)
-
-
-

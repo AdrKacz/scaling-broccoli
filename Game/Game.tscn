@@ -4,6 +4,7 @@
 [ext_resource path="res://Scenes/Combo/Combo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Background/Background.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Game/Game.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/PostEffect/PostEffect.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Node2D" groups=[
 "game",
