@@ -38,7 +38,7 @@ func _on_Character_click(state):
 	# He lost
 	else:
 		emit_signal("wrong")
-		$Character.wrong_color()
+		$Character.shake()
 #		wait_twice = false
 
 func update_background_state():
@@ -61,4 +61,5 @@ func update_background_state():
 
 
 func _on_ComboTimer_no_time_left():
+	print("...Emit End Signal")
 	emit_signal("no_combo_time_left")

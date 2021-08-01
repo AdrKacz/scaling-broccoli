@@ -22,5 +22,5 @@ func get_character_next_state(background_state, character_state):
 	return randi() % Constants.StateEnum.size()
 
 func get_background_next_state(background_state, character_state):
-	print("Before end of combo: ", Constants.swap_left_before_combo_ends)
+#	print("Before end of combo: ", Constants.swap_left_before_combo_ends)
 	return randi() % Constants.StateEnum.size()

@@ -27,5 +27,5 @@ func change_state(new_state):
 	$Sprite.modulate = Constants.State[new_state]
 	state = new_state
 
-func wrong_color():
+func shake():
 	$AnimationPlayer.play("Shake")

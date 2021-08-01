@@ -12,6 +12,9 @@ var combo_time_left = 0
 var last_change_mode_combo_level = 0
 
 
+# TODO : Signal continue emiting when no game mode activated (...)
+
+
 func _ready():
 	Constants.game_mode = randi() % 2 # NOTE Not fixed
 	setup_game()
@@ -35,8 +38,10 @@ func wrong():
 func reset_combo_level():
 	if Constants.combo_level >= 2:
 		$NoComboSound.play()
+	print("Reset Combo Level")
 	Constants.combo_level = 0
 	last_change_mode_combo_level = 0
+	update_swap_time()
 #	swap = 0
 #	count_combo = false
 #	combo_time_left = Constants.combo_swap_spawn* $ComboTimerUI.wait_time
