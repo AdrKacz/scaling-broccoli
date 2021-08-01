@@ -1,6 +1,44 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://UI/LoseMenu/LoseMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/buttons/New Piskel.png" type="Texture" id=2]
+[ext_resource path="res://assets/buttons/New Piskel-20.png.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 80, 900, 580, 180 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 2 )
+region_rect = Rect2( 740, 900, 580, 180 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 2 )
+region_rect = Rect2( 740, 720, 580, 180 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 3 )
+region_rect = Rect2( 60, 100, 240, 100 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 2 )
+region_rect = Rect2( 780, 1620, 480, 180 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 2 )
+region_rect = Rect2( 120, 1620, 480, 180 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 2 )
+region_rect = Rect2( 660, 180, 660, 180 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 2 )
+region_rect = Rect2( 660, 360, 660, 180 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 360, 660, 180 )
 
 [node name="LoseMenu" type="Control"]
 pause_mode = 2
@@ -22,7 +60,7 @@ __meta__ = {
 
 [node name="Info" type="TextEdit" parent="Vbox"]
 margin_right = 720.0
-margin_bottom = 1198.0
+margin_bottom = 998.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "You failed..."
@@ -31,38 +69,53 @@ __meta__ = {
 }
 
 [node name="Hbox" type="HBoxContainer" parent="Vbox"]
-margin_top = 1202.0
+margin_top = 1002.0
 margin_right = 720.0
-margin_bottom = 1232.0
+margin_bottom = 1092.0
 
 [node name="Score" type="TextEdit" parent="Vbox/Hbox"]
 margin_right = 80.0
-margin_bottom = 30.0
+margin_bottom = 90.0
 rect_min_size = Vector2( 80, 30 )
 
 [node name="Name" type="TextEdit" parent="Vbox/Hbox"]
 margin_left = 84.0
 margin_right = 284.0
-margin_bottom = 30.0
+margin_bottom = 90.0
 rect_min_size = Vector2( 200, 30 )
 
 [node name="SubmitScore" type="Button" parent="Vbox/Hbox"]
 margin_left = 288.0
-margin_right = 416.0
-margin_bottom = 30.0
-text = "Submit your score"
+margin_right = 578.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 290, 90 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
 
 [node name="MainMenu" type="Button" parent="Vbox"]
-margin_top = 1236.0
-margin_right = 720.0
-margin_bottom = 1256.0
-text = "Main Menu"
+margin_top = 1096.0
+margin_right = 250.0
+margin_bottom = 1186.0
+rect_min_size = Vector2( 250, 90 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 
 [node name="Restart" type="Button" parent="Vbox"]
-margin_top = 1260.0
-margin_right = 720.0
+margin_top = 1190.0
+margin_right = 330.0
 margin_bottom = 1280.0
-text = "Restart"
+rect_min_size = Vector2( 330, 90 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
 
 [connection signal="pressed" from="Vbox/Hbox/SubmitScore" to="." method="_on_SubmitScore_pressed"]
 [connection signal="pressed" from="Vbox/MainMenu" to="." method="_on_MainMenu_pressed"]

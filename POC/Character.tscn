@@ -6,19 +6,15 @@
 
 [node name="Game3" parent="." instance=ExtResource( 1 )]
 scale = Vector2( 0.5, 0.5 )
-wait_time = 1.3
 
 [node name="Game2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, 640 )
 scale = Vector2( 0.5, 0.5 )
-wait_time = 1.3
 
 [node name="Game" parent="." instance=ExtResource( 1 )]
 position = Vector2( 360, 640 )
 scale = Vector2( 0.5, 0.5 )
-wait_time = 1.3
 
 [node name="Game4" parent="." instance=ExtResource( 1 )]
 position = Vector2( 351.862, 0 )
 scale = Vector2( 0.5, 0.5 )
-wait_time = 1.3
