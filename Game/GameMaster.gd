@@ -78,4 +78,4 @@ func setup_game():
 	current_index_game = index_game
 
 func _on_TimeTrial_lost():
-	Session.lose()
+	Session.lose($Menus)

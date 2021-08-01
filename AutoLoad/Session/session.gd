@@ -35,11 +35,11 @@ func leaderboard():
 func main_menu():
 	get_tree().change_scene(main_menu_path)
 	
-func lose():
+func lose(to):
 	get_tree().paused = true
 	var lose_menu = LoseMenu.instance()
 	lose_menu.show()
-	root.get_child(root.get_child_count() - 1).add_child(lose_menu)
+	to.add_child(lose_menu)
 
 func submit_score(score, name):
 	var error = $HTTPSession.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items", ["Content-Type: application/json"], false, 3, JSON.print({"id": str(score) + name + str(randi()), "price": score, "name": name}))

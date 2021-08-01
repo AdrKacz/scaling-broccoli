@@ -38,6 +38,13 @@ position = Vector2( 464, 1024 )
 [node name="ComboTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="Menus" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="miss" from="Games/GameSolo" to="." method="miss"]
 [connection signal="score" from="Games/GameSolo" to="." method="score"]
 [connection signal="wrong" from="Games/GameSolo" to="." method="wrong"]
