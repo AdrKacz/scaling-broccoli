@@ -46,9 +46,6 @@ func _on_Character_click(state):
 		emit_signal("wrong")
 		$Character.wrong_color()
 
-	# Reset character's state that isn't the background value
-	print("Click on state ", state)
-
 
 func _on_ChangeState_timeout():
 	# Every background change we check if we miss

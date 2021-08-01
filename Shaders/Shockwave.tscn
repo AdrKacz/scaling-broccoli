@@ -6,7 +6,7 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
-shader_param/force = 0.5
+shader_param/force = 1.0
 shader_param/size = 0.0
 shader_param/thickness = 0.01
 shader_param/aberation = 0.5

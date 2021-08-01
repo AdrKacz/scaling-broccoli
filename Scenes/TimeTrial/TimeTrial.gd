@@ -1,6 +1,8 @@
 extends Node
 signal lost
 
+var has_not_time_left = false
+
 const max_wick = 400
 
 var static_time = Constants.max_time
@@ -17,6 +19,8 @@ func remove_time(dt):
 	update_time(static_time - dt)
 	
 func _process(delta):
+	if has_not_time_left:
+		return
 #	Update wick
 	var interpolation = lerp(0, max_wick, animated_time / Constants.max_time)
 	$Control/TextureProgressUp.value = interpolation
@@ -30,8 +34,9 @@ func _process(delta):
 #	Check if no time left and emit signal
 #	TODO
 	if animated_time <= 0:
-		print("... No time left")
 		emit_signal("lost")
+		$UpdateUI.stop()
+		has_not_time_left = true
 	
 func update_time(new_static_time):
 #	Tween for interpolation
@@ -42,6 +47,5 @@ func update_time(new_static_time):
 	
 
 func _on_UpdateUI_timeout():
-	print("... Timeout")
 	update_time(static_time - $UpdateUI.wait_time)
 	

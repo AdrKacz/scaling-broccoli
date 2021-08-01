@@ -62,13 +62,11 @@ func _on_ComboTimer_timeout():
 func setup_game():
 #	var index_game = randi() % $Games.get_child_count()
 	var index_game  = 1 - current_index_game # NOTE Not fixed
-	print("Change mode from ", current_index_game, " to ",  index_game)
 	
 	var game_child = $Games.get_child(index_game)
 	game_child.visible = true
 	game_child.start_game(Constants.GameTime.get(game_child.name, Constants.default_wait_time))
 	current_index_game = index_game
-	print("Changed to ", current_index_game)
 
 func _on_TimeTrial_lost():
 	Session.lose()
