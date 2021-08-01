@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Click9.wav-f4b2dd476345b805fcccbbf776abea99.sample"
+
+[deps]
+
+source_file="res://assets/Click-Button-Switch/Click9.wav"
+dest_files=[ "res://.import/Click9.wav-f4b2dd476345b805fcccbbf776abea99.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

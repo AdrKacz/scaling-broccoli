@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/HeartBeatFast2.wav-08b20a59e7c080c35974785271a560eb.sample"
+
+[deps]
+
+source_file="res://assets/HeartBeatFast2.wav"
+dest_files=[ "res://.import/HeartBeatFast2.wav-08b20a59e7c080c35974785271a560eb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

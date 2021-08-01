@@ -10,6 +10,7 @@ func _ready():
 	$Control/CenterContainer/VBox/Score.text = str(score)
 
 func _on_SubmitScore_pressed():
+	$ClickSound.play()
 	var name = $Control/CenterContainer/VBox/VBoxContainer/Name.text
 	for letter in name:
 		if not letter in allowed: # TODO Hello Regex
@@ -22,8 +23,10 @@ func _on_SubmitScore_pressed():
 
 
 func _on_MainMenu_pressed():
+	$ClickSound.play()
 	Session.main_menu()
 
 
 func _on_Restart_pressed():
+	$ClickSound.play()
 	Session.start_game()

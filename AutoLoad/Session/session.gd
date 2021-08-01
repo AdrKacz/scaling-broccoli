@@ -24,14 +24,17 @@ func unpause():
 	get_tree().paused = false
 
 func start_game():
+	$ClickSound.play()
 	unpause()
 	get_tree().change_scene(game_path)
 	
 func leaderboard():
+	$ClickSound.play()
 	unpause()
 	get_tree().change_scene(leaderboard_path)
 	
 func main_menu():
+	$ClickSound.play()
 	unpause()
 	get_tree().change_scene(main_menu_path)
 	

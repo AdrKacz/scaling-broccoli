@@ -33,8 +33,10 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 
 
 func _on_MainMenu_pressed():
+	$ClickSound.play()
 	Session.main_menu()
 
 
 func _on_Replay_pressed():
+	$ClickSound.play()
 	Session.start_game()
