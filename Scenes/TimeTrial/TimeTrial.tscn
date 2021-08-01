@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/TimeTrial/TimeTrial.gd" type="Script" id=1]
 [ext_resource path="res://assets/HorizontalBar.png" type="Texture" id=2]
 [ext_resource path="res://assets/VerticalBar.png" type="Texture" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 8, 8, 0, 0, 0, 0, 8, 1272, 0, 0, 0, 0, 712, 1272, 0, 0, 0, 0, 712, 8, 0, 0, 0, 0, 8, 8 )
+}
+
+[sub_resource type="Gradient" id=2]
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0.0284091, 0.918513 ), 0.0, 0.0, 0, 0, Vector2( 0.920455, 0.0851798 ), 0.0, 0.0, 0, 0 ]
 
 [node name="TimeTrial" type="Node"]
 script = ExtResource( 1 )
@@ -83,5 +93,33 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 8, 8 )
+rotation = 1.5708
+
+[node name="SecondLayer" type="CPUParticles2D" parent="Path2D/PathFollow2D"]
+position = Vector2( 0, 9.53674e-07 )
+amount = 32
+preprocess = 1.0
+local_coords = false
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 40.0
+scale_amount = 5.0
+color_ramp = SubResource( 2 )
+
+[node name="FirstLayer" type="CPUParticles2D" parent="Path2D/PathFollow2D"]
+amount = 32
+preprocess = 1.0
+local_coords = false
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 20.0
+scale_amount = 10.0
+scale_amount_curve = SubResource( 3 )
 
 [connection signal="timeout" from="UpdateUI" to="." method="_on_UpdateUI_timeout"]
