@@ -13,7 +13,7 @@ class MyCustomSorter:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Get the leaderboard from ddb
-	$Margin/VBox/HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items")
+	$HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items")
 	
 	
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
@@ -28,7 +28,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 		entry.rank = str(i)
 		entry.player = elt["name"]
 		entry.score = str(elt["price"])
-		$Margin/VBox/Scroll/VBox.add_child(entry)
+		$MarginContainer/VBoxContainer/ScrollContainer/VBox.add_child(entry)
 		i += 1
 
 

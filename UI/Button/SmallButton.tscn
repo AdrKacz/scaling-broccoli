@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/ButtonsV3/SmallButtonDown.png" type="Texture" id=1]
+[ext_resource path="res://assets/VT323/VT323-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/ButtonsV3/SmallButtonUp.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=5]
+size = 128
+font_data = ExtResource( 2 )
+
+[node name="Replay" type="TextureButton"]
+margin_top = 101.0
+margin_right = 256.0
+margin_bottom = 357.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer"]
+margin_left = 26.0
+margin_top = 63.0
+margin_right = 230.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}

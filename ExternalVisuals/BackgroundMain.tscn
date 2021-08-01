@@ -1,72 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/Background.png" type="Texture" id=1]
 [ext_resource path="res://assets/Character.png" type="Texture" id=2]
-[ext_resource path="res://assets/VT323/VT323-Regular.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="DynamicFont" id=1]
-size = 256
-outline_size = 16
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 3 )
+[node name="Background" type="Node2D"]
 
-[node name="Node" type="Node"]
-
-[node name="Background" type="Node" parent="."]
-
-[node name="Background" type="Sprite" parent="Background"]
+[node name="Background" type="Sprite" parent="."]
 position = Vector2( 360, 640 )
 scale = Vector2( 40, 40 )
 texture = ExtResource( 1 )
 
-[node name="Node3" type="Node" parent="Background"]
-
-[node name="CPUParticles2D9" type="CPUParticles2D" parent="Background/Node3"]
-position = Vector2( 64, -24 )
-amount = 128
-lifetime = 16.0
-preprocess = 16.0
-texture = ExtResource( 2 )
-direction = Vector2( 0, -1 )
-initial_velocity = 98.0
-
-[node name="CPUParticles2D10" type="CPUParticles2D" parent="Background/Node3"]
-position = Vector2( 200, -40 )
-amount = 128
-lifetime = 16.0
-preprocess = 16.0
-texture = ExtResource( 2 )
-direction = Vector2( 0, -1 )
-initial_velocity = 98.0
-
-[node name="CPUParticles2D11" type="CPUParticles2D" parent="Background/Node3"]
-position = Vector2( 200, -40 )
-amount = 128
-lifetime = 16.0
-preprocess = 16.0
-texture = ExtResource( 2 )
-direction = Vector2( 0, -1 )
-initial_velocity = 98.0
-
-[node name="CPUParticles2D12" type="CPUParticles2D" parent="Background/Node3"]
-position = Vector2( 400, -40 )
-amount = 128
-lifetime = 16.0
-preprocess = 16.0
-texture = ExtResource( 2 )
-direction = Vector2( 0, -1 )
-initial_velocity = 98.0
-
-[node name="CPUParticles2D13" type="CPUParticles2D" parent="Background/Node3"]
-position = Vector2( 568, -48 )
-amount = 128
-lifetime = 16.0
-preprocess = 16.0
-texture = ExtResource( 2 )
-direction = Vector2( 0, -1 )
-initial_velocity = 98.0
-
-[node name="Sprite" type="Sprite" parent="Background"]
+[node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.964706, 0.764706, 0.384314, 1 )
 position = Vector2( 88, 928 )
 scale = Vector2( 15, 15 )
@@ -75,9 +19,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Node" type="Node" parent="Background"]
+[node name="Node" type="Node2D" parent="."]
 
-[node name="Sprite6" type="Sprite" parent="Background/Node"]
+[node name="Sprite6" type="Sprite" parent="Node"]
 position = Vector2( 8, 344 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -85,7 +29,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite8" type="Sprite" parent="Background/Node"]
+[node name="Sprite8" type="Sprite" parent="Node"]
 position = Vector2( 8, 344 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -93,7 +37,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite7" type="Sprite" parent="Background/Node"]
+[node name="Sprite7" type="Sprite" parent="Node"]
 position = Vector2( 136, 616 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -101,7 +45,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite9" type="Sprite" parent="Background/Node"]
+[node name="Sprite9" type="Sprite" parent="Node"]
 position = Vector2( 56, 640 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -109,7 +53,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite10" type="Sprite" parent="Background/Node"]
+[node name="Sprite10" type="Sprite" parent="Node"]
 position = Vector2( 48, 536 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -117,7 +61,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite11" type="Sprite" parent="Background/Node"]
+[node name="Sprite11" type="Sprite" parent="Node"]
 position = Vector2( 48, 472 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -125,7 +69,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite12" type="Sprite" parent="Background/Node"]
+[node name="Sprite12" type="Sprite" parent="Node"]
 position = Vector2( 488, 400 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -133,7 +77,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite13" type="Sprite" parent="Background/Node"]
+[node name="Sprite13" type="Sprite" parent="Node"]
 position = Vector2( 456, 680 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -141,7 +85,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite14" type="Sprite" parent="Background/Node"]
+[node name="Sprite14" type="Sprite" parent="Node"]
 position = Vector2( 208, 600 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -149,7 +93,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite15" type="Sprite" parent="Background/Node"]
+[node name="Sprite15" type="Sprite" parent="Node"]
 position = Vector2( 208, 600 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -157,7 +101,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite16" type="Sprite" parent="Background/Node"]
+[node name="Sprite16" type="Sprite" parent="Node"]
 position = Vector2( 336, 872 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -165,7 +109,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite17" type="Sprite" parent="Background/Node"]
+[node name="Sprite17" type="Sprite" parent="Node"]
 position = Vector2( 256, 896 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -173,7 +117,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite18" type="Sprite" parent="Background/Node"]
+[node name="Sprite18" type="Sprite" parent="Node"]
 position = Vector2( 248, 792 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -181,7 +125,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite19" type="Sprite" parent="Background/Node"]
+[node name="Sprite19" type="Sprite" parent="Node"]
 position = Vector2( 248, 728 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -189,7 +133,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite20" type="Sprite" parent="Background/Node"]
+[node name="Sprite20" type="Sprite" parent="Node"]
 position = Vector2( 688, 656 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -197,7 +141,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite21" type="Sprite" parent="Background/Node"]
+[node name="Sprite21" type="Sprite" parent="Node"]
 position = Vector2( 656, 936 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -205,7 +149,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite22" type="Sprite" parent="Background/Node"]
+[node name="Sprite22" type="Sprite" parent="Node"]
 position = Vector2( 104, 824 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -213,7 +157,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite23" type="Sprite" parent="Background/Node"]
+[node name="Sprite23" type="Sprite" parent="Node"]
 position = Vector2( 104, 824 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -221,7 +165,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite24" type="Sprite" parent="Background/Node"]
+[node name="Sprite24" type="Sprite" parent="Node"]
 position = Vector2( 232, 1096 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -229,7 +173,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite25" type="Sprite" parent="Background/Node"]
+[node name="Sprite25" type="Sprite" parent="Node"]
 position = Vector2( 152, 1120 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -237,7 +181,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite26" type="Sprite" parent="Background/Node"]
+[node name="Sprite26" type="Sprite" parent="Node"]
 position = Vector2( 144, 1016 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -245,7 +189,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite27" type="Sprite" parent="Background/Node"]
+[node name="Sprite27" type="Sprite" parent="Node"]
 position = Vector2( 144, 952 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -253,7 +197,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite28" type="Sprite" parent="Background/Node"]
+[node name="Sprite28" type="Sprite" parent="Node"]
 position = Vector2( 584, 880 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -261,7 +205,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite29" type="Sprite" parent="Background/Node"]
+[node name="Sprite29" type="Sprite" parent="Node"]
 position = Vector2( 552, 1160 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -269,7 +213,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite30" type="Sprite" parent="Background/Node"]
+[node name="Sprite30" type="Sprite" parent="Node"]
 position = Vector2( 304, 264 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -277,7 +221,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite31" type="Sprite" parent="Background/Node"]
+[node name="Sprite31" type="Sprite" parent="Node"]
 position = Vector2( 304, 264 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -285,7 +229,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite32" type="Sprite" parent="Background/Node"]
+[node name="Sprite32" type="Sprite" parent="Node"]
 position = Vector2( 432, 536 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -293,7 +237,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite33" type="Sprite" parent="Background/Node"]
+[node name="Sprite33" type="Sprite" parent="Node"]
 position = Vector2( 352, 560 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -301,7 +245,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite34" type="Sprite" parent="Background/Node"]
+[node name="Sprite34" type="Sprite" parent="Node"]
 position = Vector2( 344, 456 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -309,7 +253,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite35" type="Sprite" parent="Background/Node"]
+[node name="Sprite35" type="Sprite" parent="Node"]
 position = Vector2( 344, 392 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -317,7 +261,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite36" type="Sprite" parent="Background/Node"]
+[node name="Sprite36" type="Sprite" parent="Node"]
 position = Vector2( 784, 320 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -325,7 +269,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite37" type="Sprite" parent="Background/Node"]
+[node name="Sprite37" type="Sprite" parent="Node"]
 position = Vector2( 752, 600 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -333,7 +277,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite38" type="Sprite" parent="Background/Node"]
+[node name="Sprite38" type="Sprite" parent="Node"]
 position = Vector2( 136, 136 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -341,7 +285,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite39" type="Sprite" parent="Background/Node"]
+[node name="Sprite39" type="Sprite" parent="Node"]
 position = Vector2( 136, 136 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -349,7 +293,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite40" type="Sprite" parent="Background/Node"]
+[node name="Sprite40" type="Sprite" parent="Node"]
 position = Vector2( 264, 408 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -357,7 +301,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite41" type="Sprite" parent="Background/Node"]
+[node name="Sprite41" type="Sprite" parent="Node"]
 position = Vector2( 184, 432 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -365,7 +309,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite42" type="Sprite" parent="Background/Node"]
+[node name="Sprite42" type="Sprite" parent="Node"]
 position = Vector2( 176, 328 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -373,7 +317,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite43" type="Sprite" parent="Background/Node"]
+[node name="Sprite43" type="Sprite" parent="Node"]
 position = Vector2( 176, 264 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -381,7 +325,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite44" type="Sprite" parent="Background/Node"]
+[node name="Sprite44" type="Sprite" parent="Node"]
 position = Vector2( 616, 192 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -389,7 +333,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite45" type="Sprite" parent="Background/Node"]
+[node name="Sprite45" type="Sprite" parent="Node"]
 position = Vector2( 584, 472 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -397,7 +341,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite46" type="Sprite" parent="Background/Node"]
+[node name="Sprite46" type="Sprite" parent="Node"]
 position = Vector2( 192, -64 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -405,7 +349,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite47" type="Sprite" parent="Background/Node"]
+[node name="Sprite47" type="Sprite" parent="Node"]
 position = Vector2( 192, -64 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -413,7 +357,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite48" type="Sprite" parent="Background/Node"]
+[node name="Sprite48" type="Sprite" parent="Node"]
 position = Vector2( 320, 208 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -421,7 +365,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite49" type="Sprite" parent="Background/Node"]
+[node name="Sprite49" type="Sprite" parent="Node"]
 position = Vector2( 240, 232 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -429,7 +373,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite50" type="Sprite" parent="Background/Node"]
+[node name="Sprite50" type="Sprite" parent="Node"]
 position = Vector2( 232, 128 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -437,7 +381,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite51" type="Sprite" parent="Background/Node"]
+[node name="Sprite51" type="Sprite" parent="Node"]
 position = Vector2( 232, 64 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -445,7 +389,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite52" type="Sprite" parent="Background/Node"]
+[node name="Sprite52" type="Sprite" parent="Node"]
 position = Vector2( 672, -7.99998 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -453,7 +397,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite53" type="Sprite" parent="Background/Node"]
+[node name="Sprite53" type="Sprite" parent="Node"]
 position = Vector2( 640, 272 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -461,7 +405,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite54" type="Sprite" parent="Background/Node"]
+[node name="Sprite54" type="Sprite" parent="Node"]
 position = Vector2( 64, -48 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -469,7 +413,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite55" type="Sprite" parent="Background/Node"]
+[node name="Sprite55" type="Sprite" parent="Node"]
 position = Vector2( 64, -48 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -477,7 +421,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite56" type="Sprite" parent="Background/Node"]
+[node name="Sprite56" type="Sprite" parent="Node"]
 position = Vector2( 192, 224 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -485,7 +429,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite57" type="Sprite" parent="Background/Node"]
+[node name="Sprite57" type="Sprite" parent="Node"]
 position = Vector2( 112, 248 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -493,7 +437,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite58" type="Sprite" parent="Background/Node"]
+[node name="Sprite58" type="Sprite" parent="Node"]
 position = Vector2( 104, 144 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -501,7 +445,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite59" type="Sprite" parent="Background/Node"]
+[node name="Sprite59" type="Sprite" parent="Node"]
 position = Vector2( 104, 80 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -509,7 +453,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite60" type="Sprite" parent="Background/Node"]
+[node name="Sprite60" type="Sprite" parent="Node"]
 position = Vector2( 544, 8 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -517,7 +461,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite61" type="Sprite" parent="Background/Node"]
+[node name="Sprite61" type="Sprite" parent="Node"]
 position = Vector2( 512, 288 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -525,7 +469,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite62" type="Sprite" parent="Background/Node"]
+[node name="Sprite62" type="Sprite" parent="Node"]
 position = Vector2( 64, -48 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -533,7 +477,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite63" type="Sprite" parent="Background/Node"]
+[node name="Sprite63" type="Sprite" parent="Node"]
 position = Vector2( 64, -48 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -541,7 +485,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite64" type="Sprite" parent="Background/Node"]
+[node name="Sprite64" type="Sprite" parent="Node"]
 position = Vector2( 192, 224 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -549,7 +493,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite65" type="Sprite" parent="Background/Node"]
+[node name="Sprite65" type="Sprite" parent="Node"]
 position = Vector2( 112, 248 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -557,7 +501,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite66" type="Sprite" parent="Background/Node"]
+[node name="Sprite66" type="Sprite" parent="Node"]
 position = Vector2( 104, 144 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -565,7 +509,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite67" type="Sprite" parent="Background/Node"]
+[node name="Sprite67" type="Sprite" parent="Node"]
 position = Vector2( 72, 104 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -573,7 +517,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite68" type="Sprite" parent="Background/Node"]
+[node name="Sprite68" type="Sprite" parent="Node"]
 position = Vector2( 544, 8 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -581,7 +525,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite69" type="Sprite" parent="Background/Node"]
+[node name="Sprite69" type="Sprite" parent="Node"]
 position = Vector2( 512, 288 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -589,9 +533,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Node2" type="Node" parent="Background"]
+[node name="Node2" type="Node2D" parent="."]
 
-[node name="Sprite6" type="Sprite" parent="Background/Node2"]
+[node name="Sprite6" type="Sprite" parent="Node2"]
 position = Vector2( 224, 760 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -599,7 +543,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite8" type="Sprite" parent="Background/Node2"]
+[node name="Sprite8" type="Sprite" parent="Node2"]
 position = Vector2( 224, 760 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -607,7 +551,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite7" type="Sprite" parent="Background/Node2"]
+[node name="Sprite7" type="Sprite" parent="Node2"]
 position = Vector2( 352, 1112 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -615,7 +559,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite9" type="Sprite" parent="Background/Node2"]
+[node name="Sprite9" type="Sprite" parent="Node2"]
 position = Vector2( 272, 1056 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -623,7 +567,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite10" type="Sprite" parent="Background/Node2"]
+[node name="Sprite10" type="Sprite" parent="Node2"]
 position = Vector2( 264, 952 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -631,7 +575,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite11" type="Sprite" parent="Background/Node2"]
+[node name="Sprite11" type="Sprite" parent="Node2"]
 position = Vector2( 264, 888 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -639,7 +583,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite12" type="Sprite" parent="Background/Node2"]
+[node name="Sprite12" type="Sprite" parent="Node2"]
 position = Vector2( 704, 816 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -647,7 +591,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite13" type="Sprite" parent="Background/Node2"]
+[node name="Sprite13" type="Sprite" parent="Node2"]
 position = Vector2( 672, 1096 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -655,7 +599,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite14" type="Sprite" parent="Background/Node2"]
+[node name="Sprite14" type="Sprite" parent="Node2"]
 position = Vector2( 424, 1016 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -663,7 +607,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite15" type="Sprite" parent="Background/Node2"]
+[node name="Sprite15" type="Sprite" parent="Node2"]
 position = Vector2( 424, 1016 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -671,7 +615,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite16" type="Sprite" parent="Background/Node2"]
+[node name="Sprite16" type="Sprite" parent="Node2"]
 position = Vector2( 552, 1288 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -679,7 +623,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite17" type="Sprite" parent="Background/Node2"]
+[node name="Sprite17" type="Sprite" parent="Node2"]
 position = Vector2( 472, 1312 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -687,7 +631,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite18" type="Sprite" parent="Background/Node2"]
+[node name="Sprite18" type="Sprite" parent="Node2"]
 position = Vector2( 464, 1208 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -695,7 +639,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite19" type="Sprite" parent="Background/Node2"]
+[node name="Sprite19" type="Sprite" parent="Node2"]
 position = Vector2( 464, 1144 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -703,7 +647,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite20" type="Sprite" parent="Background/Node2"]
+[node name="Sprite20" type="Sprite" parent="Node2"]
 position = Vector2( 904, 1072 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -711,7 +655,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite21" type="Sprite" parent="Background/Node2"]
+[node name="Sprite21" type="Sprite" parent="Node2"]
 position = Vector2( 872, 1352 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -719,7 +663,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite22" type="Sprite" parent="Background/Node2"]
+[node name="Sprite22" type="Sprite" parent="Node2"]
 position = Vector2( 320, 1240 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -727,7 +671,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite23" type="Sprite" parent="Background/Node2"]
+[node name="Sprite23" type="Sprite" parent="Node2"]
 position = Vector2( 320, 1240 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -735,7 +679,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite24" type="Sprite" parent="Background/Node2"]
+[node name="Sprite24" type="Sprite" parent="Node2"]
 position = Vector2( 448, 1512 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -743,7 +687,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite25" type="Sprite" parent="Background/Node2"]
+[node name="Sprite25" type="Sprite" parent="Node2"]
 position = Vector2( 368, 1536 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -751,7 +695,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite26" type="Sprite" parent="Background/Node2"]
+[node name="Sprite26" type="Sprite" parent="Node2"]
 position = Vector2( 360, 1432 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -759,7 +703,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite27" type="Sprite" parent="Background/Node2"]
+[node name="Sprite27" type="Sprite" parent="Node2"]
 position = Vector2( 360, 1368 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -767,7 +711,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite28" type="Sprite" parent="Background/Node2"]
+[node name="Sprite28" type="Sprite" parent="Node2"]
 position = Vector2( 800, 1296 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -775,7 +719,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite29" type="Sprite" parent="Background/Node2"]
+[node name="Sprite29" type="Sprite" parent="Node2"]
 position = Vector2( 768, 1576 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -783,7 +727,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite30" type="Sprite" parent="Background/Node2"]
+[node name="Sprite30" type="Sprite" parent="Node2"]
 position = Vector2( 520, 680 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -791,7 +735,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite31" type="Sprite" parent="Background/Node2"]
+[node name="Sprite31" type="Sprite" parent="Node2"]
 position = Vector2( 520, 680 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -799,7 +743,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite32" type="Sprite" parent="Background/Node2"]
+[node name="Sprite32" type="Sprite" parent="Node2"]
 position = Vector2( 648, 952 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -807,7 +751,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite33" type="Sprite" parent="Background/Node2"]
+[node name="Sprite33" type="Sprite" parent="Node2"]
 position = Vector2( 568, 976 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -815,7 +759,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite34" type="Sprite" parent="Background/Node2"]
+[node name="Sprite34" type="Sprite" parent="Node2"]
 position = Vector2( 560, 872 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -823,7 +767,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite35" type="Sprite" parent="Background/Node2"]
+[node name="Sprite35" type="Sprite" parent="Node2"]
 position = Vector2( 560, 808 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -831,7 +775,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite36" type="Sprite" parent="Background/Node2"]
+[node name="Sprite36" type="Sprite" parent="Node2"]
 position = Vector2( 1000, 736 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -839,7 +783,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite37" type="Sprite" parent="Background/Node2"]
+[node name="Sprite37" type="Sprite" parent="Node2"]
 position = Vector2( 968, 1016 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -847,7 +791,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite38" type="Sprite" parent="Background/Node2"]
+[node name="Sprite38" type="Sprite" parent="Node2"]
 position = Vector2( 352, 552 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -855,7 +799,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite39" type="Sprite" parent="Background/Node2"]
+[node name="Sprite39" type="Sprite" parent="Node2"]
 position = Vector2( 352, 552 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -863,7 +807,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite40" type="Sprite" parent="Background/Node2"]
+[node name="Sprite40" type="Sprite" parent="Node2"]
 position = Vector2( 480, 824 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -871,7 +815,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite41" type="Sprite" parent="Background/Node2"]
+[node name="Sprite41" type="Sprite" parent="Node2"]
 position = Vector2( 400, 848 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -879,7 +823,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite42" type="Sprite" parent="Background/Node2"]
+[node name="Sprite42" type="Sprite" parent="Node2"]
 position = Vector2( 392, 744 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -887,7 +831,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite43" type="Sprite" parent="Background/Node2"]
+[node name="Sprite43" type="Sprite" parent="Node2"]
 position = Vector2( 392, 680 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -895,7 +839,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite44" type="Sprite" parent="Background/Node2"]
+[node name="Sprite44" type="Sprite" parent="Node2"]
 position = Vector2( 832, 608 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -903,7 +847,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite45" type="Sprite" parent="Background/Node2"]
+[node name="Sprite45" type="Sprite" parent="Node2"]
 position = Vector2( 800, 888 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -911,7 +855,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite46" type="Sprite" parent="Background/Node2"]
+[node name="Sprite46" type="Sprite" parent="Node2"]
 position = Vector2( 408, 352 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -919,7 +863,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite47" type="Sprite" parent="Background/Node2"]
+[node name="Sprite47" type="Sprite" parent="Node2"]
 position = Vector2( 408, 352 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -927,7 +871,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite48" type="Sprite" parent="Background/Node2"]
+[node name="Sprite48" type="Sprite" parent="Node2"]
 position = Vector2( 536, 624 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -935,7 +879,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite49" type="Sprite" parent="Background/Node2"]
+[node name="Sprite49" type="Sprite" parent="Node2"]
 position = Vector2( 456, 648 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -943,7 +887,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite50" type="Sprite" parent="Background/Node2"]
+[node name="Sprite50" type="Sprite" parent="Node2"]
 position = Vector2( 448, 544 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -951,7 +895,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite51" type="Sprite" parent="Background/Node2"]
+[node name="Sprite51" type="Sprite" parent="Node2"]
 position = Vector2( 448, 480 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -959,7 +903,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite52" type="Sprite" parent="Background/Node2"]
+[node name="Sprite52" type="Sprite" parent="Node2"]
 position = Vector2( 888, 408 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -967,7 +911,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite53" type="Sprite" parent="Background/Node2"]
+[node name="Sprite53" type="Sprite" parent="Node2"]
 position = Vector2( 856, 688 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -975,7 +919,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite54" type="Sprite" parent="Background/Node2"]
+[node name="Sprite54" type="Sprite" parent="Node2"]
 position = Vector2( 280, 368 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -983,7 +927,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite55" type="Sprite" parent="Background/Node2"]
+[node name="Sprite55" type="Sprite" parent="Node2"]
 position = Vector2( 280, 368 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -991,7 +935,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite56" type="Sprite" parent="Background/Node2"]
+[node name="Sprite56" type="Sprite" parent="Node2"]
 position = Vector2( 408, 640 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -999,7 +943,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite57" type="Sprite" parent="Background/Node2"]
+[node name="Sprite57" type="Sprite" parent="Node2"]
 position = Vector2( 328, 664 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -1007,7 +951,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite58" type="Sprite" parent="Background/Node2"]
+[node name="Sprite58" type="Sprite" parent="Node2"]
 position = Vector2( 320, 560 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -1015,7 +959,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite59" type="Sprite" parent="Background/Node2"]
+[node name="Sprite59" type="Sprite" parent="Node2"]
 position = Vector2( 320, 496 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -1023,7 +967,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite60" type="Sprite" parent="Background/Node2"]
+[node name="Sprite60" type="Sprite" parent="Node2"]
 position = Vector2( 760, 424 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -1031,7 +975,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite61" type="Sprite" parent="Background/Node2"]
+[node name="Sprite61" type="Sprite" parent="Node2"]
 position = Vector2( 728, 704 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -1039,7 +983,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite62" type="Sprite" parent="Background/Node2"]
+[node name="Sprite62" type="Sprite" parent="Node2"]
 position = Vector2( 280, 368 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -1047,7 +991,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite63" type="Sprite" parent="Background/Node2"]
+[node name="Sprite63" type="Sprite" parent="Node2"]
 position = Vector2( 280, 368 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -1055,7 +999,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite64" type="Sprite" parent="Background/Node2"]
+[node name="Sprite64" type="Sprite" parent="Node2"]
 position = Vector2( 408, 640 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -1063,7 +1007,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite65" type="Sprite" parent="Background/Node2"]
+[node name="Sprite65" type="Sprite" parent="Node2"]
 position = Vector2( 328, 664 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -1071,7 +1015,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite66" type="Sprite" parent="Background/Node2"]
+[node name="Sprite66" type="Sprite" parent="Node2"]
 position = Vector2( 320, 560 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -1079,7 +1023,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite67" type="Sprite" parent="Background/Node2"]
+[node name="Sprite67" type="Sprite" parent="Node2"]
 position = Vector2( 320, 496 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -1087,7 +1031,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite68" type="Sprite" parent="Background/Node2"]
+[node name="Sprite68" type="Sprite" parent="Node2"]
 position = Vector2( 760, 424 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -1095,7 +1039,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite69" type="Sprite" parent="Background/Node2"]
+[node name="Sprite69" type="Sprite" parent="Node2"]
 position = Vector2( 728, 704 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
@@ -1103,7 +1047,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite10" type="Sprite" parent="Background"]
+[node name="Sprite10" type="Sprite" parent="."]
 modulate = Color( 0.964706, 0.764706, 0.384314, 1 )
 position = Vector2( 168, 1080 )
 scale = Vector2( 15, 15 )
@@ -1112,7 +1056,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite2" type="Sprite" parent="Background"]
+[node name="Sprite2" type="Sprite" parent="."]
 modulate = Color( 0.870588, 0.368627, 0.34902, 1 )
 position = Vector2( 176, 296 )
 scale = Vector2( 15, 15 )
@@ -1121,7 +1065,54 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite6" type="Sprite" parent="Background"]
+[node name="Node3" type="Node2D" parent="."]
+
+[node name="CPUParticles2D9" type="CPUParticles2D" parent="Node3"]
+position = Vector2( 64, -24 )
+amount = 128
+lifetime = 8.0
+preprocess = 8.0
+texture = ExtResource( 2 )
+direction = Vector2( 0, -1 )
+initial_velocity = 98.0
+
+[node name="CPUParticles2D10" type="CPUParticles2D" parent="Node3"]
+position = Vector2( 200, -40 )
+amount = 128
+lifetime = 8.0
+preprocess = 8.0
+texture = ExtResource( 2 )
+direction = Vector2( 0, -1 )
+initial_velocity = 98.0
+
+[node name="CPUParticles2D11" type="CPUParticles2D" parent="Node3"]
+position = Vector2( 200, -40 )
+amount = 128
+lifetime = 8.0
+preprocess = 8.0
+texture = ExtResource( 2 )
+direction = Vector2( 0, -1 )
+initial_velocity = 98.0
+
+[node name="CPUParticles2D12" type="CPUParticles2D" parent="Node3"]
+position = Vector2( 400, -40 )
+amount = 128
+lifetime = 8.0
+preprocess = 8.0
+texture = ExtResource( 2 )
+direction = Vector2( 0, -1 )
+initial_velocity = 98.0
+
+[node name="CPUParticles2D13" type="CPUParticles2D" parent="Node3"]
+position = Vector2( 568, -48 )
+amount = 128
+lifetime = 8.0
+preprocess = 8.0
+texture = ExtResource( 2 )
+direction = Vector2( 0, -1 )
+initial_velocity = 98.0
+
+[node name="Sprite6" type="Sprite" parent="."]
 modulate = Color( 0.870588, 0.368627, 0.34902, 1 )
 position = Vector2( 232, 472 )
 scale = Vector2( 15, 15 )
@@ -1130,7 +1121,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite3" type="Sprite" parent="Background"]
+[node name="Sprite3" type="Sprite" parent="."]
 modulate = Color( 0.34902, 0.760784, 0.870588, 1 )
 position = Vector2( 696, 968 )
 scale = Vector2( 15, 15 )
@@ -1139,7 +1130,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite9" type="Sprite" parent="Background"]
+[node name="Sprite9" type="Sprite" parent="."]
 modulate = Color( 0.34902, 0.760784, 0.870588, 1 )
 position = Vector2( 576, 1104 )
 scale = Vector2( 15, 15 )
@@ -1148,7 +1139,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite4" type="Sprite" parent="Background"]
+[node name="Sprite4" type="Sprite" parent="."]
 modulate = Color( 0.415686, 1, 0.388235, 1 )
 position = Vector2( 288, 736 )
 scale = Vector2( 15, 15 )
@@ -1157,7 +1148,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite7" type="Sprite" parent="Background"]
+[node name="Sprite7" type="Sprite" parent="."]
 modulate = Color( 0.415686, 1, 0.388235, 1 )
 position = Vector2( 352, 560 )
 scale = Vector2( 15, 15 )
@@ -1166,7 +1157,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite5" type="Sprite" parent="Background"]
+[node name="Sprite5" type="Sprite" parent="."]
 modulate = Color( 0.639216, 0.427451, 0.956863, 1 )
 position = Vector2( 616, 192 )
 scale = Vector2( 15, 15 )
@@ -1175,7 +1166,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite8" type="Sprite" parent="Background"]
+[node name="Sprite8" type="Sprite" parent="."]
 modulate = Color( 0.639216, 0.427451, 0.956863, 1 )
 position = Vector2( 440, 280 )
 scale = Vector2( 15, 15 )
@@ -1184,25 +1175,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Background2" type="Sprite" parent="Background"]
+[node name="Background2" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.196078 )
 position = Vector2( 360, 640 )
 scale = Vector2( 40, 40 )
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
-}
-
-[node name="Title" type="Label" parent="."]
-margin_left = -88.0
-margin_top = 16.0
-margin_right = 932.0
-margin_bottom = 533.0
-custom_fonts/font = SubResource( 1 )
-text = "Mit It 
-Up!"
-align = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
 }

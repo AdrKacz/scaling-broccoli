@@ -1,51 +1,62 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://UI/Leaderboard/Leaderboard.gd" type="Script" id=1]
 [ext_resource path="res://UI/Leaderboard/ScoreEntry.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/buttons/New Piskel.png" type="Texture" id=3]
-[ext_resource path="res://assets/buttons/New Piskel-20.png.png" type="Texture" id=4]
-[ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/ButtonsV3/SmallButtonDown.png" type="Texture" id=3]
+[ext_resource path="res://assets/VT323/VT323-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://ExternalVisuals/BackgroundMain.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/ButtonsV3/SmallButtonUp.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
-size = 50
-font_data = ExtResource( 5 )
+size = 128
+outline_size = 8
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 3 )
-region_rect = Rect2( 660, 180, 660, 180 )
+[sub_resource type="StyleBoxEmpty" id=7]
 
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 3 )
-region_rect = Rect2( 660, 360, 660, 180 )
+[sub_resource type="StyleBoxEmpty" id=8]
 
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 360, 660, 180 )
-margin_left = 60.0
+[sub_resource type="StyleBoxEmpty" id=9]
 
-[sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 4 )
-region_rect = Rect2( 60, 100, 240, 90 )
+[sub_resource type="StyleBoxEmpty" id=10]
 
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 3 )
-region_rect = Rect2( 780, 1620, 480, 180 )
+[sub_resource type="StyleBoxEmpty" id=11]
 
-[sub_resource type="StyleBoxTexture" id=7]
-texture = ExtResource( 3 )
-region_rect = Rect2( 120, 1620, 480, 180 )
+[sub_resource type="Theme" id=12]
+resource_local_to_scene = true
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = SubResource( 7 )
+VScrollBar/styles/grabber_highlight = SubResource( 8 )
+VScrollBar/styles/grabber_pressed = SubResource( 9 )
+VScrollBar/styles/scroll = SubResource( 10 )
+VScrollBar/styles/scroll_focus = SubResource( 11 )
 
-[sub_resource type="DynamicFont" id=8]
-size = 30
-font_data = ExtResource( 5 )
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0, 0, 0, 0.705882 )
 
-[sub_resource type="DynamicFont" id=9]
-size = 30
-font_data = ExtResource( 5 )
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=10]
-size = 30
-font_data = ExtResource( 5 )
+[sub_resource type="DynamicFont" id=3]
+size = 64
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 64
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 64
+font_data = ExtResource( 4 )
 
 [node name="Leaderboard" type="Control"]
 pause_mode = 2
@@ -57,111 +68,184 @@ __meta__ = {
 }
 ScoreEntry = ExtResource( 2 )
 
-[node name="Margin" type="MarginContainer" parent="."]
-margin_left = 50.0
-margin_top = 50.0
-margin_right = 670.0
-margin_bottom = 1230.0
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="Background" parent="." instance=ExtResource( 5 )]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 704.0
+margin_bottom = 1264.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBox" type="VBoxContainer" parent="Margin"]
-margin_right = 620.0
-margin_bottom = 1180.0
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 688.0
+margin_bottom = 129.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 50
-
-[node name="Label" type="Label" parent="Margin/VBox"]
-margin_left = 156.0
-margin_right = 464.0
-margin_bottom = 51.0
-size_flags_horizontal = 4
+size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
-text = "LEADERBOARD"
+text = "Leaderboard"
+align = 1
 
-[node name="Replay" type="Button" parent="Margin/VBox"]
-margin_left = 145.0
-margin_top = 101.0
-margin_right = 475.0
-margin_bottom = 191.0
-rect_min_size = Vector2( 330, 90 )
-size_flags_horizontal = 4
-size_flags_vertical = 0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 133.0
+margin_right = 688.0
+margin_bottom = 988.0
+size_flags_vertical = 3
+theme = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
 
-[node name="MainMenu" type="Button" parent="Margin/VBox"]
-margin_left = 185.0
-margin_top = 241.0
-margin_right = 435.0
-margin_bottom = 331.0
-rect_min_size = Vector2( 250, 90 )
-size_flags_horizontal = 4
-size_flags_vertical = 0
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+margin_right = 688.0
+margin_bottom = 855.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="HTTPRequest" type="HTTPRequest" parent="Margin/VBox"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBox"]
+margin_right = 688.0
+margin_bottom = 65.0
+custom_constants/margin_right = 16
+custom_constants/margin_left = 16
 
-[node name="Scroll" type="ScrollContainer" parent="Margin/VBox"]
-margin_top = 381.0
-margin_right = 620.0
-margin_bottom = 1180.0
+[node name="Titles" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBox/MarginContainer"]
+margin_left = 16.0
+margin_right = 672.0
+margin_bottom = 65.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBox" type="VBoxContainer" parent="Margin/VBox/Scroll"]
-margin_right = 620.0
-margin_bottom = 799.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Titles" type="HBoxContainer" parent="Margin/VBox/Scroll/VBox"]
-margin_right = 620.0
-margin_bottom = 31.0
-
-[node name="Rank" type="Label" parent="Margin/VBox/Scroll/VBox/Titles"]
-margin_right = 204.0
-margin_bottom = 31.0
+[node name="Rank" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBox/MarginContainer/Titles"]
+margin_right = 216.0
+margin_bottom = 65.0
 rect_pivot_offset = Vector2( -1282.07, -193.801 )
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 2 )
 text = "Rank"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player" type="Label" parent="Margin/VBox/Scroll/VBox/Titles"]
-margin_left = 208.0
-margin_right = 412.0
-margin_bottom = 31.0
+[node name="Player" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBox/MarginContainer/Titles"]
+margin_left = 220.0
+margin_right = 436.0
+margin_bottom = 65.0
 rect_pivot_offset = Vector2( -1282.07, -193.801 )
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 3 )
 text = "Player"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="Margin/VBox/Scroll/VBox/Titles"]
-margin_left = 416.0
-margin_right = 620.0
-margin_bottom = 31.0
+[node name="Score" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBox/MarginContainer/Titles"]
+margin_left = 440.0
+margin_right = 656.0
+margin_bottom = 65.0
 rect_pivot_offset = Vector2( -1282.07, -193.801 )
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 4 )
 text = "Score"
 align = 2
 
-[connection signal="pressed" from="Margin/VBox/Replay" to="." method="_on_Replay_pressed"]
-[connection signal="pressed" from="Margin/VBox/MainMenu" to="." method="_on_MainMenu_pressed"]
-[connection signal="request_completed" from="Margin/VBox/HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 992.0
+margin_right = 688.0
+margin_bottom = 1248.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
+margin_left = 80.0
+margin_right = 608.0
+margin_bottom = 256.0
+custom_constants/separation = 16
+
+[node name="Replay" type="TextureButton" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 256.0
+margin_bottom = 256.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/Replay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/Replay/CenterContainer"]
+margin_left = 37.0
+margin_top = 95.0
+margin_right = 219.0
+margin_bottom = 160.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="TextureButton" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_left = 272.0
+margin_right = 528.0
+margin_bottom = 256.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/MainMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/MainMenu/CenterContainer"]
+margin_left = 76.0
+margin_top = 95.0
+margin_right = 180.0
+margin_bottom = 160.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/Replay" to="." method="_on_Replay_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]

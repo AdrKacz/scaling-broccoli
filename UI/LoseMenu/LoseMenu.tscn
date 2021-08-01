@@ -1,162 +1,216 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://UI/LoseMenu/LoseMenu.gd" type="Script" id=1]
-[ext_resource path="res://assets/buttons/New Piskel.png" type="Texture" id=2]
-[ext_resource path="res://assets/buttons/New Piskel-20.png.png" type="Texture" id=3]
+[ext_resource path="res://assets/ButtonsV3/Input.png" type="Texture" id=2]
+[ext_resource path="res://assets/ButtonsV3/ButtonUp.png" type="Texture" id=3]
 [ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/VT323/VT323-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/ButtonsV3/ButtonDown.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
-size = 50
+size = 64
 font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 30
-font_data = ExtResource( 4 )
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 2 )
-region_rect = Rect2( 80, 900, 580, 180 )
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 2 )
-region_rect = Rect2( 740, 900, 580, 180 )
+region_rect = Rect2( 0, 0, 512, 128 )
+modulate_color = Color( 0.862745, 0.862745, 0.862745, 1 )
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 2 )
-region_rect = Rect2( 740, 720, 580, 180 )
+region_rect = Rect2( 0, 0, 512, 128 )
 
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 3 )
-region_rect = Rect2( 60, 100, 240, 90 )
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxTexture" id=7]
-texture = ExtResource( 2 )
-region_rect = Rect2( 780, 1620, 480, 180 )
+[sub_resource type="DynamicFont" id=5]
+size = 64
+font_data = ExtResource( 5 )
 
-[sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 2 )
-region_rect = Rect2( 120, 1620, 480, 180 )
+[sub_resource type="DynamicFont" id=6]
+size = 128
+font_data = ExtResource( 5 )
 
-[sub_resource type="StyleBoxTexture" id=9]
-texture = ExtResource( 2 )
-region_rect = Rect2( 660, 180, 660, 180 )
-
-[sub_resource type="StyleBoxTexture" id=10]
-texture = ExtResource( 2 )
-region_rect = Rect2( 660, 360, 660, 180 )
-
-[sub_resource type="StyleBoxTexture" id=11]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 360, 660, 180 )
-
-[node name="LoseMenu" type="Control"]
+[node name="LoseMenu" type="CanvasLayer"]
 pause_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 6.7373
-margin_top = -1.49718
-margin_right = 6.7373
-margin_bottom = -1.49719
-size_flags_horizontal = 3
-size_flags_vertical = 3
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color( 0.215686, 0.215686, 0.215686, 0.556863 )
-margin_left = -10.0
-margin_top = -10.0
-margin_right = 790.0
-margin_bottom = 1290.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Margin" type="MarginContainer" parent="."]
+[node name="Control" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 50.0
-margin_top = 50.0
-margin_right = 670.0
-margin_bottom = 1230.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+modulate = Color( 0.215686, 0.215686, 0.215686, 0.556863 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 1, 1, 0.490196 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBox" type="VBoxContainer" parent="Margin"]
-margin_right = 1340.0
-margin_bottom = 2460.0
+[node name="VBox" type="VBoxContainer" parent="Control/CenterContainer"]
+margin_left = 104.0
+margin_top = 54.0
+margin_right = 616.0
+margin_bottom = 1225.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 150
+custom_constants/separation = 128
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBox" type="VBoxContainer" parent="Margin/VBox"]
-margin_right = 1340.0
-margin_bottom = 285.0
-size_flags_horizontal = 7
-custom_constants/separation = 20
-alignment = 1
-
-[node name="Score" type="Label" parent="Margin/VBox/VBox"]
-margin_right = 1340.0
-margin_bottom = 105.0
+[node name="Score" type="Label" parent="Control/CenterContainer/VBox"]
+margin_right = 512.0
+margin_bottom = 65.0
 grow_horizontal = 2
 size_flags_horizontal = 7
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
-text = "Congrats! You scored a total of points! Fill in your name and submit your score!"
+text = "389 seconds"
+align = 1
 autowrap = true
 
-[node name="Name" type="TextEdit" parent="Margin/VBox/VBox"]
-margin_top = 125.0
-margin_right = 1340.0
-margin_bottom = 175.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/VBox"]
+margin_top = 193.0
+margin_right = 512.0
+margin_bottom = 515.0
+size_flags_horizontal = 7
+custom_constants/separation = 16
+alignment = 1
+
+[node name="Name" type="LineEdit" parent="Control/CenterContainer/VBox/VBoxContainer"]
+margin_right = 512.0
+margin_bottom = 50.0
 rect_min_size = Vector2( 200, 50 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 3 )
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+max_length = 16
+caret_blink = true
+caret_blink_speed = 0.5
 
-[node name="SubmitScore" type="Button" parent="Margin/VBox/VBox"]
-margin_left = 525.0
-margin_top = 195.0
-margin_right = 815.0
-margin_bottom = 285.0
-rect_min_size = Vector2( 290, 90 )
-size_flags_horizontal = 4
-size_flags_vertical = 0
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
+[node name="SubmitScore" type="TextureButton" parent="Control/CenterContainer/VBox/VBoxContainer"]
+margin_top = 66.0
+margin_right = 512.0
+margin_bottom = 322.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="MainMenu" type="Button" parent="Margin/VBox"]
-margin_left = 545.0
-margin_top = 435.0
-margin_right = 795.0
-margin_bottom = 525.0
-rect_min_size = Vector2( 250, 90 )
-size_flags_horizontal = 4
-size_flags_vertical = 0
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/normal = SubResource( 8 )
+[node name="CenterContainer" type="CenterContainer" parent="Control/CenterContainer/VBox/VBoxContainer/SubmitScore"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Restart" type="Button" parent="Margin/VBox"]
-margin_left = 505.0
-margin_top = 675.0
-margin_right = 835.0
-margin_bottom = 765.0
-rect_min_size = Vector2( 330, 90 )
-size_flags_horizontal = 4
-size_flags_vertical = 0
-custom_styles/hover = SubResource( 9 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
+[node name="Label" type="Label" parent="Control/CenterContainer/VBox/VBoxContainer/SubmitScore/CenterContainer"]
+margin_left = 35.0
+margin_top = 95.0
+margin_right = 477.0
+margin_bottom = 160.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Submit your score"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[connection signal="pressed" from="Margin/VBox/VBox/SubmitScore" to="." method="_on_SubmitScore_pressed"]
-[connection signal="pressed" from="Margin/VBox/MainMenu" to="." method="_on_MainMenu_pressed"]
-[connection signal="pressed" from="Margin/VBox/Restart" to="." method="_on_Restart_pressed"]
+[node name="CenterContainer" type="CenterContainer" parent="Control/CenterContainer/VBox"]
+margin_top = 643.0
+margin_right = 512.0
+margin_bottom = 1171.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/VBox/CenterContainer"]
+margin_right = 512.0
+margin_bottom = 528.0
+custom_constants/separation = 16
+
+[node name="Restart" type="TextureButton" parent="Control/CenterContainer/VBox/CenterContainer/VBoxContainer"]
+margin_right = 512.0
+margin_bottom = 256.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/CenterContainer/VBox/CenterContainer/VBoxContainer/Restart"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/CenterContainer/VBox/CenterContainer/VBoxContainer/Restart/CenterContainer"]
+margin_left = 77.0
+margin_top = 63.0
+margin_right = 434.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="TextureButton" parent="Control/CenterContainer/VBox/CenterContainer/VBoxContainer"]
+margin_top = 272.0
+margin_right = 512.0
+margin_bottom = 528.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/CenterContainer/VBox/CenterContainer/VBoxContainer/MainMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/CenterContainer/VBox/CenterContainer/VBoxContainer/MainMenu/CenterContainer"]
+margin_left = 154.0
+margin_top = 63.0
+margin_right = 358.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Control/CenterContainer/VBox/VBoxContainer/SubmitScore" to="." method="_on_SubmitScore_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/VBox/CenterContainer/VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/VBox/CenterContainer/VBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]

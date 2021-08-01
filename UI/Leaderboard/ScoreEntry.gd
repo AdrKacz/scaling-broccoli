@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends MarginContainer
 
 
 var rank = ""
@@ -6,6 +6,6 @@ var player = ""
 var score = ""
 
 func _ready():
-	$Rank.text = rank
-	$Player.text = player
-	$Score.text = score
+	$HBoxContainer/Rank.text = rank
+	$HBoxContainer/Player.text = player
+	$HBoxContainer/Score.text = score
