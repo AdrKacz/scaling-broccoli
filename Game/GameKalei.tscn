@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Game/Game.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Game/GameKalei.gd" type="Script" id=2]
+
+[node name="GameKalei" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Games" type="Node2D" parent="."]
+
+[node name="Game" parent="Games" instance=ExtResource( 1 )]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Game2" parent="Games" instance=ExtResource( 1 )]
+position = Vector2( 360, 0 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Game3" parent="Games" instance=ExtResource( 1 )]
+position = Vector2( 0, 640 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Game4" parent="Games" instance=ExtResource( 1 )]
+position = Vector2( 360, 640 )
+scale = Vector2( 0.5, 0.5 )
+
+[connection signal="miss" from="Games/Game" to="." method="_on_Game_miss"]
+[connection signal="score" from="Games/Game" to="." method="_on_Game_score"]
+[connection signal="wrong" from="Games/Game" to="." method="_on_Game_wrong"]
+[connection signal="miss" from="Games/Game2" to="." method="_on_Game_miss"]
+[connection signal="score" from="Games/Game2" to="." method="_on_Game_score"]
+[connection signal="wrong" from="Games/Game2" to="." method="_on_Game_wrong"]
+[connection signal="miss" from="Games/Game3" to="." method="_on_Game_miss"]
+[connection signal="score" from="Games/Game3" to="." method="_on_Game_score"]
+[connection signal="wrong" from="Games/Game3" to="." method="_on_Game_wrong"]
+[connection signal="miss" from="Games/Game4" to="." method="_on_Game_miss"]
+[connection signal="score" from="Games/Game4" to="." method="_on_Game_score"]
+[connection signal="wrong" from="Games/Game4" to="." method="_on_Game_wrong"]

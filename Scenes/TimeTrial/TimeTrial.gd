@@ -31,7 +31,7 @@ func _process(delta):
 #	TODO
 	if animated_time <= 0:
 		print("... No time left")
-		Session.lose()
+		emit_signal("lost")
 	
 func update_time(new_static_time):
 #	Tween for interpolation

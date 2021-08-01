@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/Combo/Combo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game/Game.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/TimeTrial/TimeTrial.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Game/Game4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Game/GameKalei.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/PostEffect/PostEffect.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
@@ -14,9 +14,10 @@ ComboScene = ExtResource( 2 )
 
 [node name="Games" type="Node2D" parent="."]
 
-[node name="Game" parent="Games" instance=ExtResource( 3 )]
+[node name="GameSolo" parent="Games" instance=ExtResource( 3 )]
+visible = false
 
-[node name="Game2" parent="Games" instance=ExtResource( 5 )]
+[node name="GameKalei" parent="Games" instance=ExtResource( 5 )]
 visible = false
 
 [node name="TimeTrial" parent="." instance=ExtResource( 4 )]
@@ -35,6 +36,10 @@ position = Vector2( 464, 1024 )
 [node name="ComboTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="miss" from="Games/Game" to="." method="miss"]
-[connection signal="score" from="Games/Game" to="." method="score"]
-[connection signal="wrong" from="Games/Game" to="." method="wrong"]
+[connection signal="miss" from="Games/GameSolo" to="." method="miss"]
+[connection signal="score" from="Games/GameSolo" to="." method="score"]
+[connection signal="wrong" from="Games/GameSolo" to="." method="wrong"]
+[connection signal="miss" from="Games/GameKalei" to="." method="miss"]
+[connection signal="score" from="Games/GameKalei" to="." method="score"]
+[connection signal="wrong" from="Games/GameKalei" to="." method="wrong"]
+[connection signal="lost" from="TimeTrial" to="." method="_on_TimeTrial_lost"]

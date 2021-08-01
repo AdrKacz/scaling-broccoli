@@ -11,7 +11,7 @@ var modes = [1, 2, 4]
 
 func _ready():
 	$ComboTimer.wait_time = Constants.max_combo_time # NOTE Can be infinite
-#	setup_games()
+	setup_game()
 
 func score():
 	score += Constants.ModeScore[mode] * max(1, combo)
@@ -45,36 +45,23 @@ func add_combo():
 		$ComboTimer.start()
 	# Change mode
 	if combo >= 3:
-		combo = 0
+#		combo = 0
 		change_mode()
 
 func change_mode():
 	pass
-#	var new_mode = modes[randi() % modes.size()]
-#	while mode == new_mode:
-#		new_mode = modes[randi() % modes.size()]
-#	mode = new_mode
-#	get_tree().call_group("game", "queue_free")
-#	setup_games()
 	
 
 func _on_ComboTimer_timeout():
 	miss()
+	
+func setup_game():
+	var index_game = randi() % $Games.get_child_count()
+	var game_child = $Games.get_child(index_game)
+	print(game_child.name)
+	print(Constants.GameTime.get(game_child.name, Constants.default_wait_time))
+	game_child.visible = true
+	game_child.start_game(Constants.GameTime.get(game_child.name, Constants.default_wait_time))
 
-#func setup_games():
-#	var game = null
-#	for i in mode:
-#		game = Game.instance()
-#		add_child(game)
-#		game.wait_time = Constants.ModeWaitTime[mode]
-#		game.scale = Vector2(Constants.ModeScale[mode]["x"], Constants.ModeScale[mode]["y"])
-#		game.position = Vector2(Constants.ModePosition[mode][i]["x"], Constants.ModePosition[mode][i]["y"])
-#		game.connect("score", self, "score")
-#		game.connect("miss", self, "miss")
-#		game.connect("wrong", self, "wrong")
-
-
-
-
-
-
+func _on_TimeTrial_lost():
+	Session.lose()

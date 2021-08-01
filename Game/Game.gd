@@ -1,15 +1,21 @@
 extends Node2D
 
 export (PackedScene) var ComboScene
-export var wait_time = Constants.background_wait_time
 
 signal score
 signal miss
 signal wrong
 
-func _ready():
-	# Starts randomly not to be at the same time than other games
-	yield(get_tree().create_timer((randi() % int(100 * wait_time) / 100)), "timeout")
+#func _ready():
+#	# Starts randomly not to be at the same time than other games
+#	yield(get_tree().create_timer((randi() % int(100 * wait_time) / 100)), "timeout")
+#	$ChangeState.wait_time = wait_time
+#
+#	$ChangeState.start()
+#	$Background.change_state(0)
+#	$Character.set_state(1)
+	
+func start_game(wait_time):
 	$ChangeState.wait_time = wait_time
 
 	$ChangeState.start()

@@ -13,7 +13,7 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 		emit_signal("click", state)
 		
 func _input(event):
-	if event is InputEventKey and event.scancode == KEY_SPACE and event.is_pressed() and not event.is_echo():
+	if is_visible_in_tree() and event is InputEventKey and event.scancode == KEY_SPACE and event.is_pressed() and not event.is_echo():
 		emit_signal("click", state)
 
 		
