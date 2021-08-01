@@ -29,7 +29,7 @@ func miss():
 
 func wrong():
 	$TimeTrial.remove_time(Constants.get_malus_time())
-#	reset_combo()
+	reset_combo()
 	
 func reset_combo():
 	combo = 0
@@ -99,7 +99,7 @@ func _on_Pause_pressed():
 
 func _on_ChangeState_timeout():
 	# Tell games to update
-	$Games.get_child(current_index_game).change_state(swap)
+	$Games.get_child(current_index_game).change_state(Constants.max_combo_swaps - swap)
 	# Update combo swaps
 	if count_combo:
 		swap += 1

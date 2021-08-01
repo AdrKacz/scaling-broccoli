@@ -40,7 +40,7 @@ func get_refresh_time(game_name):
 		return 0.6 + 0.7/(hardness*hardness*hardness) + 0.2/(hardness*hardness) + 0.1/hardness
 
 func get_max_combo_time():
-	return 2 + 2.7/(hardness*hardness*hardness) + 0.6/(hardness*hardness) + 0.5/hardness
+	return 1.3 + 2.7/(hardness*hardness*hardness) + 0.6/(hardness*hardness) + 0.5/hardness
 
 func get_bonus_time():
 	return 0.3 + 2/(hardness*hardness*hardness) + 1/(hardness*hardness) + 0.1/hardness
@@ -70,5 +70,5 @@ func new_state(red_list=[], swap=0, target=0):
 		possible_targets.push_front(target)
 		# Shuffle again
 		possible_targets.shuffle()
-		# give the next state already calculated
+	# give the next state already calculated
 	return possible_targets.pop_front()
