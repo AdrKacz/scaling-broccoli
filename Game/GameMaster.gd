@@ -93,6 +93,9 @@ func stop_game():
 	$ChangeState.stop()
 	
 func _on_TimeTrial_lost():
+#	Stop Timer
+	$ChangeState.stop()
+#	Display End screen
 	Session.lose($Menus, score)
 
 func _on_ComboTimerUI_timeout():
