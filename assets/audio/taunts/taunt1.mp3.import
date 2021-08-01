@@ -11,5 +11,5 @@ dest_files=[ "res://.import/taunt1.mp3-a8a7524cd7f17f2ea4238284a5940bf9.mp3str" 
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
