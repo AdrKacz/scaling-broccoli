@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/TimeTrial/TimeTrial.gd" type="Script" id=1]
 [ext_resource path="res://assets/HorizontalBar.png" type="Texture" id=2]
 [ext_resource path="res://assets/VerticalBar.png" type="Texture" id=3]
+[ext_resource path="res://assets/audio/heartbeat_time_running_out.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/clock_time_running_out.wav" type="AudioStream" id=5]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -119,5 +121,11 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 20.0
 scale_amount = 10.0
 scale_amount_curve = SubResource( 3 )
+
+[node name="ClockSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="HeartbeatSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="timeout" from="UpdateUI" to="." method="_on_UpdateUI_timeout"]

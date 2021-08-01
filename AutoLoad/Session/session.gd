@@ -7,11 +7,17 @@ export (String, FILE, "*.tscn") var leaderboard_path = "res://UI/Leaderboard/Lea
 
 onready var root = get_tree().get_root()
 var pause_menu = null
-
-
+var sounds = []
 
 func _ready():
+	sounds.append(preload("res://assets/audio/taunts/taunt1.mp3"))
+	sounds.append(preload("res://assets/audio/taunts/taunt2.mp3"))
+	sounds.append(preload("res://assets/audio/taunts/taunt3.mp3"))
+	sounds.append(preload("res://assets/audio/taunts/taunt4.mp3"))
+	sounds.append(preload("res://assets/audio/taunts/taunt5.mp3"))
+	sounds.append(preload("res://assets/audio/taunts/taunt6.mp3"))
 	randomize()
+	$BackgroundMusic.play()
 
 	
 func pause_with_opacity():
@@ -39,6 +45,9 @@ func main_menu():
 	get_tree().change_scene(main_menu_path)
 	
 func lose(to, score):
+	sounds.shuffle()
+	$LostSound.stream=sounds.front()
+	$LostSound.play()
 	$LoseMenu.score = score
 	
 	get_tree().paused = true
@@ -54,3 +63,4 @@ func submit_score(score, name):
 func _on_HTTPSession_request_completed(result, response_code, headers, body):
 	unpause()
 	get_tree().change_scene(leaderboard_path)
+

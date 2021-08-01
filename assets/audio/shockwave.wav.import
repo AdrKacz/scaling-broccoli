@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/HeartBeatFast2.wav-08b20a59e7c080c35974785271a560eb.sample"
+path="res://.import/shockwave.wav-ec03d30ba28ab664d4ede0a0c84ec8a6.sample"
 
 [deps]
 
-source_file="res://assets/HeartBeatFast2.wav"
-dest_files=[ "res://.import/HeartBeatFast2.wav-08b20a59e7c080c35974785271a560eb.sample" ]
+source_file="res://assets/audio/shockwave.wav"
+dest_files=[ "res://.import/shockwave.wav-ec03d30ba28ab664d4ede0a0c84ec8a6.sample" ]
 
 [params]
 

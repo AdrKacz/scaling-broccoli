@@ -11,6 +11,7 @@ var combo_time_left = 0
 
 var last_change_mode_combo_level = 0
 
+
 func _ready():
 	Constants.game_mode = randi() % 2 # NOTE Not fixed
 	setup_game()
@@ -32,6 +33,8 @@ func wrong():
 	$Games.get_child(Constants.game_mode).update_combo_time(0, $ComboTimerUI.wait_time)
 	
 func reset_combo_level():
+	if Constants.combo_level >= 2:
+		$NoComboSound.play()
 	Constants.combo_level = 0
 	last_change_mode_combo_level = 0
 #	swap = 0
@@ -110,6 +113,7 @@ func _on_Pause_pressed():
 	Session.pause_with_opacity()
 
 func _on_ChangeState_timeout():
+	$ChangeStateSound.play()
 	Constants.swap_left_before_combo_ends -= 1
 	$Games.get_child(Constants.game_mode).update_background_state()
 	update_swap_time()

@@ -10,8 +10,6 @@ export var multiplier = 0
 func _ready():
 	$ComboText.text = "X " + str(multiplier)
 	$AnimationPlayer.play("Popup")
+	$ComboSound.play()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+		

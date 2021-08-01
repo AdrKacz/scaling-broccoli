@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/clock_time_running_out.wav-3b8825f9d6c73c9aa5f66bb100b4c33c.sample"
+
+[deps]
+
+source_file="res://assets/audio/clock_time_running_out.wav"
+dest_files=[ "res://.import/clock_time_running_out.wav-3b8825f9d6c73c9aa5f66bb100b4c33c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

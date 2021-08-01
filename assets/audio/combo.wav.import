@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/shockwave.wav-e0e703ef7c62818921ddebd0882cc3a9.sample"
+path="res://.import/combo.wav-9f6768319d8b29b0cbb9fb2c180ec9aa.sample"
 
 [deps]
 
-source_file="res://assets/shockwave.wav"
-dest_files=[ "res://.import/shockwave.wav-e0e703ef7c62818921ddebd0882cc3a9.sample" ]
+source_file="res://assets/audio/combo.wav"
+dest_files=[ "res://.import/combo.wav-9f6768319d8b29b0cbb9fb2c180ec9aa.sample" ]
 
 [params]
 

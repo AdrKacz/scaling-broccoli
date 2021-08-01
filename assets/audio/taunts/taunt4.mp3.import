@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/taunt4.mp3-705357ad373c3b80730db41b775ac10e.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/taunts/taunt4.mp3"
+dest_files=[ "res://.import/taunt4.mp3-705357ad373c3b80730db41b775ac10e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

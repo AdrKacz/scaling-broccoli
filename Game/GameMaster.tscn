@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Game/GameMaster.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Combo/Combo.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Game/GameKalei.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/PauseInterface/PauseInterface.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/PostEffect/PostEffect.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/pfiou.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/change_state_click.wav" type="AudioStream" id=9]
 
 [node name="GameMaster" type="Node2D"]
 pause_mode = 2
@@ -27,7 +29,7 @@ visible = false
 pause_mode = 1
 
 [node name="PostEffect" parent="." instance=ExtResource( 7 )]
-position = Vector2( -1.01965, 0 )
+position = Vector2( -1.01965, -1.33698 )
 z_index = 1
 
 [node name="CornersCombo" type="Node" parent="."]
@@ -53,6 +55,14 @@ margin_left = 712.0
 margin_top = 8.0
 margin_right = 712.0
 margin_bottom = 8.0
+
+[node name="NoComboSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+pitch_scale = 0.42
+
+[node name="ChangeStateSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+volume_db = -9.014
 
 [connection signal="miss" from="Games/GameSolo" to="." method="miss"]
 [connection signal="no_combo_time_left" from="Games/GameSolo" to="." method="_on_Game_no_combo_time_left"]
