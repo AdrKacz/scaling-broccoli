@@ -3,10 +3,11 @@ export (PackedScene) var ComboScene
 export var wait_time = Constants.background_wait_time
 
 var combo = 0
-var combo_list = []
 var score = 0
 
 func _ready():
+	# Starts randomly not to be at the same time than other games
+	yield(get_tree().create_timer((randi() % int(100 * wait_time) / 100)), "timeout")
 	$ChangeState.wait_time = wait_time
 	$ComboTimer.wait_time = Constants.max_combo_time # NOTE Can be infinite
 
