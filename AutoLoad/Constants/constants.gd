@@ -10,6 +10,9 @@ const can_be_background_state = true
 const max_time = 30
 const max_combo_time = 2
 
+# Pixel per seconds
+const combo_time_animation_max_speed = 10
+
 # ===== ===== =====
 const default_wait_time = 1.0
 const GameTime = {

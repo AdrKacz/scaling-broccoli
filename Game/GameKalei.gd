@@ -12,6 +12,10 @@ func start_game(wait_time):
 func stop_game():
 	for child in $Games.get_children():
 		child.stop_game()
+		
+func update_combo_time(new_value, delta):
+	for child in $Games.get_children():
+		child.update_combo_time(new_value, delta)
 
 
 func _on_Game_miss():

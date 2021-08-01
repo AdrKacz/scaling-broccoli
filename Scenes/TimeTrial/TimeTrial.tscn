@@ -18,7 +18,7 @@ _data = [ Vector2( 0.0284091, 0.918513 ), 0.0, 0.0, 0, 0, Vector2( 0.920455, 0.0
 script = ExtResource( 1 )
 
 [node name="UpdateUI" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.1
 autostart = true
 
 [node name="Control" type="Control" parent="."]

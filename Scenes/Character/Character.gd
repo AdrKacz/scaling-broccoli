@@ -10,11 +10,15 @@ func set_state(background_state):
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventScreenTouch and event.is_pressed():
-		emit_signal("click", state)
+		handle_action()
 		
 func _input(event):
 	if is_visible_in_tree() and event is InputEventKey and event.scancode == KEY_SPACE and event.is_pressed() and not event.is_echo():
-		emit_signal("click", state)
+		handle_action()
+		
+func handle_action():
+	$AudioStreamPlayer2D.play()
+	emit_signal("click", state)
 
 		
 func change_state(new_state):

@@ -8,10 +8,6 @@ const max_wick = 400
 var static_time = Constants.max_time
 var animated_time = Constants.max_time
 
-var first_quarter = Constants.max_time / 4
-var second_quarter = first_quarter * 2
-var third_quarter = first_quarter * 3
-
 func add_time(dt):
 	update_time(static_time + dt)
 	

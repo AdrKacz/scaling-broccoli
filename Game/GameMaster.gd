@@ -10,9 +10,8 @@ var current_index_game = 1
 var last_change_combo = 0
 
 func _ready():
+	$ComboTimer.wait_time = Constants.max_combo_time
 	current_index_game = randi() % 2 # NOTE Not fixed
-	
-	$ComboTimer.wait_time = Constants.max_combo_time # NOTE Can be infinite
 	setup_game()
 
 func score():
@@ -28,12 +27,13 @@ func miss():
 
 func wrong():
 	$TimeTrial.remove_time(2)
-	reset_combo()
+#	reset_combo()
 	
 func reset_combo():
-	$ComboTimer.stop()
 	combo = 0
 	last_change_combo = 0
+	$Games.get_child(current_index_game).update_combo_time(0, $ComboTimerUI.wait_time)
+	$ComboTimer.stop()
 	
 
 func add_combo():
@@ -46,9 +46,6 @@ func add_combo():
 		var y = $CornersCombo/UpperLeft.position.y + randi() % int($CornersCombo/LowerRight.position.y - $CornersCombo/UpperLeft.position.y)
 		comb.position = Vector2(x, y)
 		add_child(comb)
-#		Add Combo Timer # NOTE To parametize
-		$ComboTimer.stop()
-		$ComboTimer.start()
 	# Change mode
 	if combo - last_change_combo >= 2:
 #		combo = 0
@@ -57,16 +54,16 @@ func add_combo():
 		$PostEffect.play_shockwave(Constants.shockwave_force_strong, Constants.shockwave_thickness_strong)
 	else:
 		$PostEffect.play_shockwave()
+		
+#	Add Combo Timer # NOTE To parametize
+	$ComboTimer.stop()
+	$ComboTimer.start()
 
 func change_mode():
 	for child in $Games.get_children():
 		child.stop_game()
 		child.visible = false
 	setup_game()
-	
-
-func _on_ComboTimer_timeout():
-	reset_combo()
 	
 func setup_game():
 #	var index_game = randi() % $Games.get_child_count()
@@ -79,3 +76,11 @@ func setup_game():
 
 func _on_TimeTrial_lost():
 	Session.lose($Menus)
+
+
+func _on_ComboTimer_timeout():
+	reset_combo()
+
+func _on_ComboTimerUI_timeout():
+	if $ComboTimer.time_left > 0:
+		$Games.get_child(current_index_game).update_combo_time($ComboTimer.time_left, $ComboTimerUI.wait_time)

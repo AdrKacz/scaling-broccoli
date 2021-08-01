@@ -7,7 +7,7 @@
 [ext_resource path="res://Game/GameKalei.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/PostEffect/PostEffect.tscn" type="PackedScene" id=6]
 
-[node name="Node2D" type="Node2D"]
+[node name="GameMaster" type="Node2D"]
 pause_mode = 2
 script = ExtResource( 1 )
 ComboScene = ExtResource( 2 )
@@ -35,15 +35,18 @@ position = Vector2( 256, 256 )
 [node name="LowerRight" type="Node2D" parent="CornersCombo"]
 position = Vector2( 464, 1024 )
 
-[node name="ComboTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="Menus" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ComboTimer" type="Timer" parent="."]
+
+[node name="ComboTimerUI" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
 
 [connection signal="miss" from="Games/GameSolo" to="." method="miss"]
 [connection signal="score" from="Games/GameSolo" to="." method="score"]
@@ -52,3 +55,5 @@ __meta__ = {
 [connection signal="score" from="Games/GameKalei" to="." method="score"]
 [connection signal="wrong" from="Games/GameKalei" to="." method="wrong"]
 [connection signal="lost" from="TimeTrial" to="." method="_on_TimeTrial_lost"]
+[connection signal="timeout" from="ComboTimer" to="." method="_on_ComboTimer_timeout"]
+[connection signal="timeout" from="ComboTimerUI" to="." method="_on_ComboTimerUI_timeout"]

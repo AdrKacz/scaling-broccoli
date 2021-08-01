@@ -24,6 +24,9 @@ func start_game(wait_time):
 	
 func stop_game():
 	$ChangeState.stop()
+	
+func update_combo_time(new_value, delta):
+	$ComboTimer.update_time(new_value, delta)
 
 # Every time the player clicks
 func _on_Character_click(state):
