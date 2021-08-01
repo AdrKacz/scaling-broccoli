@@ -1,5 +1,9 @@
 extends Node
 
+const shockwave_force = 0.5
+const shockwave_thickness = 0.01
+const shockwave_force_strong = 1.0
+const shockwave_thickness_strong = 0.2
 
 const can_be_background_state = true
 

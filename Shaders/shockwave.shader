@@ -1,9 +1,9 @@
 shader_type canvas_item;
 
-uniform float force;
+uniform float force = 0.5; // 1
 uniform float size;
-uniform float thickness;
-uniform float aberation;
+uniform float thickness = 0.01; // 0.1
+uniform float aberation = 0.5;
 uniform vec2 center = vec2(0.5, 0.5);
 
 void fragment() {
