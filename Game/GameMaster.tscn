@@ -18,7 +18,7 @@ region_rect = Rect2( 780, 1440, 500, 180 )
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 7 )
-region_rect = Rect2( 120, 1440, 500, 180 )
+region_rect = Rect2( 0, 0, 1320, 1800 )
 
 [node name="GameMaster" type="Node2D"]
 pause_mode = 2
@@ -57,11 +57,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ComboTimer" type="Timer" parent="."]
-
 [node name="ComboTimerUI" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
 [node name="Pause" type="Button" parent="."]
 margin_left = 622.031
 margin_top = 20.9043
@@ -76,6 +75,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ChangeState" type="Timer" parent="."]
+wait_time = 4.161
+
 [connection signal="miss" from="Games/GameSolo" to="." method="miss"]
 [connection signal="score" from="Games/GameSolo" to="." method="score"]
 [connection signal="wrong" from="Games/GameSolo" to="." method="wrong"]
@@ -83,6 +85,6 @@ __meta__ = {
 [connection signal="score" from="Games/GameKalei" to="." method="score"]
 [connection signal="wrong" from="Games/GameKalei" to="." method="wrong"]
 [connection signal="lost" from="TimeTrial" to="." method="_on_TimeTrial_lost"]
-[connection signal="timeout" from="ComboTimer" to="." method="_on_ComboTimer_timeout"]
 [connection signal="timeout" from="ComboTimerUI" to="." method="_on_ComboTimerUI_timeout"]
 [connection signal="pressed" from="Pause" to="." method="_on_Pause_pressed"]
+[connection signal="timeout" from="ChangeState" to="." method="_on_ChangeState_timeout"]

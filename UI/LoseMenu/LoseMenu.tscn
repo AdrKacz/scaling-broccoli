@@ -66,8 +66,10 @@ __meta__ = {
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color( 0.215686, 0.215686, 0.215686, 0.556863 )
-margin_right = 780.0
-margin_bottom = 1280.0
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 790.0
+margin_bottom = 1290.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

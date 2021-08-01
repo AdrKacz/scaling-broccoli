@@ -5,13 +5,13 @@ signal miss
 signal wrong
 
 
-func start_game(wait_time):
+func setup():
 	for child in $Games.get_children():
-		child.start_game(wait_time)
+		child.setup()
 
-func stop_game():
+func change_state(swap):
 	for child in $Games.get_children():
-		child.stop_game()
+		child.change_state()
 		
 func update_combo_time(new_value, delta):
 	for child in $Games.get_children():
