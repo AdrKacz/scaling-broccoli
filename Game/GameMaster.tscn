@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/PostEffect/PostEffect.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 1 )
 ComboScene = ExtResource( 2 )
 

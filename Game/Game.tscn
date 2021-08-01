@@ -8,6 +8,7 @@
 [node name="Game" type="Node2D" groups=[
 "game",
 ]]
+pause_mode = 1
 script = ExtResource( 5 )
 ComboScene = ExtResource( 3 )
 

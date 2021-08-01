@@ -1,6 +1,6 @@
 extends Node
 
-export (String, FILE, "*.tscn") var game_path = "res://Game/Game.tscn"
+export (String, FILE, "*.tscn") var game_path = "res://Game/GameMaster.tscn"
 export (String, FILE, "*.tscn") var main_menu_path = "res://UI/MainMenu/MainMenu.tscn"
 export (String, FILE, "*.tscn") var leaderboard_path = "res://UI/Leaderboard/Leaderboard.tscn"
 export (PackedScene) var PauseMenu = preload("res://UI/PauseMenu/PauseMenu.tscn")
@@ -29,16 +29,10 @@ func start_game():
 	get_tree().paused = false
 	get_tree().change_scene(game_path)
 	
-func restart_game():
-	get_tree().paused = false
-	get_tree().change_scene(game_path)
-	
 func leaderboard():
-	get_tree().paused = false
 	get_tree().change_scene(leaderboard_path)
 	
 func main_menu():
-	get_tree().paused = false
 	get_tree().change_scene(main_menu_path)
 	
 func lose():
@@ -53,5 +47,4 @@ func submit_score(score, name):
 
 
 func _on_HTTPSession_request_completed(result, response_code, headers, body):
-	get_tree().paused = false
 	get_tree().change_scene(leaderboard_path)

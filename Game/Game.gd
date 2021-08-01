@@ -19,9 +19,8 @@ func _ready():
 # Every time the player clicks
 func _on_Character_click(state):
 	# He scored
-	emit_signal("score")
 	if $Character.state == $Background.state:
-#		emit_signal("score")
+		emit_signal("score")
 
 		# Reset timer
 		$ChangeState.stop()

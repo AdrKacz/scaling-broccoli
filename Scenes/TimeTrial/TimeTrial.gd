@@ -25,7 +25,7 @@ func _process(delta):
 	$Control/TextureProgressLeft.value = interpolation
 	
 #	Update Path
-	$Path2D/PathFollow2D.unit_offset = 1 -  animated_time / Constants.max_time
+	$Path2D/PathFollow2D.unit_offset = clamp(1 -  animated_time / Constants.max_time, 0, 1)
 	
 #	Check if no time left and emit signal
 #	TODO

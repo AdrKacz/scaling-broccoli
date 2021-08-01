@@ -26,8 +26,8 @@ const State = {
 
 # Refresh time per number of simultaneous games
 const ModeWaitTime = {
-	1: 0.57,
-	2: 0.7,
+	1: 0.62,
+	2: 0.75,
 	4: 1,
 	6: 1.6
 }
