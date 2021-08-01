@@ -17,7 +17,9 @@ ComboScene = ExtResource( 2 )
 [node name="GameSolo" parent="Games" instance=ExtResource( 3 )]
 visible = false
 
-[node name="GameKalei" parent="Games" instance=ExtResource( 5 )]
+[node name="GameKalei" parent="Games" groups=[
+"game",
+] instance=ExtResource( 5 )]
 visible = false
 
 [node name="TimeTrial" parent="." instance=ExtResource( 4 )]

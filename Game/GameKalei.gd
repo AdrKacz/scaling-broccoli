@@ -9,6 +9,10 @@ func start_game(wait_time):
 	for child in $Games.get_children():
 		child.start_game(wait_time)
 
+func stop_game():
+	for child in $Games.get_children():
+		child.stop_game()
+
 
 func _on_Game_miss():
 	emit_signal("miss")

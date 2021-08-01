@@ -21,6 +21,9 @@ func start_game(wait_time):
 	$ChangeState.start()
 	$Background.change_state(0)
 	$Character.set_state(1)
+	
+func stop_game():
+	$ChangeState.stop()
 
 # Every time the player clicks
 func _on_Character_click(state):
