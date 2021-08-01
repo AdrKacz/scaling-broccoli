@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 Constants="*res://AutoLoad/Constants/constants.gd"
 DataStore="*res://AutoLoad/DataStore/data_store.gd"
 Session="*res://AutoLoad/Session/session.tscn"
+StateManager="*res://AutoLoad/StateManager/StateManager.gd"
 
 [display]
 

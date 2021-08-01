@@ -5,8 +5,8 @@ var has_not_time_left = false
 
 const max_wick = 400
 
-var static_time = Constants.max_time
-var animated_time = Constants.max_time
+var static_time = Constants.maximum_time
+var animated_time = Constants.maximum_time
 
 func add_time(dt):
 	update_time(static_time + dt)
@@ -18,14 +18,14 @@ func _process(delta):
 	if has_not_time_left:
 		return
 #	Update wick
-	var interpolation = lerp(0, max_wick, animated_time / Constants.max_time)
+	var interpolation = lerp(0, max_wick, animated_time / Constants.maximum_time)
 	$Control/TextureProgressUp.value = interpolation
 	$Control/TextureProgressRight.value = interpolation
 	$Control/TextureProgressDown.value = interpolation
 	$Control/TextureProgressLeft.value = interpolation
 	
 #	Update Path
-	$Path2D/PathFollow2D.unit_offset = clamp(1 -  animated_time / Constants.max_time, 0, 1)
+	$Path2D/PathFollow2D.unit_offset = clamp(1 -  animated_time / Constants.maximum_time, 0, 1)
 	
 #	Check if no time left and emit signal
 #	TODO
@@ -36,7 +36,7 @@ func _process(delta):
 	
 func update_time(new_static_time):
 #	Tween for interpolation
-	static_time = min(new_static_time, Constants.max_time)
+	static_time = min(new_static_time, Constants.maximum_time)
 	$Tween.interpolate_property(self, "animated_time", animated_time, static_time, $UpdateUI.wait_time)
 	if not $Tween.is_active():
 		$Tween.start()

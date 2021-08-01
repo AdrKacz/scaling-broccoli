@@ -22,4 +22,5 @@ position = Vector2( 360, 640 )
 [node name="Character" parent="." instance=ExtResource( 1 )]
 position = Vector2( 360, 640 )
 
+[connection signal="no_time_left" from="ComboTimer" to="." method="_on_ComboTimer_no_time_left"]
 [connection signal="click" from="Character" to="." method="_on_Character_click"]

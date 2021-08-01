@@ -5,8 +5,9 @@ export (PackedScene) var ComboScene
 signal score
 signal miss
 signal wrong
+signal no_combo_time_left
 
-var wait_twice = false
+#var wait_twice = false
 
 #func _ready():
 #	# Starts randomly not to be at the same time than other games
@@ -18,9 +19,8 @@ var wait_twice = false
 #	$Character.set_state(1)
 	
 func setup():
-	var background_state = Constants.new_state([$Background.state])
-	$Background.change_state(background_state)
-	$Character.set_state(Constants.new_state([background_state]))
+	update_background_state()
+	$Character.set_state_to(StateManager.get_character_next_state($Background.state, $Character.state))
 	
 	
 func update_combo_time(new_value, delta):
@@ -32,26 +32,33 @@ func _on_Character_click(state):
 	if $Character.state == $Background.state:
 		emit_signal("score")
 		# Update background and character
-		var new_background_state = Constants.new_state()
-		$Background.change_state(new_background_state)
-		$Character.set_state(new_background_state)
+		update_background_state()
+		$Character.set_state_to(StateManager.get_character_next_state($Background.state, $Character.state))
 
 	# He lost
 	else:
 		emit_signal("wrong")
 		$Character.wrong_color()
-		wait_twice = false
+#		wait_twice = false
 
-
-func change_state(swap=0):
-	# Every background change we check if we miss
-	if $Background.state == $Character.state:
-		if wait_twice:
-			wait_twice = false
-			emit_signal("miss")
-		else:
-			wait_twice = true
-			return
-	# Update background
-	var new_background_state = Constants.new_state([$Background.state], swap, $Character.state)
+func update_background_state():
+	var new_background_state = StateManager.get_background_next_state($Background.state, $Character.state)
 	$Background.change_state(new_background_state)
+
+
+#func change_state(swap=0):
+#	# Every background change we check if we miss
+#	if $Background.state == $Character.state:
+#		if wait_twice:
+#			wait_twice = false
+#			emit_signal("miss")
+#		else:
+#			wait_twice = true
+#			return
+#	# Update background
+#	var new_background_state = StateManager.get_background_next_state($Background.state, $Character.state)
+#	$Background.change_state(new_background_state)
+
+
+func _on_ComboTimer_no_time_left():
+	emit_signal("no_combo_time_left")

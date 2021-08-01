@@ -4,8 +4,9 @@ signal click
 var state = 0
 
 
-func set_state(background_state):
-	change_state(Constants.new_state([state] if Constants.can_be_background_state else Constants.new_state([state, background_state])))
+func set_state_to(new_state):
+#	change_state(Constants.new_state([state] if Constants.can_be_background_state else Constants.new_state([state, background_state])))
+	change_state(new_state)
 
 
 func _on_Area2D_input_event(viewport, event, shape_idx):

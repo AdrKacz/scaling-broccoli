@@ -24,6 +24,7 @@ position = Vector2( 360, 640 )
 scale = Vector2( 0.5, 0.5 )
 
 [connection signal="miss" from="Games/Game" to="." method="_on_Game_miss"]
+[connection signal="no_combo_time_left" from="Games/Game" to="." method="_on_Game_no_combo_time_left"]
 [connection signal="score" from="Games/Game" to="." method="_on_Game_score"]
 [connection signal="wrong" from="Games/Game" to="." method="_on_Game_wrong"]
 [connection signal="miss" from="Games/Game2" to="." method="_on_Game_miss"]

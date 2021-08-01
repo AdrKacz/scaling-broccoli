@@ -3,84 +3,91 @@ extends Node2D
 export (PackedScene) var ComboScene
 
 var score = 0
-var combo = 0
-var swap = 0
-var count_combo = true
+#var swap = 0
+#var count_combo = true
 # Number of active games
-var time_left = 0
-var current_index_game = 1
-var last_change_combo = 0
-var game_child = ""
+var combo_time_left = 0
+#var current_index_game = 1
+
+var last_change_mode_combo_level = 0
 
 func _ready():
-	current_index_game = randi() % 2 # NOTE Not fixed
+	Constants.game_mode = randi() % 2 # NOTE Not fixed
 	setup_game()
 
 func score():
-	score += max(1, combo)
-	$TimeTrial.add_time(Constants.get_bonus_time() * combo)
+	score += max(1, Constants.combo_level)
+	$TimeTrial.add_time(Constants.time_bonus_to_next)
 	add_combo()
 
 func miss():
 #	$TimeTrial.remove_time(1) # NOTE To parametize
 #	TODO : Animation to see
-#	reset_combo()
+#	$Games.get_child(Constants.game_mode).update_combo_time(0, $ComboTimerUI.wait_time)
 	pass
 
 func wrong():
-	$TimeTrial.remove_time(Constants.get_malus_time())
-	reset_combo()
+	$TimeTrial.remove_time(Constants.time_malus)
+	combo_time_left = 0
+	$Games.get_child(Constants.game_mode).update_combo_time(0, $ComboTimerUI.wait_time)
 	
-func reset_combo():
-	combo = 0
-	last_change_combo = 0
-	$Games.get_child(current_index_game).update_combo_time(0, $ComboTimerUI.wait_time)
-	swap = 0
-	count_combo = false
-	time_left = Constants.get_max_combo_time() * $ComboTimerUI.wait_time
+func reset_combo_level():
+	Constants.combo_level = 0
+	last_change_mode_combo_level = 0
+#	swap = 0
+#	count_combo = false
+#	combo_time_left = Constants.combo_swap_spawn* $ComboTimerUI.wait_time
 	
 
 func add_combo():
-	combo += 1
-	# Display combo
-	if combo >= 2:
-		var comb = ComboScene.instance()
-		comb.multiplier = combo
+	Constants.combo_level += 1
+	# Display combo text
+	if Constants.combo_level >= 2:
+		var combo_text = ComboScene.instance()
+		combo_text.multiplier = Constants.combo_level
 		var x = $CornersCombo/UpperLeft.position.x + randi() % int($CornersCombo/LowerRight.position.x - $CornersCombo/UpperLeft.position.x)
 		var y = $CornersCombo/UpperLeft.position.y + randi() % int($CornersCombo/LowerRight.position.y - $CornersCombo/UpperLeft.position.y)
-		comb.position = Vector2(x, y)
-		add_child(comb)
-	# Change mode
-	if combo - last_change_combo >= 2:
+		combo_text.position = Vector2(x, y)
+		add_child(combo_text)
+		
+	# Change mode if needed and play according shockwave
+	if Constants.combo_level - last_change_mode_combo_level >= 2:
 #		combo = 0
-		last_change_combo = combo
+		last_change_mode_combo_level = Constants.combo_level
 		change_mode()
 		$PostEffect.play_shockwave(Constants.shockwave_force_strong, Constants.shockwave_thickness_strong)
 	else:
 		$PostEffect.play_shockwave()
 		
-	# Relaunch another combo
-	swap = 0
-	count_combo = true
-	time_left = Constants.get_max_combo_time()
+#	Relaunch another combo
+#	swap = 0
+#	count_combo = true
+	combo_time_left = Constants.combo_time
+#	Update swap time (at the end because can depends on mode)
+	update_swap_time()
 
 func change_mode():
 	for child in $Games.get_children():
 		child.visible = false
 	setup_game()
 	
+func update_swap_time():
+	if ($ChangeState.wait_time != Constants.swap_time):
+		$ChangeState.stop()
+		$ChangeState.wait_time = Constants.swap_time
+		$ChangeState.start()
+	
 func setup_game():
 #	var index_game = randi() % $Games.get_child_count()
-	var index_game  = 1 - current_index_game # NOTE Not fixed
+	Constants.game_mode  = 1 - Constants.game_mode # NOTE Not fixed
 	
-	game_child = $Games.get_child(index_game)
+	var game_child = $Games.get_child(Constants.game_mode)
 	game_child.setup()
 	game_child.visible = true
-	$ChangeState.wait_time = Constants.get_refresh_time(game_child.name)
+	$ChangeState.wait_time = Constants.swap_time
 	$ChangeState.start()
-	current_index_game = index_game
 	# Augment difficulty
-	Constants.hardness += 0.2
+#	Constants.hardness += 0.2
 
 func stop_game():
 	$ChangeState.stop()
@@ -89,19 +96,28 @@ func _on_TimeTrial_lost():
 	Session.lose($Menus, score)
 
 func _on_ComboTimerUI_timeout():
-	time_left -= $ComboTimerUI.wait_time
-	if time_left > 0:
-		$Games.get_child(current_index_game).update_combo_time(time_left, $ComboTimerUI.wait_time)
+	combo_time_left -= $ComboTimerUI.wait_time
+	if combo_time_left > 0:
+		$Games.get_child(Constants.game_mode).update_combo_time(combo_time_left, $ComboTimerUI.wait_time)
+	else:
+		$Games.get_child(Constants.game_mode).update_combo_time(0, $ComboTimerUI.wait_time)
 
 
 func _on_Pause_pressed():
 	Session.pause_with_opacity()
 
 func _on_ChangeState_timeout():
-	# Tell games to update
-	$Games.get_child(current_index_game).change_state(Constants.max_combo_swaps - swap)
-	# Update combo swaps
-	if count_combo:
-		swap += 1
-		if swap > Constants.max_combo_swaps:
-			reset_combo()
+	Constants.swap_left_before_combo_ends -= 1
+	$Games.get_child(Constants.game_mode).update_background_state()
+	update_swap_time()
+#	# Tell games to update
+#	$Games.get_child(Constants.game_mode).change_state(Constants.max_combo_swaps - swap)
+#	# Update combo swaps
+#	if count_combo:
+#		swap += 1
+#		if swap > Constants.max_combo_swaps:
+#			reset_combo()
+
+
+func _on_Game_no_combo_time_left():
+	reset_combo_level()
