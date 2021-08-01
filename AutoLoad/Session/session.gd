@@ -42,7 +42,7 @@ func lose(to):
 	to.add_child(lose_menu)
 
 func submit_score(score, name):
-	var error = $HTTPSession.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items", ["Content-Type: application/json"], false, 3, JSON.print({"id": str(score) + name + str(randi()), "price": score, "name": name}))
+	var error = $HTTPSession.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items", ["Content-Type: application/json"], false, 2, JSON.print({"id": str(score) + name + str(randi()), "price": score, "name": name}))
 
 
 
