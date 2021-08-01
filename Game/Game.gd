@@ -32,7 +32,7 @@ func _on_Character_click(state):
 	if $Character.state == $Background.state:
 		emit_signal("score")
 		# Update background and character
-		var new_background_state = Constants.new_state([$Background.state])
+		var new_background_state = Constants.new_state()
 		$Background.change_state(new_background_state)
 		$Character.set_state(new_background_state)
 
