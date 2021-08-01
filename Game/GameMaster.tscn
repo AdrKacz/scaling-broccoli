@@ -65,7 +65,6 @@ stream = ExtResource( 9 )
 volume_db = -9.014
 
 [connection signal="miss" from="Games/GameSolo" to="." method="miss"]
-[connection signal="no_combo_time_left" from="Games/GameSolo" to="." method="_on_Game_no_combo_time_left"]
 [connection signal="score" from="Games/GameSolo" to="." method="score"]
 [connection signal="wrong" from="Games/GameSolo" to="." method="wrong"]
 [connection signal="miss" from="Games/GameKalei" to="." method="miss"]
