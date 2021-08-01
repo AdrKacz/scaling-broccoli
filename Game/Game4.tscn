@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Character/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Combo/Combo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Background/Background.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Game/Game.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/PostEffect/PostEffect.tscn" type="PackedScene" id=6]
+
+[node name="Game" type="Node2D" groups=[
+"game",
+]]
+script = ExtResource( 5 )
+ComboScene = ExtResource( 3 )
+
+[node name="Background" parent="." instance=ExtResource( 4 )]
+position = Vector2( 360, 640 )
+
+[node name="Character" parent="." instance=ExtResource( 1 )]
+position = Vector2( 360, 640 )
+
+[node name="ChangeState" type="Timer" parent="."]
+
+[connection signal="click" from="Character" to="." method="_on_Character_click"]
+[connection signal="timeout" from="ChangeState" to="." method="_on_ChangeState_timeout"]

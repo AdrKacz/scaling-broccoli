@@ -1,14 +1,27 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Game/GameMaster.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Combo/Combo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game/Game.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/TimeTrial/TimeTrial.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Game/Game4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/PostEffect/PostEffect.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
-Game = ExtResource( 3 )
 ComboScene = ExtResource( 2 )
+
+[node name="Games" type="Node2D" parent="."]
+
+[node name="Game" parent="Games" instance=ExtResource( 3 )]
+
+[node name="Game2" parent="Games" instance=ExtResource( 5 )]
+visible = false
+
+[node name="TimeTrial" parent="." instance=ExtResource( 4 )]
+
+[node name="PostEffect" parent="." instance=ExtResource( 6 )]
+z_index = 1
 
 [node name="CornersCombo" type="Node" parent="."]
 
@@ -21,4 +34,6 @@ position = Vector2( 464, 1024 )
 [node name="ComboTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="TimeTrial" parent="." instance=ExtResource( 4 )]
+[connection signal="miss" from="Games/Game" to="." method="miss"]
+[connection signal="score" from="Games/Game" to="." method="score"]
+[connection signal="wrong" from="Games/Game" to="." method="wrong"]
