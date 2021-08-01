@@ -15,7 +15,7 @@ func _ready():
 	setup_games()
 
 func score():
-	score += max(1, combo)
+	score += Constants.ModeScore[mode] * max(1, combo)
 	$TimeTrial.add_time(1)
 	add_combo()
 

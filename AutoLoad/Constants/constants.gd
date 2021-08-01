@@ -26,10 +26,16 @@ const State = {
 
 # Refresh time per number of simultaneous games
 const ModeWaitTime = {
-	1: 0.5,
+	1: 0.57,
 	2: 0.7,
 	4: 1,
 	6: 1.6
+}
+const ModeScore = {
+	1: 2,
+	2: 1.2,
+	4: 1,
+	6: 0.9
 }
 const ModePosition = {
 	1: [{
