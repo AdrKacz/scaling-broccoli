@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Game/GameMaster.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Combo/Combo.tscn" type="PackedScene" id=2]
@@ -6,6 +6,19 @@
 [ext_resource path="res://Scenes/TimeTrial/TimeTrial.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Game/GameKalei.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/PostEffect/PostEffect.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/buttons/New Piskel.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 7 )
+region_rect = Rect2( 780, 1260, 500, 180 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 7 )
+region_rect = Rect2( 780, 1440, 500, 180 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 7 )
+region_rect = Rect2( 120, 1440, 500, 180 )
 
 [node name="GameMaster" type="Node2D"]
 pause_mode = 2
@@ -23,8 +36,10 @@ visible = false
 visible = false
 
 [node name="TimeTrial" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
 
 [node name="PostEffect" parent="." instance=ExtResource( 6 )]
+position = Vector2( -1.01965, 0 )
 z_index = 1
 
 [node name="CornersCombo" type="Node" parent="."]
@@ -47,6 +62,19 @@ __meta__ = {
 [node name="ComboTimerUI" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+[node name="Pause" type="Button" parent="."]
+margin_left = 622.031
+margin_top = 20.9043
+margin_right = 872.031
+margin_bottom = 110.904
+rect_min_size = Vector2( 250, 90 )
+rect_scale = Vector2( 0.3, 0.3 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="miss" from="Games/GameSolo" to="." method="miss"]
 [connection signal="score" from="Games/GameSolo" to="." method="score"]
@@ -57,3 +85,4 @@ autostart = true
 [connection signal="lost" from="TimeTrial" to="." method="_on_TimeTrial_lost"]
 [connection signal="timeout" from="ComboTimer" to="." method="_on_ComboTimer_timeout"]
 [connection signal="timeout" from="ComboTimerUI" to="." method="_on_ComboTimerUI_timeout"]
+[connection signal="pressed" from="Pause" to="." method="_on_Pause_pressed"]

@@ -75,7 +75,7 @@ func setup_game():
 	current_index_game = index_game
 
 func _on_TimeTrial_lost():
-	Session.lose($Menus)
+	Session.lose($Menus, score)
 
 
 func _on_ComboTimer_timeout():
@@ -84,3 +84,7 @@ func _on_ComboTimer_timeout():
 func _on_ComboTimerUI_timeout():
 	if $ComboTimer.time_left > 0:
 		$Games.get_child(current_index_game).update_combo_time($ComboTimer.time_left, $ComboTimerUI.wait_time)
+
+
+func _on_Pause_pressed():
+	Session.pause_with_opacity()

@@ -1,36 +1,53 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://UI/Leaderboard/Leaderboard.gd" type="Script" id=1]
 [ext_resource path="res://UI/Leaderboard/ScoreEntry.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/buttons/New Piskel.png" type="Texture" id=3]
 [ext_resource path="res://assets/buttons/New Piskel-20.png.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=5]
 
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 3 )
-region_rect = Rect2( 660, 180, 660, 180 )
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 5 )
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 3 )
-region_rect = Rect2( 660, 360, 660, 180 )
+region_rect = Rect2( 660, 180, 660, 180 )
 
 [sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 3 )
+region_rect = Rect2( 660, 360, 660, 180 )
+
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 360, 660, 180 )
 margin_left = 60.0
 
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 4 )
-region_rect = Rect2( 60, 100, 240, 100 )
-
 [sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 3 )
-region_rect = Rect2( 780, 1620, 480, 180 )
+texture = ExtResource( 4 )
+region_rect = Rect2( 60, 100, 240, 90 )
 
 [sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 3 )
+region_rect = Rect2( 780, 1620, 480, 180 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 3 )
 region_rect = Rect2( 120, 1620, 480, 180 )
 
-[node name="ScrollContainer" type="ScrollContainer"]
+[sub_resource type="DynamicFont" id=8]
+size = 30
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 30
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 30
+font_data = ExtResource( 5 )
+
+[node name="Leaderboard" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -40,35 +57,111 @@ __meta__ = {
 }
 ScoreEntry = ExtResource( 2 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 720.0
-margin_bottom = 1280.0
+[node name="Margin" type="MarginContainer" parent="."]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 670.0
+margin_bottom = 1230.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+margin_right = 620.0
+margin_bottom = 1180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 50
+
+[node name="Label" type="Label" parent="Margin/VBox"]
+margin_left = 156.0
+margin_right = 464.0
+margin_bottom = 51.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 1 )
+text = "LEADERBOARD"
+
+[node name="Replay" type="Button" parent="Margin/VBox"]
+margin_left = 145.0
+margin_top = 101.0
+margin_right = 475.0
+margin_bottom = 191.0
+rect_min_size = Vector2( 330, 90 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+
+[node name="MainMenu" type="Button" parent="Margin/VBox"]
+margin_left = 185.0
+margin_top = 241.0
+margin_right = 435.0
+margin_bottom = 331.0
+rect_min_size = Vector2( 250, 90 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+
+[node name="HTTPRequest" type="HTTPRequest" parent="Margin/VBox"]
+
+[node name="Scroll" type="ScrollContainer" parent="Margin/VBox"]
+margin_top = 381.0
+margin_right = 620.0
+margin_bottom = 1180.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Replay" type="Button" parent="VBoxContainer"]
-margin_right = 330.0
-margin_bottom = 90.0
-rect_min_size = Vector2( 330, 90 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/Scroll"]
+margin_right = 620.0
+margin_bottom = 799.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="MainMenu" type="Button" parent="VBoxContainer"]
-margin_top = 94.0
-margin_right = 250.0
-margin_bottom = 184.0
-rect_min_size = Vector2( 250, 90 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
+[node name="Titles" type="HBoxContainer" parent="Margin/VBox/Scroll/VBox"]
+margin_right = 620.0
+margin_bottom = 31.0
 
-[node name="HTTPRequest" type="HTTPRequest" parent="VBoxContainer"]
+[node name="Rank" type="Label" parent="Margin/VBox/Scroll/VBox/Titles"]
+margin_right = 204.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( -1282.07, -193.801 )
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 8 )
+text = "Rank"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[connection signal="pressed" from="VBoxContainer/Replay" to="." method="_on_Replay_pressed"]
-[connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
-[connection signal="request_completed" from="VBoxContainer/HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
+[node name="Player" type="Label" parent="Margin/VBox/Scroll/VBox/Titles"]
+margin_left = 208.0
+margin_right = 412.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( -1282.07, -193.801 )
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 9 )
+text = "Player"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Margin/VBox/Scroll/VBox/Titles"]
+margin_left = 416.0
+margin_right = 620.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( -1282.07, -193.801 )
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 10 )
+text = "Score"
+align = 2
+
+[connection signal="pressed" from="Margin/VBox/Replay" to="." method="_on_Replay_pressed"]
+[connection signal="pressed" from="Margin/VBox/MainMenu" to="." method="_on_MainMenu_pressed"]
+[connection signal="request_completed" from="Margin/VBox/HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

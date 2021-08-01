@@ -1,42 +1,51 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://UI/LoseMenu/LoseMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/buttons/New Piskel.png" type="Texture" id=2]
 [ext_resource path="res://assets/buttons/New Piskel-20.png.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=4]
 
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 2 )
-region_rect = Rect2( 80, 900, 580, 180 )
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 2 )
-region_rect = Rect2( 740, 900, 580, 180 )
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 2 )
-region_rect = Rect2( 740, 720, 580, 180 )
+region_rect = Rect2( 80, 900, 580, 180 )
 
 [sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 3 )
-region_rect = Rect2( 60, 100, 240, 100 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 740, 900, 580, 180 )
 
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 2 )
-region_rect = Rect2( 780, 1620, 480, 180 )
+region_rect = Rect2( 740, 720, 580, 180 )
 
 [sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 2 )
-region_rect = Rect2( 120, 1620, 480, 180 )
+texture = ExtResource( 3 )
+region_rect = Rect2( 60, 100, 240, 90 )
 
 [sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 2 )
-region_rect = Rect2( 660, 180, 660, 180 )
+region_rect = Rect2( 780, 1620, 480, 180 )
 
 [sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 2 )
-region_rect = Rect2( 660, 360, 660, 180 )
+region_rect = Rect2( 120, 1620, 480, 180 )
 
 [sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 2 )
+region_rect = Rect2( 660, 180, 660, 180 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 2 )
+region_rect = Rect2( 660, 360, 660, 180 )
+
+[sub_resource type="StyleBoxTexture" id=11]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 360, 660, 180 )
 
@@ -44,79 +53,108 @@ region_rect = Rect2( 0, 360, 660, 180 )
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 6.7373
+margin_top = -1.49718
+margin_right = 6.7373
+margin_bottom = -1.49719
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Vbox" type="VBoxContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0.215686, 0.215686, 0.215686, 0.556863 )
+margin_right = 780.0
+margin_bottom = 1280.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 670.0
+margin_bottom = 1230.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Info" type="TextEdit" parent="Vbox"]
-margin_right = 720.0
-margin_bottom = 998.0
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+margin_right = 1340.0
+margin_bottom = 2460.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "You failed..."
+custom_constants/separation = 150
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Hbox" type="HBoxContainer" parent="Vbox"]
-margin_top = 1002.0
-margin_right = 720.0
-margin_bottom = 1092.0
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox"]
+margin_right = 1340.0
+margin_bottom = 285.0
+size_flags_horizontal = 7
+custom_constants/separation = 20
+alignment = 1
 
-[node name="Score" type="TextEdit" parent="Vbox/Hbox"]
-margin_right = 80.0
-margin_bottom = 90.0
-rect_min_size = Vector2( 80, 30 )
+[node name="Score" type="Label" parent="Margin/VBox/VBox"]
+margin_right = 1340.0
+margin_bottom = 105.0
+grow_horizontal = 2
+size_flags_horizontal = 7
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
+text = "Congrats! You scored a total of points! Fill in your name and submit your score!"
+autowrap = true
 
-[node name="Name" type="TextEdit" parent="Vbox/Hbox"]
-margin_left = 84.0
-margin_right = 284.0
-margin_bottom = 90.0
-rect_min_size = Vector2( 200, 30 )
+[node name="Name" type="TextEdit" parent="Margin/VBox/VBox"]
+margin_top = 125.0
+margin_right = 1340.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 200, 50 )
+custom_fonts/font = SubResource( 2 )
 
-[node name="SubmitScore" type="Button" parent="Vbox/Hbox"]
-margin_left = 288.0
-margin_right = 578.0
-margin_bottom = 90.0
+[node name="SubmitScore" type="Button" parent="Margin/VBox/VBox"]
+margin_left = 525.0
+margin_top = 195.0
+margin_right = 815.0
+margin_bottom = 285.0
 rect_min_size = Vector2( 290, 90 )
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 
-[node name="MainMenu" type="Button" parent="Vbox"]
-margin_top = 1096.0
-margin_right = 250.0
-margin_bottom = 1186.0
+[node name="MainMenu" type="Button" parent="Margin/VBox"]
+margin_left = 545.0
+margin_top = 435.0
+margin_right = 795.0
+margin_bottom = 525.0
 rect_min_size = Vector2( 250, 90 )
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 0
-custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
 
-[node name="Restart" type="Button" parent="Vbox"]
-margin_top = 1190.0
-margin_right = 330.0
-margin_bottom = 1280.0
+[node name="Restart" type="Button" parent="Margin/VBox"]
+margin_left = 505.0
+margin_top = 675.0
+margin_right = 835.0
+margin_bottom = 765.0
 rect_min_size = Vector2( 330, 90 )
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 0
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
 
-[connection signal="pressed" from="Vbox/Hbox/SubmitScore" to="." method="_on_SubmitScore_pressed"]
-[connection signal="pressed" from="Vbox/MainMenu" to="." method="_on_MainMenu_pressed"]
-[connection signal="pressed" from="Vbox/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="Margin/VBox/VBox/SubmitScore" to="." method="_on_SubmitScore_pressed"]
+[connection signal="pressed" from="Margin/VBox/MainMenu" to="." method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="Margin/VBox/Restart" to="." method="_on_Restart_pressed"]

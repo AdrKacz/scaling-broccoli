@@ -35,9 +35,10 @@ func leaderboard():
 func main_menu():
 	get_tree().change_scene(main_menu_path)
 	
-func lose(to):
+func lose(to, score):
 	get_tree().paused = true
 	var lose_menu = LoseMenu.instance()
+	lose_menu.score = score
 	lose_menu.show()
 	to.add_child(lose_menu)
 

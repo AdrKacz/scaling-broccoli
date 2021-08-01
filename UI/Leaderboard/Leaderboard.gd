@@ -1,4 +1,4 @@
-extends ScrollContainer
+extends Control
 
 export (PackedScene) var ScoreEntry
 
@@ -13,7 +13,7 @@ class MyCustomSorter:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Get the leaderboard from ddb
-	$VBoxContainer/HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items")
+	$Margin/VBox/HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items")
 	
 	
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
@@ -22,11 +22,14 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	
 	var scores = json.result["Items"]
 	scores.sort_custom(MyCustomSorter, "sort_ascending")
+	var i = 1
 	for elt in scores:
 		var entry = ScoreEntry.instance()
-		entry.text = "Player %s got %s" % [elt["name"], elt["price"]]
-		$VBoxContainer.add_child(entry)
-		
+		entry.rank = str(i)
+		entry.player = elt["name"]
+		entry.score = str(elt["price"])
+		$Margin/VBox/Scroll/VBox.add_child(entry)
+		i += 1
 
 
 func _on_MainMenu_pressed():
@@ -34,4 +37,4 @@ func _on_MainMenu_pressed():
 
 
 func _on_Replay_pressed():
-	Session.restart_game()
+	Session.start_game()

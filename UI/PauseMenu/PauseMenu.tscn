@@ -5,15 +5,15 @@
 [ext_resource path="res://assets/buttons/New Piskel-20.png.png" type="Texture" id=3]
 [ext_resource path="res://assets/buttons/New Piskel-22.png(1).png" type="Texture" id=4]
 
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
-region_rect = Rect2( 60, 100, 240, 100 )
+region_rect = Rect2( 60, 100, 240, 90 )
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 2 )
 region_rect = Rect2( 780, 1620, 480, 180 )
 
-[sub_resource type="StyleBoxTexture" id=9]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 2 )
 region_rect = Rect2( 120, 1620, 480, 180 )
 
@@ -29,15 +29,15 @@ region_rect = Rect2( 660, 360, 660, 180 )
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 360, 660, 180 )
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 2 )
 region_rect = Rect2( 660, 540, 620, 180 )
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 720, 620, 180 )
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 540, 620, 180 )
 
@@ -50,22 +50,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1.33691
-margin_right = 1.33691
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0.215686, 0.215686, 0.215686, 0.556863 )
+margin_right = 780.0
+margin_bottom = 1280.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="."]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 730.0
+margin_bottom = 1230.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Center" type="CenterContainer" parent="Margin"]
+margin_right = 680.0
+margin_bottom = 1180.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 160.0
-margin_top = 117.0
-margin_right = 560.0
-margin_bottom = 1163.0
+[node name="VBox" type="VBoxContainer" parent="Margin/Center"]
+margin_left = 140.0
+margin_top = 67.0
+margin_right = 540.0
+margin_bottom = 1113.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.13
@@ -75,12 +90,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Margin/Center/VBox"]
 margin_right = 400.0
 margin_bottom = 200.0
 texture = ExtResource( 4 )
 
-[node name="TextEdit" type="TextEdit" parent="CenterContainer/VBoxContainer"]
+[node name="TextEdit" type="TextEdit" parent="Margin/Center/VBox"]
 margin_top = 344.0
 margin_right = 400.0
 margin_bottom = 344.0
@@ -89,7 +104,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Main menu" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Main menu" type="Button" parent="Margin/Center/VBox"]
 margin_left = 75.0
 margin_top = 488.0
 margin_right = 325.0
@@ -97,11 +112,11 @@ margin_bottom = 578.0
 rect_min_size = Vector2( 250, 90 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
 
-[node name="Restart" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Restart" type="Button" parent="Margin/Center/VBox"]
 margin_left = 35.0
 margin_top = 722.0
 margin_right = 365.0
@@ -113,7 +128,7 @@ custom_styles/hover = SubResource( 4 )
 custom_styles/pressed = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
 
-[node name="Continue" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Continue" type="Button" parent="Margin/Center/VBox"]
 margin_left = 45.0
 margin_top = 956.0
 margin_right = 355.0
@@ -121,10 +136,10 @@ margin_bottom = 1046.0
 rect_min_size = Vector2( 310, 90 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Main menu" to="." method="_on_Main_menu_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="Margin/Center/VBox/Main menu" to="." method="_on_Main_menu_pressed"]
+[connection signal="pressed" from="Margin/Center/VBox/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="Margin/Center/VBox/Continue" to="." method="_on_Continue_pressed"]
