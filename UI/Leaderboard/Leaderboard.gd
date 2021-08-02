@@ -5,7 +5,7 @@ export (PackedScene) var ScoreEntry
 
 class MyCustomSorter:
 	static func sort_ascending(a, b):
-		if float(a["price"]) > float(b["price"]):
+		if float(a["score"]) > float(b["score"]):
 			return true
 		return false
 
@@ -13,7 +13,7 @@ class MyCustomSorter:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Get the leaderboard from ddb
-	$HTTPRequest.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items")
+	$HTTPRequest.request("https://a6yspcizd0.execute-api.eu-west-1.amazonaws.com/items")
 	
 	
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
@@ -27,7 +27,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 		var entry = ScoreEntry.instance()
 		entry.rank = str(i)
 		entry.player = elt["name"]
-		entry.score = str(elt["price"])
+		entry.score = str(elt["score"])
 		$MarginContainer/VBoxContainer/ScrollContainer/VBox.add_child(entry)
 		i += 1
 

@@ -56,8 +56,9 @@ func lose(to, score):
 
 
 func submit_score(score, name):
-	var error = $HTTPSession.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items", ["Content-Type: application/json"], false, 2, JSON.print({"id": str(score) + name + str(randi()), "price": score, "name": name}))
-
+	#var error = $HTTPSession.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items", ["Content-Type: application/json"], false, 2, JSON.print({"id": str(score) + name + str(randi()), "price": score, "name": name}))
+	var id = str(score) + name + str(randi())
+	var error = $HTTPSession.request("https://a6yspcizd0.execute-api.eu-west-1.amazonaws.com/add/{id}/{name}/{score}".format({"id":id,"name":name,"score":score}))
 
 
 func _on_HTTPSession_request_completed(result, response_code, headers, body):
