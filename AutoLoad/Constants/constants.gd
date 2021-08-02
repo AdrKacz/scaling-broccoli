@@ -67,6 +67,7 @@ var combo_time = 0 setget setter_combo_time, getter_combo_time
 var time_bonus_to_next = 0 setget setter_time_bonus_to_next, getter_time_bonus_to_next
 var time_malus = 0 setget setter_time_malus, getter_time_malus
 var is_same_state = false setget setter_is_same_state
+var pause = false setget setter_pause, getter_pause
 
 var swap_left_before_combo_ends = 0 setget setter_swap_left_before_combo_ends, getter_swap_left_before_combo_ends
 
@@ -106,6 +107,14 @@ func setter_combo(new_value):
 
 func getter_combo():
 	return combo
+
+# Pause
+func setter_pause(new_value):
+	pause = new_value
+	return pause
+
+func getter_pause():
+	return pause
 	
 # Swap left before Combo Ends
 func setter_swap_left_before_combo_ends(new_value):

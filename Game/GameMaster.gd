@@ -94,21 +94,24 @@ func _on_TimeTrial_lost():
 	Session.lose()
 
 func _on_ComboTimerUI_timeout():
-	combo_time_left -= $ComboTimerUI.wait_time
-	if combo_time_left > 0:
-		$Games.get_child(Constants.game_mode).update_combo_time(combo_time_left, $ComboTimerUI.wait_time)
-	else:
-		$Games.get_child(Constants.game_mode).update_combo_time(0, $ComboTimerUI.wait_time)
+	if not Constants.pause:
+		combo_time_left -= $ComboTimerUI.wait_time
+		if combo_time_left > 0:
+			$Games.get_child(Constants.game_mode).update_combo_time(combo_time_left, $ComboTimerUI.wait_time)
+		else:
+			$Games.get_child(Constants.game_mode).update_combo_time(0, $ComboTimerUI.wait_time)
 
 
 func _on_Pause_pressed():
+	Constants.pause = true
 	Session.pause_with_opacity()
 
 func _on_ChangeState_timeout():
-	$ChangeStateSound.play()
-	Constants.swap_left_before_combo_ends -= 1
-	$Games.get_child(Constants.game_mode).update_background_state()
-	update_swap_time()
+	if not Constants.pause:
+		$ChangeStateSound.play()
+		Constants.swap_left_before_combo_ends -= 1
+		$Games.get_child(Constants.game_mode).update_background_state()
+		update_swap_time()
 
 
 func _on_Game_no_combo_time_left():

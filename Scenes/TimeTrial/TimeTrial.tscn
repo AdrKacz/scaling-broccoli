@@ -103,6 +103,7 @@ position = Vector2( 8, 8 )
 rotation = 1.5708
 
 [node name="SecondLayer" type="CPUParticles2D" parent="Path2D/PathFollow2D"]
+pause_mode = 2
 position = Vector2( 0, 9.53674e-07 )
 amount = 32
 preprocess = 1.0
@@ -114,6 +115,7 @@ scale_amount = 5.0
 color_ramp = SubResource( 2 )
 
 [node name="FirstLayer" type="CPUParticles2D" parent="Path2D/PathFollow2D"]
+pause_mode = 2
 amount = 32
 preprocess = 1.0
 local_coords = false
