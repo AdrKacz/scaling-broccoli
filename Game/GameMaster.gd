@@ -12,7 +12,7 @@ var last_change_mode_combo = 0
 
 
 func _ready():
-	Constants.game_mode = 1 # randi() % 2 # NOTE Not fixed
+	Constants.game_mode = 0 # randi() % 2 # NOTE Not fixed
 	setup_game()
 
 func score():

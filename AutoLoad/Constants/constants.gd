@@ -26,15 +26,15 @@ enum GameModeEnum { # Use an array below to differentiate params for different m
 }
 
 const level_to_params = [ # index to seconds
-	{"swap_time": [0.8, 0.5], "swap_time_identique": [0.85, 0.55], "combo_swap_spawn": 5, "time_bonus_base": 3, "time_bonus_combo": 0, "time_malus": 4, "score_to_next_level": 10}, # no combo_swap_spawn at combo level 0
-	{"swap_time": [0.5, 0.5], "swap_time_identique": [0.65, 0.55], "combo_swap_spawn": 5, "time_bonus_base": 2.5, "time_bonus_combo": 0.5, "time_malus": 5, "score_to_next_level": 100}, # no combo_swap_spawn at combo level 0
-	{"swap_time": [0.45, 105], "swap_time_identique": [0.53, 0.5], "combo_swap_spawn": 6, "time_bonus_base": 2, "time_bonus_combo": 0.5, "time_malus": 6, "score_to_next_level": 63}, # Survivable a l'infini pas trop dur
-	{"swap_time": [0.4, 0.9], "swap_time_identique": [0.45, 0.5], "combo_swap_spawn": 6, "time_bonus_base": 1, "time_bonus_combo": 0.5, "time_malus": 4.5, "score_to_next_level": 103}, # Dur a survivre, encore bon, dur
-	{"swap_time": [0.35, 0.8], "swap_time_identique": [0.41, 0.5], "combo_swap_spawn": 6, "time_bonus_base": 2, "time_bonus_combo": 0.5, "time_malus": 4.3, "score_to_next_level": 189}, # techniiique!
-	{"swap_time": [0.3, 0.8], "swap_time_identique": [0.35, 0.5], "combo_swap_spawn": 7, "time_bonus_base": 2.3, "time_bonus_combo": 0.5, "time_malus": 4.3, "score_to_next_level": 283}, # siii dur, encore faisable si t'es bouillotte
-	{"swap_time": [0.28, 0.8], "swap_time_identique": [0.33, 0.5], "combo_swap_spawn": 7, "time_bonus_base": 2.3, "time_bonus_combo": 0.5, "time_malus": 4.3, "score_to_next_level": 365}, # siii dur, encore faisable si t'es bouillotte
-	{"swap_time": [0.27, 0.8], "swap_time_identique": [0.31, 0.5], "combo_swap_spawn": 8, "time_bonus_base": 2.3, "time_bonus_combo": 0.5, "time_malus": 4.3, "score_to_next_level": 460}, # siii dur, encore faisable si t'es bouillotte
-	{"swap_time": [0.25, 0.9], "swap_time_identique": [0.27, 0.5], "combo_swap_spawn": 9, "time_bonus_base": 3, "time_bonus_combo": 0.3, "time_malus": 4.5, "score_to_next_level": INF},
+	{"swap_time": [0.8, 1.1], "swap_time_identique": [0.85, 1.3], "combo_swap_spawn": 5, "time_bonus_base": 3, "time_bonus_combo": 0, "time_malus": 4, "score_to_next_level": 10}, # no combo_swap_spawn at combo level 0
+	{"swap_time": [0.6, 1], "swap_time_identique": [0.65, 1.1], "combo_swap_spawn": 5, "time_bonus_base": 2.5, "time_bonus_combo": 0.5, "time_malus": 5, "score_to_next_level": 100}, # no combo_swap_spawn at combo level 0
+	{"swap_time": [0.45, 0.8], "swap_time_identique": [0.53, 0.85], "combo_swap_spawn": 6, "time_bonus_base": 2, "time_bonus_combo": 0.5, "time_malus": 6, "score_to_next_level": 63}, # Survivable a l'infini pas trop dur
+	{"swap_time": [0.4, 0.65], "swap_time_identique": [0.45, 0.7], "combo_swap_spawn": 6, "time_bonus_base": 1, "time_bonus_combo": 0.5, "time_malus": 4.5, "score_to_next_level": 103}, # Dur a survivre, encore bon, dur
+	{"swap_time": [0.35, 0.6], "swap_time_identique": [0.41, 0.65], "combo_swap_spawn": 6, "time_bonus_base": 2, "time_bonus_combo": 0.5, "time_malus": 4.3, "score_to_next_level": 189}, # techniiique!
+	{"swap_time": [0.3, 0.55], "swap_time_identique": [0.35, 0.6], "combo_swap_spawn": 7, "time_bonus_base": 2.3, "time_bonus_combo": 0.5, "time_malus": 4.3, "score_to_next_level": 283}, # siii dur, encore faisable si t'es bouillotte
+	{"swap_time": [0.28, 0.5], "swap_time_identique": [0.33, 0.55], "combo_swap_spawn": 7, "time_bonus_base": 2.3, "time_bonus_combo": 0.5, "time_malus": 4.3, "score_to_next_level": 365}, # siii dur, encore faisable si t'es bouillotte
+	{"swap_time": [0.27, 0.45], "swap_time_identique": [0.31, 0.49], "combo_swap_spawn": 8, "time_bonus_base": 2.3, "time_bonus_combo": 0.5, "time_malus": 4.3, "score_to_next_level": 460}, # siii dur, encore faisable si t'es bouillotte
+	{"swap_time": [0.25, 0.4], "swap_time_identique": [0.27, 0.44], "combo_swap_spawn": 9, "time_bonus_base": 3, "time_bonus_combo": 0.5, "time_malus": 4.5, "score_to_next_level": INF},
 ]
 # liste des scores pour monter de tous les niveaux 
 # Sans jamais perdre de combo 10,62,188,420,1160,11760
