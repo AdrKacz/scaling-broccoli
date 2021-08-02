@@ -14,10 +14,10 @@ class MyCustomSorter:
 func _ready():
 	# Get the leaderboard from ddb
 	$HTTPRequest.request("https://a6yspcizd0.execute-api.eu-west-1.amazonaws.com/items")
-	
+	$Path2D/AnimationPlayer.play("spinner")
 	
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
-	
+	$Path2D.visible = false
 	var json = JSON.parse(body.get_string_from_utf8())
 	
 	var scores = json.result["Items"]

@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, -32, 0, 0, 0, 0, -32, 0, 0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 0, -32 )
+}
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0.0045819, 0.936937 ), 0.0, 0.0, 0, 0, Vector2( 0.973654, 0.0945946 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0.0284091, 0.918513 ), 0.0, 0.0, 0, 0, Vector2( 0.920455, 0.0851798 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Animation" id=5]
+resource_name = "spinner"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PathFollow2D:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2( 19.7493, 12.2507 )
+rotation = -0.785398
+offset = 117.941
+
+[node name="SecondLayer" type="CPUParticles2D" parent="PathFollow2D"]
+pause_mode = 2
+position = Vector2( 0, 9.53674e-07 )
+amount = 32
+preprocess = 1.0
+local_coords = false
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 32.0
+scale_amount = 2.0
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
+
+[node name="FirstLayer" type="CPUParticles2D" parent="PathFollow2D"]
+pause_mode = 2
+amount = 32
+preprocess = 1.0
+local_coords = false
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 16.0
+scale_amount = 4.0
+scale_amount_curve = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 2
+anims/spinner = SubResource( 5 )
