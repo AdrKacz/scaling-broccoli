@@ -80,7 +80,7 @@ func getter_game_mode():
 
 # Combo level
 func setter_combo_level(new_value):
-	combo_level = clamp(new_value, 0, combo_level_to_params.size() - 1)
+#	combo_level = clamp(new_value, 0, combo_level_to_params.size() - 1)
 	swap_left_before_combo_ends = generic_getter("combo_swap_spawn") + 1 # +1 to count for the swap from the  combo level upgrade
 	return combo_level
 
