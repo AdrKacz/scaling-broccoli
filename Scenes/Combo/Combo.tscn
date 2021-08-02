@@ -23,7 +23,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1.2, 1.9, 2.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 1, 512, 512, 1 ]
+"values": [ 1, 350, 350, 1 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("ComboText:custom_fonts/font:outline_size")
@@ -97,10 +97,10 @@ script = ExtResource( 1 )
 [node name="ComboText" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.218048
-margin_top = 0.109032
-margin_right = 780.218
-margin_bottom = 50.109
+margin_left = -30.5181
+margin_top = 14.8935
+margin_right = 749.482
+margin_bottom = 64.8935
 rect_clip_content = true
 custom_fonts/font = SubResource( 1 )
 text = "bal;balablababalbalab"

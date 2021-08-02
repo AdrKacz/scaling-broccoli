@@ -19,10 +19,12 @@ func score():
 	Constants.score += (Constants.level + 1) * (Constants.combo + 1)
 	var level_after = Constants.level
 	$TimeTrial.add_time(Constants.time_bonus_to_next)
-	add_combo()
 	if level_before < level_after:
 		$TimeTrial.add_time(Constants.maximum_time)
 		display("Level" + str(level_after))
+		add_combo(false)
+	else:
+		add_combo()
 
 func miss():
 	# Pourrait descendre d'un niveau
@@ -49,10 +51,10 @@ func display(text):
 	combo_text.position = Vector2(x, y)
 	add_child(combo_text)
 
-func add_combo():
+func add_combo(display=true):
 	Constants.combo += 1
 	# Display combo text
-	if Constants.combo >= 2:
+	if display and Constants.combo >= 2:
 		display("X" + str(Constants.combo))
 	# Change mode if needed and play according shockwave
 #	if Constants.combo - last_change_mode_combo_level >= 2:
@@ -111,10 +113,6 @@ func _on_Pause_pressed():
 	Session.pause_with_opacity()
 
 func _on_ChangeState_timeout():
-#	if randi() % 2 == 1:
-#		display("level\n2")
-#	else:
-#		display("+3s")
 	$ChangeStateSound.play()
 	Constants.swap_left_before_combo_ends -= 1
 	$Games.get_child(Constants.game_mode).update_background_state()
