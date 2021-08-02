@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/audio/click_button.wav" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
-size = 64
+size = 256
 font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxTexture" id=2]
@@ -57,6 +57,7 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_scale = Vector2( 0.999348, 1 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -65,31 +66,31 @@ __meta__ = {
 
 [node name="VBox" type="VBoxContainer" parent="Control/CenterContainer"]
 margin_left = 104.0
-margin_top = 54.0
+margin_top = 53.0
 margin_right = 616.0
-margin_bottom = 1225.0
+margin_bottom = 1227.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 128
+custom_constants/separation = 32
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Score" type="Label" parent="Control/CenterContainer/VBox"]
 margin_right = 512.0
-margin_bottom = 65.0
+margin_bottom = 260.0
 grow_horizontal = 2
 size_flags_horizontal = 7
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
-text = "389 seconds"
+text = "24"
 align = 1
 autowrap = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/VBox"]
-margin_top = 193.0
+margin_top = 292.0
 margin_right = 512.0
-margin_bottom = 515.0
+margin_bottom = 614.0
 size_flags_horizontal = 7
 custom_constants/separation = 16
 alignment = 1
@@ -140,9 +141,9 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="Control/CenterContainer/VBox"]
-margin_top = 643.0
+margin_top = 646.0
 margin_right = 512.0
-margin_bottom = 1171.0
+margin_bottom = 1174.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/VBox/CenterContainer"]
 margin_right = 512.0

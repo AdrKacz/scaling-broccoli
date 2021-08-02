@@ -3,6 +3,7 @@ extends Node2D
 export (PackedScene) var BonusText
 
 var combo_time_left = 0
+var success_counter = 0
 
 var last_change_mode_combo = 0
 
@@ -15,24 +16,22 @@ func _ready():
 	setup_game()
 
 func score():
+	success_counter += 1
+	if success_counter % 3 == 0:
+		$PostEffect.play_shockwave(Constants.shockwave_force_strong, Constants.shockwave_thickness_strong)
+		change_mode()
+	else:
+		$PostEffect.play_shockwave()
+		
 	var level_before = Constants.level
-	Constants.score += (Constants.level + 1) * (Constants.combo + 1)
+	Constants.score += (Constants.level + 1) * (Constants.combo + 1) # See if it's the best way to score
+#	Constants.score += Constants.combo + 1
 	var level_after = Constants.level
 	$TimeTrial.add_time(Constants.time_bonus_to_next)
 	add_combo()
 	if level_after > level_before:
 		$TimeTrial.add_time(Constants.maximum_time)
-		display("Level" + str(level_after), $Positions/LevelPosition.position)
-		$PostEffect.play_shockwave(Constants.shockwave_force_strong, Constants.shockwave_thickness_strong)
-		change_mode()
-		add_combo(false)
-	else:
-		add_combo()
-		$PostEffect.play_shockwave()
-
-func miss():
-	# Pourrait descendre d'un niveau
-	pass
+		display("Up", $Positions/LevelPosition.position)
 
 func wrong():
 	$TimeTrial.remove_time(Constants.time_malus)
@@ -47,18 +46,17 @@ func reset_combo():
 	last_change_mode_combo = 0
 	update_swap_time()
 
-func display(text, position):
+func display(text, position_base):
 	var combo_text = BonusText.instance()
 	combo_text.text = text
 #	Calculate random offset (TODO)
-	combo_text.position = position
+	combo_text.position = position_base + Vector2(rand_range(-64, 64), rand_range(-64, 64)) # randomise
 	add_child(combo_text)
 
-func add_combo(display=true):
+func add_combo():
 	Constants.combo += 1
 	# Display combo text
-	if Constants.combo >= 2:
-		display("x" + str(Constants.combo), $Positions/ComboPosition.position)
+	display("+" + str(Constants.combo), $Positions/ComboPosition.position)
 
 	combo_time_left = Constants.combo_time
 	update_swap_time() # Update swap time (at the end because can depends on mode)
