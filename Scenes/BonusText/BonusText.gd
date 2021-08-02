@@ -7,6 +7,6 @@ export var text = 0
 func _ready():
 	$ComboText.text = str(text)
 	$AnimationPlayer.play("Popup")
-	$ComboSound.play()
+	$BonusSound.play()
 
-		
+	

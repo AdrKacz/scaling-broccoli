@@ -1,6 +1,6 @@
 extends Node2D
 
-export (PackedScene) var ComboScene
+export (PackedScene) var BonusText
 
 var combo_time_left = 0
 
@@ -19,12 +19,16 @@ func score():
 	Constants.score += (Constants.level + 1) * (Constants.combo + 1)
 	var level_after = Constants.level
 	$TimeTrial.add_time(Constants.time_bonus_to_next)
-	if level_before < level_after:
+	add_combo()
+	if level_after > level_before:
 		$TimeTrial.add_time(Constants.maximum_time)
-		display("Level\n" + str(level_after))
+		display("Level" + str(level_after), $Positions/LevelPosition.position)
+		$PostEffect.play_shockwave(Constants.shockwave_force_strong, Constants.shockwave_thickness_strong)
+		change_mode()
 		add_combo(false)
 	else:
 		add_combo()
+		$PostEffect.play_shockwave()
 
 func miss():
 	# Pourrait descendre d'un niveau
@@ -34,7 +38,7 @@ func wrong():
 	$TimeTrial.remove_time(Constants.time_malus)
 	combo_time_left = 0
 	$Games.get_child(Constants.game_mode).update_combo_time(0, $ComboTimerUI.wait_time)
-	
+
 func reset_combo():
 	if Constants.combo >= 2:
 		$NoComboSound.play()
@@ -43,47 +47,37 @@ func reset_combo():
 	last_change_mode_combo = 0
 	update_swap_time()
 
-func display(text):
-	var combo_text = ComboScene.instance()
+func display(text, position):
+	var combo_text = BonusText.instance()
 	combo_text.text = text
-	var x = 0#($CornersCombo/LowerRight.position.x + $CornersCombo/UpperLeft.position.y)/2#$CornersCombo/UpperLeft.position.x + randi() % int($CornersCombo/LowerRight.position.x - $CornersCombo/UpperLeft.position.x)
-	var y = 0#($CornersCombo/LowerRight.position.y + $CornersCombo/UpperLeft.position.x)/2#$CornersCombo/UpperLeft.position.y + randi() % int($CornersCombo/LowerRight.position.y - $CornersCombo/UpperLeft.position.y)
-	combo_text.position = Vector2(x, y)
+#	Calculate random offset (TODO)
+	combo_text.position = position
 	add_child(combo_text)
 
 func add_combo(display=true):
 	Constants.combo += 1
 	# Display combo text
-	if display and Constants.combo >= 2:
-		display("X" + str(Constants.combo))
-	# Change mode if needed and play according shockwave
-#	if Constants.combo - last_change_mode_combo_level >= 2:
-##		combo = 0
-#		last_change_mode_combo_level = Constants.combo_level
-#		change_mode()
-#		$PostEffect.play_shockwave(Constants.shockwave_force_strong, Constants.shockwave_thickness_strong)
-#	else:
-	$PostEffect.play_shockwave()
-		
+	if Constants.combo >= 2:
+		display("x" + str(Constants.combo), $Positions/ComboPosition.position)
+
 	combo_time_left = Constants.combo_time
-#	Update swap time (at the end because can depends on mode)
-	update_swap_time()
+	update_swap_time() # Update swap time (at the end because can depends on mode)
 
 func change_mode():
 	for child in $Games.get_children():
 		child.visible = false
 	setup_game()
-	
+
 func update_swap_time():
 	if ($ChangeState.wait_time != Constants.swap_time):
 		$ChangeState.stop()
 		$ChangeState.wait_time = Constants.swap_time
 		$ChangeState.start()
-	
+
 func setup_game():
 #	var index_game = randi() % $Games.get_child_count()
 	Constants.game_mode  = 1 - Constants.game_mode # NOTE Not fixed
-	
+
 	var game_child = $Games.get_child(Constants.game_mode)
 	game_child.setup()
 	game_child.visible = true
@@ -94,7 +88,7 @@ func setup_game():
 
 func stop_game():
 	$ChangeState.stop()
-	
+
 func _on_TimeTrial_lost():
 #	Stop Timer
 	$ChangeState.stop()

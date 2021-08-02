@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Game/GameMaster.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Combo/Combo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/BonusText/BonusText.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game/Game.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/TimeTrial/TimeTrial.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Game/GameKalei.tscn" type="PackedScene" id=5]
@@ -17,7 +17,7 @@ stereo = true
 [node name="GameMaster" type="Node2D"]
 pause_mode = 2
 script = ExtResource( 1 )
-ComboScene = ExtResource( 2 )
+BonusText = ExtResource( 2 )
 
 [node name="Games" type="Node2D" parent="."]
 
@@ -36,13 +36,13 @@ pause_mode = 1
 position = Vector2( 0.317512, -1.33698 )
 z_index = 1
 
-[node name="CornersCombo" type="Node" parent="."]
+[node name="Positions" type="Node" parent="."]
 
-[node name="UpperLeft" type="Node2D" parent="CornersCombo"]
-position = Vector2( 256, 256 )
+[node name="ComboPosition" type="Node2D" parent="Positions"]
+position = Vector2( 360, 426 )
 
-[node name="LowerRight" type="Node2D" parent="CornersCombo"]
-position = Vector2( 464, 1024 )
+[node name="LevelPosition" type="Node2D" parent="Positions"]
+position = Vector2( 360, 856 )
 
 [node name="ComboTimer" type="Timer" parent="."]
 

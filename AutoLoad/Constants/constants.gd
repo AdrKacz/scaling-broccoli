@@ -27,7 +27,7 @@ enum GameModeEnum { # Use an array below to differentiate params for different m
 
 const level_to_params = [ # index to seconds
 	{"swap_time": [0.8, 0.5], "swap_time_identique": [0.85, 0.55], "combo_swap_spawn": 5, "time_bonus_base": 3, "time_bonus_combo": 0, "time_malus": 4, "score_to_next_level": 10}, # no combo_swap_spawn at combo level 0
-	{"swap_time": [0.5, 0.5], "swap_time_identique": [0.65, 0.55], "combo_swap_spawn": 5, "time_bonus_base": 2.5, "time_bonus_combo": 0.5, "time_malus": 5, "score_to_next_level": 30}, # no combo_swap_spawn at combo level 0
+	{"swap_time": [0.5, 0.5], "swap_time_identique": [0.65, 0.55], "combo_swap_spawn": 5, "time_bonus_base": 2.5, "time_bonus_combo": 0.5, "time_malus": 5, "score_to_next_level": 100}, # no combo_swap_spawn at combo level 0
 	{"swap_time": [0.45, 105], "swap_time_identique": [0.53, 0.5], "combo_swap_spawn": 6, "time_bonus_base": 2, "time_bonus_combo": 0.5, "time_malus": 6, "score_to_next_level": 63}, # Survivable a l'infini pas trop dur
 	{"swap_time": [0.4, 0.9], "swap_time_identique": [0.45, 0.5], "combo_swap_spawn": 6, "time_bonus_base": 1, "time_bonus_combo": 0.5, "time_malus": 4.5, "score_to_next_level": 103}, # Dur a survivre, encore bon, dur
 	{"swap_time": [0.35, 0.8], "swap_time_identique": [0.41, 0.5], "combo_swap_spawn": 6, "time_bonus_base": 2, "time_bonus_combo": 0.5, "time_malus": 4.3, "score_to_next_level": 189}, # techniiique!
