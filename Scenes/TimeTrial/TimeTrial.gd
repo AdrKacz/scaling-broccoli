@@ -8,6 +8,9 @@ const max_wick = 400
 var static_time = Constants.maximum_time
 var animated_time = Constants.maximum_time
 
+func start_timer():
+	$UpdateUI.start()
+
 func add_time(dt):
 	update_time(static_time + dt)
 	

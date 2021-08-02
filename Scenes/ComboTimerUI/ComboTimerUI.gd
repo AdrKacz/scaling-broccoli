@@ -39,6 +39,7 @@ func _process(delta):
 
 func update_time(new_static_time, delta):
 #	Tween for interpolation
+	print("Hello with", new_static_time)
 	static_time = clamp(new_static_time, 0, Constants.combo_time)
 	$Tween.interpolate_property(self, "animated_time", animated_time, static_time, delta)
 	if not $Tween.is_active():

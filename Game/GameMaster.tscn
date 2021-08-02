@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Game/GameMaster.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/BonusText/BonusText.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Game/GameKalei.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/PauseInterface/PauseInterface.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/PostEffect/PostEffect.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/CountDown/CountDown.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/audio/change_state_sound.wav" type="AudioStream" id=9]
 
 [sub_resource type="AudioStreamSample" id=1]
@@ -18,6 +19,7 @@ stereo = true
 pause_mode = 2
 script = ExtResource( 1 )
 BonusText = ExtResource( 2 )
+CountDown = ExtResource( 8 )
 
 [node name="Games" type="Node2D" parent="."]
 
@@ -44,14 +46,13 @@ position = Vector2( 360, 426 )
 [node name="LevelPosition" type="Node2D" parent="Positions"]
 position = Vector2( 360, 856 )
 
-[node name="ComboTimer" type="Timer" parent="."]
+[node name="CenterPosition" type="Position2D" parent="Positions"]
+position = Vector2( 360, 680 )
 
 [node name="ComboTimerUI" type="Timer" parent="."]
 wait_time = 0.1
-autostart = true
 
 [node name="ChangeState" type="Timer" parent="."]
-wait_time = 4.161
 
 [node name="Pause" parent="." instance=ExtResource( 6 )]
 anchor_left = 1.0

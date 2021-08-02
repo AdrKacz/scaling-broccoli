@@ -17,8 +17,6 @@ func update_background_state():
 func update_combo_time(new_value, delta):
 	for child in $Games.get_children():
 		child.update_combo_time(new_value, delta)
-	
-
 
 
 func _on_Game_miss():

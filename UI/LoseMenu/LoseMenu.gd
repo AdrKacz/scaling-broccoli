@@ -23,7 +23,7 @@ func _on_SubmitScore_pressed():
 		yield(get_tree().create_timer(1), "timeout")
 		$Control/CenterContainer/VBox/VBoxContainer/SubmitScore/CenterContainer/Label.text = initial_text
 	else:	
-		Session.submit_score(Constants.score, name)
+		Session.submit_score(Constants.score, name.to_upper())
 
 
 func _on_MainMenu_pressed():

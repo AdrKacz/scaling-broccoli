@@ -17,7 +17,7 @@ signal no_combo_time_left
 #	$ChangeState.start()
 #	$Background.change_state(0)
 #	$Character.set_state(1)
-	
+
 func setup():
 	$Character.set_state_to(StateManager.get_character_next_state($Background.state, $Character.state))
 	update_background_state()

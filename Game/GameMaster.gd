@@ -1,6 +1,7 @@
 extends Node2D
 
 export (PackedScene) var BonusText
+export (PackedScene) var CountDown
 
 var combo_time_left = 0
 var success_counter = 0
@@ -12,7 +13,12 @@ var last_change_mode_combo = 0
 
 
 func _ready():
-	Constants.game_mode = 0 # randi() % 2 # NOTE Not fixed
+	var count_down = CountDown.instance()
+	count_down.position = $Positions/CenterPosition.position
+	count_down.connect("end_count_down", self, "_on_CountDown_end_count_down")
+	add_child(count_down)
+	
+	Constants.game_mode = randi() % 2
 	setup_game()
 
 func score():
@@ -24,8 +30,7 @@ func score():
 		$PostEffect.play_shockwave()
 		
 	var level_before = Constants.level
-	Constants.score += (Constants.level + 1) * (Constants.combo + 1) # See if it's the best way to score
-#	Constants.score += Constants.combo + 1
+	Constants.score += (Constants.level + 1) * (Constants.combo + 1)
 	var level_after = Constants.level
 	$TimeTrial.add_time(Constants.time_bonus_to_next)
 	add_combo()
@@ -37,6 +42,7 @@ func wrong():
 	$TimeTrial.remove_time(Constants.time_malus)
 	combo_time_left = 0
 	$Games.get_child(Constants.game_mode).update_combo_time(0, $ComboTimerUI.wait_time)
+	reset_combo()
 
 func reset_combo():
 	if Constants.combo >= 2:
@@ -80,7 +86,7 @@ func setup_game():
 	game_child.setup()
 	game_child.visible = true
 	$ChangeState.wait_time = Constants.swap_time
-	$ChangeState.start()
+#	$ChangeState.start()
 	# Augment difficulty
 #	Constants.hardness += 0.2
 
@@ -116,3 +122,9 @@ func _on_ChangeState_timeout():
 
 func _on_Game_no_combo_time_left():
 	reset_combo()
+
+
+func _on_CountDown_end_count_down():
+	$TimeTrial.start_timer()
+	$ComboTimerUI.start()
+	$ChangeState.start()

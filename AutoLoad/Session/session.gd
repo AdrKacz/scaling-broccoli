@@ -36,6 +36,7 @@ func unpause():
 func start_game():
 	Constants.score = 0
 	Constants.level = 0
+	Constants.combo = 0
 	$ClickSound.play()
 	unpause()
 	get_tree().change_scene(game_path)
