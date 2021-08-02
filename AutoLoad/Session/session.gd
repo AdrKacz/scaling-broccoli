@@ -6,8 +6,8 @@ export (String, FILE, "*.tscn") var leaderboard_path = "res://UI/Leaderboard/Lea
 
 
 var sounds = []
-		# mute while dev
-var mute = true
+# mute while dev
+var mute = false
 
 func _ready():
 

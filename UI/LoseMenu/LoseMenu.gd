@@ -10,14 +10,20 @@ func set_visible_to(value):
 func _on_SubmitScore_pressed():
 	$ClickSound.play()
 	var name = $Control/CenterContainer/VBox/VBoxContainer/Name.text
+	var errorMessage = ""
 	for letter in name:
-		if not letter in allowed: # TODO Hello Regex
-			$Control/CenterContainer/VBox/VBoxContainer/Name.text = "Not valid"
-			return
-	if name.length() <= 2:
-		$Control/CenterContainer/VBox/VBoxContainer/Name.text = "Too short"
-		return
-	Session.submit_score(Constants.score, name)
+		if not letter in allowed: # TODO Hello Regex	
+			errorMessage = "Not valid"		
+	if name.length() != 3:
+		errorMessage = "Too short"
+	
+	if errorMessage.length() > 0:
+		var initial_text = $Control/CenterContainer/VBox/VBoxContainer/SubmitScore/CenterContainer/Label.text
+		$Control/CenterContainer/VBox/VBoxContainer/SubmitScore/CenterContainer/Label.text = errorMessage
+		yield(get_tree().create_timer(1), "timeout")
+		$Control/CenterContainer/VBox/VBoxContainer/SubmitScore/CenterContainer/Label.text = initial_text
+	else:	
+		Session.submit_score(Constants.score, name)
 
 
 func _on_MainMenu_pressed():

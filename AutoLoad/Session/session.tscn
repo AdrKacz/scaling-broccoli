@@ -25,7 +25,7 @@ stream = ExtResource( 5 )
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
-volume_db = -20.174
+volume_db = -3.0
 
 [connection signal="request_completed" from="HTTPSession" to="." method="_on_HTTPSession_request_completed"]
 [connection signal="finished" from="LostSound" to="." method="_on_LostSound_finished"]
