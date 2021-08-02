@@ -44,8 +44,8 @@ func reset_combo():
 func display(text):
 	var combo_text = ComboScene.instance()
 	combo_text.text = text
-	var x = $CornersCombo/UpperLeft.position.x + randi() % int($CornersCombo/LowerRight.position.x - $CornersCombo/UpperLeft.position.x)
-	var y = $CornersCombo/UpperLeft.position.y + randi() % int($CornersCombo/LowerRight.position.y - $CornersCombo/UpperLeft.position.y)
+	var x = 0#($CornersCombo/LowerRight.position.x + $CornersCombo/UpperLeft.position.y)/2#$CornersCombo/UpperLeft.position.x + randi() % int($CornersCombo/LowerRight.position.x - $CornersCombo/UpperLeft.position.x)
+	var y = 0#($CornersCombo/LowerRight.position.y + $CornersCombo/UpperLeft.position.x)/2#$CornersCombo/UpperLeft.position.y + randi() % int($CornersCombo/LowerRight.position.y - $CornersCombo/UpperLeft.position.y)
 	combo_text.position = Vector2(x, y)
 	add_child(combo_text)
 
@@ -111,6 +111,10 @@ func _on_Pause_pressed():
 	Session.pause_with_opacity()
 
 func _on_ChangeState_timeout():
+#	if randi() % 2 == 1:
+#		display("level\n2")
+#	else:
+#		display("+3s")
 	$ChangeStateSound.play()
 	Constants.swap_left_before_combo_ends -= 1
 	$Games.get_child(Constants.game_mode).update_background_state()

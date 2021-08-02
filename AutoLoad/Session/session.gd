@@ -6,8 +6,14 @@ export (String, FILE, "*.tscn") var leaderboard_path = "res://UI/Leaderboard/Lea
 
 
 var sounds = []
+		# mute while dev
+var mute = true
 
 func _ready():
+
+	if not OS.has_feature("release"):
+		if mute:
+			AudioServer.set_bus_mute(0, true)
 	sounds.append(preload("res://assets/audio/taunts/taunt1.mp3"))
 	sounds.append(preload("res://assets/audio/taunts/taunt2.mp3"))
 	sounds.append(preload("res://assets/audio/taunts/taunt3.mp3"))
@@ -29,6 +35,7 @@ func unpause():
 
 func start_game():
 	Constants.score = 0
+	Constants.level = 0
 	$ClickSound.play()
 	unpause()
 	get_tree().change_scene(game_path)
