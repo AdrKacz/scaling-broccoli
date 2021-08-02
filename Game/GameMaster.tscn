@@ -80,3 +80,4 @@ pitch_scale = 0.42
 [connection signal="lost" from="TimeTrial" to="." method="_on_TimeTrial_lost"]
 [connection signal="timeout" from="ComboTimerUI" to="." method="_on_ComboTimerUI_timeout"]
 [connection signal="timeout" from="ChangeState" to="." method="_on_ChangeState_timeout"]
+[connection signal="pressed" from="Pause" to="." method="_on_Pause_pressed"]

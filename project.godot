@@ -20,6 +20,7 @@ Constants="*res://AutoLoad/Constants/constants.gd"
 DataStore="*res://AutoLoad/DataStore/data_store.gd"
 Session="*res://AutoLoad/Session/session.tscn"
 StateManager="*res://AutoLoad/StateManager/StateManager.gd"
+NetworkManager="*res://AutoLoad/NetworkManager/NetworkManager.tscn"
 
 [display]
 

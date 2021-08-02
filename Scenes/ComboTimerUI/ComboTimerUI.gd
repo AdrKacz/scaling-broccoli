@@ -36,7 +36,7 @@ func _process(delta):
 		emit_signal("no_time_left")
 		$Sprite/Control.visible = false;
 		has_not_time_left = true
-	
+
 func update_time(new_static_time, delta):
 #	Tween for interpolation
 	static_time = clamp(new_static_time, 0, Constants.combo_time)

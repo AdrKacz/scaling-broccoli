@@ -5,8 +5,6 @@ export (String, FILE, "*.tscn") var main_menu_path = "res://UI/MainMenu/MainMenu
 export (String, FILE, "*.tscn") var leaderboard_path = "res://UI/Leaderboard/Leaderboard.tscn"
 
 
-onready var root = get_tree().get_root()
-var pause_menu = null
 var sounds = []
 
 func _ready():
@@ -56,7 +54,6 @@ func lose(to, score):
 
 
 func submit_score(score, name):
-	#var error = $HTTPSession.request("https://cqdzwos026.execute-api.eu-west-1.amazonaws.com/items", ["Content-Type: application/json"], false, 2, JSON.print({"id": str(score) + name + str(randi()), "price": score, "name": name}))
 	var id = str(score) + name + str(randi())
 	var error = $HTTPSession.request("https://a6yspcizd0.execute-api.eu-west-1.amazonaws.com/add/{id}/{name}/{score}".format({"id":id,"name":name,"score":score}))
 

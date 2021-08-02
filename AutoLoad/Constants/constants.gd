@@ -16,7 +16,7 @@ const shockwave_thickness_strong = 0.2
 
 # Gameplay
 const can_be_background_state = true
-const maximum_time = 300 # in seconds
+const maximum_time = 30 # in seconds
 
 
 # State Manager
@@ -26,7 +26,7 @@ enum GameModeEnum { # Use an array below to differentiate params for different m
 }
 
 const combo_level_to_params = [ # index to seconds
-	{"swap_time": [3.0, 3.0], "time_bonus_to_next": 1, "time_malus": 5}, # no combo_swap_spawn at combo level 0
+	{"swap_time": [1.0, 1.0], "combo_swap_spawn": 5, "time_bonus_to_next": 1, "time_malus": 5}, # no combo_swap_spawn at combo level 0
 	{"swap_time": [0.6, 0.9], "combo_swap_spawn": 5, "time_bonus_to_next": 1, "time_malus": 5},
 	{"swap_time": [0.6, 0.8], "combo_swap_spawn": 4, "time_bonus_to_next": 1, "time_malus": 5},
 	{"swap_time": [0.6, 0.7], "combo_swap_spawn": 5, "time_bonus_to_next": 1, "time_malus": 5},
