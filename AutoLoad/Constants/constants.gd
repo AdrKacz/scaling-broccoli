@@ -25,22 +25,20 @@ enum GameModeEnum { # Use an array below to differentiate params for different m
 	GameKalei
 }
 
-const combo_level_to_params = [ # index to seconds
-	{"swap_time": [1.0, 1.0], "combo_swap_spawn": 5, "time_bonus_to_next": 1, "time_malus": 5}, # no combo_swap_spawn at combo level 0
-	{"swap_time": [0.6, 0.9], "combo_swap_spawn": 5, "time_bonus_to_next": 1, "time_malus": 5},
-	{"swap_time": [0.6, 0.8], "combo_swap_spawn": 4, "time_bonus_to_next": 1, "time_malus": 5},
-	{"swap_time": [0.6, 0.7], "combo_swap_spawn": 5, "time_bonus_to_next": 1, "time_malus": 5},
-	{"swap_time": [0.5, 0.7], "combo_swap_spawn": 5, "time_bonus_to_next": 1, "time_malus": 5},
-	{"swap_time": [0.5, 0.6], "combo_swap_spawn": 5, "time_bonus_to_next": 1, "time_malus": 5},
-	{"swap_time": [0.5, 0.6], "combo_swap_spawn": 5, "time_bonus_to_next": 1, "time_malus": 5},
-	{"swap_time": [0.4, 0.5], "combo_swap_spawn": 5, "time_bonus_to_next": 1, "time_malus": 5},
-	{"swap_time": [0.4, 0.5], "combo_swap_spawn": 5, "time_bonus_to_next": 1, "time_malus": 5},
-	{"swap_time": [0.4, 0.4], "combo_swap_spawn": 5, "time_bonus_to_next": 1, "time_malus": 5},
-	{"swap_time": [0.4, 0.4], "combo_swap_spawn": 5, "time_bonus_to_next": 1, "time_malus": 5},
-	{"swap_time": 0.3, "combo_swap_spawn": 5, "time_bonus_to_next": 1, "time_malus": 5},
+const level_to_params = [ # index to seconds
+	{"swap_time": [0.8, 0.5], "swap_time_identique": [0.85, 0.55], "combo_swap_spawn": 5, "time_bonus_base": 2, "time_bonus_combo": 0, "time_malus": 2, "score_to_next_level": 10}, # no combo_swap_spawn at combo level 0
+	{"swap_time": [0.5, 0.5], "swap_time_identique": [0.55, 0.55], "combo_swap_spawn": 5, "time_bonus_base": 1, "time_bonus_combo": 1, "time_malus": 2, "score_to_next_level": 30}, # no combo_swap_spawn at combo level 0
+	{"swap_time": [0.45, 105], "swap_time_identique": [0.53, 0.5], "combo_swap_spawn": 6, "time_bonus_base": 2.5, "time_bonus_combo": 0.5, "time_malus": 5, "score_to_next_level": 63}, # Survivable a l'infini pas trop dur
+	{"swap_time": [0.4, 0.9], "swap_time_identique": [0.45, 0.5], "combo_swap_spawn": 6, "time_bonus_base": 1, "time_bonus_combo": 1, "time_malus": 4.5, "score_to_next_level": 103}, # Dur a survivre, encore bon, dur
+	{"swap_time": [0.35, 0.8], "swap_time_identique": [0.41, 0.5], "combo_swap_spawn": 6, "time_bonus_base": 2, "time_bonus_combo": 1, "time_malus": 4.3, "score_to_next_level": 189}, # techniiique!
+	{"swap_time": [0.3, 0.8], "swap_time_identique": [0.35, 0.5], "combo_swap_spawn": 7, "time_bonus_base": 2.3, "time_bonus_combo": 0, "time_malus": 4.3, "score_to_next_level": 283}, # siii dur, encore faisable si t'es bouillotte
+	{"swap_time": [0.28, 0.8], "swap_time_identique": [0.33, 0.5], "combo_swap_spawn": 7, "time_bonus_base": 2.3, "time_bonus_combo": 0, "time_malus": 4.3, "score_to_next_level": 365}, # siii dur, encore faisable si t'es bouillotte
+	{"swap_time": [0.27, 0.8], "swap_time_identique": [0.31, 0.5], "combo_swap_spawn": 8, "time_bonus_base": 2.3, "time_bonus_combo": 0, "time_malus": 4.3, "score_to_next_level": 460}, # siii dur, encore faisable si t'es bouillotte
+	{"swap_time": [0.25, 0.9], "swap_time_identique": [0.27, 0.5], "combo_swap_spawn": 9, "time_bonus_base": 3, "time_bonus_combo": 1, "time_malus": 5, "score_to_next_level": INF},
 ]
-
-
+# liste des scores pour monter de tous les niveaux 
+# Sans jamais perdre de combo 10,62,188,420,1160,11760
+# En perdant le combo         10,30,60 ,100, 150,  210,280,360, 450, 550, 660, 780, 910
 # ===== ===== =====
 # Color definitions
 enum StateEnum {
@@ -61,11 +59,14 @@ const State = {
 # ==== ===== =====
 # Variables definitions
 var game_mode = 0 setget setter_game_mode, getter_game_mode
-var combo_level = 0 setget setter_combo_level, getter_combo_level
+var score = 0 setget setter_score, getter_score
+var level = 0 setget setter_level, getter_level
+var combo = 0 setget setter_combo, getter_combo
 var swap_time = 0 setget setter_swap_time, getter_swap_time
 var combo_time = 0 setget setter_combo_time, getter_combo_time
 var time_bonus_to_next = 0 setget setter_time_bonus_to_next, getter_time_bonus_to_next
 var time_malus = 0 setget setter_time_malus, getter_time_malus
+var is_same_state = false setget setter_is_same_state
 
 var swap_left_before_combo_ends = 0 setget setter_swap_left_before_combo_ends, getter_swap_left_before_combo_ends
 
@@ -78,22 +79,45 @@ func setter_game_mode(new_value):
 func getter_game_mode():
 	return game_mode
 
-# Combo level
-func setter_combo_level(new_value):
-#	combo_level = clamp(new_value, 0, combo_level_to_params.size() - 1)
-	swap_left_before_combo_ends = generic_getter("combo_swap_spawn") + 1 # +1 to count for the swap from the  combo level upgrade
-	return combo_level
+# Level
+func setter_level(new_value):
+#	level = clamp(new_value, 0, combo_level_to_params.size() - 1)
+	return level
 
-func getter_combo_level():
-	return combo_level
+func getter_level():
+	return level
+	
+# Score
+func setter_score(new_value):
+	score = new_value
+	print(score)
+	if score >= generic_getter("score_to_next_level"):
+		level += 1
+	return score
+	
+func getter_score():
+	return score
+
+# Combo
+func setter_combo(new_value):
+	combo = new_value
+	setter_swap_left_before_combo_ends(generic_getter("combo_swap_spawn") + 1)
+	return combo
+
+func getter_combo():
+	return combo
 	
 # Swap left before Combo Ends
 func setter_swap_left_before_combo_ends(new_value):
-	swap_left_before_combo_ends = clamp(new_value, 0, generic_getter("combo_swap_spawn"))
-	return combo_level
+	swap_left_before_combo_ends = clamp(new_value, 0, generic_getter("combo_swap_spawn") + 1)
+	return swap_left_before_combo_ends
 
 func getter_swap_left_before_combo_ends():
 	return swap_left_before_combo_ends
+
+func setter_is_same_state(new_value):
+	is_same_state = new_value
+	return is_same_state
 
 # Empty setters
 func setter_swap_time(new_value):
@@ -104,10 +128,11 @@ func setter_time_bonus_to_next(new_value):
 	pass
 func setter_time_malus(new_value):
 	pass
+
 	
 # Getters
 func generic_getter(key):
-	var local_base = combo_level_to_params[combo_level].get(key, 0)
+	var local_base = level_to_params[level].get(key, 0)
 	var local_array
 	if typeof(local_base) == TYPE_ARRAY:
 		local_array = local_base
@@ -117,13 +142,15 @@ func generic_getter(key):
 	return local_array[game_mode]
 	
 func getter_swap_time():
+	if is_same_state:
+		return generic_getter("swap_time_identique")
 	return generic_getter("swap_time")
 	
 func getter_combo_time():
 	return generic_getter("combo_swap_spawn") * generic_getter("swap_time")
 	
 func getter_time_bonus_to_next():
-	return generic_getter("time_bonus_to_next")
+	return generic_getter("time_bonus_base") + generic_getter("time_bonus_combo") * combo
 	
 func getter_time_malus():
 	return generic_getter("time_malus")

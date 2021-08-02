@@ -1,13 +1,11 @@
 extends CanvasLayer
 
-var score = -1
 var allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz -_1234567890"
 
 func set_visible_to(value):
 	$Control.visible = value
+	$Control/CenterContainer/VBox/Score.text = str(Constants.score)
 
-func _ready():
-	$Control/CenterContainer/VBox/Score.text = str(score)
 
 func _on_SubmitScore_pressed():
 	$ClickSound.play()
@@ -19,7 +17,7 @@ func _on_SubmitScore_pressed():
 	if name.length() <= 2:
 		$Control/CenterContainer/VBox/VBoxContainer/Name.text = "Too short"
 		return
-	Session.submit_score(score, name)
+	Session.submit_score(Constants.score, name)
 
 
 func _on_MainMenu_pressed():

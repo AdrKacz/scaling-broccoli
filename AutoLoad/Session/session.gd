@@ -28,6 +28,7 @@ func unpause():
 	get_tree().paused = false
 
 func start_game():
+	Constants.score = 0
 	$ClickSound.play()
 	unpause()
 	get_tree().change_scene(game_path)
@@ -42,11 +43,10 @@ func main_menu():
 	unpause()
 	get_tree().change_scene(main_menu_path)
 	
-func lose(to, score):
+func lose():
 	sounds.shuffle()
-	$LostSound.stream=sounds.front()
+	$LostSound.stream = sounds.front()
 	$LostSound.play()
-	$LoseMenu.score = score
 	
 	get_tree().paused = true
 	$PauseMenu.set_visible_to(false)

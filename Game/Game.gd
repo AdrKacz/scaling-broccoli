@@ -19,8 +19,8 @@ signal no_combo_time_left
 #	$Character.set_state(1)
 	
 func setup():
-	update_background_state()
 	$Character.set_state_to(StateManager.get_character_next_state($Background.state, $Character.state))
+	update_background_state()
 	
 	
 func update_combo_time(new_value, delta):
@@ -32,8 +32,8 @@ func _on_Character_click(state):
 	if $Character.state == $Background.state:
 		emit_signal("score")
 		# Update background and character
-		update_background_state()
 		$Character.set_state_to(StateManager.get_character_next_state($Background.state, $Character.state))
+		update_background_state()
 
 	# He lost
 	else:
