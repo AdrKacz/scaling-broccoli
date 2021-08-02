@@ -21,7 +21,7 @@ func score():
 	$TimeTrial.add_time(Constants.time_bonus_to_next)
 	if level_before < level_after:
 		$TimeTrial.add_time(Constants.maximum_time)
-		display("Level" + str(level_after))
+		display("Level\n" + str(level_after))
 		add_combo(false)
 	else:
 		add_combo()
