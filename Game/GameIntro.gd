@@ -8,6 +8,9 @@ func _ready():
 	var correct_index = randi() % $Games.get_child_count()
 	$Games.get_child(correct_index).update_background_state_to(correct_color)
 	$Games.get_child(correct_index).update_character_state_to(correct_color)
+#	Place pointer
+	$PointerIntro.position = $Positions.get_child(correct_index).position
+	$PointerIntro.play_animation()
 	
 	for i in 4:
 #		Get wrong couple

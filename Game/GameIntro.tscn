@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Game/Game.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/GameIntro.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/PointerIntro/PointerIntro.tscn" type="PackedScene" id=3]
 
 [node name="GameIntro" type="Node2D"]
 script = ExtResource( 2 )
@@ -22,6 +23,24 @@ scale = Vector2( 0.5, 0.5 )
 [node name="Game4" parent="Games" instance=ExtResource( 1 )]
 position = Vector2( 360, 640 )
 scale = Vector2( 0.5, 0.5 )
+
+[node name="Positions" type="Node2D" parent="."]
+
+[node name="Game1" type="Position2D" parent="Positions"]
+position = Vector2( 180, 320 )
+
+[node name="Game2" type="Position2D" parent="Positions"]
+position = Vector2( 540, 320 )
+
+[node name="Game3" type="Position2D" parent="Positions"]
+position = Vector2( 180, 960 )
+
+[node name="Game4" type="Position2D" parent="Positions"]
+position = Vector2( 540, 960 )
+
+[node name="PointerIntro" parent="." instance=ExtResource( 3 )]
+position = Vector2( 180, 320 )
+scale = Vector2( 10, 10 )
 
 [connection signal="miss" from="Games/Game" to="." method="_on_Game_miss"]
 [connection signal="no_combo_time_left" from="Games/Game" to="." method="_on_Game_no_combo_time_left"]
