@@ -28,7 +28,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 		entry.rank = str(i)
 		entry.player = elt["name"]
 		entry.score = str(elt["score"])
-		$MarginContainer/VBoxContainer/ScrollContainer/VBox.add_child(entry)
+		$MarginContainer/VBoxContainer/Panel/VBox/ScrollContainer/VBoxContainer.add_child(entry)
 		i += 1
 
 
