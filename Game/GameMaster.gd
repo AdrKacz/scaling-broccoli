@@ -11,16 +11,6 @@ var last_change_mode_combo = 0
 
 # TODO : Signal continue emiting when no game mode activated (...)
 
-
-func _ready():
-	var count_down = CountDown.instance()
-	count_down.position = $Positions/CenterPosition.position
-	count_down.connect("end_count_down", self, "_on_CountDown_end_count_down")
-	add_child(count_down)
-	
-	Constants.game_mode = randi() % 2
-	setup_game()
-
 func score():
 	success_counter += 1
 	if success_counter % 3 == 0:
@@ -39,6 +29,7 @@ func score():
 		display("Up", $Positions/LevelPosition.position)
 
 func wrong():
+	print("Call wrong")
 	$TimeTrial.remove_time(Constants.time_malus)
 	combo_time_left = 0
 	$Games.get_child(Constants.game_mode).update_combo_time(0, $ComboTimerUI.wait_time)
@@ -124,7 +115,11 @@ func _on_Game_no_combo_time_left():
 	reset_combo()
 
 
-func _on_CountDown_end_count_down():
+func _on_GameIntro_score():
+	$Intro/GameIntro.queue_free()
+	Constants.game_mode = randi() % 2
+	setup_game()
 	$TimeTrial.start_timer()
 	$ComboTimerUI.start()
 	$ChangeState.start()
+	score()

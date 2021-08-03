@@ -44,6 +44,13 @@ func _on_Character_click(state):
 func update_background_state():
 	var new_background_state = StateManager.get_background_next_state($Background.state, $Character.state)
 	$Background.change_state(new_background_state)
+	
+func update_background_state_to(state):
+	var new_background_state = StateManager.get_background_next_state($Background.state, $Character.state)
+	$Background.change_state(state)
+	
+func update_character_state_to(state):
+	$Character.set_state_to(state)
 
 
 #func change_state(swap=0):

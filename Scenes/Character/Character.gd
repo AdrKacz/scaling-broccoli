@@ -23,7 +23,6 @@ func handle_action():
 
 		
 func change_state(new_state):
-	$State.text = str(new_state)
 	$Sprite.modulate = Constants.State[new_state]
 	state = new_state
 

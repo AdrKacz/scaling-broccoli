@@ -26,15 +26,6 @@ extents = Vector2( 360, 640 )
 [node name="Character" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="State" type="TextEdit" parent="."]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-readonly = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 20, 20 )
 texture = ExtResource( 1 )
