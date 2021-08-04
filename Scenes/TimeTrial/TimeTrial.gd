@@ -29,10 +29,14 @@ func _process(delta):
 	
 #	Update Path
 	$Path2D/PathFollow2D.unit_offset = clamp(1 -  animated_time / Constants.maximum_time, 0, 1)
-	if $Path2D/PathFollow2D.unit_offset >= 0.8 and not $ClockSound.playing:
-		$ClockSound.play()
-	if $Path2D/PathFollow2D.unit_offset >= 0.9 and not $HeartbeatSound.playing:
-		$HeartbeatSound.play()
+	if $Path2D/PathFollow2D.unit_offset >= 0.8:
+		SoundManager.play_clock()
+	elif $Path2D/PathFollow2D.unit_offset >= 0.9:
+		SoundManager.play_heartbeat()
+		SoundManager.play_clock()
+	else:
+		SoundManager.stop_clock()
+		SoundManager.stop_heartbeat()
 #	Check if no time left and emit signal
 #	TODO
 	if animated_time <= 0:

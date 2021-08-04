@@ -18,7 +18,7 @@ func _input(event):
 		handle_action()
 		
 func handle_action():
-	$AudioStreamPlayer2D.play()
+	SoundManager.play_action()
 	emit_signal("click", state)
 
 		

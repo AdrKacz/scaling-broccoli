@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/VT323/VT323-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/CountDown/CountDown.gd" type="Script" id=2]
-[ext_resource path="res://assets/audio/change_state_sound.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/EmptyBigSquare.png" type="Texture" id=4]
-[ext_resource path="res://assets/audio/clock_time_running_out.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Popup"
@@ -62,47 +60,13 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.470588 ), Color( 1, 1, 1, 0.470588 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/4/type = "method"
-tracks/4/path = NodePath("CountDown")
+tracks/4/type = "value"
+tracks/4/path = NodePath("CenterContainer:mouse_filter")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"values": [ {
-"args": [ 0.0 ],
-"method": "play"
-}, {
-"args": [ 0.0 ],
-"method": "play"
-}, {
-"args": [ 0.0 ],
-"method": "play"
-} ]
-}
-tracks/5/type = "method"
-tracks/5/path = NodePath("CountDownFinal")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 3 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ 0.0 ],
-"method": "play"
-} ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("CenterContainer:mouse_filter")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 0, 2.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -125,12 +89,6 @@ script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Popup = SubResource( 1 )
-
-[node name="CountDown" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
-
-[node name="CountDownFinal" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 5 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0

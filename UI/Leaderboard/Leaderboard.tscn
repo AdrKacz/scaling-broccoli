@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://UI/Leaderboard/Leaderboard.gd" type="Script" id=1]
 [ext_resource path="res://UI/Leaderboard/ScoreEntry.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/VT323/VT323-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://ExternalVisuals/BackgroundMain.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/ButtonsV3/SmallButtonUp.png" type="Texture" id=6]
-[ext_resource path="res://assets/audio/click_button.wav" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 128
@@ -14,12 +13,8 @@ outline_size = 8
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxFlat" id=18]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0, 0, 0, 0.705882 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 64
-font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 64
@@ -29,7 +24,9 @@ font_data = ExtResource( 4 )
 size = 64
 font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxEmpty" id=5]
+[sub_resource type="DynamicFont" id=5]
+size = 64
+font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
@@ -39,41 +36,42 @@ font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxEmpty" id=9]
 
-[sub_resource type="Theme" id=10]
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="Theme" id=11]
 resource_local_to_scene = true
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null
 VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = SubResource( 5 )
-VScrollBar/styles/grabber_highlight = SubResource( 6 )
-VScrollBar/styles/grabber_pressed = SubResource( 7 )
-VScrollBar/styles/scroll = SubResource( 8 )
-VScrollBar/styles/scroll_focus = SubResource( 9 )
-
-[sub_resource type="DynamicFont" id=11]
-size = 64
-font_data = ExtResource( 4 )
+VScrollBar/styles/grabber = SubResource( 6 )
+VScrollBar/styles/grabber_highlight = SubResource( 7 )
+VScrollBar/styles/grabber_pressed = SubResource( 8 )
+VScrollBar/styles/scroll = SubResource( 9 )
+VScrollBar/styles/scroll_focus = SubResource( 10 )
 
 [sub_resource type="DynamicFont" id=12]
 size = 64
 font_data = ExtResource( 4 )
 
-[sub_resource type="Curve2D" id=13]
+[sub_resource type="DynamicFont" id=13]
+size = 64
+font_data = ExtResource( 4 )
+
+[sub_resource type="Curve2D" id=14]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0, -32, 0, 0, 0, 0, -32, 0, 0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 0, -32 )
 }
 
-[sub_resource type="Curve" id=14]
+[sub_resource type="Curve" id=15]
 _data = [ Vector2( 0.0045819, 0.936937 ), 0.0, 0.0, 0, 0, Vector2( 0.973654, 0.0945946 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=15]
+[sub_resource type="Gradient" id=16]
 
-[sub_resource type="Curve" id=16]
+[sub_resource type="Curve" id=17]
 _data = [ Vector2( 0.0284091, 0.918513 ), 0.0, 0.0, 0, 0, Vector2( 0.920455, 0.0851798 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Animation" id=17]
-resource_name = "spinner"
+[sub_resource type="Animation" id=18]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("PathFollow2D:unit_offset")
@@ -142,7 +140,7 @@ margin_bottom = 988.0
 grow_horizontal = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 18 )
+custom_styles/panel = SubResource( 2 )
 
 [node name="VBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel"]
 anchor_right = 1.0
@@ -173,7 +171,7 @@ margin_bottom = 65.0
 rect_pivot_offset = Vector2( -1282.07, -193.801 )
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Rank"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -186,7 +184,7 @@ margin_bottom = 65.0
 rect_pivot_offset = Vector2( -1282.07, -193.801 )
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Player"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -199,7 +197,7 @@ margin_bottom = 65.0
 rect_pivot_offset = Vector2( -1282.07, -193.801 )
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Score"
 align = 2
 
@@ -208,7 +206,7 @@ margin_top = 81.0
 margin_right = 688.0
 margin_bottom = 855.0
 size_flags_vertical = 3
-theme = SubResource( 10 )
+theme = SubResource( 11 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel/VBox/ScrollContainer"]
 margin_right = 688.0
@@ -252,7 +250,7 @@ margin_left = 37.0
 margin_top = 95.0
 margin_right = 219.0
 margin_bottom = 160.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Restart"
 __meta__ = {
@@ -284,20 +282,17 @@ margin_left = 76.0
 margin_top = 95.0
 margin_right = 180.0
 margin_bottom = 160.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 7 )
-
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2( 360, 480 )
 scale = Vector2( 2, 2 )
-curve = SubResource( 13 )
+curve = SubResource( 14 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2( 7.66061, -24.3394 )
@@ -315,8 +310,8 @@ spread = 180.0
 gravity = Vector2( 0, 0 )
 initial_velocity = 16.0
 scale_amount = 2.0
-scale_amount_curve = SubResource( 14 )
-color_ramp = SubResource( 15 )
+scale_amount_curve = SubResource( 15 )
+color_ramp = SubResource( 16 )
 
 [node name="FirstLayer" type="CPUParticles2D" parent="Path2D/PathFollow2D"]
 pause_mode = 2
@@ -328,11 +323,11 @@ spread = 180.0
 gravity = Vector2( 0, 0 )
 initial_velocity = 8.0
 scale_amount = 8.0
-scale_amount_curve = SubResource( 16 )
+scale_amount_curve = SubResource( 17 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D"]
 playback_speed = 2.0
-anims/spinner = SubResource( 17 )
+anims/spinner = SubResource( 18 )
 
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/Replay" to="." method="_on_Replay_pressed"]

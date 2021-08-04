@@ -1,12 +1,31 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://UI/PauseMenu/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/ButtonsV3/ButtonUp.png" type="Texture" id=2]
-[ext_resource path="res://assets/audio/click_button.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/VT323/VT323-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/ButtonsV3/ButtonDown.png" type="Texture" id=5]
+[ext_resource path="res://assets/no_sound.png" type="Texture" id=6]
+[ext_resource path="res://assets/sound.png" type="Texture" id=7]
+[ext_resource path="res://assets/no_nusic.png" type="Texture" id=8]
+[ext_resource path="res://assets/music.png" type="Texture" id=9]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 64, 72 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 72, 72 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 9 )
+region_rect = Rect2( 8, 16, 72, 64 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 8 )
+region_rect = Rect2( 8, 16, 72, 64 )
+
+[sub_resource type="DynamicFont" id=5]
 size = 128
 font_data = ExtResource( 4 )
 
@@ -40,19 +59,57 @@ __meta__ = {
 
 [node name="VBox" type="VBoxContainer" parent="Control/Center"]
 margin_left = 104.0
-margin_top = 112.0
+margin_top = 81.0
 margin_right = 616.0
-margin_bottom = 1168.0
+margin_bottom = 1199.0
 size_flags_stretch_ratio = 3.13
-custom_constants/separation = 144
+custom_constants/separation = 100
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HBox" type="HBoxContainer" parent="Control/Center/VBox"]
+margin_left = 178.0
+margin_right = 333.0
+margin_bottom = 50.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_constants/separation = 50
+
+[node name="Sound" type="Button" parent="Control/Center/VBox/HBox"]
+margin_right = 45.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 45, 50 )
+custom_styles/normal = SubResource( 1 )
+
+[node name="NoSound" type="Button" parent="Control/Center/VBox/HBox"]
+visible = false
+margin_left = 49.0
+margin_right = 99.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+custom_styles/normal = SubResource( 2 )
+
+[node name="Music" type="Button" parent="Control/Center/VBox/HBox"]
+margin_left = 95.0
+margin_right = 155.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 60, 50 )
+custom_styles/normal = SubResource( 3 )
+
+[node name="NoMusic" type="Button" parent="Control/Center/VBox/HBox"]
+visible = false
+margin_left = 113.0
+margin_right = 173.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 60, 50 )
+custom_styles/normal = SubResource( 4 )
+
 [node name="Continue" type="TextureButton" parent="Control/Center/VBox"]
+margin_top = 150.0
 margin_right = 512.0
-margin_bottom = 256.0
+margin_bottom = 406.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 texture_normal = ExtResource( 2 )
@@ -74,7 +131,7 @@ margin_left = 52.0
 margin_top = 63.0
 margin_right = 460.0
 margin_bottom = 192.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Continue"
 __meta__ = {
@@ -82,9 +139,9 @@ __meta__ = {
 }
 
 [node name="Restart" type="TextureButton" parent="Control/Center/VBox"]
-margin_top = 400.0
+margin_top = 506.0
 margin_right = 512.0
-margin_bottom = 656.0
+margin_bottom = 762.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 texture_normal = ExtResource( 2 )
@@ -106,7 +163,7 @@ margin_left = 77.0
 margin_top = 63.0
 margin_right = 434.0
 margin_bottom = 192.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Restart"
 __meta__ = {
@@ -114,9 +171,9 @@ __meta__ = {
 }
 
 [node name="MainMenu" type="TextureButton" parent="Control/Center/VBox"]
-margin_top = 800.0
+margin_top = 862.0
 margin_right = 512.0
-margin_bottom = 1056.0
+margin_bottom = 1118.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 texture_normal = ExtResource( 2 )
@@ -138,16 +195,17 @@ margin_left = 154.0
 margin_top = 63.0
 margin_right = 358.0
 margin_bottom = 192.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ClickSound" type="AudioStreamPlayer2D" parent="Control"]
-stream = ExtResource( 3 )
-
+[connection signal="pressed" from="Control/Center/VBox/HBox/Sound" to="." method="_on_Sound_pressed"]
+[connection signal="pressed" from="Control/Center/VBox/HBox/NoSound" to="." method="_on_NoSound_pressed"]
+[connection signal="pressed" from="Control/Center/VBox/HBox/Music" to="." method="_on_Music_pressed"]
+[connection signal="pressed" from="Control/Center/VBox/HBox/NoMusic" to="." method="_on_NoMusic_pressed"]
 [connection signal="pressed" from="Control/Center/VBox/Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="Control/Center/VBox/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="Control/Center/VBox/MainMenu" to="." method="_on_MainMenu_pressed"]

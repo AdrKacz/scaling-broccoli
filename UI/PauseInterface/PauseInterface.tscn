@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/pause.png" type="Texture" id=1]
 [ext_resource path="res://UI/PauseInterface/PauseInterface.gd" type="Script" id=2]
-[ext_resource path="res://assets/audio/click_button.wav" type="AudioStream" id=3]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
@@ -43,8 +42,5 @@ margin_bottom = 64.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
-
-[node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
 
 [connection signal="pressed" from="MarginContainer/Button" to="." method="_on_Button_pressed"]

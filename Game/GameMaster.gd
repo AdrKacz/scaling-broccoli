@@ -37,8 +37,7 @@ func wrong():
 
 func reset_combo():
 	if Constants.combo >= 2:
-		$NoComboSound.play()
-	print("Reset Combo Level")
+		SoundManager.play_no_combo()
 	Constants.combo = 0
 	last_change_mode_combo = 0
 	update_swap_time()
@@ -105,7 +104,7 @@ func _on_Pause_pressed():
 
 func _on_ChangeState_timeout():
 	if not Constants.pause:
-		$ChangeStateSound.play()
+		SoundManager.play_change_state()
 		Constants.swap_left_before_combo_ends -= 1
 		$Games.get_child(Constants.game_mode).update_background_state()
 		update_swap_time()

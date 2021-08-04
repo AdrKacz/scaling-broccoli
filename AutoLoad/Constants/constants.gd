@@ -71,6 +71,8 @@ var is_same_state = false setget setter_is_same_state
 var pause = false setget setter_pause, getter_pause
 
 var swap_left_before_combo_ends = 0 setget setter_swap_left_before_combo_ends, getter_swap_left_before_combo_ends
+var sound = true setget setter_sound, getter_sound
+var music = true setget setter_music, getter_music
 
 
 # Game mode
@@ -116,6 +118,20 @@ func setter_pause(new_value):
 
 func getter_pause():
 	return pause
+# Music
+func setter_music(new_value):
+	music = new_value
+	return music
+
+func getter_music():
+	return music
+# Sound
+func setter_sound(new_value):
+	sound = new_value
+	return sound
+
+func getter_sound():
+	return sound
 	
 # Swap left before Combo Ends
 func setter_swap_left_before_combo_ends(new_value):

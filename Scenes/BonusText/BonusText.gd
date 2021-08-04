@@ -7,6 +7,6 @@ export var text = 0
 func _ready():
 	$CenterContainer/Label.text = str(text)
 	$AnimationPlayer.play("Popup")
-	$BonusSound.play()
+	SoundManager.play_bonus()
 
 	

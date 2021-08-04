@@ -33,7 +33,7 @@ tracks/0/keys = {
 curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2( 19.7493, 12.2507 )
+position = Vector2( 19.7491, 12.2509 )
 rotation = -0.785398
 offset = 117.941
 

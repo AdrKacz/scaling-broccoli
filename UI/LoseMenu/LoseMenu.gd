@@ -8,7 +8,7 @@ func set_visible_to(value):
 
 
 func _on_SubmitScore_pressed():
-	$ClickSound.play()
+	SoundManager.play_click()
 	var name = $Control/CenterContainer/VBox/VBoxContainer/Name.text
 	var errorMessage = ""
 	for letter in name:
@@ -27,10 +27,10 @@ func _on_SubmitScore_pressed():
 
 
 func _on_MainMenu_pressed():
-	$ClickSound.play()
+	SoundManager.play_click()
 	Session.main_menu()
 
 
 func _on_Restart_pressed():
-	$ClickSound.play()
+	SoundManager.play_click()
 	Session.start_game()

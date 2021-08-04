@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Random-1.png-e2677871cee8a2af2a5835b4457084a6.stex"
+path="res://.import/music.png-0ea29b1a6908e877e1d6be40bdf3c0aa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Random-1.png"
-dest_files=[ "res://.import/Random-1.png-e2677871cee8a2af2a5835b4457084a6.stex" ]
+source_file="res://assets/music.png"
+dest_files=[ "res://.import/music.png-0ea29b1a6908e877e1d6be40bdf3c0aa.stex" ]
 
 [params]
 

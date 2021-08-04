@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/VT323/VT323-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/BonusText/BonusText.gd" type="Script" id=2]
-[ext_resource path="res://assets/audio/combo.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/EmptyBigSquare.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
@@ -53,9 +52,6 @@ script = ExtResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 5.0
 anims/Popup = SubResource( 1 )
-
-[node name="BonusSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
