@@ -8,7 +8,6 @@ export (String, FILE, "*.tscn") var leaderboard_path = "res://UI/Leaderboard/Lea
 
 func _ready():
 	randomize()
-	SoundManager.play_music()
 	
 func pause_with_opacity():
 	get_tree().paused = true

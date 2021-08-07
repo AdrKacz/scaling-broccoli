@@ -1,6 +1,6 @@
 extends Node
 
-var mute = false
+var mute = true
 var sounds = []
 
 func _ready():
