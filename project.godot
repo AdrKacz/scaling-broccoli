@@ -12,7 +12,6 @@ config_version=4
 
 config/name="game-jam-merge"
 run/main_scene="res://UI/MainMenu/MainMenu.tscn"
-boot_splash/image="res://ExternalVisuals/BootScreenPNG/BootScreenPNG.001.png"
 config/icon="res://ExternalVisuals/Icon.png"
 
 [autoload]
