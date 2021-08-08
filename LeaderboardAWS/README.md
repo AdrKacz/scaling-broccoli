@@ -35,8 +35,8 @@ exports.handler = async (event, context) => {
 				TableName: "Leaderboard",
 				Item: {
 					id: event.pathParameters.id,
-					name: event.pathParameters.name,
-                    score: event.pathParameters.score,
+					name: event.pathParameters.name.toUpperCase(),
+          score: event.pathParameters.score,
 				}
 			})
 			.promise();
