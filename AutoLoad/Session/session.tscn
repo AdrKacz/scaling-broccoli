@@ -8,10 +8,6 @@
 pause_mode = 2
 script = ExtResource( 1 )
 
-[node name="HTTPSession" type="HTTPRequest" parent="."]
-
 [node name="PauseMenu" parent="." instance=ExtResource( 2 )]
 
 [node name="LoseMenu" parent="." instance=ExtResource( 3 )]
-
-[connection signal="request_completed" from="HTTPSession" to="." method="_on_HTTPSession_request_completed"]

@@ -22,8 +22,9 @@ func _on_SubmitScore_pressed():
 		$Control/CenterContainer/VBox/VBoxContainer/SubmitScore/CenterContainer/Label.text = errorMessage
 		yield(get_tree().create_timer(1), "timeout")
 		$Control/CenterContainer/VBox/VBoxContainer/SubmitScore/CenterContainer/Label.text = initial_text
-	else:	
+	else:
 		Session.submit_score(Constants.score, name.to_upper())
+		$AnimationPlayer.play("wait")
 
 
 func _on_MainMenu_pressed():

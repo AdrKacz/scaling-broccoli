@@ -15,6 +15,7 @@ func _ready():
 	sounds.append(preload("res://assets/audio/taunts/taunt6.mp3"))
 
 func play_music():
+	print("Play Music")
 	$BackgroundMusic.play()
 
 func stop_music():

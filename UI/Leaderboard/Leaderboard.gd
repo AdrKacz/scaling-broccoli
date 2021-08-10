@@ -13,14 +13,13 @@ class MyCustomSorter:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Get the leaderboard from ddb
-	$HTTPRequest.request("https://a6yspcizd0.execute-api.eu-west-1.amazonaws.com/items")
+	NetworkManager.connect("scan", self, "_on_NetworkManager_scan")
+	NetworkManager.scan()
 	$Path2D/AnimationPlayer.play("spinner")
 	
-func _on_HTTPRequest_request_completed(result, response_code, headers, body):
+func _on_NetworkManager_scan(scores):
 	$Path2D.visible = false
-	var json = JSON.parse(body.get_string_from_utf8())
 	
-	var scores = json.result["Items"]
 	scores.sort_custom(MyCustomSorter, "sort_ascending")
 	var i = 1
 	for elt in scores:

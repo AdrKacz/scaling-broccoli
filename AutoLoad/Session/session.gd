@@ -8,6 +8,7 @@ export (String, FILE, "*.tscn") var leaderboard_path = "res://UI/Leaderboard/Lea
 
 func _ready():
 	randomize()
+	NetworkManager.connect("insert", self, "_on_NetworkManager_insert")
 	
 func pause_with_opacity():
 	get_tree().paused = true
@@ -45,11 +46,10 @@ func lose():
 
 
 func submit_score(score, name):
-	var id = str(score) + name + str(randi())
-	var error = $HTTPSession.request("https://a6yspcizd0.execute-api.eu-west-1.amazonaws.com/add/{id}/{name}/{score}".format({"id":id,"name":name,"score":score}))
+	NetworkManager.insert(score, name)
 
 
-func _on_HTTPSession_request_completed(result, response_code, headers, body):
+func _on_NetworkManager_insert(result):
 	unpause()
 	get_tree().change_scene(leaderboard_path)
 
