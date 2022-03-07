@@ -6,7 +6,7 @@ var sounds = []
 func _ready():
 	if not OS.has_feature("release"):
 		if mute:
-			AudioServer.set_bus_mute(0, true)
+			AudioServer.set_bus_mute(0, false)
 	sounds.append(preload("res://assets/audio/taunts/taunt1.mp3"))
 	sounds.append(preload("res://assets/audio/taunts/taunt2.mp3"))
 	sounds.append(preload("res://assets/audio/taunts/taunt3.mp3"))
