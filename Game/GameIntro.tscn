@@ -26,16 +26,16 @@ scale = Vector2( 0.5, 0.5 )
 
 [node name="Positions" type="Node2D" parent="."]
 
-[node name="Game1" type="Position2D" parent="Positions"]
+[node name="Game1" type="Marker2D" parent="Positions"]
 position = Vector2( 180, 320 )
 
-[node name="Game2" type="Position2D" parent="Positions"]
+[node name="Game2" type="Marker2D" parent="Positions"]
 position = Vector2( 540, 320 )
 
-[node name="Game3" type="Position2D" parent="Positions"]
+[node name="Game3" type="Marker2D" parent="Positions"]
 position = Vector2( 180, 960 )
 
-[node name="Game4" type="Position2D" parent="Positions"]
+[node name="Game4" type="Marker2D" parent="Positions"]
 position = Vector2( 540, 960 )
 
 [node name="PointerIntro" parent="." instance=ExtResource( 3 )]

@@ -59,20 +59,20 @@ const State = {
 }
 # ==== ===== =====
 # Variables definitions
-var game_mode = 0 setget setter_game_mode, getter_game_mode
-var score = 0 setget setter_score, getter_score
-var level = 0 setget setter_level, getter_level
-var combo = 0 setget setter_combo, getter_combo
-var swap_time = 0 setget setter_swap_time, getter_swap_time
-var combo_time = 0 setget setter_combo_time, getter_combo_time
-var time_bonus_to_next = 0 setget setter_time_bonus_to_next, getter_time_bonus_to_next
-var time_malus = 0 setget setter_time_malus, getter_time_malus
-var is_same_state = false setget setter_is_same_state
-var pause = false setget setter_pause, getter_pause
+var game_mode = 0: get = getter_game_mode, set = setter_game_mode
+var score = 0: get = getter_score, set = setter_score
+var level = 0: get = getter_level, set = setter_level
+var combo = 0: get = getter_combo, set = setter_combo
+var swap_time = 0: get = getter_swap_time, set = setter_swap_time
+var combo_time = 0: get = getter_combo_time, set = setter_combo_time
+var time_bonus_to_next = 0: get = getter_time_bonus_to_next, set = setter_time_bonus_to_next
+var time_malus = 0: get = getter_time_malus, set = setter_time_malus
+var is_same_state = false: set = setter_is_same_state
+var pause = false: get = getter_pause, set = setter_pause
 
-var swap_left_before_combo_ends = 0 setget setter_swap_left_before_combo_ends, getter_swap_left_before_combo_ends
-var sound = true setget setter_sound, getter_sound
-var music = true setget setter_music, getter_music
+var swap_left_before_combo_ends = 0: get = getter_swap_left_before_combo_ends, set = setter_swap_left_before_combo_ends
+var sound = true: get = getter_sound, set = setter_sound
+var music = true: get = getter_music, set = setter_music
 
 
 # Game mode

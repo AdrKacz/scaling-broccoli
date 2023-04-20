@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Shaders/shockwave.shader" type="Shader" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Shaders/shockwave.gdshader" type="Shader" id=1]
+[ext_resource path="res://icon.png" type="Texture2D" id=2]
 [ext_resource path="res://Shaders/Shockwave.gd" type="Script" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -22,13 +22,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
 }
 
-[node name="Texture" type="Sprite"]
+[node name="Texture2D" type="Sprite2D"]
 material = SubResource( 1 )
 scale = Vector2( 40, 40 )
 texture = ExtResource( 2 )

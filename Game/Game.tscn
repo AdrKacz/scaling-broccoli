@@ -9,12 +9,12 @@
 [node name="Game" type="Node2D" groups=[
 "game",
 ]]
-pause_mode = 1
+process_mode = 1
 script = ExtResource( 5 )
 ComboScene = ExtResource( 3 )
 
 [node name="Background" parent="." instance=ExtResource( 4 )]
-pause_mode = 1
+process_mode = 1
 position = Vector2( 360, 640 )
 
 [node name="ComboTimer" parent="." instance=ExtResource( 2 )]

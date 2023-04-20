@@ -11,7 +11,7 @@
 [ext_resource path="res://Game/GameIntro.tscn" type="PackedScene" id=10]
 
 [node name="GameMaster" type="Node2D"]
-pause_mode = 2
+process_mode = 2
 script = ExtResource( 1 )
 BonusText = ExtResource( 2 )
 CountDown = ExtResource( 8 )
@@ -31,7 +31,7 @@ visible = false
 [node name="GameIntro" parent="Intro" instance=ExtResource( 10 )]
 
 [node name="TimeTrial" parent="." instance=ExtResource( 4 )]
-pause_mode = 1
+process_mode = 1
 
 [node name="PostEffect" parent="." instance=ExtResource( 7 )]
 position = Vector2( 0.317512, -1.33698 )
@@ -45,7 +45,7 @@ position = Vector2( 360, 426 )
 [node name="LevelPosition" type="Node2D" parent="Positions"]
 position = Vector2( 360, 856 )
 
-[node name="CenterPosition" type="Position2D" parent="Positions"]
+[node name="CenterPosition" type="Marker2D" parent="Positions"]
 position = Vector2( 360, 680 )
 
 [node name="ComboTimerUI" type="Timer" parent="."]
@@ -55,10 +55,10 @@ wait_time = 0.1
 
 [node name="Pause" parent="." instance=ExtResource( 6 )]
 anchor_left = 1.0
-margin_left = 712.0
-margin_top = 8.0
-margin_right = 712.0
-margin_bottom = 8.0
+offset_left = 712.0
+offset_top = 8.0
+offset_right = 712.0
+offset_bottom = 8.0
 
 [connection signal="no_combo_time_left" from="Games/GameSolo" to="." method="_on_Game_no_combo_time_left"]
 [connection signal="score" from="Games/GameSolo" to="." method="score"]

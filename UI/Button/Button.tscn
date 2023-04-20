@@ -1,17 +1,17 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/ButtonsV3/ButtonUp.png" type="Texture" id=1]
-[ext_resource path="res://assets/VT323/VT323-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/ButtonsV3/ButtonDown.png" type="Texture" id=3]
+[ext_resource path="res://assets/ButtonsV3/ButtonUp.png" type="Texture2D" id=1]
+[ext_resource path="res://assets/VT323/VT323-Regular.ttf" type="FontFile" id=2]
+[ext_resource path="res://assets/ButtonsV3/ButtonDown.png" type="Texture2D" id=3]
 [ext_resource path="res://UI/Button/SmallButton.gd" type="Script" id=5]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 128
 font_data = ExtResource( 2 )
 
 [node name="Button" type="TextureButton"]
-margin_right = 512.0
-margin_bottom = 256.0
+offset_right = 512.0
+offset_bottom = 256.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 texture_normal = ExtResource( 1 )
@@ -30,12 +30,12 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CenterContainer"]
-margin_left = 154.0
-margin_top = 63.0
-margin_right = 358.0
-margin_bottom = 192.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+offset_left = 154.0
+offset_top = 63.0
+offset_right = 358.0
+offset_bottom = 192.0
+theme_override_fonts/font = SubResource( 1 )
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false

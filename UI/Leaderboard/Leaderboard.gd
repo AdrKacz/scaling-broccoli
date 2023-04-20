@@ -1,7 +1,6 @@
 extends Control
 
-export (PackedScene) var ScoreEntry
-
+@export var ScoreEntry: PackedScene
 
 class MyCustomSorter:
 	static func sort_ascending(a, b):
@@ -13,17 +12,17 @@ class MyCustomSorter:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Get the leaderboard from ddb
-	NetworkManager.connect("scan", self, "_on_NetworkManager_scan")
-	NetworkManager.scan()
+	NetworkManager.connect("scan", Callable(self, "_on_NetworkManager_scan"))
+	NetworkManager.start_scan()
 	$Path2D/AnimationPlayer.play("spinner")
 	
 func _on_NetworkManager_scan(scores):
 	$Path2D.visible = false
 	
-	scores.sort_custom(MyCustomSorter, "sort_ascending")
+	scores.sort_custom(Callable(MyCustomSorter, "sort_ascending"))
 	var i = 1
 	for elt in scores:
-		var entry = ScoreEntry.instance()
+		var entry = ScoreEntry.instantiate()
 		entry.rank = str(i)
 		entry.player = elt["name"]
 		entry.score = str(elt["score"])

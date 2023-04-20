@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Click3.wav-176cd413c127d093b3b94cacb708a58a.sample"
+type="AudioStreamWAV"
+uid="uid://wjc1x48puh4e"
+path="res://.godot/imported/Click3.wav-176cd413c127d093b3b94cacb708a58a.sample"
 
 [deps]
 
 source_file="res://assets/Click-Button-Switch/Click3.wav"
-dest_files=[ "res://.import/Click3.wav-176cd413c127d093b3b94cacb708a58a.sample" ]
+dest_files=["res://.godot/imported/Click3.wav-176cd413c127d093b3b94cacb708a58a.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

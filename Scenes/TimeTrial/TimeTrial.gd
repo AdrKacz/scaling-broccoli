@@ -28,10 +28,10 @@ func _process(delta):
 	$Control/TextureProgressLeft.value = interpolation
 	
 #	Update Path
-	$Path2D/PathFollow2D.unit_offset = clamp(1 -  animated_time / Constants.maximum_time, 0, 1)
-	if $Path2D/PathFollow2D.unit_offset >= 0.8:
+	$Path2D/PathFollow2D.progress_ratio = clamp(1 -  animated_time / Constants.maximum_time, 0, 1)
+	if $Path2D/PathFollow2D.progress_ratio >= 0.8:
 		SoundManager.play_clock()
-	elif $Path2D/PathFollow2D.unit_offset >= 0.9:
+	elif $Path2D/PathFollow2D.progress_ratio >= 0.9:
 		SoundManager.play_heartbeat()
 		SoundManager.play_clock()
 	else:

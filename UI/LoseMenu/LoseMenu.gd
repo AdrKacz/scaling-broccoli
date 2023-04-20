@@ -20,7 +20,7 @@ func _on_SubmitScore_pressed():
 	if errorMessage.length() > 0:
 		var initial_text = $Control/CenterContainer/VBox/VBoxContainer/SubmitScore/CenterContainer/Label.text
 		$Control/CenterContainer/VBox/VBoxContainer/SubmitScore/CenterContainer/Label.text = errorMessage
-		yield(get_tree().create_timer(1), "timeout")
+		await get_tree().create_timer(1).timeout
 		$Control/CenterContainer/VBox/VBoxContainer/SubmitScore/CenterContainer/Label.text = initial_text
 	else:
 		Session.submit_score(Constants.score, name.to_upper())

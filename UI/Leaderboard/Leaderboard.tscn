@@ -1,334 +1,256 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=21 format=3 uid="uid://dwx23lkbhy5gw"]
 
-[ext_resource path="res://UI/Leaderboard/Leaderboard.gd" type="Script" id=1]
-[ext_resource path="res://UI/Leaderboard/ScoreEntry.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/ButtonsV3/SmallButtonDown.png" type="Texture" id=3]
-[ext_resource path="res://assets/VT323/VT323-Regular.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://ExternalVisuals/BackgroundMain.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/ButtonsV3/SmallButtonUp.png" type="Texture" id=6]
-[ext_resource path="res://UI/SoundInterface/SoundInterface.tscn" type="PackedScene" id=7]
+[ext_resource type="Script" path="res://UI/Leaderboard/Leaderboard.gd" id="1"]
+[ext_resource type="PackedScene" path="res://UI/Leaderboard/ScoreEntry.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://cb7cnilm5shk8" path="res://assets/ButtonsV3/SmallButtonDown.png" id="3"]
+[ext_resource type="FontFile" uid="uid://dawfg0re1svew" path="res://assets/VT323/VT323-Regular.ttf" id="4"]
+[ext_resource type="PackedScene" uid="uid://buu175074s80d" path="res://ExternalVisuals/BackgroundMain.tscn" id="5"]
+[ext_resource type="Texture2D" uid="uid://xfa1vu6ckvuw" path="res://assets/ButtonsV3/SmallButtonUp.png" id="6"]
+[ext_resource type="PackedScene" uid="uid://d2akx1rfpykh6" path="res://UI/SoundInterface/SoundInterface.tscn" id="7"]
 
-[sub_resource type="DynamicFont" id=1]
-size = 128
-outline_size = 8
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 4 )
+[sub_resource type="StyleBoxFlat" id="2"]
+bg_color = Color(0, 0, 0, 0.705882)
 
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0, 0, 0, 0.705882 )
+[sub_resource type="StyleBoxEmpty" id="6"]
 
-[sub_resource type="DynamicFont" id=3]
-size = 64
-font_data = ExtResource( 4 )
+[sub_resource type="StyleBoxEmpty" id="7"]
 
-[sub_resource type="DynamicFont" id=4]
-size = 64
-font_data = ExtResource( 4 )
+[sub_resource type="StyleBoxEmpty" id="8"]
 
-[sub_resource type="DynamicFont" id=5]
-size = 64
-font_data = ExtResource( 4 )
+[sub_resource type="StyleBoxEmpty" id="9"]
 
-[sub_resource type="StyleBoxEmpty" id=6]
+[sub_resource type="StyleBoxEmpty" id="10"]
 
-[sub_resource type="StyleBoxEmpty" id=7]
-
-[sub_resource type="StyleBoxEmpty" id=8]
-
-[sub_resource type="StyleBoxEmpty" id=9]
-
-[sub_resource type="StyleBoxEmpty" id=10]
-
-[sub_resource type="Theme" id=11]
+[sub_resource type="Theme" id="11"]
 resource_local_to_scene = true
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null
 VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = SubResource( 6 )
-VScrollBar/styles/grabber_highlight = SubResource( 7 )
-VScrollBar/styles/grabber_pressed = SubResource( 8 )
-VScrollBar/styles/scroll = SubResource( 9 )
-VScrollBar/styles/scroll_focus = SubResource( 10 )
+VScrollBar/styles/grabber = SubResource("6")
+VScrollBar/styles/grabber_highlight = SubResource("7")
+VScrollBar/styles/grabber_pressed = SubResource("8")
+VScrollBar/styles/scroll = SubResource("9")
+VScrollBar/styles/scroll_focus = SubResource("10")
 
-[sub_resource type="DynamicFont" id=12]
-size = 64
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=13]
-size = 64
-font_data = ExtResource( 4 )
-
-[sub_resource type="Curve2D" id=14]
+[sub_resource type="Curve2D" id="14"]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 0, -32, 0, 0, 0, 0, -32, 0, 0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 0, -32 )
+"points": PackedVector2Array(0, 0, 0, 0, 0, -32, 0, 0, 0, 0, -32, 0, 0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 0, -32)
 }
+point_count = 5
 
-[sub_resource type="Curve" id=15]
-_data = [ Vector2( 0.0045819, 0.936937 ), 0.0, 0.0, 0, 0, Vector2( 0.973654, 0.0945946 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Curve" id="15"]
+_data = [Vector2(0.0045819, 0.936937), 0.0, 0.0, 0, 0, Vector2(0.973654, 0.0945946), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="Gradient" id=16]
+[sub_resource type="Gradient" id="16"]
 
-[sub_resource type="Curve" id=17]
-_data = [ Vector2( 0.0284091, 0.918513 ), 0.0, 0.0, 0, 0, Vector2( 0.920455, 0.0851798 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Curve" id="17"]
+_data = [Vector2(0.0284091, 0.918513), 0.0, 0.0, 0, 0, Vector2(0.920455, 0.0851798), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="Animation" id=18]
-loop = true
+[sub_resource type="Animation" id="18"]
+loop_mode = 1
 tracks/0/type = "value"
-tracks/0/path = NodePath("PathFollow2D:unit_offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ 0.0, 1.0 ]
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kt1ir"]
+_data = {
+"spinner": SubResource("18")
 }
 
 [node name="Leaderboard" type="Control"]
-pause_mode = 2
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-ScoreEntry = ExtResource( 2 )
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+ScoreEntry = ExtResource("2")
 
-[node name="BackgroundMain" parent="." instance=ExtResource( 5 )]
+[node name="BackgroundMain" parent="." instance=ExtResource("5")]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-custom_constants/margin_right = 16
-custom_constants/margin_top = 16
-custom_constants/margin_left = 16
-custom_constants/margin_bottom = 16
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-margin_left = 16.0
-margin_top = 16.0
-margin_right = 704.0
-margin_bottom = 1264.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-margin_right = 688.0
-margin_bottom = 129.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
+theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 64
 text = "Leaderboard"
-align = 1
+horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer"]
-margin_top = 133.0
-margin_right = 688.0
-margin_bottom = 988.0
-grow_horizontal = 0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 2 )
+theme_override_styles/panel = SubResource("2")
 
 [node name="VBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 16
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme_override_constants/separation = 16
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Panel/VBox"]
-margin_right = 688.0
-margin_bottom = 65.0
-custom_constants/margin_right = 16
-custom_constants/margin_left = 16
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
 
 [node name="Titles" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/VBox/MarginContainer"]
-margin_left = 16.0
-margin_right = 672.0
-margin_bottom = 65.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Rank" type="Label" parent="MarginContainer/VBoxContainer/Panel/VBox/MarginContainer/Titles"]
-margin_right = 216.0
-margin_bottom = 65.0
-rect_pivot_offset = Vector2( -1282.07, -193.801 )
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 3 )
+theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 36
 text = "Rank"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Player" type="Label" parent="MarginContainer/VBoxContainer/Panel/VBox/MarginContainer/Titles"]
-margin_left = 220.0
-margin_right = 436.0
-margin_bottom = 65.0
-rect_pivot_offset = Vector2( -1282.07, -193.801 )
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 4 )
+theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 36
 text = "Player"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Score" type="Label" parent="MarginContainer/VBoxContainer/Panel/VBox/MarginContainer/Titles"]
-margin_left = 440.0
-margin_right = 656.0
-margin_bottom = 65.0
-rect_pivot_offset = Vector2( -1282.07, -193.801 )
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 5 )
+theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 36
 text = "Score"
-align = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Panel/VBox"]
-margin_top = 81.0
-margin_right = 688.0
-margin_bottom = 855.0
+layout_mode = 2
 size_flags_vertical = 3
-theme = SubResource( 11 )
+theme = SubResource("11")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel/VBox/ScrollContainer"]
-margin_right = 688.0
-margin_bottom = 774.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 16
+theme_override_constants/separation = 16
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 992.0
-margin_right = 688.0
-margin_bottom = 1248.0
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
-margin_left = 80.0
-margin_right = 608.0
-margin_bottom = 256.0
-custom_constants/separation = 16
+layout_mode = 2
+theme_override_constants/separation = 16
 
 [node name="Replay" type="TextureButton" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_right = 256.0
-margin_bottom = 256.0
+layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource("6")
+texture_pressed = ExtResource("3")
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/Replay"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/Replay/CenterContainer"]
-margin_left = 37.0
-margin_top = 95.0
-margin_right = 219.0
-margin_bottom = 160.0
-custom_fonts/font = SubResource( 12 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 48
 text = "Restart"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MainMenu" type="TextureButton" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_left = 272.0
-margin_right = 528.0
-margin_bottom = 256.0
+layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource("6")
+texture_pressed = ExtResource("3")
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/MainMenu"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/MainMenu/CenterContainer"]
-margin_left = 76.0
-margin_top = 95.0
-margin_right = 180.0
-margin_bottom = 160.0
-custom_fonts/font = SubResource( 13 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 48
 text = "Menu"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Path2D" type="Path2D" parent="."]
-position = Vector2( 360, 480 )
-scale = Vector2( 2, 2 )
-curve = SubResource( 14 )
+position = Vector2(360, 480)
+scale = Vector2(2, 2)
+curve = SubResource("14")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 7.66061, -24.3394 )
-rotation = -2.35619
-offset = 169.435
+position = Vector2(0, -32)
+rotation = 2.35619
 
 [node name="SecondLayer" type="CPUParticles2D" parent="Path2D/PathFollow2D"]
-pause_mode = 2
-position = Vector2( 0, 9.53674e-07 )
-amount = 64
+position = Vector2(0, 9.53674e-07)
+amount = 32
 lifetime = 0.5
 preprocess = 1.0
-local_coords = false
 spread = 180.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 16.0
-scale_amount = 2.0
-scale_amount_curve = SubResource( 15 )
-color_ramp = SubResource( 16 )
+gravity = Vector2(0, 0)
+scale_amount_min = 4.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("15")
+color_ramp = SubResource("16")
 
 [node name="FirstLayer" type="CPUParticles2D" parent="Path2D/PathFollow2D"]
-pause_mode = 2
-amount = 64
+amount = 32
 lifetime = 0.5
 preprocess = 1.0
-local_coords = false
 spread = 180.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 8.0
-scale_amount = 8.0
-scale_amount_curve = SubResource( 17 )
+gravity = Vector2(0, 0)
+scale_amount_min = 10.0
+scale_amount_max = 12.0
+scale_amount_curve = SubResource("17")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D"]
-playback_speed = 2.0
-anims/spinner = SubResource( 18 )
+libraries = {
+"": SubResource("AnimationLibrary_kt1ir")
+}
 
-[node name="Sound" parent="." instance=ExtResource( 7 )]
+[node name="Sound" parent="." instance=ExtResource("7")]
+layout_mode = 1
+grow_horizontal = 2
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/Replay" to="." method="_on_Replay_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]

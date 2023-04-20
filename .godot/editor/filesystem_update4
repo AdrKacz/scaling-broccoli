@@ -1,0 +1,11 @@
+res://default_env.tres
+res://UI/MainMenu/MainMenu.tscn
+res://Scenes/Character/Character.tscn
+res://UI/PauseMenu/PauseMenu.tscn
+res://ExternalVisuals/MainScreen.tscn
+res://ExternalVisuals/BackgroundMain.tscn
+res://UI/SoundInterface/SoundInterface.tscn
+res://UI/Leaderboard/Leaderboard.tscn
+res://UI/Leaderboard/Leaderboard.gd
+res://AutoLoad/NetworkManager/NetworkManager.gd
+res://AutoLoad/Session/session.gd

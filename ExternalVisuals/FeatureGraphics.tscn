@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/Character.png" type="Texture" id=1]
-[ext_resource path="res://Shaders/shockwave.shader" type="Shader" id=2]
-[ext_resource path="res://assets/Background.png" type="Texture" id=3]
-[ext_resource path="res://assets/VT323/VT323-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/Character.png" type="Texture2D" id=1]
+[ext_resource path="res://Shaders/shockwave.gdshader" type="Shader" id=2]
+[ext_resource path="res://assets/Background.png" type="Texture2D" id=3]
+[ext_resource path="res://assets/VT323/VT323-Regular.ttf" type="FontFile" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -13,7 +13,7 @@ shader_param/thickness = 0.01
 shader_param/aberation = 0.5
 shader_param/center = Vector2( 0.5, 0.5 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="FontFile" id=2]
 size = 128
 outline_size = 12
 outline_color = Color( 0, 0, 0, 1 )
@@ -21,7 +21,7 @@ font_data = ExtResource( 4 )
 
 [node name="FeatureGraphics" type="Node2D"]
 
-[node name="Background" type="Sprite" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 modulate = Color( 0.392157, 0.74902, 0.376471, 1 )
 position = Vector2( 512, 250 )
 scale = Vector2( 64, 16 )
@@ -30,7 +30,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SpriteCenter" type="Sprite" parent="."]
+[node name="SpriteCenter" type="Sprite2D" parent="."]
 modulate = Color( 0.392157, 0.74902, 0.376471, 1 )
 position = Vector2( 512, 250 )
 scale = Vector2( 10, 10 )
@@ -39,7 +39,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SpriteTopRight2" type="Sprite" parent="."]
+[node name="SpriteTopRight2" type="Sprite2D" parent="."]
 modulate = Color( 0.964706, 0.764706, 0.384314, 1 )
 position = Vector2( 410.091, 109.458 )
 scale = Vector2( 10, 10 )
@@ -48,7 +48,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SpriteBottomRight" type="Sprite" parent="."]
+[node name="SpriteBottomRight" type="Sprite2D" parent="."]
 modulate = Color( 0.870588, 0.368627, 0.34902, 1 )
 position = Vector2( 397.8, 363.32 )
 scale = Vector2( 10, 10 )
@@ -57,7 +57,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SpriteTopRight" type="Sprite" parent="."]
+[node name="SpriteTopRight" type="Sprite2D" parent="."]
 modulate = Color( 0.584314, 0.345098, 0.945098, 1 )
 position = Vector2( 626.429, 166.41 )
 scale = Vector2( 10, 10 )
@@ -66,7 +66,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SpriteTopLeft" type="Sprite" parent="."]
+[node name="SpriteTopLeft" type="Sprite2D" parent="."]
 modulate = Color( 0.47451, 0.843137, 0.941176, 1 )
 position = Vector2( 660.027, 364.549 )
 scale = Vector2( 10, 10 )
@@ -75,7 +75,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="AnimationCenter" type="Sprite" parent="."]
+[node name="AnimationCenter" type="Sprite2D" parent="."]
 material = SubResource( 1 )
 position = Vector2( 512, 250 )
 scale = Vector2( 64, 16 )
@@ -85,11 +85,11 @@ __meta__ = {
 }
 
 [node name="TitlePart1" type="Label" parent="."]
-margin_left = -315.984
-margin_top = -12.2569
-margin_right = 708.016
-margin_bottom = 248.743
-custom_fonts/font = SubResource( 2 )
+offset_left = -315.984
+offset_top = -12.2569
+offset_right = 708.016
+offset_bottom = 248.743
+theme_override_fonts/font = SubResource( 2 )
 text = "Matchy
 Matchy"
 align = 1
@@ -99,11 +99,11 @@ __meta__ = {
 }
 
 [node name="TitlePart2" type="Label" parent="."]
-margin_left = 675.109
-margin_top = 214.17
-margin_right = 961.109
-margin_bottom = 475.17
-custom_fonts/font = SubResource( 2 )
+offset_left = 675.109
+offset_top = 214.17
+offset_right = 961.109
+offset_bottom = 475.17
+theme_override_fonts/font = SubResource( 2 )
 text = "Same
 Same"
 align = 1

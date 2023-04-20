@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Shaders/shockwave.shader" type="Shader" id=1]
-[ext_resource path="res://assets/Background.png" type="Texture" id=2]
-[ext_resource path="res://assets/Character.png" type="Texture" id=3]
+[ext_resource path="res://Shaders/shockwave.gdshader" type="Shader" id=1]
+[ext_resource path="res://assets/Background.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/Character.png" type="Texture2D" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -14,20 +14,20 @@ shader_param/center = Vector2( 0.5, 0.5 )
 
 [node name="Node" type="Node"]
 
-[node name="Background" type="Sprite" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 modulate = Color( 0.584314, 0.345098, 0.945098, 1 )
 position = Vector2( 360, 640 )
 scale = Vector2( 40, 40 )
 texture = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color( 0.47451, 0.843137, 0.941176, 1 )
 position = Vector2( 360, 640 )
 rotation = 0.436332
 scale = Vector2( 20, 20 )
 texture = ExtResource( 3 )
 
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="Sprite2" type="Sprite2D" parent="."]
 material = SubResource( 1 )
 position = Vector2( 360, 640 )
 scale = Vector2( 40, 40 )

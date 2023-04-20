@@ -1,6 +1,6 @@
 extends Node2D
 
-export (PackedScene) var ComboScene
+@export (PackedScene) var ComboScene
 
 signal score
 signal miss

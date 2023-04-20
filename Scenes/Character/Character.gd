@@ -14,7 +14,7 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 		handle_action()
 		
 func _input(event):
-	if is_visible_in_tree() and event is InputEventKey and event.scancode == KEY_SPACE and event.is_pressed() and not event.is_echo():
+	if is_visible_in_tree() and event is InputEventKey and event.keycode == KEY_SPACE and event.is_pressed() and not event.is_echo():
 		handle_action()
 		
 func handle_action():
@@ -23,7 +23,7 @@ func handle_action():
 
 		
 func change_state(new_state):
-	$Sprite.modulate = Constants.State[new_state]
+	$Sprite2D.modulate = Constants.State[new_state]
 	state = new_state
 
 func shake():

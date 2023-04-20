@@ -1,13 +1,13 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/BorderV.png" type="Texture" id=1]
-[ext_resource path="res://assets/Character.png" type="Texture" id=2]
-[ext_resource path="res://assets/BorderH.png" type="Texture" id=3]
+[ext_resource path="res://assets/BorderV.png" type="Texture2D" id=1]
+[ext_resource path="res://assets/Character.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/BorderH.png" type="Texture2D" id=3]
 [ext_resource path="res://Scenes/ComboTimerUI/ComboTimerUI.gd" type="Script" id=4]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -9.6, -9.6047, 0, 0, 0, 0, -9.6, 9.6047, 0, 0, 0, 0, 9.6, 9.6047, 0, 0, 0, 0, 9.6, -9.6047, 0, 0, 0, 0, -9.6, -9.6047 )
+"points": PackedVector2Array( 0, 0, 0, 0, -9.6, -9.6047, 0, 0, 0, 0, -9.6, 9.6047, 0, 0, 0, 0, 9.6, 9.6047, 0, 0, 0, 0, 9.6, -9.6047, 0, 0, 0, 0, -9.6, -9.6047 )
 }
 
 [sub_resource type="Gradient" id=2]
@@ -18,27 +18,27 @@ _data = [ Vector2( 0.0284091, 0.918513 ), 0.0, 0.0, 0, 0, Vector2( 0.920455, 0.0
 [node name="ComboTimerUI" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 20, 20 )
 texture = ExtResource( 2 )
 
-[node name="Control" type="Control" parent="Sprite"]
+[node name="Control" type="Control" parent="Sprite2D"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -10.0
-margin_top = -10.0
-margin_right = -6.0
-margin_bottom = -6.0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = -6.0
+offset_bottom = -6.0
 mouse_filter = 2
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="TextureProgressLeft" type="TextureProgress" parent="Sprite/Control"]
+[node name="TextureProgressLeft" type="TextureProgressBar" parent="Sprite2D/Control"]
 anchor_bottom = 1.0
-margin_right = 1.0
+offset_right = 1.0
 min_value = 300.0
 max_value = 400.0
 value = 300.0
@@ -50,11 +50,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureProgressBottom" type="TextureProgress" parent="Sprite/Control"]
+[node name="TextureProgressBottom" type="TextureProgressBar" parent="Sprite2D/Control"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -1.0
+offset_top = -1.0
 min_value = 200.0
 max_value = 300.0
 value = 200.0
@@ -66,11 +66,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureProgressRight" type="TextureProgress" parent="Sprite/Control"]
+[node name="TextureProgressRight" type="TextureProgressBar" parent="Sprite2D/Control"]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1.0
+offset_left = -1.0
 min_value = 100.0
 max_value = 200.0
 value = 100.0
@@ -82,9 +82,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureProgressTop" type="TextureProgress" parent="Sprite/Control"]
+[node name="TextureProgressTop" type="TextureProgressBar" parent="Sprite2D/Control"]
 anchor_right = 1.0
-margin_bottom = 1.0
+offset_bottom = 1.0
 texture_under = ExtResource( 1 )
 texture_progress = ExtResource( 1 )
 tint_under = Color( 1, 1, 1, 0 )
@@ -92,16 +92,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Path2D" type="Path2D" parent="Sprite"]
+[node name="Path2D" type="Path2D" parent="Sprite2D"]
 scale = Vector2( 1, 0.999511 )
 curve = SubResource( 1 )
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Sprite/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Sprite2D/Path2D"]
 position = Vector2( -9.6, -9.6047 )
 rotation = 1.5708
 
-[node name="SecondLayer" type="CPUParticles2D" parent="Sprite/Path2D/PathFollow2D"]
-pause_mode = 2
+[node name="SecondLayer" type="CPUParticles2D" parent="Sprite2D/Path2D/PathFollow2D"]
+process_mode = 2
 position = Vector2( 0, 9.53674e-07 )
 amount = 32
 preprocess = 1.0
@@ -112,8 +112,8 @@ initial_velocity = 4.0
 scale_amount = 5.0
 color_ramp = SubResource( 2 )
 
-[node name="FirstLayer" type="CPUParticles2D" parent="Sprite/Path2D/PathFollow2D"]
-pause_mode = 2
+[node name="FirstLayer" type="CPUParticles2D" parent="Sprite2D/Path2D/PathFollow2D"]
+process_mode = 2
 amount = 32
 preprocess = 1.0
 local_coords = false
