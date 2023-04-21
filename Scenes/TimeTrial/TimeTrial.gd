@@ -7,6 +7,7 @@ const max_wick = 400
 
 var static_time: float = Constants.maximum_time
 var animated_time: float = Constants.maximum_time
+var tween: Tween
 
 func start_timer():
 	$UpdateUI.start()
@@ -48,8 +49,9 @@ func update_time(new_static_time):
 #	Tween for interpolation
 	static_time = min(new_static_time, Constants.maximum_time)
 		
-	var tween: Tween = create_tween()
-	# TODO: need to check if there is not already an animation here
+	if tween:
+		tween.kill()
+	tween = create_tween()
 	tween.tween_property(self, "animated_time", static_time, $UpdateUI.wait_time)
 	
 

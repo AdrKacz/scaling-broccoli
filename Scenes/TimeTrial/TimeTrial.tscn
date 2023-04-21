@@ -10,9 +10,9 @@ _data = {
 }
 point_count = 5
 
-[sub_resource type="Gradient" id="2"]
+[sub_resource type="Gradient" id="Gradient_kso6e"]
 
-[sub_resource type="Curve" id="3"]
+[sub_resource type="Curve" id="Curve_nrpet"]
 _data = [Vector2(0.0284091, 0.918513), 0.0, 0.0, 0, 0, Vector2(0.920455, 0.0851798), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -90,23 +90,31 @@ curve = SubResource("1")
 position = Vector2(8, 8)
 rotation = 1.5708
 
-[node name="SecondLayer" type="CPUParticles2D" parent="Path2D/PathFollow2D"]
+[node name="BlackAndWhite" type="CPUParticles2D" parent="Path2D/PathFollow2D"]
 process_mode = 3
-position = Vector2(4, 6)
+position = Vector2(0, 9.53674e-07)
 amount = 32
 preprocess = 1.0
+direction = Vector2(2.08165e-12, 2.08165e-12)
 spread = 180.0
 gravity = Vector2(0, 0)
-color_ramp = SubResource("2")
+initial_velocity_min = 14.0
+initial_velocity_max = 16.0
+scale_amount_min = 3.0
+scale_amount_max = 4.0
+color_ramp = SubResource("Gradient_kso6e")
 
-[node name="FirstLayer" type="CPUParticles2D" parent="Path2D/PathFollow2D"]
+[node name="BigWhite" type="CPUParticles2D" parent="Path2D/PathFollow2D"]
 process_mode = 3
 amount = 32
 preprocess = 1.0
+direction = Vector2(2.08165e-12, 2.08165e-12)
 spread = 180.0
 gravity = Vector2(0, 0)
-scale_amount_min = 10.0
-scale_amount_max = 12.0
-scale_amount_curve = SubResource("3")
+initial_velocity_min = 8.0
+initial_velocity_max = 20.0
+scale_amount_min = 6.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_nrpet")
 
 [connection signal="timeout" from="UpdateUI" to="." method="_on_UpdateUI_timeout"]

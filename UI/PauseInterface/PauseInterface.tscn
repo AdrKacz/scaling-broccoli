@@ -21,6 +21,7 @@ modulate_color = Color(0, 0, 0, 0.490196)
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
+grow_horizontal = 2
 script = ExtResource("2")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

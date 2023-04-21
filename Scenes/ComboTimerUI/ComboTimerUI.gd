@@ -7,6 +7,7 @@ const max_wick = 400
 
 var static_time: float = 0
 var animated_time: float = 0
+var tween: Tween
 
 func _process(_delta):
 	if (animated_time > 0):
@@ -40,7 +41,8 @@ func update_time(new_static_time, delta):
 #	Tween for interpolation
 	static_time = clamp(new_static_time, 0, Constants.combo_time)
 	
-	var tween: Tween = create_tween()
-	# TODO: need to check if there is not already an animation here
+	if tween:
+		tween.kill()
+	tween = create_tween()
 	tween.tween_property(self, "animated_time", static_time, delta)
 	

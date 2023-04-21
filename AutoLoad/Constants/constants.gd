@@ -22,7 +22,7 @@ const maximum_time = 30 # in seconds
 # State Manager
 enum GameModeEnum { # Use an array below to differentiate params for different mode 
 	GameUni,
-#	GameKalei -- TODO: this mode bug after a short amount of time (it freezes but no error or warning)
+#	GameKalei # TODO: this mode bug after a short amount of time (it freezes but no error or warning)
 }
 
 const level_to_params = [ # index to seconds
