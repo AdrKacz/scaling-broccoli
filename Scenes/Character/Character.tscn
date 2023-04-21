@@ -40,6 +40,8 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("2")

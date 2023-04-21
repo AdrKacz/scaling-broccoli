@@ -22,11 +22,10 @@ const maximum_time = 30 # in seconds
 # State Manager
 enum GameModeEnum { # Use an array below to differentiate params for different mode 
 	GameUni,
-#	GameKalei # TODO: this mode bug after a short amount of time (it freezes but no error or warning)
+	GameKalei
 }
 
 const level_to_params = [ # index to seconds
-	{"swap_time": 0.8, "swap_time_identique": [0.85, 1], "combo_swap_spawn": 5, "time_bonus_base": 3, "time_bonus_combo": 0, "time_malus": 4, "score_to_next_level": 10},
 	{"swap_time": 0.8, "swap_time_identique": [0.85, 1], "combo_swap_spawn": 5, "time_bonus_base": 3, "time_bonus_combo": 0, "time_malus": 4, "score_to_next_level": 10}, # no combo_swap_spawn at combo level 0
 	{"swap_time": 0.6, "swap_time_identique": [0.65, 0.9], "combo_swap_spawn": 5, "time_bonus_base": 2.5, "time_bonus_combo": 0.5, "time_malus": 5, "score_to_next_level": 100}, # no combo_swap_spawn at combo level 0
 	{"swap_time": 0.45, "swap_time_identique": [0.53, 0.8], "combo_swap_spawn": 6, "time_bonus_base": 2, "time_bonus_combo": 0.5, "time_malus": 6, "score_to_next_level": 63}, # Survivable a l'infini pas trop dur
