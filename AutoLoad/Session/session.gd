@@ -43,11 +43,11 @@ func lose():
 	$LoseMenu.set_visible_to(true)
 
 
-func submit_score(score, name):
-	NetworkManager.start_insert(score, name)
+func submit_score(score, player_name):
+	NetworkManager.start_insert(score, player_name)
 
 
-func _on_NetworkManager_insert(result):
+func _on_NetworkManager_insert(_result):
 	unpause()
 	get_tree().change_scene_to_file(leaderboard_path)
 

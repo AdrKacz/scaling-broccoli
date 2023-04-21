@@ -1,25 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwcepou6wxegl"]
+[gd_scene load_steps=6 format=3 uid="uid://cwcepou6wxegl"]
 
 [ext_resource type="Script" path="res://UI/PauseMenu/PauseMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="2"]
-[ext_resource type="PackedScene" path="res://UI/SoundInterface/SoundInterface.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://d2akx1rfpykh6" path="res://UI/SoundInterface/SoundInterface.tscn" id="3"]
 [ext_resource type="FontFile" uid="uid://dawfg0re1svew" path="res://assets/VT323/VT323-Regular.ttf" id="4"]
 [ext_resource type="Texture2D" uid="uid://4exmars5c0oj" path="res://assets/ButtonsV3/ButtonDown.png" id="5"]
-
-[sub_resource type="FontFile" id="5"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-fallbacks = Array[Font]([ExtResource("4")])
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 2
@@ -68,7 +53,8 @@ mouse_filter = 2
 [node name="Label" type="Label" parent="Control/Center/VBox/Continue/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("5")
+theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 64
 text = "Continue"
 
 [node name="Restart" type="TextureButton" parent="Control/Center/VBox"]
@@ -87,7 +73,8 @@ mouse_filter = 2
 [node name="Label" type="Label" parent="Control/Center/VBox/Restart/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("5")
+theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 64
 text = "Restart"
 
 [node name="MainMenu" type="TextureButton" parent="Control/Center/VBox"]
@@ -106,11 +93,13 @@ mouse_filter = 2
 [node name="Label" type="Label" parent="Control/Center/VBox/MainMenu/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("5")
+theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 64
 text = "Menu"
 
 [node name="Sound" parent="Control" instance=ExtResource("3")]
 anchors_preset = 0
+anchor_right = 0.0
 
 [connection signal="pressed" from="Control/Center/VBox/Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="Control/Center/VBox/Restart" to="." method="_on_Restart_pressed"]

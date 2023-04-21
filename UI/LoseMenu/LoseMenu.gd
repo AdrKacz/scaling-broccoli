@@ -9,12 +9,12 @@ func set_visible_to(value):
 
 func _on_SubmitScore_pressed():
 	SoundManager.play_click()
-	var name = $Control/CenterContainer/VBox/VBoxContainer/Name.text
+	var player_name = $Control/CenterContainer/VBox/VBoxContainer/Name.text
 	var errorMessage = ""
-	for letter in name:
+	for letter in player_name:
 		if not letter in allowed: # TODO Hello Regex	
 			errorMessage = "Not valid"		
-	if name.length() != 3:
+	if player_name.length() != 3:
 		errorMessage = "Too short"
 	
 	if errorMessage.length() > 0:
@@ -23,7 +23,7 @@ func _on_SubmitScore_pressed():
 		await get_tree().create_timer(1).timeout
 		$Control/CenterContainer/VBox/VBoxContainer/SubmitScore/CenterContainer/Label.text = initial_text
 	else:
-		Session.submit_score(Constants.score, name.to_upper())
+		Session.submit_score(Constants.score, player_name.to_upper())
 		$AnimationPlayer.play("wait")
 
 

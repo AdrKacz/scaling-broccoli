@@ -1,38 +1,45 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://dacsj4aejueex"]
 
-[ext_resource path="res://Shaders/shockwave.gdshader" type="Shader" id=1]
-[ext_resource path="res://icon.png" type="Texture2D" id=2]
-[ext_resource path="res://Shaders/Shockwave.gd" type="Script" id=3]
+[ext_resource type="Shader" path="res://Shaders/shockwave.gdshader" id="1"]
+[ext_resource type="Texture2D" uid="uid://t1coaxf7msl3" path="res://icon.png" id="2"]
+[ext_resource type="Script" path="res://Shaders/Shockwave.gd" id="3"]
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 1 )
-shader_param/force = 1.0
-shader_param/size = 0.0
-shader_param/thickness = 0.1
-shader_param/aberation = 0.5
-shader_param/center = Vector2( 0.5, 0.5 )
+[sub_resource type="ShaderMaterial" id="1"]
+shader = ExtResource("1")
+shader_parameter/force = 1.0
+shader_parameter/size = 0.0
+shader_parameter/thickness = 0.1
+shader_parameter/aberation = 0.5
+shader_parameter/center = Vector2(0.5, 0.5)
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 resource_name = "wave"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:material:shader_param/size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.5 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ 0.0, 1.0 ]
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mx0m0"]
+_data = {
+"wave": SubResource("2")
 }
 
 [node name="Texture2D" type="Sprite2D"]
-material = SubResource( 1 )
-scale = Vector2( 40, 40 )
-texture = ExtResource( 2 )
-script = ExtResource( 3 )
+material = SubResource("1")
+scale = Vector2(40, 40)
+texture = ExtResource("2")
+script = ExtResource("3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/wave = SubResource( 2 )
+libraries = {
+"": SubResource("AnimationLibrary_mx0m0")
+}

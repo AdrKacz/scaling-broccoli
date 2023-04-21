@@ -3,14 +3,8 @@ extends Node
 var possible_targets = []
 var keep_mode = false
 
-# Color functions
-func get_next_state_from(states):
-	return Constants.StateEnum.BLUE
-	
-func get_state_from_list_with_biases(states, biases):
-	return Constants.StateEnum.PURPLE
-	
-func get_character_next_state(background_state, character_state):
+# Color functions	
+func get_character_next_state():
 	return randi() % Constants.StateEnum.size()
 
 func get_background_next_state(background_state, character_state):

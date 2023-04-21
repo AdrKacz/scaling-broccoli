@@ -1,64 +1,63 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=10 format=3 uid="uid://bus6slw6nmt6e"]
 
-[ext_resource path="res://Game/GameMaster.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/BonusText/BonusText.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Game/Game.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/TimeTrial/TimeTrial.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Game/GameKalei.tscn" type="PackedScene" id=5]
-[ext_resource path="res://UI/PauseInterface/PauseInterface.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/PostEffect/PostEffect.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/CountDown/CountDown.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Game/GameIntro.tscn" type="PackedScene" id=10]
+[ext_resource type="Script" path="res://Game/GameMaster.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bkyi6nop5h5e7" path="res://Scenes/BonusText/BonusText.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://ba724pdrff37e" path="res://Game/Game.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://c75wkoaxlrbko" path="res://Scenes/TimeTrial/TimeTrial.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://Game/GameKalei.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://cofj3dv2fomsr" path="res://UI/PauseInterface/PauseInterface.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://Scenes/PostEffect/PostEffect.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://Scenes/CountDown/CountDown.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://emucnafh665l" path="res://Game/GameIntro.tscn" id="10"]
 
 [node name="GameMaster" type="Node2D"]
-process_mode = 2
-script = ExtResource( 1 )
-BonusText = ExtResource( 2 )
-CountDown = ExtResource( 8 )
+script = ExtResource("1")
+BonusText = ExtResource("2")
+CountDown = ExtResource("8")
 
 [node name="Games" type="Node2D" parent="."]
 
-[node name="GameSolo" parent="Games" instance=ExtResource( 3 )]
+[node name="GameSolo" parent="Games" instance=ExtResource("3")]
 visible = false
 
-[node name="GameKalei" parent="Games" groups=[
-"game",
-] instance=ExtResource( 5 )]
+[node name="GameKalei" parent="Games" groups=["game"] instance=ExtResource("5")]
 visible = false
 
 [node name="Intro" type="Node2D" parent="."]
 
-[node name="GameIntro" parent="Intro" instance=ExtResource( 10 )]
+[node name="GameIntro" parent="Intro" instance=ExtResource("10")]
 
-[node name="TimeTrial" parent="." instance=ExtResource( 4 )]
+[node name="TimeTrial" parent="." instance=ExtResource("4")]
 process_mode = 1
 
-[node name="PostEffect" parent="." instance=ExtResource( 7 )]
-position = Vector2( 0.317512, -1.33698 )
+[node name="PostEffect" parent="." instance=ExtResource("7")]
 z_index = 1
+position = Vector2(0.317512, -1.33698)
 
 [node name="Positions" type="Node" parent="."]
 
 [node name="ComboPosition" type="Node2D" parent="Positions"]
-position = Vector2( 360, 426 )
+position = Vector2(360, 426)
 
 [node name="LevelPosition" type="Node2D" parent="Positions"]
-position = Vector2( 360, 856 )
+position = Vector2(360, 856)
 
 [node name="CenterPosition" type="Marker2D" parent="Positions"]
-position = Vector2( 360, 680 )
+position = Vector2(360, 680)
 
 [node name="ComboTimerUI" type="Timer" parent="."]
 wait_time = 0.1
 
 [node name="ChangeState" type="Timer" parent="."]
 
-[node name="Pause" parent="." instance=ExtResource( 6 )]
+[node name="Pause" parent="." instance=ExtResource("6")]
+anchors_preset = 1
 anchor_left = 1.0
 offset_left = 712.0
 offset_top = 8.0
 offset_right = 712.0
 offset_bottom = 8.0
+grow_horizontal = 0
 
 [connection signal="no_combo_time_left" from="Games/GameSolo" to="." method="_on_Game_no_combo_time_left"]
 [connection signal="score" from="Games/GameSolo" to="." method="score"]

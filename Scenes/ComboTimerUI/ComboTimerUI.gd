@@ -5,11 +5,10 @@ var has_not_time_left = true
 
 const max_wick = 400
 
-var static_time = 0
-var animated_time = 0
+var static_time: float = 0
+var animated_time: float = 0
 
-
-func _process(delta):
+func _process(_delta):
 	if (animated_time > 0):
 		has_not_time_left = false
 		$Sprite2D/Control.visible = true; 
@@ -40,7 +39,8 @@ func _process(delta):
 func update_time(new_static_time, delta):
 #	Tween for interpolation
 	static_time = clamp(new_static_time, 0, Constants.combo_time)
-	$Tween.interpolate_property(self, "animated_time", animated_time, static_time, delta)
-	if not $Tween.is_active():
-		$Tween.start()
+	
+	var tween: Tween = create_tween()
+	# TODO: need to check if there is not already an animation here
+	tween.tween_property(self, "animated_time", static_time, delta)
 	

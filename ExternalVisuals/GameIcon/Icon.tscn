@@ -1,34 +1,34 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://dxiyd7a400bur"]
 
-[ext_resource path="res://Shaders/shockwave.gdshader" type="Shader" id=1]
-[ext_resource path="res://assets/Background.png" type="Texture2D" id=2]
-[ext_resource path="res://assets/Character.png" type="Texture2D" id=3]
+[ext_resource type="Shader" path="res://Shaders/shockwave.gdshader" id="1"]
+[ext_resource type="Texture2D" uid="uid://b0d3blpd0ywqj" path="res://assets/Background.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bv0ydebmx7yko" path="res://assets/Character.png" id="3"]
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 1 )
-shader_param/force = 0.2
-shader_param/size = 0.28
-shader_param/thickness = 0.01
-shader_param/aberation = 0.5
-shader_param/center = Vector2( 0.5, 0.5 )
+[sub_resource type="ShaderMaterial" id="1"]
+shader = ExtResource("1")
+shader_parameter/force = 0.2
+shader_parameter/size = 0.28
+shader_parameter/thickness = 0.01
+shader_parameter/aberation = 0.5
+shader_parameter/center = Vector2(0.5, 0.5)
 
 [node name="Node" type="Node"]
 
 [node name="Background" type="Sprite2D" parent="."]
-modulate = Color( 0.584314, 0.345098, 0.945098, 1 )
-position = Vector2( 360, 640 )
-scale = Vector2( 40, 40 )
-texture = ExtResource( 2 )
+modulate = Color(0.584314, 0.345098, 0.945098, 1)
+position = Vector2(360, 640)
+scale = Vector2(40, 40)
+texture = ExtResource("2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color( 0.47451, 0.843137, 0.941176, 1 )
-position = Vector2( 360, 640 )
+modulate = Color(0.47451, 0.843137, 0.941176, 1)
+position = Vector2(360, 640)
 rotation = 0.436332
-scale = Vector2( 20, 20 )
-texture = ExtResource( 3 )
+scale = Vector2(20, 20)
+texture = ExtResource("3")
 
 [node name="Sprite2" type="Sprite2D" parent="."]
-material = SubResource( 1 )
-position = Vector2( 360, 640 )
-scale = Vector2( 40, 40 )
-texture = ExtResource( 2 )
+material = SubResource("1")
+position = Vector2(360, 640)
+scale = Vector2(40, 40)
+texture = ExtResource("2")

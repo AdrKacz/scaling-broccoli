@@ -1,10 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://blhtxu6bwdox1"]
 
-[ext_resource path="res://AutoLoad/NetworkManager/NetworkManager.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://AutoLoad/NetworkManager/NetworkManager.gd" id="1"]
 
 [node name="NetworkManager" type="Node"]
-process_mode = 2
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="HTTPRequestScan" type="HTTPRequest" parent="."]
 

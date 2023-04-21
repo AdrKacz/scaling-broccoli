@@ -1,7 +1,7 @@
 extends Node2D
 
-@export (PackedScene) var BonusText
-@export (PackedScene) var CountDown
+@export var BonusText: PackedScene
+@export var CountDown: PackedScene
 
 var combo_time_left = 0
 var success_counter = 0

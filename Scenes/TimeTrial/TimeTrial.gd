@@ -5,8 +5,8 @@ var has_not_time_left = false
 
 const max_wick = 400
 
-var static_time = Constants.maximum_time
-var animated_time = Constants.maximum_time
+var static_time: float = Constants.maximum_time
+var animated_time: float = Constants.maximum_time
 
 func start_timer():
 	$UpdateUI.start()
@@ -17,7 +17,7 @@ func add_time(dt):
 func remove_time(dt):
 	update_time(static_time - dt)
 	
-func _process(delta):
+func _process(_delta):
 	if has_not_time_left:
 		return
 #	Update wick
@@ -47,9 +47,10 @@ func _process(delta):
 func update_time(new_static_time):
 #	Tween for interpolation
 	static_time = min(new_static_time, Constants.maximum_time)
-	$Tween.interpolate_property(self, "animated_time", animated_time, static_time, $UpdateUI.wait_time)
-	if not $Tween.is_active():
-		$Tween.start()
+		
+	var tween: Tween = create_tween()
+	# TODO: need to check if there is not already an animation here
+	tween.tween_property(self, "animated_time", static_time, $UpdateUI.wait_time)
 	
 
 func _on_UpdateUI_timeout():

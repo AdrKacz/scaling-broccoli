@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://dwx23lkbhy5gw"]
 
 [ext_resource type="Script" path="res://UI/Leaderboard/Leaderboard.gd" id="1"]
-[ext_resource type="PackedScene" path="res://UI/Leaderboard/ScoreEntry.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://bln5tihw036gv" path="res://UI/Leaderboard/ScoreEntry.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://cb7cnilm5shk8" path="res://assets/ButtonsV3/SmallButtonDown.png" id="3"]
 [ext_resource type="FontFile" uid="uid://dawfg0re1svew" path="res://assets/VT323/VT323-Regular.ttf" id="4"]
 [ext_resource type="PackedScene" uid="uid://buu175074s80d" path="res://ExternalVisuals/BackgroundMain.tscn" id="5"]
