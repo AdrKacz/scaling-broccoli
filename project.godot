@@ -6,13 +6,14 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
+config_version=5
 
 [application]
 
-config/name="game-jam-merge"
+config/name="Merge"
 run/main_scene="res://UI/MainMenu/MainMenu.tscn"
-config/icon="res://ExternalVisuals/Icon.png"
+config/features=PackedStringArray("4.0")
+config/icon="res://ExternalVisuals/GameIcon/Icon.png"
 
 [autoload]
 
@@ -25,13 +26,12 @@ SoundManager="*res://AutoLoad/SoundManager/SoundManager.tscn"
 
 [display]
 
-window/size/width=720
-window/size/height=1280
-window/size/test_width=360
-window/size/test_height=640
-window/handheld/orientation="portrait"
-window/stretch/mode="2d"
-window/stretch/aspect="keep"
+window/size/viewport_width=720
+window/size/viewport_height=1280
+window/size/window_width_override=720
+window/size/window_height_override=1280
+window/stretch/mode="canvas_items"
+window/handheld/orientation=1
 
 [input_devices]
 
@@ -43,8 +43,10 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+textures/vram_compression/import_etc2_astc=false
+environment/defaults/default_environment="res://default_env.tres"
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
-vram_compression/import_etc2=false
 vram_compression/import_pvrtc=true
-environment/default_environment="res://default_env.tres"

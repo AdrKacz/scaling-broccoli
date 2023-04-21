@@ -1,5 +1,5 @@
 extends Node2D
-export var text = 0
+@export var text = 0
 
 
 

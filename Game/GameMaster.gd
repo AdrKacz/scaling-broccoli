@@ -1,7 +1,7 @@
 extends Node2D
 
-export (PackedScene) var BonusText
-export (PackedScene) var CountDown
+@export var BonusText: PackedScene
+@export var CountDown: PackedScene
 
 var combo_time_left = 0
 var success_counter = 0
@@ -43,10 +43,10 @@ func reset_combo():
 	update_swap_time()
 
 func display(text, position_base):
-	var combo_text = BonusText.instance()
+	var combo_text = BonusText.instantiate()
 	combo_text.text = text
 #	Calculate random offset (TODO)
-	combo_text.position = position_base + Vector2(rand_range(-64, 64), rand_range(-64, 64)) # randomise
+	combo_text.position = position_base + Vector2(randf_range(-64, 64), randf_range(-64, 64)) # randomise
 	add_child(combo_text)
 
 func add_combo():

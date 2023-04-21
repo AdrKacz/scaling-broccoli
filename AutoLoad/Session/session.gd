@@ -1,14 +1,12 @@
 extends Node
 
-export (String, FILE, "*.tscn") var game_path = "res://Game/GameMaster.tscn"
-export (String, FILE, "*.tscn") var main_menu_path = "res://UI/MainMenu/MainMenu.tscn"
-export (String, FILE, "*.tscn") var leaderboard_path = "res://UI/Leaderboard/Leaderboard.tscn"
-
-
+@export_file("*.tscn") var game_path = "res://Game/GameMaster.tscn"
+@export_file("*.tscn") var main_menu_path = "res://UI/MainMenu/MainMenu.tscn"
+@export_file("*.tscn") var leaderboard_path = "res://UI/Leaderboard/Leaderboard.tscn"
 
 func _ready():
 	randomize()
-	NetworkManager.connect("insert", self, "_on_NetworkManager_insert")
+	NetworkManager.connect("insert", Callable(self, "_on_NetworkManager_insert"))
 	
 func pause_with_opacity():
 	get_tree().paused = true
@@ -25,17 +23,17 @@ func start_game():
 	Constants.combo = 0
 	SoundManager.play_click()
 	unpause()
-	get_tree().change_scene(game_path)
+	get_tree().change_scene_to_file(game_path)
 	
 func leaderboard():
 	SoundManager.play_click()
 	unpause()
-	get_tree().change_scene(leaderboard_path)
+	get_tree().change_scene_to_file(leaderboard_path)
 	
 func main_menu():
 	SoundManager.play_click()
 	unpause()
-	get_tree().change_scene(main_menu_path)
+	get_tree().change_scene_to_file(main_menu_path)
 	
 func lose():
 	SoundManager.play_lost()
@@ -45,11 +43,11 @@ func lose():
 	$LoseMenu.set_visible_to(true)
 
 
-func submit_score(score, name):
-	NetworkManager.insert(score, name)
+func submit_score(score, player_name):
+	NetworkManager.start_insert(score, player_name)
 
 
-func _on_NetworkManager_insert(result):
+func _on_NetworkManager_insert(_result):
 	unpause()
-	get_tree().change_scene(leaderboard_path)
+	get_tree().change_scene_to_file(leaderboard_path)
 

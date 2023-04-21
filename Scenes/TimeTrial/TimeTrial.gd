@@ -5,8 +5,9 @@ var has_not_time_left = false
 
 const max_wick = 400
 
-var static_time = Constants.maximum_time
-var animated_time = Constants.maximum_time
+var static_time: float = Constants.maximum_time
+var animated_time: float = Constants.maximum_time
+var tween: Tween
 
 func start_timer():
 	$UpdateUI.start()
@@ -17,7 +18,7 @@ func add_time(dt):
 func remove_time(dt):
 	update_time(static_time - dt)
 	
-func _process(delta):
+func _process(_delta):
 	if has_not_time_left:
 		return
 #	Update wick
@@ -28,10 +29,10 @@ func _process(delta):
 	$Control/TextureProgressLeft.value = interpolation
 	
 #	Update Path
-	$Path2D/PathFollow2D.unit_offset = clamp(1 -  animated_time / Constants.maximum_time, 0, 1)
-	if $Path2D/PathFollow2D.unit_offset >= 0.8:
+	$Path2D/PathFollow2D.progress_ratio = clamp(1 -  animated_time / Constants.maximum_time, 0, 1)
+	if $Path2D/PathFollow2D.progress_ratio >= 0.8:
 		SoundManager.play_clock()
-	elif $Path2D/PathFollow2D.unit_offset >= 0.9:
+	elif $Path2D/PathFollow2D.progress_ratio >= 0.9:
 		SoundManager.play_heartbeat()
 		SoundManager.play_clock()
 	else:
@@ -47,9 +48,11 @@ func _process(delta):
 func update_time(new_static_time):
 #	Tween for interpolation
 	static_time = min(new_static_time, Constants.maximum_time)
-	$Tween.interpolate_property(self, "animated_time", animated_time, static_time, $UpdateUI.wait_time)
-	if not $Tween.is_active():
-		$Tween.start()
+		
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property(self, "animated_time", static_time, $UpdateUI.wait_time)
 	
 
 func _on_UpdateUI_timeout():

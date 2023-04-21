@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://ufk6fk0jovya"]
 
-[ext_resource path="res://Shaders/Shockwave.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/PostEffect/PostEffect.gd" type="Script" id=2]
+[ext_resource type="PackedScene" uid="uid://dacsj4aejueex" path="res://Shaders/Shockwave.tscn" id="1"]
+[ext_resource type="Script" path="res://Scenes/PostEffect/PostEffect.gd" id="2"]
 
 [node name="PostEffect" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
-[node name="Texture" parent="." instance=ExtResource( 1 )]
-position = Vector2( 360, 640 )
+[node name="Texture2D" parent="." instance=ExtResource("1")]
+position = Vector2(360, 640)

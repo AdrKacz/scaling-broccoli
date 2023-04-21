@@ -26,7 +26,6 @@ enum GameModeEnum { # Use an array below to differentiate params for different m
 }
 
 const level_to_params = [ # index to seconds
-	{"swap_time": 0.8, "swap_time_identique": [0.85, 1], "combo_swap_spawn": 5, "time_bonus_base": 3, "time_bonus_combo": 0, "time_malus": 4, "score_to_next_level": 10},
 	{"swap_time": 0.8, "swap_time_identique": [0.85, 1], "combo_swap_spawn": 5, "time_bonus_base": 3, "time_bonus_combo": 0, "time_malus": 4, "score_to_next_level": 10}, # no combo_swap_spawn at combo level 0
 	{"swap_time": 0.6, "swap_time_identique": [0.65, 0.9], "combo_swap_spawn": 5, "time_bonus_base": 2.5, "time_bonus_combo": 0.5, "time_malus": 5, "score_to_next_level": 100}, # no combo_swap_spawn at combo level 0
 	{"swap_time": 0.45, "swap_time_identique": [0.53, 0.8], "combo_swap_spawn": 6, "time_bonus_base": 2, "time_bonus_combo": 0.5, "time_malus": 6, "score_to_next_level": 63}, # Survivable a l'infini pas trop dur
@@ -59,104 +58,89 @@ const State = {
 }
 # ==== ===== =====
 # Variables definitions
-var game_mode = 0 setget setter_game_mode, getter_game_mode
-var score = 0 setget setter_score, getter_score
-var level = 0 setget setter_level, getter_level
-var combo = 0 setget setter_combo, getter_combo
-var swap_time = 0 setget setter_swap_time, getter_swap_time
-var combo_time = 0 setget setter_combo_time, getter_combo_time
-var time_bonus_to_next = 0 setget setter_time_bonus_to_next, getter_time_bonus_to_next
-var time_malus = 0 setget setter_time_malus, getter_time_malus
-var is_same_state = false setget setter_is_same_state
-var pause = false setget setter_pause, getter_pause
+var game_mode = 0:
+	get:
+		return game_mode
+	set(value):
+		game_mode = clamp(value, 0, GameModeEnum.size() - 1)
 
-var swap_left_before_combo_ends = 0 setget setter_swap_left_before_combo_ends, getter_swap_left_before_combo_ends
-var sound = true setget setter_sound, getter_sound
-var music = true setget setter_music, getter_music
+var score = 0:
+	get:
+		return score
+	set(value):
+		score = value
+		print(score)
+		if score >= generic_getter("score_to_next_level"):
+			level += 1
+		return score
 
+var level = 0:
+	get:
+		return level
+	set(value):
+		level = value
+var combo = 0:
+	get:
+		return combo
+	set(value):
+		combo = value
+		swap_left_before_combo_ends = generic_getter("combo_swap_spawn") + 1
 
-# Game mode
-func setter_game_mode(new_value):
-	game_mode = clamp(new_value, 0, GameModeEnum.size() - 1)
-	return game_mode
+var swap_time = 0:
+	get:
+		if is_same_state:
+			return generic_getter("swap_time_identique")
+		return generic_getter("swap_time")
+	set(value):
+		print('Tried to set swap_time with', value)
 
-func getter_game_mode():
-	return game_mode
+var combo_time = 0:
+	get:
+		return generic_getter("combo_swap_spawn") * generic_getter("swap_time")
+	set(value):
+		print('Tried to set combo_time with', value)
 
-# Level
-func setter_level(new_value):
-	level = new_value
-	return level
+var time_bonus_to_next = 0:
+	get:
+		return generic_getter("time_bonus_base") + generic_getter("time_bonus_combo") * combo
+	set(value):
+		print('Tried to set time_bonus_to_next with', value)
+		
+var time_malus = 0:
+	get:
+		return generic_getter("time_malus")
+	set(value):
+		print('Tried to set time_malus with', value)
 
-func getter_level():
-	return level
-	
-# Score
-func setter_score(new_value):
-	score = new_value
-	print(score)
-	if score >= generic_getter("score_to_next_level"):
-		level += 1
-	return score
-	
-func getter_score():
-	return score
+var is_same_state = false:
+	get:
+		return is_same_state
+	set(value):
+		is_same_state = value
 
-# Combo
-func setter_combo(new_value):
-	combo = new_value
-	setter_swap_left_before_combo_ends(generic_getter("combo_swap_spawn") + 1)
-	return combo
+var pause = false:
+	get:
+		return pause
+	set(value):
+		pause = value
 
-func getter_combo():
-	return combo
+var swap_left_before_combo_ends = 0:
+	get:
+		return swap_left_before_combo_ends
+	set(value):
+		swap_left_before_combo_ends = clamp(value, 0, generic_getter("combo_swap_spawn") + 1)
 
-# Pause
-func setter_pause(new_value):
-	pause = new_value
-	return pause
+var sound = true:
+	get:
+		return sound
+	set(value):
+		sound = value
+var music = true:
+	get:
+		return music
+	set(value):
+		music = value
 
-func getter_pause():
-	return pause
-# Music
-func setter_music(new_value):
-	music = new_value
-	return music
-
-func getter_music():
-	return music
-# Sound
-func setter_sound(new_value):
-	sound = new_value
-	return sound
-
-func getter_sound():
-	return sound
-	
-# Swap left before Combo Ends
-func setter_swap_left_before_combo_ends(new_value):
-	swap_left_before_combo_ends = clamp(new_value, 0, generic_getter("combo_swap_spawn") + 1)
-	return swap_left_before_combo_ends
-
-func getter_swap_left_before_combo_ends():
-	return swap_left_before_combo_ends
-
-func setter_is_same_state(new_value):
-	is_same_state = new_value
-	return is_same_state
-
-# Empty setters
-func setter_swap_time(new_value):
-	pass
-func setter_combo_time(new_value):
-	pass
-func setter_time_bonus_to_next(new_value):
-	pass
-func setter_time_malus(new_value):
-	pass
-
-	
-# Getters
 func generic_getter(key):
 	var local_base = level_to_params[level].get(key, 0)
 	var local_array
@@ -166,59 +150,3 @@ func generic_getter(key):
 		local_array = populate_array(GameModeEnum.size(), local_base)
 	
 	return local_array[game_mode]
-	
-func getter_swap_time():
-	if is_same_state:
-		return generic_getter("swap_time_identique")
-	return generic_getter("swap_time")
-	
-func getter_combo_time():
-	return generic_getter("combo_swap_spawn") * generic_getter("swap_time")
-	
-func getter_time_bonus_to_next():
-	return generic_getter("time_bonus_base") + generic_getter("time_bonus_combo") * combo
-	
-func getter_time_malus():
-	return generic_getter("time_malus")
-
-
-#var hardness = 1
-#func get_refresh_time(game_name):
-#	if game_name == "GameSolo":
-#		return 0.38 + 0.4/(hardness*hardness*hardness) + 0.4/(hardness*hardness) + 0.1/hardness
-#	elif game_name == "GameKalei":
-#		return 0.6 + 0.7/(hardness*hardness*hardness) + 0.2/(hardness*hardness) + 0.1/hardness
-#
-#func get_max_combo_time():
-#	return 1.3 + 2.7/(hardness*hardness*hardness) + 0.6/(hardness*hardness) + 0.5/hardness
-#
-#func get_bonus_time():
-#	return 0.3 + 2/(hardness*hardness*hardness) + 1/(hardness*hardness) + 0.1/hardness
-#
-#func get_malus_time():
-#	return 2 - 1/(hardness*hardness*hardness) - 0.3/(hardness*hardness) - 0.1/hardness
-#
-#func get_combo_time(game_name, time_elapsed):
-#	if game_name == "GameSolo":
-#		return get_max_combo_time() - time_elapsed
-#	elif game_name == "GameKalei":
-#		return get_max_combo_time() - time_elapsed
-#
-#
-#func new_state(red_list=[], swap=0, target=0):
-#	var possible_targets = StateEnum.values().duplicate()
-#	possible_targets.shuffle()
-#	# Make a list that would end during the next combo
-#	if swap > 0:
-#		possible_targets = possible_targets.slice(0, swap - 1)
-#		# Remove the first one if he is red_listed
-#		while possible_targets[0] in red_list:
-#			possible_targets.pop_front()
-#			if possible_targets.size() == 0:
-#				break
-#		# Make sure the one we want is in it
-#		possible_targets.push_front(target)
-#		# Shuffle again
-#		possible_targets.shuffle()
-#	# give the next state already calculated
-#	return possible_targets.pop_front()
