@@ -74,11 +74,6 @@ var score = 0:
 			level += 1
 		return score
 
-var level = 0:
-	get:
-		return level
-	set(value):
-		level = value
 var combo = 0:
 	get:
 		return combo
@@ -112,34 +107,17 @@ var time_malus = 0:
 	set(value):
 		print('Tried to set time_malus with', value)
 
-var is_same_state = false:
-	get:
-		return is_same_state
-	set(value):
-		is_same_state = value
-
-var pause = false:
-	get:
-		return pause
-	set(value):
-		pause = value
-
 var swap_left_before_combo_ends = 0:
 	get:
 		return swap_left_before_combo_ends
 	set(value):
 		swap_left_before_combo_ends = clamp(value, 0, generic_getter("combo_swap_spawn") + 1)
 
-var sound = true:
-	get:
-		return sound
-	set(value):
-		sound = value
-var music = true:
-	get:
-		return music
-	set(value):
-		music = value
+var level: int = 0
+var is_same_state: bool = false
+var pause: bool = false
+var sound: bool = true
+var music: bool = true
 
 func generic_getter(key):
 	var local_base = level_to_params[level].get(key, 0)

@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c75wkoaxlrbko" path="res://Scenes/TimeTrial/TimeTrial.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://Game/GameKalei.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://cofj3dv2fomsr" path="res://UI/PauseInterface/PauseInterface.tscn" id="6"]
-[ext_resource type="PackedScene" path="res://Scenes/PostEffect/PostEffect.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://Scenes/CountDown/CountDown.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://ufk6fk0jovya" path="res://Scenes/PostEffect/PostEffect.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://bosx3bts67b5g" path="res://Scenes/CountDown/CountDown.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://emucnafh665l" path="res://Game/GameIntro.tscn" id="10"]
 
 [node name="GameMaster" type="Node2D"]

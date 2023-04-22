@@ -2,16 +2,14 @@ extends Control
 
 func _on_ButtonOff_pressed():
 #	Turn on
-	SoundManager.play_music()
-	SoundManager.unmute_sounds()
+	SoundManager.mute = false
 	$MarginContainerOn.visible = true
 	$MarginContainerOff.visible = false
 
 
 func _on_ButtonOn_pressed():
 #	Turn off
-	SoundManager.stop_music()
-	SoundManager.mute_sounds()
+	SoundManager.mute = true
 	$MarginContainerOn.visible = false
 	$MarginContainerOff.visible = true
 
