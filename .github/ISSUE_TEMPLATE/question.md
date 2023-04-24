@@ -1,8 +1,8 @@
 ---
 name: Question
 about: Ask a question or a topic that needs research
-title: ''
-labels: '📚 Question'
+title: '📚 Question'
+labels: 'question'
 assignees: ''
 
 ---
@@ -15,5 +15,3 @@ A clear and concise description of what you want to happen.
 
 ### Additional context
 Add any other context or screenshots about the question here.
-
-res://.godot/imported/Character.png-0cf40c017e4bce0d1689c6e3806760c0.ctex

@@ -1,6 +1,6 @@
 bdbec74c6e5bd72edee867077d70896c
-::res://::1682355887
-default_env.tres::Environment::5056182259638363312::1682355887::0::1::::<><>::
+::res://::1682355917
+default_env.tres::Environment::5056182259638363312::1682355917::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1682162583::0::1::::<><>::
 icon.png::CompressedTexture2D::1387408321629305242::1682160890::1682160890::1::::<><>::
 privacy-policy.md::TextFile::-1::1682160890::0::1::::<><>::
@@ -179,7 +179,7 @@ LaunchImage-1100-Portrait-2436h@3x.png::::-1::0::0::0::::<><>::
 ::res://Exports/ios/exported-game-jam-merge.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/::1682162563
 ::res://Exports/ios/exported-game-jam-merge.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/configuration/::1682162563
 ::res://Exports/ios/exported-game-jam-merge.xcodeproj/project.xcworkspace/xcuserdata/::1682162630
-::res://Exports/ios/exported-game-jam-merge.xcodeproj/project.xcworkspace/xcuserdata/adrkacz.xcuserdatad/::1682354283
+::res://Exports/ios/exported-game-jam-merge.xcodeproj/project.xcworkspace/xcuserdata/adrkacz.xcuserdatad/::1682356010
 ::res://Exports/ios/exported-game-jam-merge.xcodeproj/xcshareddata/::1682162557
 ::res://Exports/ios/exported-game-jam-merge.xcodeproj/xcshareddata/xcschemes/::1682162557
 ::res://Exports/ios/MoltenVK.xcframework/::1682162560
@@ -288,10 +288,9 @@ Shockwave.tscn::PackedScene::7164501307974076895::1682160890::0::1::::<><>::res:
 Button.tscn::PackedScene::-1::1682160890::0::1::::<><>::res://assets/ButtonsV3/ButtonUp.png<>res://assets/VT323/VT323-Regular.ttf<>res://assets/ButtonsV3/ButtonDown.png<>res://UI/Button/SmallButton.gd
 SmallButton.gd::GDScript::-1::1682160890::0::1::::<>TextureButton<>::
 SmallButton.tscn::PackedScene::-1::1682160890::0::1::::<><>::res://assets/ButtonsV3/SmallButtonDown.png<>res://assets/VT323/VT323-Regular.ttf<>res://assets/ButtonsV3/SmallButtonUp.png<>res://UI/Button/SmallButton.gd
-::res://UI/Leaderboard/::1682355910
+::res://UI/Leaderboard/::1682355917
 Leaderboard.gd::GDScript::-1::1682355885::0::1::::<>Control<>::
-Leaderboard.tscn::PackedScene::8752587253754085802::1682355887::0::1::::<><>::res://UI/Leaderboard/Leaderboard.gd<>uid://cb7cnilm5shk8<>uid://cp0b2g6ma20cv<>uid://dawfg0re1svew<>res://UI/SafeControl/safe_control.gd<>uid://xfa1vu6ckvuw
-LoadingPath.gd::GDScript::-1::1682354902::0::1::::<>Path2D<>::
+Leaderboard.tscn::PackedScene::8752587253754085802::1682355917::0::1::::<><>::res://UI/Leaderboard/Leaderboard.gd<>uid://cb7cnilm5shk8<>uid://cp0b2g6ma20cv<>uid://dawfg0re1svew<>res://UI/SafeControl/safe_control.gd<>uid://xfa1vu6ckvuw
 ScoreEntry.gd::GDScript::-1::1682172783::0::1::::<>MarginContainer<>::
 ScoreEntry.tscn::PackedScene::-1::1682172788::0::1::::<><>::
 ::res://UI/LoseMenu/::1682354500
