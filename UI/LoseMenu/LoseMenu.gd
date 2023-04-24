@@ -4,12 +4,12 @@ var allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz -_1234567890
 
 func set_visible_to(value):
 	$Control.visible = value
-	$Control/CenterContainer/VBox/Score.text = str(Constants.score)
+	$Control/MarginContainer/CenterContainer/VBox/Score.text = str(Constants.score)
 
 
 func _on_SubmitScore_pressed():
 	SoundManager.play_click()
-	var player_name = $Control/CenterContainer/VBox/VBoxContainer/Name.text
+	var player_name = $Control/MarginContainer/CenterContainer/VBox/VBoxContainer/Name.text
 	var errorMessage = ""
 	for letter in player_name:
 		if not letter in allowed: # TODO Hello Regex	
@@ -24,13 +24,12 @@ func _on_SubmitScore_pressed():
 		$Control/CenterContainer/VBox/VBoxContainer/SubmitScore/CenterContainer/Label.text = initial_text
 	else:
 		Session.submit_score(Constants.score, player_name.to_upper())
-		$AnimationPlayer.play("wait")
+#		$AnimationPlayer.play("wait") -- TODO: need to fix text and animation on load
 
 
 func _on_MainMenu_pressed():
 	SoundManager.play_click()
 	Session.main_menu()
-
 
 func _on_Restart_pressed():
 	SoundManager.play_click()

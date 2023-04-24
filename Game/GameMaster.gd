@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 @export var BonusText: PackedScene
 @export var CountDown: PackedScene
@@ -8,10 +8,12 @@ var success_counter = 0
 
 var last_change_mode_combo = 0
 
-
+func _ready():
+	_on_GameIntro_score()
 # TODO : Signal continue emiting when no game mode activated (...)
 
 func score():
+	print('You scored!')
 	success_counter += 1
 	if success_counter % 3 == 0:
 		$PostEffect.play_shockwave(Constants.shockwave_force_strong, Constants.shockwave_thickness_strong)
@@ -29,7 +31,7 @@ func score():
 		display("Up", $Positions/LevelPosition.position)
 
 func wrong():
-	print("Call wrong")
+	print("You missed!")
 	$TimeTrial.remove_time(Constants.time_malus)
 	combo_time_left = 0
 	$Games.get_child(Constants.game_mode).update_combo_time(0, $ComboTimerUI.wait_time)
@@ -69,16 +71,10 @@ func update_swap_time():
 		$ChangeState.start()
 
 func setup_game():
-#	var index_game = randi() % $Games.get_child_count()
-	Constants.game_mode  = 1 - Constants.game_mode # NOTE Not fixed
-
 	var game_child = $Games.get_child(Constants.game_mode)
 	game_child.setup()
 	game_child.visible = true
 	$ChangeState.wait_time = Constants.swap_time
-#	$ChangeState.start()
-	# Augment difficulty
-#	Constants.hardness += 0.2
 
 func stop_game():
 	$ChangeState.stop()
@@ -116,7 +112,6 @@ func _on_Game_no_combo_time_left():
 
 func _on_GameIntro_score():
 	$Intro/GameIntro.queue_free()
-	Constants.game_mode = randi() % 2
 	setup_game()
 	$TimeTrial.start_timer()
 	$ComboTimerUI.start()

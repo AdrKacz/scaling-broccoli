@@ -28,10 +28,15 @@ SoundManager="*res://AutoLoad/SoundManager/SoundManager.tscn"
 
 window/size/viewport_width=720
 window/size/viewport_height=1280
-window/size/window_width_override=720
-window/size/window_height_override=1280
-window/stretch/mode="canvas_items"
+window/size/window_width_override=360
+window/size/window_height_override=640
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 window/handheld/orientation=1
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input_devices]
 
@@ -45,7 +50,7 @@ common/enable_pause_aware_picking=true
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
-textures/vram_compression/import_etc2_astc=false
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_environment="res://default_env.tres"
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true

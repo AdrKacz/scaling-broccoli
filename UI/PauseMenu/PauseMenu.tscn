@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwcepou6wxegl"]
+[gd_scene load_steps=5 format=3 uid="uid://cwcepou6wxegl"]
 
 [ext_resource type="Script" path="res://UI/PauseMenu/PauseMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="2"]
-[ext_resource type="PackedScene" uid="uid://d2akx1rfpykh6" path="res://UI/SoundInterface/SoundInterface.tscn" id="3"]
 [ext_resource type="FontFile" uid="uid://dawfg0re1svew" path="res://assets/VT323/VT323-Regular.ttf" id="4"]
 [ext_resource type="Texture2D" uid="uid://4exmars5c0oj" path="res://assets/ButtonsV3/ButtonDown.png" id="5"]
 
@@ -96,10 +95,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4")
 theme_override_font_sizes/font_size = 64
 text = "Menu"
-
-[node name="Sound" parent="Control" instance=ExtResource("3")]
-anchors_preset = 0
-anchor_right = 0.0
 
 [connection signal="pressed" from="Control/Center/VBox/Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="Control/Center/VBox/Restart" to="." method="_on_Restart_pressed"]

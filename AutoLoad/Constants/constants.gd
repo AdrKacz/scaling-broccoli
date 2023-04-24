@@ -22,7 +22,7 @@ const maximum_time = 30 # in seconds
 # State Manager
 enum GameModeEnum { # Use an array below to differentiate params for different mode 
 	GameUni,
-	GameKalei
+#	GameKalei -- remove this mode for now, it adds confusion at first plays, we need to know how to introduce it
 }
 
 const level_to_params = [ # index to seconds

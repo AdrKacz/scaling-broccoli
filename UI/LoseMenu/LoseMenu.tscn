@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ilei4y43xwl3"]
+[gd_scene load_steps=9 format=3 uid="uid://ilei4y43xwl3"]
 
 [ext_resource type="Script" path="res://UI/LoseMenu/LoseMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://52npqw30pwxt" path="res://assets/ButtonsV3/Input.png" id="2"]
+[ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="2_bvhgu"]
 [ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="3"]
 [ext_resource type="FontFile" uid="uid://dawfg0re1svew" path="res://assets/VT323/VT323-Regular.ttf" id="5"]
 [ext_resource type="Texture2D" uid="uid://4exmars5c0oj" path="res://assets/ButtonsV3/ButtonDown.png" id="6"]
-[ext_resource type="PackedScene" uid="uid://d2akx1rfpykh6" path="res://UI/SoundInterface/SoundInterface.tscn" id="7"]
 
 [sub_resource type="StyleBoxTexture" id="3"]
 texture = ExtResource("2")
@@ -15,28 +15,6 @@ region_rect = Rect2(0, 0, 512, 128)
 texture = ExtResource("2")
 region_rect = Rect2(0, 0, 512, 128)
 modulate_color = Color(0.862745, 0.862745, 0.862745, 1)
-
-[sub_resource type="Animation" id="7"]
-resource_name = "wait"
-length = 0.9
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/CenterContainer/VBox/VBoxContainer/SubmitScore/CenterContainer/Label:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [".", "..", "...", "..."]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jg3wf"]
-_data = {
-"wait": SubResource("7")
-}
 
 [node name="LoseMenu" type="CanvasLayer"]
 process_mode = 2
@@ -58,21 +36,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(1, 1, 1, 0.490196)
 
-[node name="CenterContainer" type="CenterContainer" parent="Control"]
-layout_mode = 0
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-scale = Vector2(0.999348, 1)
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_bvhgu")
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBox" type="VBoxContainer" parent="Control/CenterContainer"]
+[node name="VBox" type="VBoxContainer" parent="Control/MarginContainer/CenterContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 32
 
-[node name="Score" type="Label" parent="Control/CenterContainer/VBox"]
+[node name="Score" type="Label" parent="Control/MarginContainer/CenterContainer/VBox"]
 layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 0
@@ -81,13 +65,13 @@ theme_override_font_sizes/font_size = 96
 text = "24"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/VBox"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/CenterContainer/VBox"]
 layout_mode = 2
 size_flags_horizontal = 7
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Name" type="LineEdit" parent="Control/CenterContainer/VBox/VBoxContainer"]
+[node name="Name" type="LineEdit" parent="Control/MarginContainer/CenterContainer/VBox/VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -102,82 +86,66 @@ max_length = 3
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="SubmitScore" type="TextureButton" parent="Control/CenterContainer/VBox/VBoxContainer"]
+[node name="SubmitScore" type="TextureButton" parent="Control/MarginContainer/CenterContainer/VBox/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 texture_normal = ExtResource("3")
 texture_pressed = ExtResource("6")
 
-[node name="CenterContainer" type="CenterContainer" parent="Control/CenterContainer/VBox/VBoxContainer/SubmitScore"]
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer/CenterContainer/VBox/VBoxContainer/SubmitScore"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="Control/CenterContainer/VBox/VBoxContainer/SubmitScore/CenterContainer"]
+[node name="Label" type="Label" parent="Control/MarginContainer/CenterContainer/VBox/VBoxContainer/SubmitScore/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5")
 theme_override_font_sizes/font_size = 64
-text = "Submit your score"
+text = "."
 
-[node name="CenterContainer" type="CenterContainer" parent="Control/CenterContainer/VBox"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/VBox/CenterContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="Restart" type="TextureButton" parent="Control/CenterContainer/VBox/CenterContainer/VBoxContainer"]
+[node name="Restart" type="TextureButton" parent="Control/MarginContainer/CenterContainer/VBox"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 texture_normal = ExtResource("3")
 texture_pressed = ExtResource("6")
 
-[node name="CenterContainer" type="CenterContainer" parent="Control/CenterContainer/VBox/CenterContainer/VBoxContainer/Restart"]
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer/CenterContainer/VBox/Restart"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="Control/CenterContainer/VBox/CenterContainer/VBoxContainer/Restart/CenterContainer"]
+[node name="Label" type="Label" parent="Control/MarginContainer/CenterContainer/VBox/Restart/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5")
 theme_override_font_sizes/font_size = 64
 text = "Restart"
 
-[node name="MainMenu" type="TextureButton" parent="Control/CenterContainer/VBox/CenterContainer/VBoxContainer"]
+[node name="MainMenu" type="TextureButton" parent="Control/MarginContainer/CenterContainer/VBox"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 texture_normal = ExtResource("3")
 texture_pressed = ExtResource("6")
 
-[node name="CenterContainer" type="CenterContainer" parent="Control/CenterContainer/VBox/CenterContainer/VBoxContainer/MainMenu"]
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer/CenterContainer/VBox/MainMenu"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="Control/CenterContainer/VBox/CenterContainer/VBoxContainer/MainMenu/CenterContainer"]
+[node name="Label" type="Label" parent="Control/MarginContainer/CenterContainer/VBox/MainMenu/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5")
 theme_override_font_sizes/font_size = 64
 text = "Menu"
 
-[node name="Sound" parent="Control" instance=ExtResource("7")]
-layout_mode = 1
-grow_horizontal = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_jg3wf")
-}
-
-[connection signal="pressed" from="Control/CenterContainer/VBox/VBoxContainer/SubmitScore" to="." method="_on_SubmitScore_pressed"]
-[connection signal="pressed" from="Control/CenterContainer/VBox/CenterContainer/VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
-[connection signal="pressed" from="Control/CenterContainer/VBox/CenterContainer/VBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/CenterContainer/VBox/VBoxContainer/SubmitScore" to="." method="_on_SubmitScore_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/CenterContainer/VBox/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/CenterContainer/VBox/MainMenu" to="." method="_on_MainMenu_pressed"]

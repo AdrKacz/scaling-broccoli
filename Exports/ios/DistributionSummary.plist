@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>exported-game-jam-merge.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>buildNumber</key>
+			<string>1.0</string>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>3987ED9BEFD4CEAC03DA0B79EBA13EF5AA9E0A6F</string>
+				<key>dateExpires</key>
+				<string>22/05/2023</string>
+				<key>type</key>
+				<string>Apple Development</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>376E7RMFX3.com.kida.matchymatchysamesame</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>376E7RMFX3</string>
+				<key>get-task-allow</key>
+				<true/>
+			</dict>
+			<key>name</key>
+			<string>exported-game-jam-merge.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>d91111fc-0f5f-4ee9-b110-a1005c223fcb</string>
+				<key>dateExpires</key>
+				<string>21/04/2024</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: com.kida.matchymatchysamesame</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>376E7RMFX3</string>
+				<key>name</key>
+				<string></string>
+			</dict>
+			<key>versionNumber</key>
+			<string>1.0</string>
+		</dict>
+	</array>
+</dict>
+</plist>

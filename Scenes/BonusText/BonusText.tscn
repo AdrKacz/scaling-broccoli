@@ -58,6 +58,7 @@ offset_left = -1440.0
 offset_top = -1440.0
 offset_right = -1440.0
 offset_bottom = -1440.0
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="CenterContainer"]
 layout_mode = 2
