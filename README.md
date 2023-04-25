@@ -18,8 +18,6 @@ Each time you hit, you earn ten points times the number of lives you still have 
 
 ### Variables
 - `score_factor`: the number of times you multiply your number of lives (*ten above*)
-- `score_lives_power`: the power at which you elevate your number of lives (*one above*)
-- `score_combos_power`: the power at which you elevate your combo strike (*one above*)
 
 # What is a combo?
 Combos are essential in arcade games as they incentivise you to continue the perfect strike and improve your skills.

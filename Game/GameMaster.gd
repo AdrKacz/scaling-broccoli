@@ -13,13 +13,16 @@ func _ready():
 		area_size.y * .8
 	)
 
-func score():
+func score(): 
+	increment_combos_strike()
+	Constants.score += Constants.score_factor * Constants.lives * Constants.combos_strike
+	# juicy animation
 	if randf() <= 0.3:
 		# Note: (old) was changing mode here one every three success (from 1 tile to 4 tiles)
 		$PostEffect.play_shockwave(Constants.shockwave_force_strong, Constants.shockwave_thickness_strong)
 	else:
 		$PostEffect.play_shockwave()
-	increment_combos_strike()
+	
 		
 func increment_combos_strike():
 	Constants.combos_strike += 1
