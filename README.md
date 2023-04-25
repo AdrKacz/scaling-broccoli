@@ -66,7 +66,7 @@ When you hit during a combo, you earn one life. You can never have more than thr
 Each time you hit during the combo, the background will change colour faster.
 The background will keep its colour longer when it has the same as the colour of the square.
 
->The difficulty ramp will be defined later, as trials and errors are best to find the balance between too easy and too hard.
+> The difficulty ramp will be defined later, as trials and errors are best to find the balance between too easy and too hard.
 
 ### Variables
 - `background_delta`: the time the background keeps its colour when it doesn't match the colour of the square
