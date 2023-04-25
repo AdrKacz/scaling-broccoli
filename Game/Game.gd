@@ -5,7 +5,6 @@ extends Control
 signal score
 signal miss
 signal wrong
-signal no_combo_time_left
 
 var background_state: int = 0:
 	get:
@@ -46,4 +45,6 @@ func _on_character_tap():
 
 
 func _on_swap_background_timer_timeout():
+	if Constants.state_matches:
+		emit_signal("miss")
 	update_background_state()

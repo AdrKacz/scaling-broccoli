@@ -21,17 +21,6 @@ CountDown = ExtResource("8")
 z_index = 1
 position = Vector2(0.317512, -1.33698)
 
-[node name="Positions" type="Node" parent="."]
-
-[node name="ComboPosition" type="Node2D" parent="Positions"]
-position = Vector2(360, 426)
-
-[node name="LevelPosition" type="Node2D" parent="Positions"]
-position = Vector2(360, 856)
-
-[node name="CenterPosition" type="Marker2D" parent="Positions"]
-position = Vector2(360, 680)
-
 [node name="PauseControl" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -58,6 +47,7 @@ script = ExtResource("8_foia5")
 layout_mode = 2
 mouse_filter = 1
 
+[connection signal="miss" from="Game/Game" to="." method="_on_game_miss"]
 [connection signal="score" from="Game/Game" to="." method="score"]
 [connection signal="wrong" from="Game/Game" to="." method="wrong"]
 [connection signal="pressed" from="PauseControl/MarginContainer/Pause" to="." method="_on_Pause_pressed"]

@@ -52,10 +52,11 @@ You miss if you tap when the square and the background differ from the same colo
 # How do I play longer?
 ## ~~Option 1: You can't play longer~~
 ## Option 2: You play longer when you hit in a combo
-When you hit during a combo, you earn one life. You can never have more than three lives.
+When you hit during a combo, you earn lives. You can never have more than three lives.
+You will earn one life every ten hit in a row
 
 ### Variables
-- `lifes_earned`: number of life you earn for a hit during a combo (*one above*)
+- `combos_reward_strike`: number of hit in a row to earn one life (*ten above*)
 
 # How does the difficulty increase?
 ## ~~Option 1: The difficulty remains the same~~

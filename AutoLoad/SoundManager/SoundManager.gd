@@ -15,11 +15,9 @@ func _ready():
 	sounds.append(preload("res://assets/audio/taunts/taunt4.mp3"))
 	sounds.append(preload("res://assets/audio/taunts/taunt5.mp3"))
 	sounds.append(preload("res://assets/audio/taunts/taunt6.mp3"))
-	
 	$BackgroundMusic.play()
 
 func play_click():
-	print("Click Sound")
 	$ClickSound.play()
 
 func play_lost():

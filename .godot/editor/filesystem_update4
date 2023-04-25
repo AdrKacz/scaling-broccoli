@@ -8,3 +8,5 @@ res://AutoLoad/Session/session.gd
 res://UI/Leaderboard/Leaderboard.tscn
 res://AutoLoad/Constants/constants.gd
 res://Game/GameMaster.gd
+res://AutoLoad/SoundManager/SoundManager.gd
+res://Scenes/BonusText/BonusText.tscn
