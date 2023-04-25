@@ -1,5 +1,5 @@
 extends Node2D
-signal click
+signal tap
 
 var state: int = 0:
 	get:
@@ -10,12 +10,12 @@ var state: int = 0:
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event is InputEventScreenTouch and event.is_pressed():
-		print('Detect Click')
-		handle_action()
+		print('Detect Tap')
+		handle_tap()
 
-func handle_action():
+func handle_tap():
 	SoundManager.play_action()
-	emit_signal("click", state)
+	emit_signal("tap")
 
 func shake():
 	$AnimationPlayer.play("Shake")

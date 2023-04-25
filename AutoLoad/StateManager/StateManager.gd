@@ -1,32 +1,31 @@
 extends Node
 
-var possible_targets = []
-var keep_mode = false
+var next_background_states = []
 
 # Color functions	
-func get_character_next_state():
-	return randi() % Constants.StateEnum.size()
+func get_character_next_state(character_state):
+	var states = Constants.StateEnum.values().duplicate()
+	states.erase(character_state)
+	return states.pick_random()
 
 func get_background_next_state(background_state, character_state):
-	# Make a list that would end during the next combo
-	if possible_targets.size() == 0:
-		possible_targets = Constants.StateEnum.values().duplicate()
-		possible_targets.erase(character_state)
-		possible_targets.erase(background_state)
-		possible_targets.shuffle()
-		if Constants.swap_left_before_combo_ends != 0:
-			possible_targets = possible_targets.slice(0, Constants.swap_left_before_combo_ends - 3)
-		# Make sure the one we want is in it
-		possible_targets.push_front(character_state)
-		# Shuffle again
-		possible_targets.shuffle()
-		# Add the current state
-		possible_targets.push_front(background_state)
+	# list of next states
+	if next_background_states.is_empty():
+		var states = Constants.StateEnum.values().duplicate()
+		var states_size: int = states.size()
+		states.shuffle()
+		
+		# cannot have same background state twice in a row
+		var background_state_index: int = states.find(background_state)
+		if background_state_index == 0:
+			states.pop_front()
+			states.push_back(background_state)
+	
+		# no need to plan further than next match
+		var character_state_index: int = states.find(character_state)
+		next_background_states = states.slice(0, character_state_index + 1)
 	
 	# give the next state already calculated
-	var next_state = possible_targets.pop_front()
-	if next_state == character_state:
-		Constants.is_same_state = true
-	else:
-		Constants.is_same_state = false
+	var next_state = next_background_states.pop_front()
+	Constants.state_matches = next_state == character_state
 	return next_state

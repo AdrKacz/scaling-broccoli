@@ -18,26 +18,20 @@ func unpause():
 	get_tree().paused = false
 
 func start_game():
+	Constants.lives = Constants.start_lives
 	Constants.score = 0
-	Constants.level = 0
-	Constants.combo = 0
-	SoundManager.play_click()
 	unpause()
 	get_tree().change_scene_to_file(game_path)
 	
 func leaderboard():
-	SoundManager.play_click()
 	unpause()
 	get_tree().change_scene_to_file(leaderboard_path)
 	
 func main_menu():
-	SoundManager.play_click()
 	unpause()
 	get_tree().change_scene_to_file(main_menu_path)
 	
-func lose():
-	SoundManager.play_lost()
-	
+func lose():	
 	get_tree().paused = true
 	$PauseMenu.set_visible_to(false)
 	$LoseMenu.set_visible_to(true)

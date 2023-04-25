@@ -1,30 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://bus6slw6nmt6e"]
+[gd_scene load_steps=8 format=3 uid="uid://bus6slw6nmt6e"]
 
 [ext_resource type="Script" path="res://Game/GameMaster.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bkyi6nop5h5e7" path="res://Scenes/BonusText/BonusText.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://ba724pdrff37e" path="res://Game/Game.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://c75wkoaxlrbko" path="res://Scenes/TimeTrial/TimeTrial.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cofj3dv2fomsr" path="res://UI/PauseInterface/PauseInterface.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://ufk6fk0jovya" path="res://Scenes/PostEffect/PostEffect.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://bosx3bts67b5g" path="res://Scenes/CountDown/CountDown.tscn" id="8"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="8_foia5"]
-[ext_resource type="PackedScene" uid="uid://emucnafh665l" path="res://Game/GameIntro.tscn" id="10"]
 
 [node name="GameMaster" type="Node"]
 script = ExtResource("1")
 BonusText = ExtResource("2")
 CountDown = ExtResource("8")
 
-[node name="Games" type="Node" parent="."]
+[node name="Game" type="Node" parent="."]
 
-[node name="GameSolo" parent="Games" instance=ExtResource("3")]
-
-[node name="Intro" type="Node2D" parent="."]
-
-[node name="GameIntro" parent="Intro" instance=ExtResource("10")]
-
-[node name="TimeTrial" parent="." instance=ExtResource("4")]
-process_mode = 1
+[node name="Game" parent="Game" instance=ExtResource("3")]
 
 [node name="PostEffect" parent="." instance=ExtResource("7")]
 z_index = 1
@@ -40,11 +31,6 @@ position = Vector2(360, 856)
 
 [node name="CenterPosition" type="Marker2D" parent="Positions"]
 position = Vector2(360, 680)
-
-[node name="ComboTimerUI" type="Timer" parent="."]
-wait_time = 0.1
-
-[node name="ChangeState" type="Timer" parent="."]
 
 [node name="PauseControl" type="Control" parent="."]
 layout_mode = 3
@@ -72,11 +58,6 @@ script = ExtResource("8_foia5")
 layout_mode = 2
 mouse_filter = 1
 
-[connection signal="no_combo_time_left" from="Games/GameSolo" to="." method="_on_Game_no_combo_time_left"]
-[connection signal="score" from="Games/GameSolo" to="." method="score"]
-[connection signal="wrong" from="Games/GameSolo" to="." method="wrong"]
-[connection signal="score" from="Intro/GameIntro" to="." method="_on_GameIntro_score"]
-[connection signal="lost" from="TimeTrial" to="." method="_on_TimeTrial_lost"]
-[connection signal="timeout" from="ComboTimerUI" to="." method="_on_ComboTimerUI_timeout"]
-[connection signal="timeout" from="ChangeState" to="." method="_on_ChangeState_timeout"]
+[connection signal="score" from="Game/Game" to="." method="score"]
+[connection signal="wrong" from="Game/Game" to="." method="wrong"]
 [connection signal="pressed" from="PauseControl/MarginContainer/Pause" to="." method="_on_Pause_pressed"]

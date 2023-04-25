@@ -29,9 +29,7 @@ After your second hit without a miss, you will start a combo. Then, you'll conti
 You miss if:
   - you tap when the square and the background don't have the same colour,
   - you don't tape when the square and the background have the same colour.
-
-### Variables
-- `misses_allowed`: number of misses you can do and still be in a combo (*one above*)
+You will always have the chance to hit within the next five changement of colors. Five being the number of colors in the game.
 
 ## ~~Option 2: You don't miss within a time window ~~
 
@@ -42,8 +40,8 @@ You start the Game with three lives. Each time you miss, you lose a life. The Ga
 You miss if you tap when the square and the background differ from the same colour.
 
 ### Variables
-- `max_lifes`: maximum number of lives (*three above*)
-- `start_lifes`: number of lives when the Game starts (*three above*)
+- `max_lives`: maximum number of lives (*three above*)
+- `start_lives`: number of lives when the Game starts (*three above*)
 
 ## ~~Option 3: A game always has the same duration~~
 

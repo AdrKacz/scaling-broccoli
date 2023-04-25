@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba724pdrff37e"]
+[gd_scene load_steps=4 format=3 uid="uid://ba724pdrff37e"]
 
 [ext_resource type="PackedScene" uid="uid://dsngmds587kx2" path="res://Scenes/Character/Character.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://d4mqy83hs2suq" path="res://Scenes/ComboTimerUI/ComboTimerUI.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://bkyi6nop5h5e7" path="res://Scenes/BonusText/BonusText.tscn" id="3"]
 [ext_resource type="Script" path="res://Game/Game.gd" id="5"]
 
@@ -26,11 +25,11 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0.0901961, 0, 1)
 
-[node name="ComboTimer" parent="." instance=ExtResource("2")]
-position = Vector2(360, 640)
-
 [node name="Character" parent="." instance=ExtResource("1")]
 position = Vector2(360, 640)
 
-[connection signal="no_time_left" from="ComboTimer" to="." method="_on_ComboTimer_no_time_left"]
-[connection signal="click" from="Character" to="." method="_on_Character_click"]
+[node name="SwapBackgroundTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="tap" from="Character" to="." method="_on_character_tap"]
+[connection signal="timeout" from="SwapBackgroundTimer" to="." method="_on_swap_background_timer_timeout"]
