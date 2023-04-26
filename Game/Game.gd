@@ -16,8 +16,6 @@ var background_state: int = 0:
 func _ready():
 	# center character on screen
 	$Character.position = get_parent_area_size() / 2
-
-func setup():
 	update_character_state()
 	update_background_state()
 

@@ -1,17 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bus6slw6nmt6e"]
+[gd_scene load_steps=5 format=3 uid="uid://bus6slw6nmt6e"]
 
 [ext_resource type="Script" path="res://Game/GameMaster.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://bkyi6nop5h5e7" path="res://Scenes/BonusText/BonusText.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://ba724pdrff37e" path="res://Game/Game.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://cofj3dv2fomsr" path="res://UI/PauseInterface/PauseInterface.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://b5a8hcvmbiai0" path="res://Scenes/GameUI/GameUI.tscn" id="6_8abi2"]
 [ext_resource type="PackedScene" uid="uid://ufk6fk0jovya" path="res://Scenes/PostEffect/PostEffect.tscn" id="7"]
-[ext_resource type="PackedScene" uid="uid://bosx3bts67b5g" path="res://Scenes/CountDown/CountDown.tscn" id="8"]
-[ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="8_foia5"]
 
 [node name="GameMaster" type="Node"]
 script = ExtResource("1")
-BonusText = ExtResource("2")
-CountDown = ExtResource("8")
 
 [node name="Game" type="Node" parent="."]
 
@@ -21,33 +16,8 @@ CountDown = ExtResource("8")
 z_index = 1
 position = Vector2(0.317512, -1.33698)
 
-[node name="PauseControl" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="PauseControl"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-script = ExtResource("8_foia5")
-
-[node name="Pause" parent="PauseControl/MarginContainer" instance=ExtResource("6")]
-layout_mode = 2
-mouse_filter = 1
+[node name="GameUI" parent="." instance=ExtResource("6_8abi2")]
 
 [connection signal="miss" from="Game/Game" to="." method="_on_game_miss"]
 [connection signal="score" from="Game/Game" to="." method="score"]
 [connection signal="wrong" from="Game/Game" to="." method="wrong"]
-[connection signal="pressed" from="PauseControl/MarginContainer/Pause" to="." method="_on_Pause_pressed"]

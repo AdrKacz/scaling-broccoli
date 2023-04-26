@@ -12,7 +12,6 @@ func get_background_next_state(background_state, character_state):
 	# list of next states
 	if next_background_states.is_empty():
 		var states = Constants.StateEnum.values().duplicate()
-		var states_size: int = states.size()
 		states.shuffle()
 		
 		# cannot have same background state twice in a row
