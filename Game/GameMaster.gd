@@ -25,9 +25,11 @@ func reset_combos_strike():
 
 func earn_life():
 	if Constants.lives < Constants.max_lives:
+		$GameUI.earn_heart()
 		Constants.lives += 1
 
 func lose_life():
+	$GameUI.lose_heart()
 	Constants.lives -= 1
 	if Constants.lives == 0:
 		$GameUI.visible = false

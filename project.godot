@@ -28,8 +28,8 @@ SoundManager="*res://AutoLoad/SoundManager/SoundManager.tscn"
 
 window/size/viewport_width=720
 window/size/viewport_height=1280
-window/size/window_width_override=360
-window/size/window_height_override=640
+window/size/window_width_override=720
+window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/handheld/orientation=1

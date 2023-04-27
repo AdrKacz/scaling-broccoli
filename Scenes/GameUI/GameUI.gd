@@ -14,17 +14,20 @@ func _ready():
 		computed_safe_area.position.x + computed_safe_area.size.x * .5,
 		computed_safe_area.position.y + 96,
 	)
+	$Hearts.position = Vector2(
+		computed_safe_area.position.x + computed_safe_area.size.x * .5,
+		computed_safe_area.position.y + 2.5 * 96,
+	)
 	display_bonus_text_position = Vector2(
 		computed_safe_area.position.x + computed_safe_area.size.x * .5,
 		computed_safe_area.position.y + computed_safe_area.size.y * .8,
 	)
+func lose_heart():
+	$Hearts.lose_heart()
 	
-	print('SAFE AREA: ', DisplayServer.get_display_safe_area())
-	print('COMPUTED SAFE AREA: ', computed_safe_area)
-	print('PARENT AREA SIZE: ', $MarginContainer.get_parent_area_size())
-	print('SCORE TEXT POSITION: ', $ScoreText.position)
-	print('DISPLAY BONUS TEXT POSITION: ', display_bonus_text_position)
-	
+func earn_heart():
+	$Hearts.earn_heart()
+
 func _input(event):
 	if event is InputEventKey and event.keycode == KEY_SPACE and event.is_pressed() and not event.is_echo():
 		$ScoreText.pulse()
