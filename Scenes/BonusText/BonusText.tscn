@@ -6,6 +6,7 @@
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Popup"
+length = 0.5
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -13,7 +14,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -27,10 +28,10 @@ tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.3, 1),
 "update": 0,
-"values": [Vector2(0.125, 0.125), Vector2(1, 1), Vector2(1, 1)]
+"values": [Vector2(0.125, 0.125), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aln0i"]
@@ -41,7 +42,6 @@ _data = {
 [node name="BonusText" type="Sprite2D" groups=["combo"]]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 2
-scale = Vector2(0.125, 0.125)
 texture = ExtResource("4")
 script = ExtResource("2")
 

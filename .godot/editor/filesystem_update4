@@ -1,9 +1,7 @@
 res://default_env.tres
-res://Scenes/SpeedLines/SpeedLines.tscn
-res://Scenes/Character/Character.gd
+res://Scenes/BonusText/BonusText.tscn
 res://UI/Leaderboard/Leaderboard.tscn
 res://Game/GameMaster.tscn
-res://Scenes/PostEffect/PostEffect.tscn
 res://Shaders/Shockwave.tscn
 res://Scenes/Character/Character.tscn
 res://Scenes/GameUI/GameUI.tscn
