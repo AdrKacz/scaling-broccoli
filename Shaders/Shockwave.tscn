@@ -1,16 +1,30 @@
 [gd_scene load_steps=7 format=3 uid="uid://dacsj4aejueex"]
 
 [ext_resource type="Shader" path="res://Shaders/shockwave.gdshader" id="1"]
-[ext_resource type="Texture2D" uid="uid://t1coaxf7msl3" path="res://icon.png" id="2"]
 [ext_resource type="Script" path="res://Shaders/Shockwave.gd" id="3"]
 
 [sub_resource type="ShaderMaterial" id="1"]
 shader = ExtResource("1")
-shader_parameter/force = 1.0
-shader_parameter/size = 0.0
+shader_parameter/size = 1.0
 shader_parameter/thickness = 0.1
 shader_parameter/aberation = 0.5
+shader_parameter/force = 1.0
 shader_parameter/center = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_fus12"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/force")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="2"]
 resource_name = "wave"
@@ -27,16 +41,46 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/force")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.1]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mx0m0"]
 _data = {
+"RESET": SubResource("Animation_fus12"),
 "wave": SubResource("2")
 }
 
-[node name="Texture2D" type="Sprite2D"]
+[node name="Texture2D" type="ColorRect"]
 material = SubResource("1")
-scale = Vector2(40, 40)
-texture = ExtResource("2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

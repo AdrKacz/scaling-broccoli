@@ -22,4 +22,11 @@ func handle_tap():
 	emit_signal("tap")
 
 func shake():
+	if $AnimationPlayer.is_playing():
+		$AnimationPlayer.stop()
 	$AnimationPlayer.play("Shake")
+	
+func pulse():
+	if $AnimationPlayer.is_playing():
+		$AnimationPlayer.stop()
+	$AnimationPlayer.play("pulse")

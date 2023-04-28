@@ -1,12 +1,5 @@
 extends Node
 
-# Shockwave
-const shockwave_force: float = 0.5
-const shockwave_thickness: float = 0.01
-const shockwave_force_strong: float = 1.0
-const shockwave_thickness_strong: float = 0.2
-
-
 # Gameplay
 const background_delta: float = 0.5
 const background_match_delta: float = 0.75

@@ -4,12 +4,6 @@ func score():
 	increment_combos_strike()
 	Constants.score += Constants.score_factor * Constants.lives * Constants.combos_strike
 	$GameUI.update_score(Constants.score)
-	# juicy animation
-	if randf() <= 0.3:
-		# Note: (old) was changing mode here one every three success (from 1 tile to 4 tiles)
-		$PostEffect.play_shockwave(Constants.shockwave_force_strong, Constants.shockwave_thickness_strong)
-	else:
-		$PostEffect.play_shockwave()
 	
 		
 func increment_combos_strike():
@@ -18,9 +12,11 @@ func increment_combos_strike():
 		earn_life()
 	
 	if Constants.combos_strike >= 2:
+		$SpeedLines.level = int(Constants.combos_strike / 10)
 		$GameUI.display_bonus_text('x' + str(Constants.combos_strike))
 	
 func reset_combos_strike():
+	$SpeedLines.level = -1
 	Constants.combos_strike = 0
 
 func earn_life():

@@ -1,7 +1,5 @@
-extends Sprite2D
+extends ColorRect
 
-
-func play_animation(force, thickness):
-	material.set_shader_parameter("force", force);
-	material.set_shader_parameter("thickness", thickness);
+func _ready():
+	material.set_shader_parameter("thickness", randf_range(0.05, 0.2));
 	$AnimationPlayer.play("wave")

@@ -28,10 +28,6 @@ func lose_heart():
 func earn_heart():
 	$Hearts.earn_heart()
 
-func _input(event):
-	if event is InputEventKey and event.keycode == KEY_SPACE and event.is_pressed() and not event.is_echo():
-		$ScoreText.pulse()
-
 func _on_pause_button_pressed():
 	SoundManager.play_click()
 	Constants.pause = true

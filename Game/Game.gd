@@ -32,14 +32,15 @@ func update_background_state():
 func _on_character_tap():
 	# Hitted
 	if Constants.state_matches:
+		$Character.pulse()
 		emit_signal("score")
 		# Update background and character
 		update_character_state()
 		update_background_state()
 	# Missed
 	else:
-		emit_signal("wrong")
 		$Character.shake()
+		emit_signal("wrong")
 
 
 func _on_swap_background_timer_timeout():
