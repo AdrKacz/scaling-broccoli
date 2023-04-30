@@ -8,8 +8,6 @@ func score():
 		
 func increment_combos_strike():
 	Constants.combos_strike += 1
-	if Constants.combos_strike % Constants.combos_reward_strike == 0:
-		earn_life()
 	
 	if Constants.combos_strike >= 2:
 		$SpeedLines.level = int(Constants.combos_strike / 10)
@@ -18,11 +16,6 @@ func increment_combos_strike():
 func reset_combos_strike():
 	$SpeedLines.level = -1
 	Constants.combos_strike = 0
-
-func earn_life():
-	if Constants.lives < Constants.max_lives:
-		$GameUI.earn_heart()
-		Constants.lives += 1
 
 func lose_life():
 	$GameUI.lose_heart()

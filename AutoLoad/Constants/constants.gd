@@ -5,7 +5,6 @@ const background_delta: float = 0.5
 const background_match_delta: float = 0.75
 const max_lives: int = 3
 const start_lives: int = 3
-const combos_reward_strike: int = 10
 const score_factor: int = 10
 
 var state_matches: bool = false

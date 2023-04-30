@@ -25,9 +25,6 @@ func _ready():
 func lose_heart():
 	$Hearts.lose_heart()
 	
-func earn_heart():
-	$Hearts.earn_heart()
-
 func _on_pause_button_pressed():
 	SoundManager.play_click()
 	Constants.pause = true
