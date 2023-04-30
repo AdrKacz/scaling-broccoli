@@ -1,11 +1,19 @@
 extends Node
 
-var mute: bool = false:
+var music_on: bool = true:
 	get:
-		return mute
+		return music_on
 	set(value):
-		mute = value
-		AudioServer.set_bus_mute(0, mute)
+		music_on = value
+		AudioServer.set_bus_mute(1, not music_on)
+		
+var sound_effects_on: bool = true:
+	get:
+		return sound_effects_on
+	set(value):
+		sound_effects_on = value
+		AudioServer.set_bus_mute(2, not sound_effects_on)
+
 var sounds = []
 
 func _ready():
@@ -15,42 +23,42 @@ func _ready():
 	sounds.append(preload("res://assets/audio/taunts/taunt4.mp3"))
 	sounds.append(preload("res://assets/audio/taunts/taunt5.mp3"))
 	sounds.append(preload("res://assets/audio/taunts/taunt6.mp3"))
-	$BackgroundMusic.play()
+	$Music/BackgroundMusic.play()
 
 func play_click():
-	$ClickSound.play()
+	$SoundEffects/ClickSound.play()
 
 func play_lost():
 	sounds.shuffle()
-	$LostSound.stream = sounds.front()
-	$LostSound.play()
+	$SoundEffects/LostSound.stream = sounds.front()
+	$SoundEffects/LostSound.play()
 
 func play_no_combo():
-	$NoComboSound.play()
+	$SoundEffects/NoComboSound.play()
 
 func play_change_state():
-	$ChangeStateSound.play()
+	$SoundEffects/ChangeStateSound.play()
 	
 func play_bonus():
-	$BonusSound.play()
+	$SoundEffects/BonusSound.play()
 
 func play_action():
-	$ActionSound.play()
+	$SoundEffects/ActionSound.play()
 
 func play_shockwave():
-	$ShockwaveSound.play()
+	$SoundEffects/ShockwaveSound.play()
 
 func play_clock():
-	if not $ClockSound.playing:
-		$ClockSound.play()
+	if not $SoundEffects/ClockSound.playing:
+		$SoundEffects/ClockSound.play()
 
 func stop_clock():
-	$ClockSound.stop()
+	$SoundEffects/ClockSound.stop()
 
 func play_heartbeat():
-	if not $HeartbeatSound.playing:
-		$HeartbeatSound.play()
+	if not $SoundEffects/HeartbeatSound.playing:
+		$SoundEffects/HeartbeatSound.play()
 
 func stop_heartbeat():
-	$HeartbeatSound.stop()
+	$SoundEffects/HeartbeatSound.stop()
 

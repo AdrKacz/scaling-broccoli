@@ -17,9 +17,8 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event is InputEventScreenTouch and event.is_pressed():
 		handle_tap()
 
-const LIGHT_HAPTIC_FEEDBACK: int = 4
 func handle_tap():
-	Input.vibrate_handheld(LIGHT_HAPTIC_FEEDBACK)
+	Session.light_haptic_feedback()
 	SoundManager.play_action()
 	emit_signal("tap")
 

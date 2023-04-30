@@ -5,3 +5,6 @@ func _on_play_pressed():
 
 func _on_leaderboard_pressed():
 	Session.leaderboard()
+
+func _on_texture_button_pressed():
+	Session.settings()

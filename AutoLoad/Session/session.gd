@@ -3,6 +3,7 @@ extends Node
 @export_file("*.tscn") var game_path = "res://Game/GameMaster.tscn"
 @export_file("*.tscn") var main_menu_path = "res://UI/MainMenu/MainMenu.tscn"
 @export_file("*.tscn") var leaderboard_path = "res://UI/Leaderboard/Leaderboard.tscn"
+@export_file("*.tscn") var settings_path = "res://Scenes/Menus/Settings/Settings.tscn"
 
 func _ready():
 	randomize()
@@ -27,6 +28,9 @@ func leaderboard():
 	unpause()
 	get_tree().change_scene_to_file(leaderboard_path)
 	
+func settings():
+	get_tree().change_scene_to_file(settings_path)
+	
 func main_menu():
 	unpause()
 	get_tree().change_scene_to_file(main_menu_path)
@@ -45,3 +49,8 @@ func _on_NetworkManager_insert(_result):
 	unpause()
 	get_tree().change_scene_to_file(leaderboard_path)
 
+var vibration_on: bool = true
+const LIGHT_HAPTIC_FEEDBACK: int = 8
+func light_haptic_feedback():
+	if vibration_on:
+		Input.vibrate_handheld(LIGHT_HAPTIC_FEEDBACK)

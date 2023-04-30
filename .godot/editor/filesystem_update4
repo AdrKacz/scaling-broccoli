@@ -1,8 +1,7 @@
 res://default_env.tres
-res://Scenes/BonusText/BonusText.tscn
-res://UI/Leaderboard/Leaderboard.tscn
-res://Game/GameMaster.tscn
-res://Shaders/Shockwave.tscn
-res://Scenes/Character/Character.tscn
-res://Scenes/GameUI/GameUI.tscn
-res://Game/Game.tscn
+res://UI/MainMenu/MainMenu.tscn
+res://Scenes/Menus/Settings/Settings.tscn
+res://AutoLoad/SoundManager/SoundManager.tscn
+res://Scenes/Menus/Settings/Settings.gd
+res://AutoLoad/SoundManager/SoundManager.gd
+res://default_bus_layout.tres

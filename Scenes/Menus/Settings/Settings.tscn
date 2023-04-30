@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://mvxeej36kptf"]
+
+[ext_resource type="Script" path="res://Scenes/Menus/Settings/Settings.gd" id="1_02iur"]
+[ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="1_07r1w"]
+[ext_resource type="FontFile" uid="uid://dawfg0re1svew" path="res://assets/VT323/VT323-Regular.ttf" id="2_y6m1g"]
+[ext_resource type="Texture2D" uid="uid://cd1ovoff7m0tr" path="res://assets/checkmark.png" id="3_csehr"]
+[ext_resource type="Texture2D" uid="uid://0yejsjm01crk" path="res://assets/cross.png" id="4_ecn5d"]
+[ext_resource type="Texture2D" uid="uid://k2sbxux3l8li" path="res://assets/exitRight.png" id="5_5dkyc"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_02iur")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.584314, 0.345098, 0.945098, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_07r1w")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_y6m1g")
+theme_override_font_sizes/font_size = 128
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="MusicCheckBox" type="CheckBox" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 24
+theme_override_fonts/font = ExtResource("2_y6m1g")
+theme_override_font_sizes/font_size = 96
+theme_override_icons/checked = ExtResource("3_csehr")
+theme_override_icons/unchecked = ExtResource("4_ecn5d")
+button_pressed = true
+text = "Music"
+
+[node name="SoundEffectCheckBox" type="CheckBox" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 24
+theme_override_fonts/font = ExtResource("2_y6m1g")
+theme_override_font_sizes/font_size = 96
+theme_override_icons/checked = ExtResource("3_csehr")
+theme_override_icons/unchecked = ExtResource("4_ecn5d")
+button_pressed = true
+text = "Sound effects"
+
+[node name="VibrationCheckBox" type="CheckBox" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 24
+theme_override_fonts/font = ExtResource("2_y6m1g")
+theme_override_font_sizes/font_size = 96
+theme_override_icons/checked = ExtResource("3_csehr")
+theme_override_icons/unchecked = ExtResource("4_ecn5d")
+button_pressed = true
+text = "Vibration"
+
+[node name="ExitControl" type="Control" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ExitControl"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/ExitControl/MarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_5dkyc")
+texture_pressed = ExtResource("5_5dkyc")
+texture_hover = ExtResource("5_5dkyc")
+
+[connection signal="toggled" from="MarginContainer/CenterContainer/VBoxContainer/MusicCheckBox" to="." method="_on_music_check_box_toggled"]
+[connection signal="toggled" from="MarginContainer/CenterContainer/VBoxContainer/SoundEffectCheckBox" to="." method="_on_sound_effect_check_box_toggled"]
+[connection signal="toggled" from="MarginContainer/CenterContainer/VBoxContainer/VibrationCheckBox" to="." method="_on_vibration_check_box_toggled"]
+[connection signal="pressed" from="MarginContainer/ExitControl/MarginContainer/TextureButton" to="." method="_on_exit_button_pressed"]

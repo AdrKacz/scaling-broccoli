@@ -1,8 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://dwx23lkbhy5gw"]
+[gd_scene load_steps=24 format=3 uid="uid://dwx23lkbhy5gw"]
 
 [ext_resource type="Script" path="res://UI/Leaderboard/Leaderboard.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cb7cnilm5shk8" path="res://assets/ButtonsV3/SmallButtonDown.png" id="3"]
-[ext_resource type="PackedScene" uid="uid://cp0b2g6ma20cv" path="res://ExternalVisuals/MenuBackground.tscn" id="3_rwy00"]
 [ext_resource type="FontFile" uid="uid://dawfg0re1svew" path="res://assets/VT323/VT323-Regular.ttf" id="4"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="4_7axui"]
 [ext_resource type="Texture2D" uid="uid://xfa1vu6ckvuw" path="res://assets/ButtonsV3/SmallButtonUp.png" id="6"]
@@ -141,8 +140,15 @@ grow_vertical = 2
 script = ExtResource("1")
 ScoreEntry = SubResource("PackedScene_wanee")
 
-[node name="MenuBackgroud" parent="." instance=ExtResource("3_rwy00")]
+[node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.584314, 0.345098, 0.945098, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -167,7 +173,6 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4")
 theme_override_font_sizes/font_size = 64
 text = "Leaderboard"
