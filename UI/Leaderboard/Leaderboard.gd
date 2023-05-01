@@ -34,9 +34,10 @@ func _on_NetworkManager_scan(scores):
 
 
 func _on_MainMenu_pressed():
+	Session.click()
 	Session.main_menu()
 
 
 func _on_Replay_pressed():
-	SoundManager.play_click()
+	Session.click()
 	Session.start_game()

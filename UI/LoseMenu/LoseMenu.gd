@@ -27,7 +27,7 @@ func animate_submit_error(text: String):
 	tween.tween_callback($AnimationPlayer.play.bind('RESET')).set_delay(.7)
 
 func _on_SubmitScore_pressed():
-	SoundManager.play_click()
+	Session.click()
 	var player_name = name_line_edit.text
 	var errorMessage = ""
 	for letter in player_name:
@@ -44,9 +44,9 @@ func _on_SubmitScore_pressed():
 
 
 func _on_MainMenu_pressed():
-	SoundManager.play_click()
+	Session.click()
 	Session.main_menu()
 
 func _on_Restart_pressed():
-	SoundManager.play_click()
+	Session.click()
 	Session.start_game()

@@ -26,7 +26,7 @@ func lose_heart():
 	$Hearts.lose_heart()
 	
 func _on_pause_button_pressed():
-	SoundManager.play_click()
+	Session.click()
 	Constants.pause = true
 	Session.pause_with_opacity()
 	

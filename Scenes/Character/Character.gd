@@ -18,8 +18,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 		handle_tap()
 
 func handle_tap():
-	Session.light_haptic_feedback()
-	SoundManager.play_action()
+	Session.tap()
 	emit_signal("tap")
 
 func shake():

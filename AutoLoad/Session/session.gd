@@ -50,7 +50,20 @@ func _on_NetworkManager_insert(_result):
 	get_tree().change_scene_to_file(leaderboard_path)
 
 var vibration_on: bool = true
-const LIGHT_HAPTIC_FEEDBACK: int = 8
+const LIGHT_HAPTIC_FEEDBACK: int = 4
+const MEDIUM_HAPTIC_FEEDBACK: int = 8
 func light_haptic_feedback():
 	if vibration_on:
 		Input.vibrate_handheld(LIGHT_HAPTIC_FEEDBACK)
+
+func medium_haptic_feedback():
+	if vibration_on:
+		Input.vibrate_handheld(MEDIUM_HAPTIC_FEEDBACK)
+
+func click():
+	AudioManager.play_sound_effects(AudioManager.SOUND_EFFECTS.CLICK)
+	light_haptic_feedback()
+
+func tap():
+	AudioManager.play_sound_effects(AudioManager.SOUND_EFFECTS.TAP)
+	medium_haptic_feedback()

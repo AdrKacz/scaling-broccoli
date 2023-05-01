@@ -1,10 +1,7 @@
 res://default_env.tres
-res://UI/LoseMenu/LoseMenu.tscn
-res://UI/LoseMenu/LoseMenu.gd
-res://Game/GameMaster.tscn
-res://UI/Leaderboard/Leaderboard.tscn
 res://UI/MainMenu/MainMenu.tscn
-res://Scenes/GameUI/GameUI.tscn
-res://Scenes/Menus/Settings/Settings.tscn
 res://Scenes/Menus/Settings/Settings.gd
-res://AutoLoad/SoundManager/SoundManager.tscn
+res://UI/MainMenu/MainMenu.gd
+res://UI/PauseMenu/PauseMenu.gd
+res://UI/Leaderboard/Leaderboard.tscn
+res://AutoLoad/AudioManager/AudioManager.gd
