@@ -7,3 +7,4 @@ res://UI/MainMenu/MainMenu.tscn
 res://Scenes/GameUI/GameUI.tscn
 res://Scenes/Menus/Settings/Settings.tscn
 res://Scenes/Menus/Settings/Settings.gd
+res://AutoLoad/SoundManager/SoundManager.tscn

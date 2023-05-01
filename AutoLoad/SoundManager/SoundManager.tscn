@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://5hksidk1r2km"]
 
 [ext_resource type="Script" path="res://AutoLoad/SoundManager/SoundManager.gd" id="1"]
-[ext_resource type="AudioStream" uid="uid://dm8mxn74a1u3x" path="res://assets/audio/merge_music.mp3" id="2"]
+[ext_resource type="AudioStream" uid="uid://off2albj4onb" path="res://assets/music/Ludum Dare 30 - Track 9.wav" id="2_2kpem"]
 [ext_resource type="AudioStream" uid="uid://c125be4cuve7b" path="res://assets/audio/click_button.wav" id="3"]
 [ext_resource type="AudioStream" uid="uid://crjahha626e6h" path="res://assets/audio/heartbeat_time_running_out.wav" id="4"]
 [ext_resource type="AudioStream" uid="uid://dpysamgwxedva" path="res://assets/audio/change_state_sound.wav" id="5"]
@@ -22,8 +22,8 @@ script = ExtResource("1")
 [node name="Music" type="Node" parent="."]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="Music"]
-stream = ExtResource("2")
-volume_db = -3.0
+stream = ExtResource("2_2kpem")
+autoplay = true
 bus = &"Music"
 area_mask = 0
 

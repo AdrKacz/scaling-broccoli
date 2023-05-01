@@ -1,13 +1,13 @@
 bdbec74c6e5bd72edee867077d70896c
-::res://::1682936405
+::res://::1682938631
 default_bus_layout.tres::AudioBusLayout::3145664465252483817::1682878888::0::1::::<><>::
-default_env.tres::Environment::5056182259638363312::1682936405::0::1::::<><>::
+default_env.tres::Environment::5056182259638363312::1682938631::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1682704532::0::1::::<><>::
 icon.png::CompressedTexture2D::1387408321629305242::1682160890::1682160890::1::::<><>::
 privacy-policy.md::TextFile::-1::1682160890::0::1::::<><>::
 README.md::TextFile::-1::1682704532::0::1::::<><>::
 ::res://android/::1682160890
-::res://assets/::1682869378
+::res://assets/::1682938322
 audioOff.png::CompressedTexture2D::6090765665404632711::1682160890::1682160890::1::::<><>::
 audioOn.png::CompressedTexture2D::6128368792160389523::1682160890::1682160890::1::::<><>::
 Background.png::CompressedTexture2D::4149037370597057649::1682704524::1682704524::1::::<><>::
@@ -71,6 +71,8 @@ ARCADECLASSIC.TTF::FontFile::216749595880287756::1682160890::1682160890::1::::<>
 FONTLOG.txt::TextFile::-1::1682160890::0::1::::<><>::
 LICENSE.txt::TextFile::-1::1682160890::0::1::::<><>::
 Xolonium-Regular.ttf::FontFile::704789037788314418::1682160890::1682160890::1::::<><>::
+::res://assets/music/::1682938484
+Ludum Dare 30 - Track 9.wav::AudioStreamWAV::993317518153484235::1682938448::1682938484::1::::<><>::
 ::res://assets/VT323/::1682704524
 OFL.txt::TextFile::-1::1682704524::0::1::::<><>::
 VT323-Regular.ttf::FontFile::7204994000958526946::1682704524::1682704524::1::::<><>::
@@ -85,9 +87,9 @@ NetworkManager.tscn::PackedScene::3174144402543160632::1682160890::0::1::::<><>:
 ::res://AutoLoad/Session/::1682869725
 session.gd::GDScript::-1::1682869725::0::1::::<>Node<>::
 session.tscn::PackedScene::-1::1682704524::0::1::::<><>::res://AutoLoad/Session/session.gd<>res://UI/PauseMenu/PauseMenu.tscn<>res://UI/LoseMenu/LoseMenu.tscn
-::res://AutoLoad/SoundManager/::1682878902
+::res://AutoLoad/SoundManager/::1682938631
 SoundManager.gd::GDScript::-1::1682878893::0::1::::<>Node<>::
-SoundManager.tscn::PackedScene::2120755692948355828::1682878902::0::1::::<><>::res://AutoLoad/SoundManager/SoundManager.gd<>uid://dm8mxn74a1u3x<>uid://c125be4cuve7b<>uid://crjahha626e6h<>uid://dpysamgwxedva<>uid://dbh0qbt5lbo17<>uid://dpljkum3ii30g<>uid://dfograrjor2ro<>uid://cbbyehvihsww6
+SoundManager.tscn::PackedScene::2120755692948355828::1682938631::0::1::::<><>::res://AutoLoad/SoundManager/SoundManager.gd<>uid://off2albj4onb<>uid://c125be4cuve7b<>uid://crjahha626e6h<>uid://dpysamgwxedva<>uid://dbh0qbt5lbo17<>uid://dpljkum3ii30g<>uid://dfograrjor2ro<>uid://cbbyehvihsww6
 ::res://AutoLoad/StateManager/::1682704531
 StateManager.gd::GDScript::-1::1682704531::0::1::::<>Node<>::
 ::res://Design/::1682704531
@@ -255,9 +257,9 @@ Hearts.tscn::PackedScene::4561046055080937644::1682704532::0::1::::<><>::uid://c
 Heart.gd::GDScript::-1::1682704532::0::1::::<>AnimatedSprite2D<>::
 Heart.tscn::PackedScene::6298210698585096146::1682704532::0::1::::<><>::uid://cyxaxql3bt1fx<>res://Scenes/Hearts/Heart/Heart.gd
 ::res://Scenes/Menus/::1682765142
-::res://Scenes/Menus/Settings/::1682936405
+::res://Scenes/Menus/Settings/::1682936431
 Settings.gd::GDScript::-1::1682936404::0::1::::<>Control<>::
-Settings.tscn::PackedScene::887021915811561799::1682936405::0::1::::<><>::res://Scenes/Menus/Settings/Settings.gd<>res://UI/SafeControl/safe_control.gd<>uid://dawfg0re1svew<>uid://cd1ovoff7m0tr<>uid://0yejsjm01crk<>uid://k2sbxux3l8li
+Settings.tscn::PackedScene::887021915811561799::1682936431::0::1::::<><>::res://Scenes/Menus/Settings/Settings.gd<>res://UI/SafeControl/safe_control.gd<>uid://dawfg0re1svew<>uid://cd1ovoff7m0tr<>uid://0yejsjm01crk<>uid://k2sbxux3l8li
 ::res://Scenes/PointerIntro/::1682704524
 PointerIntro.gd::GDScript::-1::1682704524::0::1::::<>Sprite2D<>::
 PointerIntro.tscn::PackedScene::6358025850125172751::1682704524::0::1::::<><>::uid://yni0h8gaj8v1<>uid://bv0ydebmx7yko<>res://Scenes/PointerIntro/PointerIntro.gd
