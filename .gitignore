@@ -48,7 +48,7 @@ tests/data/*.translation
 ### General build output ###
 ############################
 
-Exports/
+exports/
 
 # C/C++ generated
 *.a
