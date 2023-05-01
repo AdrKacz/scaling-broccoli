@@ -1,13 +1,13 @@
-# The Game
+# Rainbow Rush
 
-The Game is a mobile arcade-like video game where you have to touch a square when its colour matches the colour of the background.
+Rainbow Rush is a mobile arcade-like video game where you have to touch a square when its colour matches the colour of the background.
 The square will keep its colour until you touch it when it has the same colour as the background.
 The background keeps changing colour, and you must be fast and reactive!
 
-You can take two directions to decide the rules of the Game.
+You can take two directions to decide the rules.
   - Time is the main element
   - Hit is the main element
-In the rules below, the main element is **hit** (*when you tap the square when its colour matches the colour of the background*). *Hit* is the game dynamics. You **hit** when you play, so it keeps the central position for all the rules.
+In the rules below, the main element is **hit** (*when you tap the square when its colour matches the colour of the background*). *Hit* is the dynamics. You **hit** when you play, so it keeps the central position for all the rules.
 
 # How do I earn points?
 Points are a common language between players to compare their performance and challenge each other. Points in arcade games be the best translation of the player's level possible.
@@ -27,19 +27,19 @@ After your second hit without a miss, you will start a combo. Then, you'll conti
 You miss if:
   - you tap when the square and the background don't have the same colour,
   - you don't tape when the square and the background have the same colour.
-You will always have the chance to hit within the next five changement of colors. Five being the number of colors in the game.
+You will always have the chance to hit within the next five changement of colors. Five being the number of colors.
 
 ## ~~Option 2: You don't miss within a time window ~~
 
-# How do I lose the Game?
+# How do I lose?
 ## ~~Option 1: I don't have time left~~
 ## Option 2: I missed too many times
-You start the Game with three lives. Each time you miss, you lose a life. The Game ends when you lose your last life.
+You start with three lives. Each time you miss, you lose a life. You lose once you lose your last life.
 You miss if you tap when the square and the background differ from the same colour.
 
 ### Variables
 - `max_lives`: maximum number of lives (*three above*)
-- `start_lives`: number of lives when the Game starts (*three above*)
+- `start_lives`: number of lives at start (*three above*)
 
 ## ~~Option 3: A game always has the same duration~~
 
@@ -58,7 +58,7 @@ You will earn one life every ten hit in a row
 
 # How does the difficulty increase?
 ## ~~Option 1: The difficulty remains the same~~
-## ~~Option 2: The difficulty increases during the Game ~~
+## ~~Option 2: The difficulty increases ~~
 ## Option 3: The difficulty increases during a combo
 Each time you hit during the combo, the background will change colour faster.
 The background will keep its colour longer when it has the same as the colour of the square.

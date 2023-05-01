@@ -1,7 +1,0 @@
-res://default_env.tres
-res://UI/MainMenu/MainMenu.tscn
-res://Scenes/Menus/Settings/Settings.gd
-res://UI/MainMenu/MainMenu.gd
-res://UI/PauseMenu/PauseMenu.gd
-res://UI/Leaderboard/Leaderboard.tscn
-res://AutoLoad/AudioManager/AudioManager.gd
