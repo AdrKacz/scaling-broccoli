@@ -1,11 +1,12 @@
+CenterContainer
+HBoxContainer
+MarginContainer
+AnimationPlayer
 Node
 CheckBox
 Label
 VBoxContainer
-CenterContainer
-MarginContainer
 ColorRect
-AnimationPlayer
 CanvasLayer
 Control
 Sprite2D
