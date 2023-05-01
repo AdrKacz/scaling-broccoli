@@ -52,10 +52,10 @@ alignment = 1
 custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
+theme_override_constants/outline_size = 24
 theme_override_fonts/font = ExtResource("4")
 theme_override_font_sizes/font_size = 128
-text = "Matchy Colors"
+text = "Rainbow Rush"
 horizontal_alignment = 1
 autowrap_mode = 3
 

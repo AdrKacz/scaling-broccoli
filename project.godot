@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Merge"
+config/name="Rainbow Rush"
 run/main_scene="res://UI/MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://ExternalVisuals/GameIcon/Icon.png"
