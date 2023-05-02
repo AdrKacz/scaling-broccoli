@@ -23,7 +23,7 @@ func lose_life():
 	if Constants.lives == 0:
 		$GameUI.visible = false
 		# TODO: lose is a bit straighforward, a little animation won't hurt
-		Session.lose()
+		Session.lose_menu()
 
 func wrong():
 	reset_combos_strike()

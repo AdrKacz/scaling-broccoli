@@ -39,7 +39,7 @@ func _on_SubmitScore_pressed():
 	if errorMessage.length() > 0:
 		animate_submit_error(errorMessage)
 	else:
-		Session.submit_score(Constants.score, player_name.to_upper())
+		Session.submit_score(player_name, Constants.score)
 		$AnimationPlayer.play("wait_submit")
 
 

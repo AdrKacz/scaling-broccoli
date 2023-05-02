@@ -35,7 +35,3 @@ const State = {
 var score: int = 0
 var combos_strike: int = 0
 var lives: int = start_lives
-
-var pause: bool = false
-var sound: bool = true
-var music: bool = true

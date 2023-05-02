@@ -1,73 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://dwx23lkbhy5gw"]
+[gd_scene load_steps=20 format=3 uid="uid://dwx23lkbhy5gw"]
 
 [ext_resource type="Script" path="res://UI/Leaderboard/Leaderboard.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://w57mv4quu8j1" path="res://UI/Leaderboard/ScoreEntry/ScoreEntry.tscn" id="2_rwihr"]
 [ext_resource type="Texture2D" uid="uid://cb7cnilm5shk8" path="res://assets/ButtonsV3/SmallButtonDown.png" id="3"]
 [ext_resource type="FontFile" uid="uid://dawfg0re1svew" path="res://assets/VT323/VT323-Regular.ttf" id="4"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="4_7axui"]
 [ext_resource type="Texture2D" uid="uid://xfa1vu6ckvuw" path="res://assets/ButtonsV3/SmallButtonUp.png" id="6"]
-
-[sub_resource type="GDScript" id="GDScript_i0y2b"]
-script/source = "extends MarginContainer
-
-
-var rank = \"\"
-var player = \"\"
-var score = \"\"
-
-func _ready():
-	$HBoxContainer/Rank.text = rank
-	$HBoxContainer/Player.text = player
-	$HBoxContainer/Score.text = score
-"
-
-[sub_resource type="FontFile" id="1"]
-fallbacks = Array[Font]([ExtResource("4")])
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
-[sub_resource type="FontFile" id="2"]
-fallbacks = Array[Font]([ExtResource("4")])
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
-[sub_resource type="FontFile" id="3"]
-fallbacks = Array[Font]([ExtResource("4")])
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
-[sub_resource type="PackedScene" id="PackedScene_wanee"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("ScoreEntry", "MarginContainer", "offset_right", "offset_bottom", "size_flags_horizontal", "size_flags_vertical", "theme_override_constants/margin_left", "theme_override_constants/margin_right", "script", "HBoxContainer", "HBoxContainer", "layout_mode", "Rank", "Label", "layout_mode", "size_flags_horizontal", "size_flags_vertical", "theme_override_fonts/font", "Player", "Label", "layout_mode", "size_flags_horizontal", "size_flags_vertical", "theme_override_fonts/font", "Score", "Label", "layout_mode", "size_flags_horizontal", "size_flags_vertical", "theme_override_fonts/font"),
-"node_count": 5,
-"node_paths": [NodePath("."), NodePath("./HBoxContainer"), NodePath("./HBoxContainer"), NodePath("./HBoxContainer")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 7, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 0, 1073741824, 0, 10, 9, -1, 1, 11, 7, 0, 1073741825, 0, 13, 12, -1, 4, 14, 8, 15, 9, 16, 10, 17, 11, 0, 1073741826, 0, 19, 18, -1, 4, 20, 12, 21, 13, 22, 14, 23, 15, 0, 1073741827, 0, 25, 24, -1, 4, 26, 16, 27, 17, 28, 18, 29, 19, 0),
-"variants": [40.0, 14.0, 3, 7, 16, 16, SubResource("GDScript_i0y2b"), 2, 2, 3, 6, SubResource("1"), 2, 3, 6, SubResource("2"), 2, 3, 6, SubResource("3")],
-"version": 3
-}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88h2d"]
 bg_color = Color(0, 0, 0, 0.705882)
@@ -138,7 +76,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
-ScoreEntry = SubResource("PackedScene_wanee")
+ScoreEntry = ExtResource("2_rwihr")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1

@@ -40,19 +40,16 @@ describe('Test updateLeaderboard', function () {
         const result = await updateLeaderboard(event); 
     
         // Compare the result with the expected result 
-        expect(result).toEqual({ 
-            statusCode: 200, 
-            body: JSON.stringify({
-                leaders: [
-                    {name: 'D', score: 32},
-                    {name: 'C', score: 16},
-                    {name: 'A', score: 10},
-                    {name: 'B', score: 8},
-                    {name: 'E', score: 7}
-                ],
-                position: 0
-            }) 
-        });
+        expect(result.statusCode).toEqual(200);
+        expect(JSON.parse(result.body).leaders).toEqual([
+            {name: 'D', score: 32},
+            {name: 'C', score: 16},
+            {name: 'A', score: 10},
+            {name: 'B', score: 8},
+            {name: 'E', score: 7}
+        ]);
+        expect(JSON.parse(result.body).position).toEqual(0);
+        expect(typeof JSON.parse(result.body).uuid).toBe("undefined");
 
         expect(ddbMock).toHaveReceivedCommandTimes(ScanCommand, 2);
         expect(ddbMock).toHaveReceivedCommandTimes(PutCommand, 0);
@@ -68,19 +65,16 @@ describe('Test updateLeaderboard', function () {
         const result = await updateLeaderboard(event); 
     
         // Compare the result with the expected result 
-        expect(result).toEqual({ 
-            statusCode: 200, 
-            body: JSON.stringify({
-                leaders: [
-                    {name: 'F', score: 64},
-                    {name: 'D', score: 32},
-                    {name: 'C', score: 16},
-                    {name: 'A', score: 10},
-                    {name: 'B', score: 8}
-                ],
-                position: 1
-            }) 
-        });
+        expect(result.statusCode).toEqual(200);
+        expect(JSON.parse(result.body).leaders).toEqual([
+            {name: 'F', score: 64},
+            {name: 'D', score: 32},
+            {name: 'C', score: 16},
+            {name: 'A', score: 10},
+            {name: 'B', score: 8}
+        ]);
+        expect(JSON.parse(result.body).position).toEqual(1);
+        expect(typeof JSON.parse(result.body).uuid).toBe("string");
 
         expect(ddbMock).toHaveReceivedCommandTimes(ScanCommand, 2);
 

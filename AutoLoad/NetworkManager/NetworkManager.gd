@@ -1,50 +1,54 @@
 extends Node
 
-signal scan(result)
-signal insert(result)
+signal leaderboard(leaders, position)
 
-var is_scanning = false
-var is_inserting = false
+var wait_get: bool = false
+var wait_post: bool = false
 
-const apiEndpoint = "https://infinite-mesa-72950.herokuapp.com/"
+const endpoint: String = ""
+var lastUUID: String = "none"
 
-func start_scan():
-	if is_scanning:
-		print("Already scanning")
+func get_leaderboard():
+	if wait_get:
+		# TODO make sure we don't wait for too long if error serverside
 		return
-	print("Scan")
-	var error = $HTTPRequestScan.request(apiEndpoint + "scan")
+	var error = $HTTPRequestGet.request(endpoint + lastUUID)
 	if error != OK:
-		push_error("An error occurred in the HTTP request [scan].")
+		push_error("An error occurred in the HTTP request.")
 	else:
-		is_scanning = true
+		wait_get = true
 		
-func start_insert(score, player_name):
-	if is_inserting or is_scanning:
-		print("Already inserting")
+func post_leaderboard(player_name: String, score: int):
+	if wait_post:
 		return
-	print("Insert: ", score, ", ", player_name)
-	var body = {"score": score, "name": player_name}
-	var error = $HTTPRequestInsert.request(apiEndpoint + "insert", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify(body))
-	if error != OK:
-		push_error("An error occurred in the HTTP request [insert, %d, %s]." % [score, player_name])
-	else:
-		is_inserting = true
-
-
-func _on_HTTPRequestInsert_request_completed(_result, _response_code, _headers, body):
-	var test_json_conv = JSON.new()
-	test_json_conv.parse(body.get_string_from_utf8())
-	var response = test_json_conv.get_data()
-	if response and response.has("result"):
-		emit_signal("insert", response["result"])
-	is_inserting = false
-
-func _on_HTTPRequestScan_request_completed(_result, _response_code, _headers, body):
-	var test_json_conv = JSON.new()
-	test_json_conv.parse(body.get_string_from_utf8())
-	var response = test_json_conv.get_data()
-	if response and response.has("result"):
-		emit_signal("scan", response["result"])
-	is_scanning = false
+	var body = JSON.stringify({
+		"name": player_name,
+		"score": score
+	})
 	
+	var error = $HTTPRequestPost.request(endpoint, [], HTTPClient.METHOD_POST, body)
+	print('Post to leaderboard - ', error)
+	print(body)
+	if error != OK:
+		push_error("An error occurred in the HTTP request.")
+	else:
+		wait_post = true
+		
+func process_response(body):
+	var json = JSON.new()
+	json.parse(body.get_string_from_utf8())
+	var response = json.get_data()
+	print(response)
+	if response == null:
+		return
+	var leaders = response.get('leaders', [])
+	var position = response.get('position', 0)
+	emit_signal("leaderboard", leaders, position)
+
+func _on_http_request_get_request_completed(_result, _response_code, _headers, body):
+	wait_get = false
+	process_response(body)
+
+func _on_http_request_post_request_completed(_result, _response_code, _headers, body):
+	wait_post = false
+	process_response(body)

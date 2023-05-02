@@ -62,13 +62,17 @@ export const updateLeaderboard = async (event) => {
 
     // add item to the sorted list of items
     const index = sortedIndex(items, score);
+    console.log(items)
+    console.log(index)
     items.splice(index, 0, { name, score });
+    console.log(items)
 
     // add item in the table
+    const uuid = randomUUID()
     const putCommand = new PutCommand({
         TableName: LEADERBOARD_TABLE,
         Item: {
-            id: randomUUID(), // generate random id
+            id: uuid, // generate random id
             name,
             score
         }
@@ -89,7 +93,8 @@ export const updateLeaderboard = async (event) => {
         statusCode: 200,
         body: JSON.stringify({
             leaders: items.slice(0, LEADERS_SIZE).map(item => ({ name: item.name, score: item.score })),
-            position: index + 1 })
+            position: index + 1,
+            uuid })
     };
 
     console.info(`response from: ${event.path} statusCode: ${response.statusCode} body: ${response.body}`);
@@ -121,7 +126,7 @@ export const sortedIndex = (array, value) => {
 
     while (low < high) {
         const mid = (low + high) >>> 1; // divide by 2
-        if (array[mid] < value) low = mid + 1;
+        if (array[mid].score > value) low = mid + 1;
         else high = mid;
     }
     return low;
