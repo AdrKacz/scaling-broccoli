@@ -50,7 +50,7 @@ export const getLeaderboard = async (event) => {
         statusCode: 200,
         body: JSON.stringify({
             leaders: items.slice(0, LEADERS_SIZE).map(item => ({ name: item.name, score: item.score })),
-            position: playerIndex + 1 
+            position: playerIndex + 1
         })
     };
 

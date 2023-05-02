@@ -8,8 +8,6 @@ offset_right = 40.0
 offset_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_right = 16
 script = ExtResource("1_rc82p")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -21,6 +19,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 6
 theme_override_fonts/font = ExtResource("1")
 theme_override_font_sizes/font_size = 64
+text = "1"
 
 [node name="Player" type="Label" parent="HBoxContainer"]
 layout_mode = 2
@@ -28,6 +27,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 6
 theme_override_fonts/font = ExtResource("1")
 theme_override_font_sizes/font_size = 64
+text = "Player"
+horizontal_alignment = 1
 
 [node name="Score" type="Label" parent="HBoxContainer"]
 layout_mode = 2
@@ -35,3 +36,5 @@ size_flags_horizontal = 3
 size_flags_vertical = 6
 theme_override_fonts/font = ExtResource("1")
 theme_override_font_sizes/font_size = 64
+text = "12000"
+horizontal_alignment = 2

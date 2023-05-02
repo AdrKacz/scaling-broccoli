@@ -5,9 +5,11 @@ extends Node
 @export_file("*.tscn") var leaderboard_path = "res://UI/Leaderboard/Leaderboard.tscn"
 @export_file("*.tscn") var settings_path = "res://Scenes/Menus/Settings/Settings.tscn"
 
+var read_leaderboard_from_memory: bool = false
+var in_memory_leaderboard: Dictionary
+
 func _ready():
 	randomize()
-#	NetworkManager.connect("leaderboard", Callable(self, "_on_network_manager_leaderboard"))
 	
 func pause_menu():
 	$PauseMenu.set_visible_to(true)
@@ -37,10 +39,6 @@ func main_menu():
 func lose_menu():	
 	$PauseMenu.set_visible_to(false)
 	$LoseMenu.set_visible_to(true)
-
-
-func submit_score(player_name: String, score: int):
-	NetworkManager.post_leaderboard(player_name, score)
 
 var vibration_on: bool = true
 const LIGHT_HAPTIC_FEEDBACK: int = 4

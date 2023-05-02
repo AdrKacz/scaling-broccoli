@@ -20,7 +20,7 @@ resolve_s3 = true
 s3_prefix = "scaling-broccoli"
 region = "eu-west-3"
 profile = "scaling-broccoli"
-parameter_overrides = "MaximumSize=\"10\" LeadersSize=\"5\""
+parameter_overrides = "MaximumSize=\"1000\" LeadersSize=\"10\""
 image_repositories = []
 
 [default.package.parameters]
