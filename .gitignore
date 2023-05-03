@@ -48,7 +48,8 @@ tests/data/*.translation
 ### General build output ###
 ############################
 
-exports/
+exports/ios/*
+!exports/ios/.gitkeep
 
 # C/C++ generated
 *.a
