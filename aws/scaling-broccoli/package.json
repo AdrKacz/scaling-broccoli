@@ -1,0 +1,21 @@
+{
+    "name": "delete-test-01",
+    "description": "delete-test-01-description",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "@aws-sdk/client-dynamodb": "^3.188.0",
+        "@aws-sdk/lib-dynamodb": "^3.188.0"
+    },
+    "devDependencies": {
+        "aws-sdk-client-mock": "^2.0.0",
+        "aws-sdk-client-mock-jest": "^2.1.1",
+        "jest": "^29.2.1"
+    },
+    "scripts": {
+        "deploy": "sam build && sam deploy --profile scaling-broccoli --config-env default",
+        "deploy:force": "sam build && sam deploy --profile scaling-broccoli --no-confirm-changeset --config-env default",
+        "deploy:guided": "sam build && sam deploy --guided --profile scaling-broccoli",
+        "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js"
+    }
+}

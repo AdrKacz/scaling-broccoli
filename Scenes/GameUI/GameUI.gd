@@ -27,8 +27,7 @@ func lose_heart():
 	
 func _on_pause_button_pressed():
 	Session.click()
-	Constants.pause = true
-	Session.pause_with_opacity()
+	Session.pause_menu()
 	
 func update_score(score):
 	$ScoreText.text = str(score)

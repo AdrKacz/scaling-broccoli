@@ -1,134 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://dwx23lkbhy5gw"]
+[gd_scene load_steps=9 format=3 uid="uid://dwx23lkbhy5gw"]
 
 [ext_resource type="Script" path="res://UI/Leaderboard/Leaderboard.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://w57mv4quu8j1" path="res://UI/Leaderboard/ScoreEntry/ScoreEntry.tscn" id="2_rwihr"]
 [ext_resource type="Texture2D" uid="uid://cb7cnilm5shk8" path="res://assets/ButtonsV3/SmallButtonDown.png" id="3"]
+[ext_resource type="PackedScene" uid="uid://clroajn1j1t5n" path="res://UI/Leaderboard/OwnScoreEntry/OwnScoreEntry.tscn" id="3_1xxpg"]
 [ext_resource type="FontFile" uid="uid://dawfg0re1svew" path="res://assets/VT323/VT323-Regular.ttf" id="4"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="4_7axui"]
+[ext_resource type="PackedScene" uid="uid://dvwhdcoimyavg" path="res://UI/Leaderboard/Loader/Loader.tscn" id="5_gaay2"]
 [ext_resource type="Texture2D" uid="uid://xfa1vu6ckvuw" path="res://assets/ButtonsV3/SmallButtonUp.png" id="6"]
-
-[sub_resource type="GDScript" id="GDScript_i0y2b"]
-script/source = "extends MarginContainer
-
-
-var rank = \"\"
-var player = \"\"
-var score = \"\"
-
-func _ready():
-	$HBoxContainer/Rank.text = rank
-	$HBoxContainer/Player.text = player
-	$HBoxContainer/Score.text = score
-"
-
-[sub_resource type="FontFile" id="1"]
-fallbacks = Array[Font]([ExtResource("4")])
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
-[sub_resource type="FontFile" id="2"]
-fallbacks = Array[Font]([ExtResource("4")])
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
-[sub_resource type="FontFile" id="3"]
-fallbacks = Array[Font]([ExtResource("4")])
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
-[sub_resource type="PackedScene" id="PackedScene_wanee"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("ScoreEntry", "MarginContainer", "offset_right", "offset_bottom", "size_flags_horizontal", "size_flags_vertical", "theme_override_constants/margin_left", "theme_override_constants/margin_right", "script", "HBoxContainer", "HBoxContainer", "layout_mode", "Rank", "Label", "layout_mode", "size_flags_horizontal", "size_flags_vertical", "theme_override_fonts/font", "Player", "Label", "layout_mode", "size_flags_horizontal", "size_flags_vertical", "theme_override_fonts/font", "Score", "Label", "layout_mode", "size_flags_horizontal", "size_flags_vertical", "theme_override_fonts/font"),
-"node_count": 5,
-"node_paths": [NodePath("."), NodePath("./HBoxContainer"), NodePath("./HBoxContainer"), NodePath("./HBoxContainer")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 7, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 0, 1073741824, 0, 10, 9, -1, 1, 11, 7, 0, 1073741825, 0, 13, 12, -1, 4, 14, 8, 15, 9, 16, 10, 17, 11, 0, 1073741826, 0, 19, 18, -1, 4, 20, 12, 21, 13, 22, 14, 23, 15, 0, 1073741827, 0, 25, 24, -1, 4, 26, 16, 27, 17, 28, 18, 29, 19, 0),
-"variants": [40.0, 14.0, 3, 7, 16, 16, SubResource("GDScript_i0y2b"), 2, 2, 3, 6, SubResource("1"), 2, 3, 6, SubResource("2"), 2, 3, 6, SubResource("3")],
-"version": 3
-}
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88h2d"]
-bg_color = Color(0, 0, 0, 0.705882)
-
-[sub_resource type="StyleBoxEmpty" id="6"]
-
-[sub_resource type="StyleBoxEmpty" id="7"]
-
-[sub_resource type="StyleBoxEmpty" id="8"]
-
-[sub_resource type="StyleBoxEmpty" id="9"]
-
-[sub_resource type="StyleBoxEmpty" id="10"]
-
-[sub_resource type="Theme" id="11"]
-resource_local_to_scene = true
-VScrollBar/icons/decrement = null
-VScrollBar/icons/decrement_highlight = null
-VScrollBar/icons/increment = null
-VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = SubResource("6")
-VScrollBar/styles/grabber_highlight = SubResource("7")
-VScrollBar/styles/grabber_pressed = SubResource("8")
-VScrollBar/styles/scroll = SubResource("9")
-VScrollBar/styles/scroll_focus = SubResource("10")
-
-[sub_resource type="Curve2D" id="14"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -32, 0, 0, 0, 0, -32, 0, 0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 0, -32)
-}
-point_count = 5
-
-[sub_resource type="Curve" id="15"]
-_data = [Vector2(0.0045819, 0.936937), 0.0, 0.0, 0, 0, Vector2(0.973654, 0.0945946), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="16"]
-
-[sub_resource type="Curve" id="17"]
-_data = [Vector2(0.0284091, 0.918513), 0.0, 0.0, 0, 0, Vector2(0.920455, 0.0851798), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Animation" id="18"]
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PathFollow2D:progress_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kt1ir"]
-_data = {
-"spinner": SubResource("18")
-}
 
 [node name="Leaderboard" type="Control"]
 layout_mode = 3
@@ -138,7 +17,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
-ScoreEntry = SubResource("PackedScene_wanee")
+ScoreEntry = ExtResource("2_rwihr")
+OwnScoreEntry = ExtResource("3_1xxpg")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -178,156 +58,65 @@ theme_override_font_sizes/font_size = 64
 text = "Leaderboard"
 horizontal_alignment = 1
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_88h2d")
-
-[node name="VBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 16
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Panel/VBox"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_right = 16
-
-[node name="Titles" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/VBox/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Rank" type="Label" parent="MarginContainer/VBoxContainer/Panel/VBox/MarginContainer/Titles"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-theme_override_fonts/font = ExtResource("4")
-theme_override_font_sizes/font_size = 36
-text = "Rank"
-
-[node name="Player" type="Label" parent="MarginContainer/VBoxContainer/Panel/VBox/MarginContainer/Titles"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-theme_override_fonts/font = ExtResource("4")
-theme_override_font_sizes/font_size = 36
-text = "Player"
-
-[node name="Score" type="Label" parent="MarginContainer/VBoxContainer/Panel/VBox/MarginContainer/Titles"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-theme_override_fonts/font = ExtResource("4")
-theme_override_font_sizes/font_size = 36
-text = "Score"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Panel/VBox"]
-layout_mode = 2
-size_flags_vertical = 3
-theme = SubResource("11")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel/VBox/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 16
-
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="LoadingPath" type="Path2D" parent="MarginContainer/VBoxContainer/Panel/Control"]
-scale = Vector2(2, 2)
-curve = SubResource("14")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="MarginContainer/VBoxContainer/Panel/Control/LoadingPath"]
-position = Vector2(0, -32)
-rotation = 2.35619
-
-[node name="SecondLayer" type="CPUParticles2D" parent="MarginContainer/VBoxContainer/Panel/Control/LoadingPath/PathFollow2D"]
-position = Vector2(0, 9.53674e-07)
-amount = 32
-lifetime = 0.5
-preprocess = 1.0
-spread = 180.0
-gravity = Vector2(0, 0)
-scale_amount_min = 4.0
-scale_amount_max = 6.0
-scale_amount_curve = SubResource("15")
-color_ramp = SubResource("16")
-
-[node name="FirstLayer" type="CPUParticles2D" parent="MarginContainer/VBoxContainer/Panel/Control/LoadingPath/PathFollow2D"]
-amount = 32
-lifetime = 0.5
-preprocess = 1.0
-spread = 180.0
-gravity = Vector2(0, 0)
-scale_amount_min = 10.0
-scale_amount_max = 12.0
-scale_amount_curve = SubResource("17")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/VBoxContainer/Panel/Control/LoadingPath"]
-libraries = {
-"": SubResource("AnimationLibrary_kt1ir")
-}
+alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
+[node name="Loader" parent="MarginContainer/VBoxContainer/CenterContainer" instance=ExtResource("5_gaay2")]
+layout_mode = 2
+
+[node name="BottomCenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/BottomCenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Replay" type="TextureButton" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="Replay" type="TextureButton" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 texture_normal = ExtResource("6")
 texture_pressed = ExtResource("3")
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/Replay"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/Replay"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/Replay/CenterContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/Replay/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4")
 theme_override_font_sizes/font_size = 48
 text = "Play"
 
-[node name="MainMenu" type="TextureButton" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="MainMenu" type="TextureButton" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 texture_normal = ExtResource("6")
 texture_pressed = ExtResource("3")
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/MainMenu"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/MainMenu"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/MainMenu/CenterContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/MainMenu/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4")
 theme_override_font_sizes/font_size = 48
 text = "Menu"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/Replay" to="." method="_on_Replay_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/Replay" to="." method="_on_Replay_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
