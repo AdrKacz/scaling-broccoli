@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://btnxhdjexrcg8"]
+
+[ext_resource type="Script" path="res://addons/awesome_splash/core/SplashContainer.gd" id="1_hyk8j"]
+[ext_resource type="PackedScene" uid="uid://svj5gokj6888" path="res://UI/MainMenu/MainMenu.tscn" id="2_8df70"]
+[ext_resource type="PackedScene" uid="uid://b5aj1thqf6837" path="res://src/demo_collection/zoom/splash_screen.tscn" id="2_hk5bp"]
+
+[node name="SplashContainer" type="Node2D"]
+script = ExtResource("1_hyk8j")
+custom_node/type = 0
+custom_node/default_time = 1.0
+skip/type = 2
+move_to_scene = ExtResource("2_8df70")
+trainsition_type = 5
+min_pixel = 1.0
+max_pixel = 128.0
+transition_time = 1.0
+
+[node name="SplashZoom" parent="." instance=ExtResource("2_hk5bp")]
+logo_path = "res://addons/awesome_splash/assets/None.png"
+title = "LALUF"
+description = "Creative Studio"

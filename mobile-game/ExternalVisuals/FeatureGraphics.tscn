@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://dutjxunsrkuxn"]
+
+[ext_resource type="Texture2D" uid="uid://bv0ydebmx7yko" path="res://assets/Character.png" id="1"]
+[ext_resource type="Shader" path="res://Shaders/shockwave.gdshader" id="2"]
+[ext_resource type="Texture2D" uid="uid://b0d3blpd0ywqj" path="res://assets/Background.png" id="3"]
+[ext_resource type="FontFile" uid="uid://dawfg0re1svew" path="res://assets/VT323/VT323-Regular.ttf" id="4"]
+
+[sub_resource type="ShaderMaterial" id="1"]
+shader = ExtResource("2")
+shader_parameter/force = 0.1
+shader_parameter/size = 0.3
+shader_parameter/thickness = 0.01
+shader_parameter/aberation = 0.5
+shader_parameter/center = Vector2(0.5, 0.5)
+
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("4")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[node name="FeatureGraphics" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.392157, 0.74902, 0.376471, 1)
+position = Vector2(512, 250)
+scale = Vector2(64, 16)
+texture = ExtResource("3")
+
+[node name="SpriteCenter" type="Sprite2D" parent="."]
+modulate = Color(0.392157, 0.74902, 0.376471, 1)
+position = Vector2(512, 250)
+scale = Vector2(10, 10)
+texture = ExtResource("1")
+
+[node name="SpriteTopRight2" type="Sprite2D" parent="."]
+modulate = Color(0.964706, 0.764706, 0.384314, 1)
+position = Vector2(410.091, 109.458)
+scale = Vector2(10, 10)
+texture = ExtResource("1")
+
+[node name="SpriteBottomRight" type="Sprite2D" parent="."]
+modulate = Color(0.870588, 0.368627, 0.34902, 1)
+position = Vector2(397.8, 363.32)
+scale = Vector2(10, 10)
+texture = ExtResource("1")
+
+[node name="SpriteTopRight" type="Sprite2D" parent="."]
+modulate = Color(0.584314, 0.345098, 0.945098, 1)
+position = Vector2(626.429, 166.41)
+scale = Vector2(10, 10)
+texture = ExtResource("1")
+
+[node name="SpriteTopLeft" type="Sprite2D" parent="."]
+modulate = Color(0.47451, 0.843137, 0.941176, 1)
+position = Vector2(660.027, 364.549)
+scale = Vector2(10, 10)
+texture = ExtResource("1")
+
+[node name="AnimationCenter" type="Sprite2D" parent="."]
+material = SubResource("1")
+position = Vector2(512, 250)
+scale = Vector2(64, 16)
+texture = ExtResource("3")
+
+[node name="TitlePart1" type="Label" parent="."]
+offset_left = -315.984
+offset_top = -12.2569
+offset_right = 708.016
+offset_bottom = 248.743
+theme_override_fonts/font = SubResource("2")
+text = "Matchy
+Matchy"
+
+[node name="TitlePart2" type="Label" parent="."]
+offset_left = 675.109
+offset_top = 214.17
+offset_right = 961.109
+offset_bottom = 475.17
+theme_override_fonts/font = SubResource("2")
+text = "Same
+Same"

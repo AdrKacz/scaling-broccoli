@@ -1,0 +1,183 @@
+[gd_scene load_steps=5 format=3 uid="uid://bonwqll7aceys"]
+
+[ext_resource type="Shader" path="res://Shaders/shockwave.gdshader" id="1"]
+[ext_resource type="Texture2D" uid="uid://bv0ydebmx7yko" path="res://assets/Character.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b0d3blpd0ywqj" path="res://assets/Background.png" id="4"]
+
+[sub_resource type="ShaderMaterial" id="1"]
+shader = ExtResource("1")
+shader_parameter/force = 0.035
+shader_parameter/size = 0.19
+shader_parameter/thickness = 0.01
+shader_parameter/aberation = 0.5
+shader_parameter/center = Vector2(0.5, 0.5)
+
+[node name="CoverImage" type="Node"]
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.870588, 0.368627, 0.34902, 1)
+position = Vector2(360.496, 640)
+scale = Vector2(40, 40)
+texture = ExtResource("4")
+
+[node name="Before" type="Node2D" parent="."]
+
+[node name="Small2" type="Sprite2D" parent="Before"]
+position = Vector2(432.645, 461.345)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small4" type="Sprite2D" parent="Before"]
+position = Vector2(526.87, 777.391)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small14" type="Sprite2D" parent="Before"]
+position = Vector2(546.723, 660.256)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small15" type="Sprite2D" parent="Before"]
+position = Vector2(310.47, 856.307)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small16" type="Sprite2D" parent="Before"]
+position = Vector2(173.483, 856.307)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small18" type="Sprite2D" parent="Before"]
+position = Vector2(144.695, 619.061)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small20" type="Sprite2D" parent="Before"]
+position = Vector2(484.682, 733.217)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small6" type="Sprite2D" parent="Before"]
+position = Vector2(176.461, 681.599)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small7" type="Sprite2D" parent="Before"]
+position = Vector2(176.957, 681.599)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small8" type="Sprite2D" parent="Before"]
+position = Vector2(234.035, 815.112)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small10" type="Sprite2D" parent="Before"]
+position = Vector2(222.123, 574.391)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small11" type="Sprite2D" parent="Before"]
+position = Vector2(368.044, 487.534)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small12" type="Sprite2D" parent="Before"]
+position = Vector2(462.843, 811.141)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small13" type="Sprite2D" parent="Before"]
+position = Vector2(462.843, 811.141)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Character" type="Sprite2D" parent="."]
+modulate = Color(0.639216, 0.427451, 0.956863, 1)
+position = Vector2(360, 640)
+rotation = 0.261799
+scale = Vector2(20, 20)
+texture = ExtResource("2")
+
+[node name="After" type="Node2D" parent="."]
+
+[node name="Small" type="Sprite2D" parent="After"]
+position = Vector2(209.715, 743.64)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small3" type="Sprite2D" parent="After"]
+position = Vector2(487.66, 620.55)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small4" type="Sprite2D" parent="After"]
+position = Vector2(478.726, 711.379)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small5" type="Sprite2D" parent="After"]
+position = Vector2(264.807, 453.287)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small6" type="Sprite2D" parent="After"]
+position = Vector2(164.549, 455.272)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small7" type="Sprite2D" parent="After"]
+position = Vector2(166.534, 567.939)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small8" type="Sprite2D" parent="After"]
+position = Vector2(225.597, 584.318)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small9" type="Sprite2D" parent="After"]
+position = Vector2(499.075, 488.03)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small10" type="Sprite2D" parent="After"]
+position = Vector2(570.547, 543.123)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small11" type="Sprite2D" parent="After"]
+position = Vector2(571.043, 750.092)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small12" type="Sprite2D" parent="After"]
+position = Vector2(571.043, 750.092)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small13" type="Sprite2D" parent="After"]
+position = Vector2(359.11, 841.913)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small14" type="Sprite2D" parent="After"]
+position = Vector2(213.189, 690.533)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small15" type="Sprite2D" parent="After"]
+position = Vector2(557.642, 823.053)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Small16" type="Sprite2D" parent="After"]
+position = Vector2(557.642, 823.053)
+scale = Vector2(5, 5)
+texture = ExtResource("2")
+
+[node name="Shake" type="Sprite2D" parent="."]
+material = SubResource("1")
+position = Vector2(360, 640)
+scale = Vector2(40, 40)
+texture = ExtResource("4")

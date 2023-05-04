@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://buu175074s80d"]
+
+[ext_resource type="Texture2D" uid="uid://b0d3blpd0ywqj" path="res://assets/Background.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bv0ydebmx7yko" path="res://assets/Character.png" id="2"]
+[ext_resource type="Shader" path="res://Shaders/shockwave.gdshader" id="3"]
+[ext_resource type="Script" path="res://ExternalVisuals/BackgroundMain.gd" id="4"]
+
+[sub_resource type="ShaderMaterial" id="1"]
+shader = ExtResource("3")
+shader_parameter/force = 0.2
+shader_parameter/size = 0.0
+shader_parameter/thickness = 0.01
+shader_parameter/aberation = 0.5
+shader_parameter/center = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="2"]
+resource_name = "mouvement"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationCenter:material:shader_parameter/size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mng4t"]
+_data = {
+"mouvement": SubResource("2")
+}
+
+[node name="BackgroundMain" type="Node2D"]
+script = ExtResource("4")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(360, 640)
+scale = Vector2(40, 40)
+texture = ExtResource("1")
+
+[node name="SpriteCenter" type="Sprite2D" parent="."]
+modulate = Color(0.392157, 0.74902, 0.376471, 1)
+position = Vector2(360, 640)
+scale = Vector2(20, 20)
+texture = ExtResource("2")
+
+[node name="SpriteBottomRight" type="Sprite2D" parent="."]
+modulate = Color(0.964706, 0.764706, 0.384314, 1)
+position = Vector2(540, 960)
+scale = Vector2(20, 20)
+texture = ExtResource("2")
+
+[node name="SpriteBottomLeft" type="Sprite2D" parent="."]
+modulate = Color(0.870588, 0.368627, 0.34902, 1)
+position = Vector2(180, 960)
+scale = Vector2(20, 20)
+texture = ExtResource("2")
+
+[node name="SpriteTopRight" type="Sprite2D" parent="."]
+modulate = Color(0.584314, 0.345098, 0.945098, 1)
+position = Vector2(540, 320)
+scale = Vector2(20, 20)
+texture = ExtResource("2")
+
+[node name="SpriteTopLeft" type="Sprite2D" parent="."]
+modulate = Color(0.47451, 0.843137, 0.941176, 1)
+position = Vector2(180, 320)
+scale = Vector2(20, 20)
+texture = ExtResource("2")
+
+[node name="AnimationCenter" type="Sprite2D" parent="."]
+material = SubResource("1")
+position = Vector2(360, 640)
+scale = Vector2(40, 40)
+texture = ExtResource("1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mng4t")
+}

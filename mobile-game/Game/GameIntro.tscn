@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://emucnafh665l"]
+
+[ext_resource type="PackedScene" uid="uid://ba724pdrff37e" path="res://Game/Game.tscn" id="1"]
+[ext_resource type="Script" path="res://Game/GameIntro.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://cwt40y5slfcot" path="res://Scenes/PointerIntro/PointerIntro.tscn" id="3"]
+
+[node name="GameIntro" type="Node2D"]
+script = ExtResource("2")
+
+[node name="Games" type="Node2D" parent="."]
+
+[node name="Game" parent="Games" instance=ExtResource("1")]
+scale = Vector2(0.5, 0.5)
+
+[node name="Game2" parent="Games" instance=ExtResource("1")]
+position = Vector2(360, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="Game3" parent="Games" instance=ExtResource("1")]
+position = Vector2(0, 640)
+scale = Vector2(0.5, 0.5)
+
+[node name="Game4" parent="Games" instance=ExtResource("1")]
+position = Vector2(360, 640)
+scale = Vector2(0.5, 0.5)
+
+[node name="Positions" type="Node2D" parent="."]
+
+[node name="Game1" type="Marker2D" parent="Positions"]
+position = Vector2(180, 320)
+
+[node name="Game2" type="Marker2D" parent="Positions"]
+position = Vector2(540, 320)
+
+[node name="Game3" type="Marker2D" parent="Positions"]
+position = Vector2(180, 960)
+
+[node name="Game4" type="Marker2D" parent="Positions"]
+position = Vector2(540, 960)
+
+[node name="PointerIntro" parent="." instance=ExtResource("3")]
+position = Vector2(180, 320)
+scale = Vector2(10, 10)
+
+[connection signal="score" from="Games/Game" to="." method="_on_Game_score"]
+[connection signal="score" from="Games/Game2" to="." method="_on_Game_score"]
+[connection signal="score" from="Games/Game3" to="." method="_on_Game_score"]
+[connection signal="score" from="Games/Game4" to="." method="_on_Game_score"]

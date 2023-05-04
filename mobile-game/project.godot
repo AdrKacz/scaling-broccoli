@@ -1,0 +1,65 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Rainbow Rush"
+run/main_scene="res://Scenes/SplashScreen.tscn"
+config/features=PackedStringArray("4.0")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://addons/awesome_splash/assets/None.png"
+config/icon="res://../arts/game-icon/GameIcon-1024.png"
+
+[autoload]
+
+Constants="*res://AutoLoad/Constants/constants.gd"
+DataStore="*res://AutoLoad/DataStore/data_store.gd"
+Session="*res://AutoLoad/Session/session.tscn"
+StateManager="*res://AutoLoad/StateManager/StateManager.gd"
+NetworkManager="*res://AutoLoad/NetworkManager/NetworkManager.tscn"
+AudioManager="*res://AutoLoad/AudioManager/AudioManager.tscn"
+sp="*res://addons/awesome_splash/utils_splash.gd"
+gd="*res://addons/godot-action/utils_gd_action.tscn"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1280
+window/size/window_width_override=1024
+window/size/window_height_override=1024
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/awesome_splash/plugin.cfg", "res://addons/godot-action/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_environment="res://default_env.tres"
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_pvrtc=true

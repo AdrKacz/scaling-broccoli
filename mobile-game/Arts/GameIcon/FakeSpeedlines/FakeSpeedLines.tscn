@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4e430un2f6e1"]
+
+[ext_resource type="Shader" path="res://Arts/GameIcon/FakeSpeedlines/fake_speed_lines.gdshader" id="1_cefhc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pdl2w"]
+shader = ExtResource("1_cefhc")
+shader_parameter/radius = 1.5
+shader_parameter/edge = 0.6
+shader_parameter/noise_bigness = 0.05
+shader_parameter/time = 1000.0
+
+[node name="FakeSpeedLines" type="ColorRect"]
+material = SubResource("ShaderMaterial_pdl2w")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
