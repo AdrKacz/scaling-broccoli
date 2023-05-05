@@ -68,3 +68,26 @@ The background will keep its colour longer when it has the same as the colour of
 ### Variables
 - `background_delta`: the time the background keeps its colour when it doesn't match the colour of the square
 - `background_match_delta`: the time the background keeps its colour when it matches the colour of the square
+
+# How to export?
+## iOS
+1. Open the project in your Godot editor
+  1. Select `Project > Export...`
+  2. Select `iOS Production` in **Presets**
+  3. Make sure to increment the version since the last upload (**you version needs to be higher than the one in the App Store, not in Test Flight**)
+    1. Use `1.2.1 -> 1.2.2` (SimVer)
+  3. Click `Export Project...`, and export it without `Debug`
+  4. The archive build will fail with `error: "scaling-broccoli" requires a provisioning profile. Select a provisioning profile in the Signing & Capabilities editor.`, but the Xcode project will be created you can move forward
+2. Open the Xcode project (`scaling-broccoli.xcodeproj`)
+  1. Go to `Signing & Capabilities`
+  2. Check `Automatically manage signing`
+  3. Select your team
+  4. Click on `Product > Archive`, it will build and open the **Archives** window
+  5. Select your latest archive and click on `Distribute App`, a pop-up menu will open
+  6. Select `App Store Connect`
+  7. Select `Upload`
+  8. Check `Upload your app's symbols` and `Manage Version and Build Number`
+  9. Select `Automatically manage signing`
+  10. Click on `Upload`, this will take a while
+### How to renew your developer certificate?
+You will need your developer certificate to export your app to the App Store.
