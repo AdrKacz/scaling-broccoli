@@ -12,7 +12,7 @@ workflows:
           GODOT_TEMPLATES_DIR: "/Users/builder/Library/Application Support/Godot/templates"
           GODOT_EXEC: Godot.app/Contents/MacOS/Godot
           EXPORT_TYPE: iOS Production
-          ARTIFACT: app.zip
+          ARTIFACT: app.ipa
       scripts:
         - name: Download Godot engine
           script: |
@@ -28,4 +28,4 @@ workflows:
         - name: Export project
           script: ${GODOT_EXEC} --path mobile-game/ --headless export-release "${EXPORT_TYPE}" build/${ARTIFACT}
       artifacts:
-        - build/*.zip
+        - build/*.ipa
