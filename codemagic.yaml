@@ -23,15 +23,11 @@ workflows:
         - name: Setup templates
           script: |
                         mkdir -p "${GODOT_TEMPLATES_DIR}" && mv templates "${GODOT_TEMPLATES_DIR}/${GODOT_VERSION}.stable"
-        - name: Check game folder
-          script: ls mobile-game
-        - name: Check godot folder
-          script: ls mobile-game/.godot
-        - name: Check imported folder
-          script: ls mobile-game/.godot/imported
         - name: Prepare build directory
           script: mkdir build/
-        - name: Export project
+        - name: Export project first to create imported
+          script: ${GODOT_EXEC} --path mobile-game/ --headless export-release "${EXPORT_TYPE}" build/${ARTIFACT} || true
+        - name: Export project second
           script: ${GODOT_EXEC} --path mobile-game/ --headless export-release "${EXPORT_TYPE}" build/${ARTIFACT}
       artifacts:
         - build/*.ipa
