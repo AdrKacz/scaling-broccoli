@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5n52gyyyad7g"]
+
+[ext_resource type="PackedScene" uid="uid://y5rbhu64wu6e" path="res://Arts/GameIcon/FakeGame/FakeGame.tscn" id="1_xjj7k"]
+[ext_resource type="PackedScene" uid="uid://c4e430un2f6e1" path="res://Arts/GameIcon/FakeSpeedlines/FakeSpeedLines.tscn" id="2_k8s5r"]
+
+[node name="GameIcon" type="Node"]
+
+[node name="FakeGame" parent="." instance=ExtResource("1_xjj7k")]
+
+[node name="FakeSpeedLines" parent="." instance=ExtResource("2_k8s5r")]

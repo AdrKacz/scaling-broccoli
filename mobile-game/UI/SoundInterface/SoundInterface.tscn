@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://d2akx1rfpykh6"]
+
+[ext_resource type="Texture2D" uid="uid://cs1oax4eitce6" path="res://assets/audioOff.png" id="1"]
+[ext_resource type="Script" path="res://UI/SoundInterface/SoundInterface.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://ctkvlrp7fhntr" path="res://assets/audioOn.png" id="3"]
+
+[sub_resource type="StyleBoxTexture" id="6"]
+texture = ExtResource("1")
+region_rect = Rect2(0, 0, 100, 100)
+
+[sub_resource type="StyleBoxTexture" id="4"]
+texture = ExtResource("1")
+region_rect = Rect2(0, 0, 100, 100)
+modulate_color = Color(1, 1, 1, 0.490196)
+
+[sub_resource type="StyleBoxTexture" id="5"]
+texture = ExtResource("1")
+region_rect = Rect2(0, 0, 100, 100)
+modulate_color = Color(0, 0, 0, 0.490196)
+
+[sub_resource type="StyleBoxTexture" id="3"]
+texture = ExtResource("3")
+region_rect = Rect2(0, 0, 100, 100)
+
+[sub_resource type="StyleBoxTexture" id="1"]
+texture = ExtResource("3")
+region_rect = Rect2(0, 0, 100, 100)
+modulate_color = Color(1, 1, 1, 0.490196)
+
+[sub_resource type="StyleBoxTexture" id="2"]
+texture = ExtResource("3")
+region_rect = Rect2(0, 0, 100, 100)
+modulate_color = Color(0, 0, 0, 0.490196)
+
+[node name="Sound" type="Control"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("2")
+
+[node name="MarginContainerOff" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+
+[node name="ButtonOff" type="Button" parent="MarginContainerOff"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("6")
+theme_override_styles/hover = SubResource("4")
+theme_override_styles/pressed = SubResource("5")
+
+[node name="MarginContainerOn" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+
+[node name="ButtonOn" type="Button" parent="MarginContainerOn"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("3")
+theme_override_styles/hover = SubResource("1")
+theme_override_styles/pressed = SubResource("2")
+
+[connection signal="pressed" from="MarginContainerOff/ButtonOff" to="." method="_on_ButtonOff_pressed"]
+[connection signal="pressed" from="MarginContainerOn/ButtonOn" to="." method="_on_ButtonOn_pressed"]
