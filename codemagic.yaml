@@ -23,10 +23,14 @@ workflows:
           script: |
                         mkdir -p "${GODOT_TEMPLATES_DIR}" && mv templates "${GODOT_TEMPLATES_DIR}/${GODOT_VERSION}.stable"
         - name: Prepare build directory
-          script: mkdir build_ipa/ $$ mkdir build_pck/
+          script: mkdir build_ipa/ && mkdir build_pck/ && mkdir build_zip/
         - name: Export project first to create imported
           script: ${GODOT_EXEC} --path mobile-game/ --headless --export-pack "${EXPORT_TYPE}"  build_pck/app.pck || true
-        - name: Export project second
+        - name: Export project second, IPA
           script: ${GODOT_EXEC} --path mobile-game/ --headless --export-release "${EXPORT_TYPE}" build_ipa/app.ipa
+        - name: Export project third, ZIP
+          script: ${GODOT_EXEC} --path mobile-game/ --headless --export-release "${EXPORT_TYPE}" build_ipa/app.zip
       artifacts:
         - build_ipa/*.ipa
+        - build_pck/*.pck
+        - build_zip/*.zip
