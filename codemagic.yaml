@@ -16,10 +16,10 @@ workflows:
       scripts:
         - name: Download Godot engine
           script: |
-                        curl -o ./godot.zip ${GODOT_EXEC_URL} && unzip ./godot.zip
+                        curl -LO ${GODOT_EXEC_URL} && unzip Godot_v${GODOT_VERSION}-stable_macos.universal.zip
         - name: Download Godot templates
           script: |
-                        curl -o ./godot-templates.zip ${GODOT_TEMPLATES_URL} && unzip ./godot-templates.zip
+                        curl -LO ${GODOT_TEMPLATES_URL} && unzip Godot_v${GODOT_VERSION}-stable_export_templates.tpz
         - name: Setup templates
           script: |
                         mkdir -p "${GODOT_TEMPLATES_DIR}" && mv templates "${GODOT_TEMPLATES_DIR}/${GODOT_VERSION}.stable"
