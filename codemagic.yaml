@@ -12,7 +12,6 @@ workflows:
           GODOT_TEMPLATES_DIR: "/Users/builder/Library/Application Support/Godot/templates"
           GODOT_EXEC: Godot.app/Contents/MacOS/Godot
           EXPORT_TYPE: iOS Production
-          ARTIFACT: app.ipa
       scripts:
         - name: Download Godot engine
           script: |
@@ -24,10 +23,10 @@ workflows:
           script: |
                         mkdir -p "${GODOT_TEMPLATES_DIR}" && mv templates "${GODOT_TEMPLATES_DIR}/${GODOT_VERSION}.stable"
         - name: Prepare build directory
-          script: mkdir build/
+          script: mkdir build_ipa/ $$ mkdir build_pck/
         - name: Export project first to create imported
-          script: ${GODOT_EXEC} --path mobile-game/ --headless export-release "${EXPORT_TYPE}" build/${ARTIFACT} || true
+          script: ${GODOT_EXEC} --path mobile-game/ --headless --export-pack "${EXPORT_TYPE}"  build_pck/app.pck || true
         - name: Export project second
-          script: ${GODOT_EXEC} --path mobile-game/ --headless export-release "${EXPORT_TYPE}" build/${ARTIFACT}
+          script: ${GODOT_EXEC} --path mobile-game/ --headless --export-release "${EXPORT_TYPE}" build_ipa/app.ipa
       artifacts:
-        - build/*.ipa
+        - build_ipa/*.ipa
