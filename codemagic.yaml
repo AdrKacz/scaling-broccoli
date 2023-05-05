@@ -26,6 +26,6 @@ workflows:
         - name: Prepare build directory
           script: mkdir build/
         - name: Export project
-          script: ${GODOT_EXEC} --path mobile-game/ --no-window export-release "${EXPORT_TYPE}" build/${ARTIFACT}
+          script: ${GODOT_EXEC} --path mobile-game/ --headless export-release "${EXPORT_TYPE}" build/${ARTIFACT}
       artifacts:
         - build/*.zip
