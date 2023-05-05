@@ -9,7 +9,7 @@ workflows:
           GODOT_VERSION: 4.0.2
           GODOT_EXEC_URL: https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_macos.universal.zip
           GODOT_TEMPLATES_URL: https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz
-          GODOT_TEMPLATES_DIR: "/Users/builder/Library/Application Support/Godot/templates"
+          GODOT_TEMPLATES_DIR: "/Users/builder/Library/Application\ Support/Godot/export_templates"
           GODOT_EXEC: Godot.app/Contents/MacOS/Godot
           EXPORT_TYPE: iOS Production
       scripts:
