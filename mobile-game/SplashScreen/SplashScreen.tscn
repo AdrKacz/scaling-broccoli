@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd8u03mwhqqj7"]
+
+[ext_resource type="Script" path="res://addons/awesome_splash/core/SplashContainer.gd" id="1_mrr3i"]
+[ext_resource type="PackedScene" uid="uid://svj5gokj6888" path="res://UI/MainMenu/MainMenu.tscn" id="2_epb75"]
+[ext_resource type="PackedScene" uid="uid://b7yf1jehcw54b" path="res://SplashScreen/zoom/splash_screen.tscn" id="3_r1rb5"]
+[ext_resource type="PackedScene" uid="uid://doctta0g88unp" path="res://SplashScreen/slide/splash_screen.tscn" id="4_ih3bl"]
+
+[node name="Splash" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SplashContainer" type="Node2D" parent="."]
+script = ExtResource("1_mrr3i")
+custom_node/type = 0
+custom_node/default_time = 1.0
+skip/type = 2
+move_to_scene = ExtResource("2_epb75")
+transition_time = 0.5
+fade_color = Color(1, 1, 1, 1)
+
+[node name="SplashZoom" parent="SplashContainer" instance=ExtResource("3_r1rb5")]
+title = "LALUF"
+description = "Creative Studio"
+is_skip_appear_transition = true
+
+[node name="SplashSlide" parent="SplashContainer" instance=ExtResource("4_ih3bl")]
+logo_path = "res://addons/awesome_splash/assets/None.png"
+title = "KIDA"
+description = "Game creators"
