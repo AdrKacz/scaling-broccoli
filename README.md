@@ -74,11 +74,12 @@ The background will keep its colour longer when it has the same as the colour of
 1. Open the project in your Godot editor
   1. Select `Project > Export...`
   2. Select `iOS Production` in **Presets**
-  3. Make sure to increment the version since the last upload
+  3. Make sure to increment the version since the last upload (**you version needs to be higher than the one in the App Store, not in Test Flight**)
+    1. Use `1.2.1 -> 1.2.2` (SimVer)
   3. Click `Export Project...`, and export it without `Debug`
-  4. The archive build will fail but the Xcode project will be created
-2. Open the Xcode project
-  1. Go to `Signing & Cqpqbilities`
+  4. The archive build will fail with `error: "scaling-broccoli" requires a provisioning profile. Select a provisioning profile in the Signing & Capabilities editor.`, but the Xcode project will be created you can move forward
+2. Open the Xcode project (`scaling-broccoli.xcodeproj`)
+  1. Go to `Signing & Capabilities`
   2. Check `Automatically manage signing`
   3. Select your team
   4. Click on `Product > Archive`, it will build and open the **Archives** window
