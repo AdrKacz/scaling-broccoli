@@ -48,6 +48,8 @@ tests/data/*.translation
 ### General build output ###
 ############################
 
+export_presets.cfg
+
 # C/C++ generated
 *.a
 *.ax
@@ -71,6 +73,7 @@ __pycache__/
 doc/_build/
 
 # Android
+android/
 .gradle/
 local.properties
 *.iml
