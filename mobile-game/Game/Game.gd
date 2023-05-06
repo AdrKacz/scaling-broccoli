@@ -16,8 +16,12 @@ var background_state: int = 0:
 func _ready():
 	# center character on screen
 	$Character.position = get_parent_area_size() / 2
-	update_character_state()
-	update_background_state()
+	
+	# get random state
+	var state = Constants.StateEnum.values().pick_random()
+	$Character.state = state
+	background_state = state
+	Constants.state_matches = true
 
 func update_character_state():
 	$Character.state = StateManager.get_character_next_state($Character.state)

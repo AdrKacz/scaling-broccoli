@@ -13,6 +13,11 @@ func _ready():
 		computed_safe_area.position.x + computed_safe_area.size.x * .5,
 		computed_safe_area.position.y + 96,
 	)
+	
+	$IntroductionText.position = Vector2(
+		computed_safe_area.position.x + computed_safe_area.size.x * .5,
+		computed_safe_area.position.y + computed_safe_area.size.y * .25,
+	)
 
 	display_bonus_text_position = Vector2(
 		computed_safe_area.position.x + computed_safe_area.size.x * .5,
@@ -26,6 +31,8 @@ func _on_pause_button_pressed():
 func update_score(score):
 	$ScoreText.text = str(score)
 	$ScoreText.pulse()
+	if find_child('IntroductionText', false):
+		$IntroductionText.leave()
 
 func display_bonus_text(text):
 	var bonus_text = BonusText.instantiate()
