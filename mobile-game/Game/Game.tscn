@@ -24,7 +24,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(1, 0.0901961, 0, 1)
+color = Color(0.584314, 0.345098, 0.945098, 1)
 
 [node name="Character" parent="." instance=ExtResource("1")]
 position = Vector2(360, 640)

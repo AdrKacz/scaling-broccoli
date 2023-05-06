@@ -20,8 +20,8 @@ func remove_menus():
 	$PauseMenu.set_visible_to(false)
 
 func start_game():
-	Constants.combos_strike = 0
 	Constants.score = 0
+	Constants.combos_strike = 0
 	remove_menus()
 	get_tree().change_scene_to_file(game_path)
 	

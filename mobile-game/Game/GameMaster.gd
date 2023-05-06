@@ -1,5 +1,9 @@
 extends Node
 
+var has_lost: bool = false
+func _ready():
+	has_lost = false
+
 func score(): 
 	increment_combos_strike()
 	Constants.score += Constants.score_factor * Constants.combos_strike
@@ -18,9 +22,13 @@ func reset_combos_strike():
 	Constants.combos_strike = 0
 
 func lose():
-	# TODO: add animation
-	$GameUI.visible = false
-	Session.lose_menu()
+	if has_lost:
+		return
+	has_lost = true
+	var tween: Tween = create_tween().bind_node(self)
+	tween.tween_callback($GameUI.set_visible.bind(false))
+	tween.tween_callback($Explosion.explode)
+	tween.tween_callback(Session.lose_menu).set_delay($Explosion.animation_duration)
 
 func wrong():
 	reset_combos_strike()
