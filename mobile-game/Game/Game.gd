@@ -42,7 +42,6 @@ func _on_character_tap():
 		$Character.shake()
 		emit_signal("wrong")
 
-
 func _on_swap_background_timer_timeout():
 	if Constants.state_matches:
 		emit_signal("miss")
