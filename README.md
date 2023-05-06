@@ -48,26 +48,20 @@ You miss if you tap when the square and the background differ from the same colo
 ## ~~Option 2: You lose time when you miss~~
 
 # How do I play longer?
-## ~~Option 1: You can't play longer~~
-## Option 2: You play longer when you hit in a combo
-When you hit during a combo, you earn lives. You can never have more than three lives.
-You will earn one life every ten hit in a row
-
-### Variables
-- `combos_reward_strike`: number of hit in a row to earn one life (*ten above*)
+You can't play longer.
 
 # How does the difficulty increase?
 ## ~~Option 1: The difficulty remains the same~~
 ## ~~Option 2: The difficulty increases ~~
 ## Option 3: The difficulty increases during a combo
-Each time you hit during the combo, the background will change colour faster.
-The background will keep its colour longer when it has the same as the colour of the square.
-
-> The difficulty ramp will be defined later, as trials and errors are best to find the balance between too easy and too hard.
+When you reach a given combo, you will increase your level.
+The higher your level, the more likely you are to have match new to each other.
+You reach level `1` at combo `10` and level `2` and combo `20`. You can't go higher than level `2`.
 
 ### Variables
 - `background_delta`: the time the background keeps its colour when it doesn't match the colour of the square
 - `background_match_delta`: the time the background keeps its colour when it matches the colour of the square
+- `max_swaps`: array of maximum number of background color swaps before if match the color of the character at level `n`
 
 # How to export?
 

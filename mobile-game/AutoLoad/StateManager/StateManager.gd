@@ -12,15 +12,27 @@ func get_background_next_state(background_state, character_state):
 	# list of next states
 	if next_background_states.is_empty():
 		var states = Constants.StateEnum.values().duplicate()
+		states.erase(character_state)
 		states.shuffle()
+		
+		# get maw_swaps
+		var level = clamp(int(Constants.combos_strike / 10), 0, Constants.max_swaps.size() - 1)
+		print(level)
+		var max_swaps = Constants.max_swaps[level]
+		
+		# remove unnecessary colors
+		states = states.slice(0, max_swaps - 1) # remove one because characted_state already removed
+		
+		# insert character state
+		states.insert(randi() % max_swaps, character_state)
 		
 		# cannot have same background state twice in a row
 		var background_state_index: int = states.find(background_state)
 		if background_state_index == 0:
 			states.pop_front()
 			states.push_back(background_state)
-	
-		# no need to plan further than next match
+		
+		# don't plan further than next match
 		var character_state_index: int = states.find(character_state)
 		next_background_states = states.slice(0, character_state_index + 1)
 	
