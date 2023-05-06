@@ -478,7 +478,7 @@ You will need your developer certificate to export your app to the App Store.
   5. Click `Export Project...`, and export it without `Debug`
 3. Go to your project page in **Google Play Console**
   1. Select `Internal Testing`
-  2. Drag and drop your `apk` file
+  2. Drag and drop your `aab` file
 
 ### What icons will you need?
 
