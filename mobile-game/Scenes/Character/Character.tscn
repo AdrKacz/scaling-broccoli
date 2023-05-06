@@ -62,6 +62,7 @@ _data = {
 script = ExtResource("2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.870588, 0.368627, 0.34902, 1)
 scale = Vector2(20, 20)
 texture = ExtResource("1")
 
@@ -69,3 +70,16 @@ texture = ExtResource("1")
 libraries = {
 "": SubResource("AnimationLibrary_3f1tu")
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="gui_input" from="CanvasLayer/Control" to="." method="_on_control_gui_input"]

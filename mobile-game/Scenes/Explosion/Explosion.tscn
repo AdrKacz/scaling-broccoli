@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxu0b576nr00v"]
+
+[ext_resource type="Shader" path="res://Scenes/Explosion/Explosion.gdshader" id="1_s0w5f"]
+[ext_resource type="Script" path="res://Scenes/Explosion/Explosion.gd" id="2_t8gl8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oq7bp"]
+shader = ExtResource("1_s0w5f")
+shader_parameter/radius_percentage = 0.0
+shader_parameter/center = Vector2(0.5, 0.5)
+
+[node name="Explosion" type="ColorRect"]
+material = SubResource("ShaderMaterial_oq7bp")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_t8gl8")
