@@ -1,4 +1,4 @@
-# Rainbow Rush
+# 🌈 Rainbow Rush
 
 Rainbow Rush is a mobile arcade-like video game where you have to touch a square when its colour matches the colour of the background.
 The square will keep its colour until you touch it when it has the same colour as the background.
