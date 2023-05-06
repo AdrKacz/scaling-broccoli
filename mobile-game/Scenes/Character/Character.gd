@@ -9,11 +9,6 @@ var state: int = 0:
 		state = value
 
 func _input(event):
-	# used for debug
-	if event is InputEventKey and event.keycode == KEY_SPACE and event.is_pressed() and not event.is_echo():
-		handle_tap()
-
-func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event is InputEventScreenTouch and event.is_pressed():
 		handle_tap()
 

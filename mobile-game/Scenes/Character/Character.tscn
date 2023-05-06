@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsngmds587kx2"]
+[gd_scene load_steps=7 format=3 uid="uid://dsngmds587kx2"]
 
 [ext_resource type="Texture2D" uid="uid://bv0ydebmx7yko" path="res://assets/Character.png" id="1"]
 [ext_resource type="Script" path="res://Scenes/Character/Character.gd" id="2"]
@@ -58,9 +58,6 @@ _data = {
 "pulse": SubResource("Animation_jlkrw")
 }
 
-[sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(360, 640)
-
 [node name="Character" type="Node2D"]
 script = ExtResource("2")
 
@@ -72,12 +69,3 @@ texture = ExtResource("1")
 libraries = {
 "": SubResource("AnimationLibrary_3f1tu")
 }
-
-[node name="Area2D" type="Area2D" parent="."]
-monitoring = false
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("2")
-
-[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
