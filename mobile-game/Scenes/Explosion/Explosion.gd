@@ -4,10 +4,10 @@ extends ColorRect
 
 func _ready():
 	visible = false
-	material.set_shader_parameter("radius_percentage", 0.)
+	material.set_shader_parameter("black_radius", 0.)
 
 func update_explosion_radius(radius_percentage: float):
-	material.set_shader_parameter("radius_percentage", radius_percentage)
+	material.set_shader_parameter("black_radius", radius_percentage)
 
 var tween: Tween
 func explode():

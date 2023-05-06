@@ -23,7 +23,7 @@ func animate_restart():
 	await get_tree().process_frame # wait to have position
 	var initial_position = restart_button.position
 	
-	var offset: Vector2 = Vector2(0, 20)
+	var offset: Vector2 = Vector2(0, 15)
 	restart_button.position = initial_position + offset
 	
 	var tween: Tween = create_tween().bind_node(self)

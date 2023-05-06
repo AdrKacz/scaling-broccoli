@@ -5,7 +5,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oq7bp"]
 shader = ExtResource("1_s0w5f")
-shader_parameter/radius_percentage = 0.0
+shader_parameter/black_radius = 0.0
+shader_parameter/color_radius = 0.0
 shader_parameter/center = Vector2(0.5, 0.5)
 
 [node name="Explosion" type="ColorRect"]
