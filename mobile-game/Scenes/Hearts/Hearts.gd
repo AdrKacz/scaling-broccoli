@@ -1,5 +1,8 @@
 extends Node2D
 
+# UNUSED: kept if needed in future version, pulsing heart to see lives remaining
+# no more lives in the game
+
 enum Status {
 	EMPTY,
 	BROKEN,

@@ -3,8 +3,6 @@ extends Node
 # Gameplay
 const background_delta: float = 0.5
 const background_match_delta: float = 0.75
-const max_lives: int = 3
-const start_lives: int = 3
 const score_factor: int = 10
 
 const max_swaps: Array[int] = [5, 4, 3]
@@ -36,4 +34,3 @@ const State = {
 # Variables definitions
 var score: int = 0
 var combos_strike: int = 0
-var lives: int = start_lives
