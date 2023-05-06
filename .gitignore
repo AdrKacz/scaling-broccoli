@@ -1,2 +1,3 @@
-exports/ios/*
-!exports/ios/.gitkeep
+exports/
+
+*.DS_Store
