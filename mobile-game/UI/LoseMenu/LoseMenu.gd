@@ -6,14 +6,14 @@ var submit_label: Label
 var name_line_edit: LineEdit
 
 func _ready():
-	submit_label = $Control/MarginContainer/CenterContainer/VBox/VBoxContainer/SubmitScore/CenterContainer/Label
-	name_line_edit = $Control/MarginContainer/CenterContainer/VBox/VBoxContainer/Name
+	submit_label = $Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/SubmitScore/CenterContainer/Label
+	name_line_edit = $Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/Name
 	NetworkManager.connect("leaderboard", Callable(self, "_on_network_manager_leaderboard"))
 	NetworkManager.connect("error", Callable(self, "_on_network_manager_error"))
 
 func set_visible_to(value):
 	$AnimationPlayer.play('RESET')
-	$Control/MarginContainer/CenterContainer/VBox/Score.text = str(Constants.score)
+	$Control/MarginContainer/MarginContainerScore/Score.text = str(Constants.score)
 	$Control.visible = value
 
 var tween: Tween
@@ -52,13 +52,14 @@ func _on_network_manager_leaderboard(leaders, player_position):
 	Session.read_leaderboard_from_memory = true
 	Session.leaderboard()
 
-func _on_network_manager_error(leaders, player_position):
+func _on_network_manager_error():
 	animate_submit_error("Network Error")
 
-func _on_MainMenu_pressed():
+func _on_exit_texture_button_pressed():
 	Session.click()
 	Session.main_menu()
 
-func _on_Restart_pressed():
+
+func _on_restart_button_pressed():
 	Session.click()
 	Session.start_game()

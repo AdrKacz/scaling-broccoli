@@ -1,7 +1,7 @@
 extends Node
 
 signal leaderboard(leaders, position)
-signal error()
+signal error
 
 var wait_get: bool = false
 var wait_post: bool = false
