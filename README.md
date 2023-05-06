@@ -14,10 +14,10 @@ Points are a common language between players to compare their performance and ch
 
 ## ~~Option 1: The longer you survive, the more points you'll have~~
 ## Option 2: You get points when you hit the correct colour
-Each time you hit, you earn ten points times the number of lives you still have times your current combo strike.
+Each time you hit, you earn ten points times your current combo strike.
 
 ### Variables
-- `score_factor`: the number of times you multiply your number of lives (*ten above*)
+- `score_factor`: the number of times you multiple your combo strike (*ten above*)
 
 # What is a combo?
 Combos are essential in arcade games as they incentivise you to continue the perfect strike and improve your skills.
@@ -29,31 +29,14 @@ You miss if:
   - you don't tape when the square and the background have the same colour.
 You will always have the chance to hit within the next five changement of colors. Five being the number of colors.
 
-## ~~Option 2: You don't miss within a time window ~~
-
 # How do I lose?
-## ~~Option 1: I don't have time left~~
-## Option 2: I missed too many times
-You start with three lives. Each time you miss, you lose a life. You lose once you lose your last life.
+You lose when you miss.
 You miss if you tap when the square and the background differ from the same colour.
-
-### Variables
-- `max_lives`: maximum number of lives (*three above*)
-- `start_lives`: number of lives at start (*three above*)
-
-## ~~Option 3: A game always has the same duration~~
-
-# ~~How do I lose time?~~
-## ~~Option 1: You can't lose time~~
-## ~~Option 2: You lose time when you miss~~
 
 # How do I play longer?
 You can't play longer.
 
 # How does the difficulty increase?
-## ~~Option 1: The difficulty remains the same~~
-## ~~Option 2: The difficulty increases ~~
-## Option 3: The difficulty increases during a combo
 When you reach a given combo, you will increase your level.
 The higher your level, the more likely you are to have match new to each other.
 You reach level `1` at combo `10` and level `2` and combo `20`. You can't go higher than level `2`.
@@ -64,7 +47,6 @@ You reach level `1` at combo `10` and level `2` and combo `20`. You can't go hig
 - `max_swaps`: array of maximum number of background color swaps before if match the color of the character at level `n`
 
 # How to export?
-
 *Make sure to copy the `export_presets.cfg` below before opening Godot.
 <details>
   <summary>Export Presets</summary>

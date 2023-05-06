@@ -2,7 +2,7 @@ extends Node
 
 func score(): 
 	increment_combos_strike()
-	Constants.score += Constants.score_factor * Constants.lives * Constants.combos_strike
+	Constants.score += Constants.score_factor * Constants.combos_strike
 	$GameUI.update_score(Constants.score)
 	
 		
@@ -17,16 +17,14 @@ func reset_combos_strike():
 	$SpeedLines.level = -1
 	Constants.combos_strike = 0
 
-func lose_life():
-	$GameUI.lose_heart()
-	Constants.lives -= 1
-	if Constants.lives == 0:
-		$GameUI.visible = false
-		Session.lose_menu()
+func lose():
+	# TODO: add animation
+	$GameUI.visible = false
+	Session.lose_menu()
 
 func wrong():
 	reset_combos_strike()
-	lose_life()
+	lose()
 
 func _on_game_miss():
 	reset_combos_strike()

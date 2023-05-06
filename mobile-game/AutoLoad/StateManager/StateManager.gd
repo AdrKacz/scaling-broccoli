@@ -17,7 +17,6 @@ func get_background_next_state(background_state, character_state):
 		
 		# get maw_swaps
 		var level = clamp(int(Constants.combos_strike / 10), 0, Constants.max_swaps.size() - 1)
-		print(level)
 		var max_swaps = Constants.max_swaps[level]
 		
 		# remove unnecessary colors
