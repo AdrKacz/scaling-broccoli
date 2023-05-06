@@ -7,6 +7,8 @@ const max_lives: int = 3
 const start_lives: int = 3
 const score_factor: int = 10
 
+const max_swaps: Array[int] = [5, 4, 3]
+
 var state_matches: bool = false
 var swap_delta: float:
 	get:

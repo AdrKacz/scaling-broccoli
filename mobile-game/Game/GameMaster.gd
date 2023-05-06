@@ -22,7 +22,6 @@ func lose_life():
 	Constants.lives -= 1
 	if Constants.lives == 0:
 		$GameUI.visible = false
-		# TODO: lose is a bit straighforward, a little animation won't hurt
 		Session.lose_menu()
 
 func wrong():

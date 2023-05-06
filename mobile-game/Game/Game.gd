@@ -19,9 +19,6 @@ func _ready():
 	update_character_state()
 	update_background_state()
 
-func update_combo_time(new_value, delta):
-	$ComboTimer.update_time(new_value, delta)
-
 func update_character_state():
 	$Character.state = StateManager.get_character_next_state($Character.state)
 	
