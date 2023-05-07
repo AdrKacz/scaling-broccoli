@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://svj5gokj6888"]
 
 [ext_resource type="Script" path="res://UI/MainMenu/MainMenu.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="2"]
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="2_ltfs3"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="3_xxs4c"]
-[ext_resource type="FontFile" uid="uid://dawfg0re1svew" path="res://assets/VT323/VT323-Regular.ttf" id="4"]
+[ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="4_jla84"]
 [ext_resource type="Texture2D" uid="uid://4exmars5c0oj" path="res://assets/ButtonsV3/ButtonDown.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://bqmp3ie7fqww0" path="res://assets/gear.png" id="6_tsfqk"]
 
@@ -24,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_ltfs3")
 script = ExtResource("3_xxs4c")
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
@@ -37,9 +38,6 @@ alignment = 1
 [node name="Title" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4")
-theme_override_font_sizes/font_size = 128
 text = "Rainbow Rush"
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -47,8 +45,9 @@ autowrap_mode = 3
 [node name="Play" type="TextureButton" parent="MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("2")
+texture_normal = ExtResource("4_jla84")
 texture_pressed = ExtResource("5")
+texture_hover = ExtResource("5")
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/CenterContainer/VBoxContainer/Play"]
 layout_mode = 0
@@ -58,17 +57,15 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/Play/CenterContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4")
-theme_override_font_sizes/font_size = 96
 text = "Play"
 
 [node name="Leaderboard" type="TextureButton" parent="MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
-texture_normal = ExtResource("2")
+texture_normal = ExtResource("4_jla84")
 texture_pressed = ExtResource("5")
+texture_hover = ExtResource("5")
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/CenterContainer/VBoxContainer/Leaderboard"]
 layout_mode = 0
@@ -78,9 +75,6 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/Leaderboard/CenterContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4")
-theme_override_font_sizes/font_size = 96
 text = "Score"
 
 [node name="SettingsControl" type="Control" parent="MarginContainer"]
@@ -98,7 +92,6 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer/SettingsControl/MarginContainer"]
-modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 texture_normal = ExtResource("6_tsfqk")
 texture_pressed = ExtResource("6_tsfqk")

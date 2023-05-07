@@ -1,0 +1,50 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dsgu4tme5hp8f"]
+
+[ext_resource type="FontFile" uid="uid://ddsrcnmbc0ew7" path="res://assets/fonts/Patrick_Hand_SC/PatrickHandSC-Regular.ttf" id="1_4t08s"]
+[ext_resource type="Texture2D" uid="uid://cd1ovoff7m0tr" path="res://assets/checkmark.png" id="2_dcrj8"]
+[ext_resource type="Texture2D" uid="uid://0yejsjm01crk" path="res://assets/cross.png" id="3_h0yam"]
+
+[sub_resource type="FontVariation" id="FontVariation_a6a46"]
+base_font = ExtResource("1_4t08s")
+spacing_glyph = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ek3c6"]
+bg_color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq6eg"]
+bg_color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ikkk"]
+bg_color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_os87q"]
+base_font = ExtResource("1_4t08s")
+spacing_glyph = 12
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 96
+Button/fonts/font = ExtResource("1_4t08s")
+CheckBox/colors/font_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_focus_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_hover_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_pressed_color = Color(0, 0, 0, 1)
+CheckBox/constants/h_separation = 24
+CheckBox/icons/checked = ExtResource("2_dcrj8")
+CheckBox/icons/unchecked = ExtResource("3_h0yam")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 92
+Label/fonts/font = ExtResource("1_4t08s")
+LineEdit/colors/font_color = Color(1, 1, 1, 1)
+LineEdit/colors/font_placeholder_color = Color(0.784314, 0.784314, 0.784314, 1)
+LineEdit/font_sizes/font_size = 48
+LineEdit/fonts/font = SubResource("FontVariation_a6a46")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_ek3c6")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_jq6eg")
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_1ikkk")
+ScoreLabel/base_type = &"Label"
+ScoreLabel/colors/font_color = Color(1, 1, 1, 1)
+ScoreLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+ScoreLabel/constants/outline_size = 24
+ScoreLabel/fonts/font = SubResource("FontVariation_os87q")

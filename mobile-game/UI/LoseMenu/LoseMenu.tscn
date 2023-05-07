@@ -1,24 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://ilei4y43xwl3"]
+[gd_scene load_steps=13 format=3 uid="uid://ilei4y43xwl3"]
 
 [ext_resource type="Script" path="res://UI/LoseMenu/LoseMenu.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://52npqw30pwxt" path="res://assets/ButtonsV3/Input.png" id="2"]
 [ext_resource type="Material" uid="uid://boqnkeusewign" path="res://Materials/Circle/Circle.tres" id="2_6c4qv"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="2_bvhgu"]
-[ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="3"]
-[ext_resource type="FontFile" uid="uid://dawfg0re1svew" path="res://assets/VT323/VT323-Regular.ttf" id="5"]
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="3_dnkxq"]
+[ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="5_omtlr"]
 [ext_resource type="Texture2D" uid="uid://4exmars5c0oj" path="res://assets/ButtonsV3/ButtonDown.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://bhmd7efq1shkw" path="res://assets/exitLeft.png" id="7_wsalk"]
 [ext_resource type="Texture2D" uid="uid://xfa1vu6ckvuw" path="res://assets/ButtonsV3/SmallButtonUp.png" id="8_idkfi"]
 [ext_resource type="Texture2D" uid="uid://cb7cnilm5shk8" path="res://assets/ButtonsV3/SmallButtonDown.png" id="9_6kp0q"]
-
-[sub_resource type="StyleBoxTexture" id="3"]
-texture = ExtResource("2")
-region_rect = Rect2(0, 0, 512, 128)
-
-[sub_resource type="StyleBoxTexture" id="2"]
-texture = ExtResource("2")
-region_rect = Rect2(0, 0, 512, 128)
-modulate_color = Color(0.862745, 0.862745, 0.862745, 1)
 
 [sub_resource type="Animation" id="Animation_wfvst"]
 length = 0.001
@@ -68,6 +58,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_dnkxq")
 
 [node name="Background" type="ColorRect" parent="Control"]
 use_parent_material = true
@@ -99,8 +90,6 @@ use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5")
 theme_override_font_sizes/font_size = 196
 text = "24"
 horizontal_alignment = 1
@@ -116,8 +105,9 @@ use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-texture_normal = ExtResource("3")
+texture_normal = ExtResource("5_omtlr")
 texture_pressed = ExtResource("6")
+texture_hover = ExtResource("6")
 
 [node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer/CenterContainer/Replay"]
 use_parent_material = true
@@ -129,9 +119,6 @@ mouse_filter = 2
 [node name="Label" type="Label" parent="Control/MarginContainer/CenterContainer/Replay/CenterContainer"]
 use_parent_material = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5")
-theme_override_font_sizes/font_size = 64
 text = "Replay"
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer"]
@@ -156,15 +143,6 @@ use_parent_material = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_selected_color = Color(0.313726, 0.313726, 0.313726, 1)
-theme_override_colors/font_uneditable_color = Color(0.313726, 0.313726, 0.313726, 1)
-theme_override_colors/font_placeholder_color = Color(0.313726, 0.313726, 0.313726, 1)
-theme_override_colors/selection_color = Color(0.313726, 0.313726, 0.313726, 1)
-theme_override_fonts/font = ExtResource("5")
-theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("3")
-theme_override_styles/focus = SubResource("2")
 placeholder_text = "AAA"
 alignment = 1
 max_length = 12
@@ -179,6 +157,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("8_idkfi")
 texture_pressed = ExtResource("9_6kp0q")
+texture_hover = ExtResource("9_6kp0q")
 
 [node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/SubmitScore"]
 use_parent_material = true
@@ -190,9 +169,6 @@ mouse_filter = 2
 [node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/SubmitScore/CenterContainer"]
 use_parent_material = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5")
-theme_override_font_sizes/font_size = 64
 text = "Submit"
 
 [node name="ExitControl" type="Control" parent="Control/MarginContainer"]
@@ -209,7 +185,6 @@ theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 
 [node name="TextureButton" type="TextureButton" parent="Control/MarginContainer/ExitControl/MarginContainer"]
-modulate = Color(0, 0, 0, 1)
 use_parent_material = true
 layout_mode = 2
 texture_normal = ExtResource("7_wsalk")
@@ -231,5 +206,6 @@ libraries = {
 }
 
 [connection signal="pressed" from="Control/MarginContainer/CenterContainer/Replay" to="." method="_on_replay_pressed"]
+[connection signal="text_changed" from="Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/Name" to="." method="_on_name_text_changed"]
 [connection signal="pressed" from="Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/SubmitScore" to="." method="_on_SubmitScore_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/ExitControl/MarginContainer/TextureButton" to="." method="_on_exit_texture_button_pressed"]

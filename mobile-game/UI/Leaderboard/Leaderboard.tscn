@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://w57mv4quu8j1" path="res://UI/Leaderboard/ScoreEntry/ScoreEntry.tscn" id="2_rwihr"]
 [ext_resource type="Texture2D" uid="uid://cb7cnilm5shk8" path="res://assets/ButtonsV3/SmallButtonDown.png" id="3"]
 [ext_resource type="PackedScene" uid="uid://clroajn1j1t5n" path="res://UI/Leaderboard/OwnScoreEntry/OwnScoreEntry.tscn" id="3_1xxpg"]
-[ext_resource type="FontFile" uid="uid://dawfg0re1svew" path="res://assets/VT323/VT323-Regular.ttf" id="4"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="4_7axui"]
 [ext_resource type="PackedScene" uid="uid://dvwhdcoimyavg" path="res://UI/Leaderboard/Loader/Loader.tscn" id="5_gaay2"]
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="5_ittk8"]
 [ext_resource type="Texture2D" uid="uid://xfa1vu6ckvuw" path="res://assets/ButtonsV3/SmallButtonUp.png" id="6"]
 
 [node name="Leaderboard" type="CanvasLayer"]
@@ -28,6 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_ittk8")
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
@@ -44,9 +45,6 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4")
-theme_override_font_sizes/font_size = 64
 text = "Leaderboard"
 horizontal_alignment = 1
 
@@ -85,9 +83,6 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/Replay/CenterContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4")
-theme_override_font_sizes/font_size = 48
 text = "Play"
 
 [node name="MainMenu" type="TextureButton" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer"]
@@ -105,9 +100,6 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/MainMenu/CenterContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4")
-theme_override_font_sizes/font_size = 48
 text = "Menu"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/Replay" to="." method="_on_Replay_pressed"]

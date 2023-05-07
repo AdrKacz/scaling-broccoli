@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5a8hcvmbiai0"]
+[gd_scene load_steps=9 format=3 uid="uid://b5a8hcvmbiai0"]
 
 [ext_resource type="Script" path="res://Scenes/GameUI/GameUI.gd" id="1_1j4ix"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="1_42cip"]
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="1_q7r7u"]
 [ext_resource type="PackedScene" uid="uid://bkyi6nop5h5e7" path="res://Scenes/BonusText/BonusText.tscn" id="2_2t8mw"]
 [ext_resource type="PackedScene" uid="uid://pp33xbgsxk1" path="res://Scenes/GameUI/IntroductionText/IntroductionText.tscn" id="4_vn6yi"]
 [ext_resource type="Texture2D" uid="uid://4x328o3ivuls" path="res://assets/pause.png" id="5_m0cpc"]
@@ -17,6 +18,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_q7r7u")
 script = ExtResource("1_1j4ix")
 BonusText = ExtResource("2_2t8mw")
 
