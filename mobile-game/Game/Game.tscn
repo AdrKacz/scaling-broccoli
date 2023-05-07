@@ -13,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 script = ExtResource("5")
 ComboScene = ExtResource("3")
 
@@ -34,5 +34,5 @@ position = Vector2(360, 640)
 [node name="SwapBackgroundTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="tap" from="Character" to="." method="_on_character_tap"]
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="timeout" from="SwapBackgroundTimer" to="." method="_on_swap_background_timer_timeout"]

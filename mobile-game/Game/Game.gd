@@ -47,3 +47,9 @@ func _on_swap_background_timer_timeout():
 	if Constants.state_matches:
 		emit_signal("miss")
 	update_background_state()
+
+
+func _on_gui_input(event):
+	if event is InputEventScreenTouch and event.is_pressed() :
+		Session.tap()
+		_on_character_tap()

@@ -1,4 +1,4 @@
-extends Node
+extends CanvasLayer
 
 signal on_screen
 

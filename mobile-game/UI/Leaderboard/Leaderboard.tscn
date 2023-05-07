@@ -9,19 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://dvwhdcoimyavg" path="res://UI/Leaderboard/Loader/Loader.tscn" id="5_gaay2"]
 [ext_resource type="Texture2D" uid="uid://xfa1vu6ckvuw" path="res://assets/ButtonsV3/SmallButtonUp.png" id="6"]
 
-[node name="Leaderboard" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Leaderboard" type="CanvasLayer"]
 script = ExtResource("1")
 ScoreEntry = ExtResource("2_rwihr")
 OwnScoreEntry = ExtResource("3_1xxpg")
 
 [node name="Background" type="ColorRect" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -31,7 +24,6 @@ mouse_filter = 2
 color = Color(0.584314, 0.345098, 0.945098, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

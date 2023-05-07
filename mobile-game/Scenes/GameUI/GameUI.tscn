@@ -44,6 +44,7 @@ script = ExtResource("1_42cip")
 [node name="PauseControl" type="Control" parent="MarginContainer"]
 use_parent_material = true
 layout_mode = 2
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PauseControl"]
 use_parent_material = true

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://pt2ge8rnffl0" path="res://Scenes/SpeedLines/SpeedLines.tscn" id="3_yp3k5"]
 [ext_resource type="PackedScene" uid="uid://b5a8hcvmbiai0" path="res://Scenes/GameUI/GameUI.tscn" id="6_8abi2"]
 
-[node name="GameMaster" type="Node"]
+[node name="GameMaster" type="CanvasLayer"]
 script = ExtResource("1")
 
 [node name="Control" type="Control" parent="."]

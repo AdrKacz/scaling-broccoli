@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 signal on_screen
 
 func _ready():
