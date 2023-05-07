@@ -1,20 +1,18 @@
 extends CanvasLayer
 
-
-func set_visible_to(value):
-	$Control.visible = value
-	get_tree().paused = value
-
 func _on_Continue_pressed():
 	Session.click()
-	Session.remove_menus()
-
+	get_tree().paused = false
+	visible = false
 
 func _on_MainMenu_pressed():
 	Session.click()
-	Session.main_menu()
-
+	get_tree().paused = false
+	visible = false
+	Session.change_node_to(Session.MainMenu)
 
 func _on_Restart_pressed():
 	Session.click()
-	Session.start_game()
+	get_tree().paused = false
+	visible = false
+	Session.change_node_to(Session.GameMaster)

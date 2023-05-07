@@ -35,8 +35,8 @@ func get_leaderboard():
 	if wait_get:
 		# TODO make sure we don't wait for too long if error serverside
 		return
-	var error = $HTTPRequestGet.request(endpoint + last_submitted_uuid)
-	if error != OK:
+	var http_error = $HTTPRequestGet.request(endpoint + last_submitted_uuid)
+	if http_error != OK:
 		push_error("An error occurred in the HTTP request.")
 		emit_signal("error")
 	else:
@@ -50,10 +50,10 @@ func post_leaderboard(player_name: String, score: int):
 		"score": score
 	})
 	
-	var error = $HTTPRequestPost.request(endpoint, [], HTTPClient.METHOD_POST, body)
-	print('Post to leaderboard - ', error)
+	var http_error = $HTTPRequestPost.request(endpoint, [], HTTPClient.METHOD_POST, body)
+	print('Post to leaderboard - ', http_error)
 	print(body)
-	if error != OK:
+	if http_error != OK:
 		push_error("An error occurred in the HTTP request.")
 		emit_signal("error")
 	else:

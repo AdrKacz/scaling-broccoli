@@ -16,6 +16,7 @@ func get_background_next_state(background_state, character_state):
 		states.shuffle()
 		
 		# get maw_swaps
+		@warning_ignore("integer_division")
 		var level = clamp(int(Constants.combos_strike / 10), 0, Constants.max_swaps.size() - 1)
 		var max_swaps = Constants.max_swaps[level]
 		
