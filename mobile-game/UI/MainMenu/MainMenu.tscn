@@ -17,7 +17,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.584314, 0.345098, 0.945098, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -38,8 +37,7 @@ alignment = 1
 [node name="Title" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 24
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4")
 theme_override_font_sizes/font_size = 128
 text = "Rainbow Rush"
@@ -100,6 +98,7 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer/SettingsControl/MarginContainer"]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 texture_normal = ExtResource("6_tsfqk")
 texture_pressed = ExtResource("6_tsfqk")

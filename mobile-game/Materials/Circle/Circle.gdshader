@@ -13,7 +13,7 @@ void fragment() {
 	float size = max_radius * radius;
 	float mask = step(size, length(scaledUV - center));
 	
-	if (mask == 1.) {
+	if (abs(1. - mask) < .0001) {
 		COLOR.a = 0.;
 	}
 }
