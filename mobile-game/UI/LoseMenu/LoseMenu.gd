@@ -37,12 +37,13 @@ const OFFSET: int = 32
 func animate_submit_error(text: String):
 	if tween:
 		tween.kill() # Abort the previous animation.
+	var original_text = name_line_edit.text
 	tween = create_tween().bind_node(self).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(submit_label, "text", text, .0)
+	tween.tween_callback(name_line_edit.set_text.bind(text))
 	tween.tween_property(name_line_edit, "position", Vector2(OFFSET, 0), .1)
 	tween.tween_property(name_line_edit, "position", Vector2(-OFFSET, 0), .1)
 	tween.tween_property(name_line_edit, "position", Vector2(0, 0), .1)
-	tween.tween_callback($AnimationPlayer.play.bind('RESET')).set_delay(.7)
+	tween.tween_callback(name_line_edit.set_text.bind(original_text)).set_delay(.2)
 
 func _on_SubmitScore_pressed():
 	Session.click()
