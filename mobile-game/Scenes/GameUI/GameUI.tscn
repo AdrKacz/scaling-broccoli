@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5a8hcvmbiai0"]
+[gd_scene load_steps=8 format=3 uid="uid://b5a8hcvmbiai0"]
 
 [ext_resource type="Script" path="res://Scenes/GameUI/GameUI.gd" id="1_1j4ix"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="1_42cip"]
@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://pp33xbgsxk1" path="res://Scenes/GameUI/IntroductionText/IntroductionText.tscn" id="4_vn6yi"]
 [ext_resource type="Texture2D" uid="uid://4x328o3ivuls" path="res://assets/pause.png" id="5_m0cpc"]
 [ext_resource type="PackedScene" uid="uid://belmo1q5j7eh" path="res://Scenes/ScoreText/ScoreText.tscn" id="5_y8wyq"]
+[ext_resource type="PackedScene" uid="uid://cwcepou6wxegl" path="res://UI/PauseMenu/PauseMenu.tscn" id="7_6m4jd"]
 
 [node name="GameUI" type="Control"]
+use_parent_material = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,10 +21,13 @@ script = ExtResource("1_1j4ix")
 BonusText = ExtResource("2_2t8mw")
 
 [node name="ScoreText" parent="." instance=ExtResource("5_y8wyq")]
+use_parent_material = true
 
 [node name="IntroductionText" parent="." instance=ExtResource("4_vn6yi")]
+use_parent_material = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,10 +42,12 @@ theme_override_constants/margin_bottom = 12
 script = ExtResource("1_42cip")
 
 [node name="PauseControl" type="Control" parent="MarginContainer"]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PauseControl"]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -49,9 +56,13 @@ grow_horizontal = 0
 size_flags_horizontal = 8
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer/PauseControl/MarginContainer"]
+use_parent_material = true
 layout_mode = 2
 texture_normal = ExtResource("5_m0cpc")
 texture_pressed = ExtResource("5_m0cpc")
 texture_hover = ExtResource("5_m0cpc")
+
+[node name="PauseMenu" parent="MarginContainer" instance=ExtResource("7_6m4jd")]
+visible = false
 
 [connection signal="pressed" from="MarginContainer/PauseControl/MarginContainer/TextureButton" to="." method="_on_pause_button_pressed"]

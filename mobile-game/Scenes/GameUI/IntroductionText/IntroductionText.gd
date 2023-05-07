@@ -13,7 +13,7 @@ func animate():
 func enter():
 	animate()
 	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_interval(1)
+	tween.tween_interval(2)
 	tween.tween_property(self, "scale", Vector2(1, 1), 1)
 	
 func leave():

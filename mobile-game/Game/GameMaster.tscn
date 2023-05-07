@@ -1,24 +1,32 @@
 [gd_scene load_steps=6 format=3 uid="uid://bus6slw6nmt6e"]
 
 [ext_resource type="Script" path="res://Game/GameMaster.gd" id="1"]
+[ext_resource type="Material" uid="uid://boqnkeusewign" path="res://Materials/Circle/Circle.tres" id="2_fpdci"]
 [ext_resource type="PackedScene" uid="uid://ba724pdrff37e" path="res://Game/Game.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://pt2ge8rnffl0" path="res://Scenes/SpeedLines/SpeedLines.tscn" id="3_yp3k5"]
-[ext_resource type="PackedScene" uid="uid://dxu0b576nr00v" path="res://Scenes/Explosion/Explosion.tscn" id="4_fy5ot"]
 [ext_resource type="PackedScene" uid="uid://b5a8hcvmbiai0" path="res://Scenes/GameUI/GameUI.tscn" id="6_8abi2"]
 
-[node name="GameMaster" type="Node"]
+[node name="GameMaster" type="CanvasLayer"]
 script = ExtResource("1")
 
-[node name="Game" type="Node" parent="."]
+[node name="Control" type="Control" parent="."]
+material = ExtResource("2_fpdci")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Game" parent="Game" instance=ExtResource("3")]
+[node name="Game" parent="Control" instance=ExtResource("3")]
+layout_mode = 1
 
-[node name="SpeedLines" parent="." instance=ExtResource("3_yp3k5")]
+[node name="SpeedLines" parent="Control" instance=ExtResource("3_yp3k5")]
+layout_mode = 1
 
-[node name="Explosion" parent="." instance=ExtResource("4_fy5ot")]
+[node name="GameUI" parent="Control" instance=ExtResource("6_8abi2")]
+layout_mode = 1
 
-[node name="GameUI" parent="." instance=ExtResource("6_8abi2")]
-
-[connection signal="miss" from="Game/Game" to="." method="_on_game_miss"]
-[connection signal="score" from="Game/Game" to="." method="score"]
-[connection signal="wrong" from="Game/Game" to="." method="wrong"]
+[connection signal="miss" from="Control/Game" to="." method="_on_game_miss"]
+[connection signal="score" from="Control/Game" to="." method="score"]
+[connection signal="wrong" from="Control/Game" to="." method="wrong"]

@@ -7,11 +7,9 @@
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 2
-layer = 10
 script = ExtResource("1")
 
 [node name="Control" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

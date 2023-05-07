@@ -21,7 +21,7 @@ config/icon="res://../arts/game-icon/GameIcon-1024.png"
 
 Constants="*res://AutoLoad/Constants/constants.gd"
 DataStore="*res://AutoLoad/DataStore/data_store.gd"
-Session="*res://AutoLoad/Session/session.tscn"
+Session="*res://AutoLoad/Session/Session.tscn"
 StateManager="*res://AutoLoad/StateManager/StateManager.gd"
 NetworkManager="*res://AutoLoad/NetworkManager/NetworkManager.tscn"
 AudioManager="*res://AutoLoad/AudioManager/AudioManager.tscn"

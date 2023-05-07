@@ -26,7 +26,8 @@ func _ready():
 
 func _on_pause_button_pressed():
 	Session.click()
-	Session.pause_menu()
+	get_tree().paused = true
+	$MarginContainer/PauseMenu.visible = true
 	
 func update_score(score):
 	$ScoreText.text = str(score)

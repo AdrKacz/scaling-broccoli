@@ -1,44 +1,25 @@
 extends Node
 
-@export_file("*.tscn") var game_path = "res://Game/GameMaster.tscn"
-@export_file("*.tscn") var main_menu_path = "res://UI/MainMenu/MainMenu.tscn"
-@export_file("*.tscn") var leaderboard_path = "res://UI/Leaderboard/Leaderboard.tscn"
-@export_file("*.tscn") var settings_path = "res://Scenes/Menus/Settings/Settings.tscn"
+@export var MainMenu: PackedScene
+@export var GameMaster: PackedScene
+@export var LeaderboardMenu: PackedScene
+@export var SettingsMenu: PackedScene
+@export var LoseMenu: PackedScene
 
 var read_leaderboard_from_memory: bool = false
 var in_memory_leaderboard: Dictionary
 
+var main_node: MainNode
+
 func _ready():
 	randomize()
 	
-func pause_menu():
-	$PauseMenu.set_visible_to(true)
-	$LoseMenu.set_visible_to(false)
-
-func remove_menus():
-	$LoseMenu.set_visible_to(false)
-	$PauseMenu.set_visible_to(false)
-
-func start_game():
-	Constants.score = 0
-	Constants.combos_strike = 0
-	remove_menus()
-	get_tree().change_scene_to_file(game_path)
+func assign_main_node(node: MainNode):
+	# Must be called first by Main Node
+	main_node = node
 	
-func leaderboard():
-	remove_menus()
-	get_tree().change_scene_to_file(leaderboard_path)
-	
-func settings():
-	get_tree().change_scene_to_file(settings_path)
-	
-func main_menu():
-	remove_menus()
-	get_tree().change_scene_to_file(main_menu_path)
-	
-func lose_menu():	
-	$PauseMenu.set_visible_to(false)
-	$LoseMenu.set_visible_to(true)
+func change_node_to(scene: PackedScene):
+	main_node.change_node_to(scene)
 
 var vibration_on: bool = true
 const LIGHT_HAPTIC_FEEDBACK: int = 4

@@ -1,4 +1,6 @@
-extends Control
+extends CanvasLayer
+
+signal on_screen
 
 @export var ScoreEntry: PackedScene
 @export var OwnScoreEntry: PackedScene
@@ -10,7 +12,8 @@ class MyCustomSorter:
 		return false
 
 # Called when the node enters the scene tree for the first time.
-func _ready():	
+func _ready():
+	emit_signal("on_screen")
 	if validate_memory_leaderboard():
 		# get leaderboard from memory
 		var leaders = Session.in_memory_leaderboard.get("leaders")
@@ -43,7 +46,6 @@ func add_entry(Entry: PackedScene, player_position: Variant, player_name, score)
 
 func display_leaderboard(leaders, player_position):
 	for i in leaders.size():
-		var leader = leaders[i]
 		var rank = i + 1
 		var player_name = leaders[i]["name"]
 		var score = leaders[i]["score"]
@@ -82,9 +84,8 @@ func _on_network_manager_leaderboard(leaders, player_position):
 	
 func _on_MainMenu_pressed():
 	Session.click()
-	Session.main_menu()
-
+	Session.change_node_to(Session.MainMenu)
 
 func _on_Replay_pressed():
 	Session.click()
-	Session.start_game()
+	Session.change_node_to(Session.GameMaster)
