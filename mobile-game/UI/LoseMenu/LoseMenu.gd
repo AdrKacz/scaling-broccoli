@@ -19,6 +19,7 @@ func _ready():
 
 func update_appear_radius(radius: float):
 	$Control.material.set_shader_parameter("radius", radius)
+	$UIBackground.material.set_shader_parameter("radius", radius)
 
 var appear_tween: Tween
 func appear():

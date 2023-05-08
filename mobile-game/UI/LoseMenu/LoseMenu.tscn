@@ -52,6 +52,7 @@ _data = {
 script = ExtResource("1")
 
 [node name="UIBackground" parent="." instance=ExtResource("4_vvq6t")]
+material = ExtResource("2_6c4qv")
 
 [node name="Control" type="Control" parent="."]
 material = ExtResource("2_6c4qv")

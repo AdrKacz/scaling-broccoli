@@ -10,12 +10,14 @@ bounce = 0.5
 size = Vector2(320, 320)
 
 [node name="RigidBody2D" type="RigidBody2D"]
+use_parent_material = true
 collision_mask = 3
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_x44bt")
 script = ExtResource("1_ifgb7")
 
 [node name="UICharacter" type="Sprite2D" parent="."]
+use_parent_material = true
 scale = Vector2(20, 20)
 texture = ExtResource("1_vojl6")
 

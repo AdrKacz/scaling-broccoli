@@ -9,6 +9,7 @@
 size = Vector2(320, 320)
 
 [node name="UIBackground" type="Control"]
+use_parent_material = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +20,7 @@ mouse_filter = 2
 script = ExtResource("1_od4g0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,6 +30,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="UIBackground" type="Node2D" parent="."]
+use_parent_material = true
 script = ExtResource("1_jyl1q")
 UICharacter = ExtResource("1_ilm6l")
 
@@ -36,8 +39,6 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UIBackground/UICharactersSpawner"]
 shape = SubResource("RectangleShape2D_uxfmq")
-
-[node name="UICharacters" type="Node" parent="UIBackground"]
 
 [node name="Walls" type="Node" parent="UIBackground"]
 

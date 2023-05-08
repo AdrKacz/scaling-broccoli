@@ -29,7 +29,7 @@ func spawn():
 	var character: RigidBody2D = UICharacter.instantiate()
 	character.position = Vector2(spawner.position.x, -WALL_WIDTH)
 	character.explode.connect(_on_character_explode)
-	$UICharacters.add_child(character)
+	add_child(character)
 
 func _on_character_explode(color: Color):
 	emit_signal("change_color", color)
