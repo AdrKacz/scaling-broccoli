@@ -41,9 +41,11 @@ _data = {
 }
 
 [node name="Node2D" type="Sprite2D"]
+use_parent_material = true
 script = ExtResource("1_kypid")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+use_parent_material = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -52,6 +54,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Label" type="Label" parent="CenterContainer"]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 1
 theme = ExtResource("2_k50cv")

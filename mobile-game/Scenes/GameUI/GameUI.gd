@@ -5,9 +5,9 @@ extends Control
 var display_bonus_text_position: Vector2
 
 func _ready():
-	# get position for bonus text
-	$ScoreText.text = str(Constants.score)
+	$ScoreText.text = str(0)
 	
+	# get position for bonus text
 	var computed_safe_area: Rect2 = $MarginContainer.computed_safe_area
 	$ScoreText.position = Vector2(
 		computed_safe_area.position.x + computed_safe_area.size.x * .5,

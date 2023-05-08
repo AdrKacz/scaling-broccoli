@@ -1,19 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://mvxeej36kptf"]
+[gd_scene load_steps=6 format=3 uid="uid://mvxeej36kptf"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/Settings/Settings.gd" id="1_02iur"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="1_07r1w"]
+[ext_resource type="PackedScene" uid="uid://5kiirn6rgdru" path="res://Scenes/UIBackground/UIBackground.tscn" id="2_25tlc"]
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="2_mkfaj"]
 [ext_resource type="Texture2D" uid="uid://k2sbxux3l8li" path="res://assets/exitRight.png" id="5_5dkyc"]
 
 [node name="Settings" type="CanvasLayer"]
 script = ExtResource("1_02iur")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="UIBackground" parent="." instance=ExtResource("2_25tlc")]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15

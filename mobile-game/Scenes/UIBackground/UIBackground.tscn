@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://5kiirn6rgdru"]
+
+[ext_resource type="PackedScene" uid="uid://cihfhrwlwbgw1" path="res://Scenes/UIBackground/UICharacter/UICharacter.tscn" id="1_ilm6l"]
+[ext_resource type="Script" path="res://Scenes/UIBackground/UIBackground.gd" id="1_jyl1q"]
+[ext_resource type="Script" path="res://Scenes/UIBackground/UIBackgroundControl.gd" id="1_od4g0"]
+[ext_resource type="PackedScene" uid="uid://dhehalhkq6lnd" path="res://Scenes/UIBackground/UIWalls/UIWalls.tscn" id="2_adkay"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxfmq"]
+size = Vector2(320, 320)
+
+[node name="UIBackground" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_od4g0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="UIBackground" type="Node2D" parent="."]
+script = ExtResource("1_jyl1q")
+UICharacter = ExtResource("1_ilm6l")
+
+[node name="UICharactersSpawner" type="Area2D" parent="UIBackground"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UIBackground/UICharactersSpawner"]
+shape = SubResource("RectangleShape2D_uxfmq")
+
+[node name="UICharacters" type="Node" parent="UIBackground"]
+
+[node name="Walls" type="Node" parent="UIBackground"]
+
+[node name="UIWallsDown" parent="UIBackground/Walls" instance=ExtResource("2_adkay")]
+scale = Vector2(5, 1)
+
+[node name="UIWallsLeft" parent="UIBackground/Walls" instance=ExtResource("2_adkay")]
+scale = Vector2(1, 5)
+
+[node name="UIWallsRight" parent="UIBackground/Walls" instance=ExtResource("2_adkay")]
+scale = Vector2(1, 5)
+
+[node name="SpawnTimer" type="Timer" parent="UIBackground"]
+
+[connection signal="change_color" from="UIBackground" to="." method="_on_ui_background_change_color"]
+[connection signal="timeout" from="UIBackground/SpawnTimer" to="UIBackground" method="_on_spawn_timer_timeout"]
