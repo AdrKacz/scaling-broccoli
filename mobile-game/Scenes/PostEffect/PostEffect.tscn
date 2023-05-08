@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://ufk6fk0jovya"]
-
-[ext_resource type="PackedScene" uid="uid://dacsj4aejueex" path="res://Shaders/Shockwave.tscn" id="1"]
-[ext_resource type="Script" path="res://Scenes/PostEffect/PostEffect.gd" id="2"]
-
-[node name="PostEffect" type="CanvasLayer"]
-script = ExtResource("2")
-Shockwave = ExtResource("1")

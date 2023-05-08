@@ -2,7 +2,7 @@ extends CanvasLayer
 
 signal on_screen
 
-var allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
+var allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
 var submit_label: Label
 var name_line_edit: LineEdit
@@ -19,6 +19,7 @@ func _ready():
 
 func update_appear_radius(radius: float):
 	$Control.material.set_shader_parameter("radius", radius)
+	$UIBackground.material.set_shader_parameter("radius", radius)
 
 var appear_tween: Tween
 func appear():
@@ -37,12 +38,13 @@ const OFFSET: int = 32
 func animate_submit_error(text: String):
 	if tween:
 		tween.kill() # Abort the previous animation.
+	var original_text = name_line_edit.text
 	tween = create_tween().bind_node(self).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(submit_label, "text", text, .0)
+	tween.tween_callback(name_line_edit.set_text.bind(text))
 	tween.tween_property(name_line_edit, "position", Vector2(OFFSET, 0), .1)
 	tween.tween_property(name_line_edit, "position", Vector2(-OFFSET, 0), .1)
 	tween.tween_property(name_line_edit, "position", Vector2(0, 0), .1)
-	tween.tween_callback($AnimationPlayer.play.bind('RESET')).set_delay(.7)
+	tween.tween_callback(name_line_edit.set_text.bind(original_text)).set_delay(.2)
 
 func _on_SubmitScore_pressed():
 	Session.click()
@@ -78,3 +80,11 @@ func _on_exit_texture_button_pressed():
 func _on_replay_pressed():
 	Session.click()
 	Session.change_node_to(Session.GameMaster)
+
+
+func _on_name_text_changed(text: String):
+	if not text.right(1) in allowed:
+		text = text.left(text.length() - 1)
+	var caret_column: int = name_line_edit.caret_column
+	name_line_edit.set_text(text.left(12).to_lower().capitalize())
+	name_line_edit.set_caret_column(caret_column)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cwcepou6wxegl"]
 
 [ext_resource type="Script" path="res://UI/PauseMenu/PauseMenu.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="2"]
-[ext_resource type="FontFile" uid="uid://dawfg0re1svew" path="res://assets/VT323/VT323-Regular.ttf" id="4"]
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="2_qj15y"]
+[ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="3_1gi43"]
 [ext_resource type="Texture2D" uid="uid://4exmars5c0oj" path="res://assets/ButtonsV3/ButtonDown.png" id="5"]
 
 [node name="PauseMenu" type="CanvasLayer"]
@@ -16,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_qj15y")
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 0
@@ -38,8 +39,9 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-texture_normal = ExtResource("2")
+texture_normal = ExtResource("3_1gi43")
 texture_pressed = ExtResource("5")
+texture_hover = ExtResource("5")
 
 [node name="CenterContainer" type="CenterContainer" parent="Control/Center/VBox/Continue"]
 layout_mode = 0
@@ -49,17 +51,15 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="Control/Center/VBox/Continue/CenterContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4")
-theme_override_font_sizes/font_size = 64
 text = "Continue"
 
 [node name="Restart" type="TextureButton" parent="Control/Center/VBox"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-texture_normal = ExtResource("2")
+texture_normal = ExtResource("3_1gi43")
 texture_pressed = ExtResource("5")
+texture_hover = ExtResource("5")
 
 [node name="CenterContainer" type="CenterContainer" parent="Control/Center/VBox/Restart"]
 layout_mode = 0
@@ -69,17 +69,15 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="Control/Center/VBox/Restart/CenterContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4")
-theme_override_font_sizes/font_size = 64
 text = "Restart"
 
 [node name="MainMenu" type="TextureButton" parent="Control/Center/VBox"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-texture_normal = ExtResource("2")
+texture_normal = ExtResource("3_1gi43")
 texture_pressed = ExtResource("5")
+texture_hover = ExtResource("5")
 
 [node name="CenterContainer" type="CenterContainer" parent="Control/Center/VBox/MainMenu"]
 layout_mode = 0
@@ -89,9 +87,6 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="Control/Center/VBox/MainMenu/CenterContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4")
-theme_override_font_sizes/font_size = 64
 text = "Menu"
 
 [connection signal="pressed" from="Control/Center/VBox/Continue" to="." method="_on_Continue_pressed"]

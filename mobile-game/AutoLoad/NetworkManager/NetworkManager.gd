@@ -74,7 +74,7 @@ func process_response(body, method: String):
 	if method == "POST":
 		last_submitted_uuid = response.get('uuid', 'none')
 		save_submission()
-	emit_signal("leaderboard", leaders, position)
+	emit_signal("leaderboard", leaders.slice(0, 5), position)
 
 func _on_http_request_get_request_completed(_result, _response_code, _headers, body):
 	wait_get = false

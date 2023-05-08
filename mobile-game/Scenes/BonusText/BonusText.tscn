@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bkyi6nop5h5e7"]
 
-[ext_resource type="FontFile" uid="uid://dawfg0re1svew" path="res://assets/VT323/VT323-Regular.ttf" id="1"]
 [ext_resource type="Script" path="res://Scenes/BonusText/BonusText.gd" id="2"]
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="3_mge8y"]
 [ext_resource type="Texture2D" uid="uid://c2yyhogogs1vf" path="res://assets/EmptyBigSquare.png" id="4"]
 
 [sub_resource type="Animation" id="1"]
@@ -59,11 +59,12 @@ offset_top = -1440.0
 offset_right = -1440.0
 offset_bottom = -1440.0
 mouse_filter = 2
+theme = ExtResource("3_mge8y")
 
 [node name="Label" type="Label" parent="CenterContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 24
-theme_override_fonts/font = ExtResource("1")
+theme_override_constants/outline_size = 48
 theme_override_font_sizes/font_size = 256
 text = "+1"
