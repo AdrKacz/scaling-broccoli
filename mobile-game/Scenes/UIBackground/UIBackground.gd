@@ -28,6 +28,7 @@ func spawn():
 	
 	var character: RigidBody2D = UICharacter.instantiate()
 	character.position = Vector2(spawner.position.x, -WALL_WIDTH)
+	character.y_limit = size.y + 2 * WALL_WIDTH
 	character.explode.connect(_on_character_explode)
 	add_child(character)
 

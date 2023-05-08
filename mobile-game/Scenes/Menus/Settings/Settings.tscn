@@ -10,6 +10,7 @@
 script = ExtResource("1_02iur")
 
 [node name="UIBackground" parent="." instance=ExtResource("2_25tlc")]
+scrolling_mode = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15

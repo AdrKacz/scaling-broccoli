@@ -21,13 +21,6 @@ use_parent_material = true
 scale = Vector2(20, 20)
 texture = ExtResource("1_vojl6")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
-scale = Vector2(20, 20)
-build_mode = 1
-polygon = PackedVector2Array(-6, -8, 6, -8, 6, -7, 7, -7, 7, -6, 8, -6, 8, 6, 7, 6, 7, 7, 6, 7, 6, 8, -5, 8, -6, 8, -6, 7, -7, 7, -7, 6, -8, 6, -8, -6, -7, -6, -7, -7, -6, -7)
-disabled = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jetuo")
 

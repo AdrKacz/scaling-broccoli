@@ -16,6 +16,7 @@ ScoreEntry = ExtResource("2_rwihr")
 OwnScoreEntry = ExtResource("3_1xxpg")
 
 [node name="UIBackground" parent="." instance=ExtResource("4_pq4ut")]
+scrolling_mode = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
