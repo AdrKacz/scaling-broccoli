@@ -6,9 +6,26 @@ var allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
 var submit_label: Label
 var name_line_edit: LineEdit
-var last_processed_height: int
+var mobile_keyboard_height: float
+
+func get_mobile_keyboard_height_from_memory() -> float:
+	var config = ConfigFile.new()
+	var err = config.load("user://config.cfg")
+	# try to guess the heigh of the virtual keyboard
+	var default_height = $Control/MarginContainer.computed_safe_area.size.y * .3	
+	if err != OK:
+		return default_height
+	else:
+		return config.get_value('config', 'mobile_keyboard_height', default_height)
+
+func save_mobile_keyboard_height_to_memory():
+	var config = ConfigFile.new()
+	config.set_value('config', 'mobile_keyboard_height', mobile_keyboard_height)
+	config.save("user://config.cfg")
 
 func _ready():
+	mobile_keyboard_height = get_mobile_keyboard_height_from_memory()
+	
 	submit_label = $Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/SubmitScore/CenterContainer/Label
 	name_line_edit = $Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/Name
 	NetworkManager.connect("leaderboard", Callable(self, "_on_network_manager_leaderboard"))
@@ -21,11 +38,13 @@ func _ready():
 func _process(_delta):
 	if not DisplayServer.has_feature(DisplayServer.FEATURE_VIRTUAL_KEYBOARD):
 		return
-	var height: int = DisplayServer.virtual_keyboard_get_height()
-	if height == last_processed_height:
-		return
-	last_processed_height = height
-	offset.y = - DisplayServer.virtual_keyboard_get_height() * $Control/MarginContainer.factors.y
+	var height: int = DisplayServer.virtual_keyboard_get_height() * $Control/MarginContainer.factors.y
+	if height > 0 and height != mobile_keyboard_height:
+		mobile_keyboard_height = height
+		save_mobile_keyboard_height_to_memory()
+		move_screen_up(
+			mobile_keyboard_height,
+			.2)
 
 func update_appear_radius(radius: float):
 	$Control.material.set_shader_parameter("radius", radius)
@@ -43,18 +62,18 @@ func appear():
 	appear_tween.tween_callback(emit_signal.bind("on_screen"))
 	
 
-var tween: Tween
+var submit_error_tween: Tween
 const OFFSET: int = 32
 func animate_submit_error(text: String):
-	if tween:
-		tween.kill() # Abort the previous animation.
+	if submit_error_tween:
+		submit_error_tween.kill() # Abort the previous animation.
 	var original_text = name_line_edit.text
-	tween = create_tween().bind_node(self).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_callback(name_line_edit.set_text.bind(text))
-	tween.tween_property(name_line_edit, "position", Vector2(OFFSET, 0), .1)
-	tween.tween_property(name_line_edit, "position", Vector2(-OFFSET, 0), .1)
-	tween.tween_property(name_line_edit, "position", Vector2(0, 0), .1)
-	tween.tween_callback(name_line_edit.set_text.bind(original_text)).set_delay(.2)
+	submit_error_tween = create_tween().bind_node(self).set_ease(Tween.EASE_IN_OUT)
+	submit_error_tween.tween_callback(name_line_edit.set_text.bind(text))
+	submit_error_tween.tween_property(name_line_edit, "position", Vector2(OFFSET, 0), .1)
+	submit_error_tween.tween_property(name_line_edit, "position", Vector2(-OFFSET, 0), .1)
+	submit_error_tween.tween_property(name_line_edit, "position", Vector2(0, 0), .1)
+	submit_error_tween.tween_callback(name_line_edit.set_text.bind(original_text)).set_delay(.2)
 
 func _on_SubmitScore_pressed():
 	Session.click()
@@ -104,7 +123,14 @@ func _on_name_text_submitted(_new_text):
 	name_line_edit.release_focus()
 
 func _on_name_focus_entered():
-	print('FOCUS ENTERED')
+	move_screen_up(mobile_keyboard_height, .2)
 
 func _on_name_focus_exited():
-	offset.y = 0
+	move_screen_up(0, .2)
+	
+var move_screen_up_tween: Tween
+func move_screen_up(up_offset: float, delta: float):
+	if move_screen_up_tween:
+		move_screen_up_tween.kill()
+	move_screen_up_tween = create_tween().bind_node(self)
+	move_screen_up_tween.tween_property(self, "offset", Vector2(0, -up_offset), delta)
