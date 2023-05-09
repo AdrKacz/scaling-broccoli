@@ -4,7 +4,7 @@ extends Node
 const background_delta: float = 0.5
 const background_match_delta: float = 0.75
 const score_factor: int = 10
-
+const minimum_challenge_score: int = 30 # minimum score to see the challenge
 const max_swaps: Array[int] = [5, 4, 3]
 
 var state_matches: bool = false
@@ -32,5 +32,9 @@ const State = {
 
 # ==== ===== =====
 # Variables definitions
+func reset():
+	score = 0
+	combos_strike = 0
+
 var score: int = 0
 var combos_strike: int = 0

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5a8hcvmbiai0"]
+[gd_scene load_steps=10 format=3 uid="uid://b5a8hcvmbiai0"]
 
 [ext_resource type="Script" path="res://Scenes/GameUI/GameUI.gd" id="1_1j4ix"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="1_42cip"]
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="1_q7r7u"]
 [ext_resource type="PackedScene" uid="uid://bkyi6nop5h5e7" path="res://Scenes/BonusText/BonusText.tscn" id="2_2t8mw"]
-[ext_resource type="PackedScene" uid="uid://pp33xbgsxk1" path="res://Scenes/GameUI/IntroductionText/IntroductionText.tscn" id="4_vn6yi"]
+[ext_resource type="PackedScene" uid="uid://8a30gmigxjen" path="res://Scenes/GameUI/ChallengeText/ChallengeText.tscn" id="4_p8nc7"]
+[ext_resource type="PackedScene" uid="uid://cmnysrx6vb36w" path="res://Scenes/GameUI/IntroductionText/IntroductionText.tscn" id="4_vn6yi"]
 [ext_resource type="Texture2D" uid="uid://4x328o3ivuls" path="res://assets/pause.png" id="5_m0cpc"]
 [ext_resource type="PackedScene" uid="uid://belmo1q5j7eh" path="res://Scenes/ScoreText/ScoreText.tscn" id="5_y8wyq"]
 [ext_resource type="PackedScene" uid="uid://cwcepou6wxegl" path="res://UI/PauseMenu/PauseMenu.tscn" id="7_6m4jd"]
@@ -21,6 +22,7 @@ mouse_filter = 2
 theme = ExtResource("1_q7r7u")
 script = ExtResource("1_1j4ix")
 BonusText = ExtResource("2_2t8mw")
+ChallengeText = ExtResource("4_p8nc7")
 
 [node name="ScoreText" parent="." instance=ExtResource("5_y8wyq")]
 

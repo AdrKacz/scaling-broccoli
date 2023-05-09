@@ -1,10 +1,11 @@
 extends CanvasLayer
 
 signal on_screen
+var challenge_text_seen: bool = false
+var challenge_completed: bool = false
 
 func _ready():
-	Constants.score = 0
-	Constants.combos_strike = 0
+	Constants.reset()
 	appear()
 	
 func update_appear_radius(radius: float):
@@ -22,8 +23,10 @@ func score():
 	increment_combos_strike()
 	Constants.score += Constants.score_factor * Constants.combos_strike
 	$Control/GameUI.update_score(Constants.score)
+	if not challenge_text_seen and Constants.score >= Constants.minimum_challenge_score:
+		$Control/GameUI.display_challenge_text('Do a combo x5', false)
+		challenge_text_seen = true
 	
-		
 func increment_combos_strike():
 	Constants.combos_strike += 1
 	
@@ -31,6 +34,10 @@ func increment_combos_strike():
 		@warning_ignore("integer_division")
 		$Control/SpeedLines.level = int(Constants.combos_strike / 10)
 		$Control/GameUI.display_bonus_text('x' + str(Constants.combos_strike))
+	
+	if not challenge_completed and Constants.combos_strike >= 5:
+		$Control/GameUI.display_challenge_text('Do a combo x5', true)
+		challenge_completed = true
 	
 func reset_combos_strike():
 	$Control/SpeedLines.level = -1

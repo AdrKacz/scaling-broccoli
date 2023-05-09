@@ -1,5 +1,6 @@
 extends Sprite2D
 
+var is_leaving: bool = false
 var tween: Tween
 func _ready():
 	scale = Vector2(0, 0)
@@ -17,6 +18,9 @@ func enter():
 	tween.tween_property(self, "scale", Vector2(1, 1), 1)
 	
 func leave():
+	if is_leaving:
+		return # don't leave twice
+	is_leaving = true
 	animate()
 	tween.set_ease(Tween.EASE_IN)
 	tween.tween_property(self, "scale", Vector2(0, 0), 1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://pp33xbgsxk1"]
+[gd_scene load_steps=3 format=3 uid="uid://cmnysrx6vb36w"]
 
 [ext_resource type="Script" path="res://Scenes/GameUI/IntroductionText/IntroductionText.gd" id="1_j2an5"]
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="2_rcgit"]
@@ -19,6 +19,6 @@ theme = ExtResource("2_rcgit")
 
 [node name="Label" type="Label" parent="CenterContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 108
+theme = ExtResource("2_rcgit")
+theme_type_variation = &"GameLabel"
 text = "Tap to Match"
