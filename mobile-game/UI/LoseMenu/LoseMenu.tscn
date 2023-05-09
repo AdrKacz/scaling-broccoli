@@ -208,6 +208,9 @@ libraries = {
 }
 
 [connection signal="pressed" from="Control/MarginContainer/CenterContainer/Replay" to="." method="_on_replay_pressed"]
+[connection signal="focus_entered" from="Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/Name" to="." method="_on_name_focus_entered"]
+[connection signal="focus_exited" from="Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/Name" to="." method="_on_name_focus_exited"]
 [connection signal="text_changed" from="Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/Name" to="." method="_on_name_text_changed"]
+[connection signal="text_submitted" from="Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/Name" to="." method="_on_name_text_submitted"]
 [connection signal="pressed" from="Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/SubmitScore" to="." method="_on_SubmitScore_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/ExitControl/MarginContainer/TextureButton" to="." method="_on_exit_texture_button_pressed"]

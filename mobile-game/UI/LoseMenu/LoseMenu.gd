@@ -6,6 +6,7 @@ var allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
 var submit_label: Label
 var name_line_edit: LineEdit
+var last_processed_height: int
 
 func _ready():
 	submit_label = $Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/SubmitScore/CenterContainer/Label
@@ -16,6 +17,15 @@ func _ready():
 	$AnimationPlayer.play('RESET')
 	$Control/MarginContainer/MarginContainerScore/Score.text = str(Constants.score)
 	appear()
+	
+func _process(_delta):
+	if not DisplayServer.has_feature(DisplayServer.FEATURE_VIRTUAL_KEYBOARD):
+		return
+	var height: int = DisplayServer.virtual_keyboard_get_height()
+	if height == last_processed_height:
+		return
+	last_processed_height = height
+	offset.y = - DisplayServer.virtual_keyboard_get_height() * $Control/MarginContainer.factors.y
 
 func update_appear_radius(radius: float):
 	$Control.material.set_shader_parameter("radius", radius)
@@ -88,3 +98,13 @@ func _on_name_text_changed(text: String):
 	var caret_column: int = name_line_edit.caret_column
 	name_line_edit.set_text(text.left(12).to_lower().capitalize())
 	name_line_edit.set_caret_column(caret_column)
+
+
+func _on_name_text_submitted(_new_text):
+	name_line_edit.release_focus()
+
+func _on_name_focus_entered():
+	print('FOCUS ENTERED')
+
+func _on_name_focus_exited():
+	offset.y = 0
