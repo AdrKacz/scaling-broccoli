@@ -47,11 +47,11 @@ You reach level `1` at combo `10` and level `2` and combo `20`. You can't go hig
 - `max_swaps`: array of maximum number of background color swaps before if match the color of the character at level `n`
 
 # How to export?
-*Make sure to copy the `export_presets.cfg` below before opening Godot.
+*Make sure to copy the `export_presets.cfg` below before opening Godot.*
 <details>
   <summary>Export Presets</summary>
-
-  ```
+  
+```
 [preset.0]
 
 name="iOS Development"
@@ -160,8 +160,8 @@ application/export_method_release=0
 application/targeted_device_family=2
 application/bundle_identifier="com.kida.matchymatchysamesame"
 application/signature=""
-application/short_version="1.2"
-application/version="1.2"
+application/short_version="1.2.2"
+application/version="1.2.2"
 application/icon_interpolation=4
 application/launch_screens_interpolation=4
 capabilities/access_wifi=true
@@ -236,11 +236,11 @@ architectures/x86_64=false
 keystore/debug=""
 keystore/debug_user=""
 keystore/debug_password=""
-keystore/release="RELEASE PATH"
-keystore/release_user="RELEASE ALIAS"
-keystore/release_password="RELEASE PASSWORD"
-version/code=1
-version/name="1.2"
+keystore/release="PATH"
+keystore/release_user="ALIAS"
+keystore/release_password="PASSWORD"
+version/code=3
+version/name="1.2.2"
 package/unique_name="org.godotengine.gamejammerge"
 package/name="Rainbow Rush"
 package/signed=true
@@ -412,8 +412,8 @@ permissions/write_sms=false
 permissions/write_social_stream=false
 permissions/write_sync_settings=false
 permissions/write_user_dictionary=false
-  ```
-</details>
+```
+<details>
 
 ## iOS
 1. Open the project in your Godot editor
@@ -450,11 +450,15 @@ You will need your developer certificate to export your app to the App Store.
   1. Select `Project > Export...`
   2. Select `Android` in **Presets**
   3. Fill in `Release`, `Release User`, and `Release Password`
+  4. Increment the code version
   4. Make sure to increment the version since the last upload (**you version needs to be higher than the one in the Google Play Store**) (*SimVer*)
   5. Click `Export Project...`, and export it without `Debug`
 3. Go to your project page in **Google Play Console**
   1. Select `Internal Testing`
-  2. Drag and drop your `aab` file
+  2. Upload your `aab` file
+  3. Enter the release details and click **Next**
+  4. If you add advertisement, see the notice below, you need to add something to your manifest and declare it
+  5. Hit **Save and publish**
 
 ### What icons will you need?
 
@@ -464,3 +468,10 @@ You will need your developer certificate to export your app to the App Store.
 
 ### What if I lost your upload key?
 If you manage your key with Google Signing, they get you covered. Follow their [Create an upload key and update keystores](https://support.google.com/googleplay/android-developer/answer/9842756) guide.
+
+### Note on advertising$
+Apps that use advertising ID and target Android 13 or later must declare the com.google.android.gms.permission.AD_ID permission in their app manifest. If you don't include this permission, your advertising identifier will be zeroed out, any attempts to access the identifier will receive a string of zeros instead of the identifier. [Learn more](https://support.google.com/googleplay/android-developer/answer/6048248?hl=en)
+
+If you say that your app uses advertising ID, we will block releases that don't include the com.google.android.gms.permission.AD_ID permission in the manifest file when targeting Android 13. When we block these releases, we will remind you to add the permission. If your release doesn't need advertising ID, you'll be able to skip the error and release. You can also update the declaration to turn off advertising ID release errors.
+
+The option selected is **No**.
