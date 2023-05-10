@@ -2,6 +2,7 @@ extends MarginContainer
 # Called when the node enters the scene tree for the first time.
 
 var computed_safe_area: Rect2
+var factors: Vector2
 
 func _ready():
 	var safe_area = DisplayServer.get_display_safe_area()
@@ -35,3 +36,4 @@ func _ready():
 		safe_area.size.x * x_factor,
 		safe_area.size.y * y_factor,
 	)
+	factors = Vector2(x_factor, y_factor)
