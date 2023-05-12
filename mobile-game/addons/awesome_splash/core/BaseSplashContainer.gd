@@ -16,7 +16,7 @@ signal finished
 signal finished_all
 
 var skip_custom_screen_type: int = 0
-var skip_screen_type: int = 0
+var skip_screen_type: int = 2
 
 var current_screen
 var list_screen = []
@@ -45,20 +45,20 @@ func _ready():
 func _input(event):
 	if not _skip_awe_splash_by_event(event):
 		return
-	
+
 	if _check_current_screen_is_custom() \
 			and skip_custom_screen_type == SkipCustomNodeType.CUSTOM:
 		return
-	
+
 	if skip_screen_type == SkipScreenType.NONE:
 		return
-	
+
 	if skip_screen_type == \
 			SkipScreenType.SKIP_ONE_SCREEN_WHEN_CLICKED:
 		status = TransitionStatus.NONE
 		awe_timer.cancel()
 		_on_finished_animation_screen_disappear()
-	
+
 	if skip_screen_type == \
 			SkipScreenType.SKIP_ALL_SCREEN_WHEN_CLICKED:
 		status = TransitionStatus.NONE
@@ -67,7 +67,6 @@ func _input(event):
 		list_screen = []
 		awe_timer.cancel()
 		_on_finished_animation_screen_disappear()
-
 
 func _get(property): # overridden
 	if property == "custom_node/type":
