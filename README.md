@@ -77,6 +77,14 @@ You will need your developer certificate to export your app to the App Store.
 - [`152x152`](./arts/game-icon/GameIcon-152.png)
 - [`1024x1024`](./arts/game-icon/GameIcon-1024.png)
 
+### What dimensions do you need for app previews?
+
+| Device  | Dimensions | *Debug Dimensions* | *Debug Factors*
+| ------------- | ------------- | ------------- | ------------- |
+| iPad Pro 12.9"  | `2048x2732`  | `1024x1366` | `2` |
+| iPhone 8 Plus  | `1242x2208`  | `414x736` | `3` |
+| iPhone 14 Plus | `1284x2778` | `428x926` | `3` |
+
 ## Android
 1. Follow [Godot documentation *Exporting for Android*](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html)
 2. Open the project in your Godot editor
@@ -109,3 +117,19 @@ Apps that use advertising ID and target Android 13 or later must declare the com
 If you say that your app uses advertising ID, we will block releases that don't include the com.google.android.gms.permission.AD_ID permission in the manifest file when targeting Android 13. When we block these releases, we will remind you to add the permission. If your release doesn't need advertising ID, you'll be able to skip the error and release. You can also update the declaration to turn off advertising ID release errors.
 
 The option selected is **No**.
+
+## How to generetate app previews?
+1. Open your project in Godot
+2. Go to `Project > Settings` and select `Window`
+3. Update the `Debug dimensions`
+4. Add at least `20px` in each dimensions to not see window frame while recording
+5. Start the game and do the screenshots and screen recordings you need
+6. Trim each video to `10s`
+7. Scale up images and videos to their correct dimensions: `ffmpeg -i input -vf scale="iw*2:ih*2" output` *(scales times two)*
+
+### What scenes do you want to preview?
+1. Take a screenshot of the main menu
+2. Record the game while you're in a combo higher than 25
+3. Take a screenshot of the lose menu
+4. Record the start of the game *(wait for the introduction message to appear)*
+
