@@ -125,6 +125,8 @@ The option selected is **No**.
 | Device  | Dimensions | *Debug Dimensions* | *Debug Factors*
 | ------------- | ------------- | ------------- | ------------- |
 | Any  | `1242x2208`  | `414x736` | `3` |
+| App icon  | `512x512`  | *N/A* | *N/A* |
+| Feature graphic  | `1024x500`  | *N/A* | *N/A* |
 
 ### How to deploy to the Google Play Store?
 1. Go to the Google Play Console and select your app
@@ -143,6 +145,7 @@ The option selected is **No**.
 5. Start the game and do the screenshots and screen recordings you need
 6. Trim each video to `10s`
 7. Scale up images and videos to their correct dimensions: `ffmpeg -i input -vf scale="iw*2:ih*2" output` *(scales times two)*
+  1. If you need to scale small pixel art assets use: `ffmpeg -i input -vf scale="iw*2:ih*2" -sws_flags neighbor output`
 8. Convert videos to `mp4`: `ffmpeg -i input.mov -qscale 0 output.mp4`
 9. Extract frames from the videos: `ffmpeg -ss 01:23:45 -i input -frames:v 1 -q:v 2 output.png`
 

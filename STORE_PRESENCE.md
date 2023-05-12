@@ -18,7 +18,7 @@ Are you up for the ultimate color-matching challenge? Download Rainbow Rush now 
 | Key | Value |
 | --- | --- |
 | App icon | [`./arts/game-icon/GameIcon-512.png`](./arts/game-icon/GameIcon-512.png) |
-| Feature graphic | **???** |
+| Feature graphic | [`./arts/graphics/feature-graphic/feature-graphic.png`](./arts/graphics/feature-graphic/feature-graphic.png) |
 | Video | *None* |
 | Phone screenshots | [`./arts/graphics/iphone-8-plus/*.png`](./arts/graphics/iphone-8-plus/) |
 | 7-inch tablet screenshots | [`./arts/graphics/iphone-8-plus/*.png`](./arts/graphics/iphone-8-plus/) |
