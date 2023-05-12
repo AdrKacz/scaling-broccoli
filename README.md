@@ -85,6 +85,8 @@ You will need your developer certificate to export your app to the App Store.
 | iPhone 8 Plus  | `1242x2208`  | `414x736` | `3` |
 | iPhone 14 Plus | `1284x2778` | `428x926` | `3` |
 
+### How to deploy to the App Store?
+
 ## Android
 1. Follow [Godot documentation *Exporting for Android*](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html)
 2. Open the project in your Godot editor
@@ -118,6 +120,21 @@ If you say that your app uses advertising ID, we will block releases that don't 
 
 The option selected is **No**.
 
+### What dimensions do you need for app previews?
+
+| Device  | Dimensions | *Debug Dimensions* | *Debug Factors*
+| ------------- | ------------- | ------------- | ------------- |
+| Any  | `1242x2208`  | `414x736` | `3` |
+
+### How to deploy to the Google Play Store?
+1. Go to the Google Play Console and select your app
+2. Edit your app details
+  1. Select `Main store listing` under `Store presence` on the left
+  2. Edit the field according to [`./STORE_PRESENCE.md`](./STORE_PRESENCE.md)
+3. Create a new release
+  1. Select `Production` under `Release` on the left
+  2. Click `Create new release`
+
 ## How to generetate app previews?
 1. Open your project in Godot
 2. Go to `Project > Settings` and select `Window`
@@ -126,10 +143,17 @@ The option selected is **No**.
 5. Start the game and do the screenshots and screen recordings you need
 6. Trim each video to `10s`
 7. Scale up images and videos to their correct dimensions: `ffmpeg -i input -vf scale="iw*2:ih*2" output` *(scales times two)*
+8. Convert videos to `mp4`: `ffmpeg -i input.mov -qscale 0 output.mp4`
+9. Extract frames from the videos: `ffmpeg -ss 01:23:45 -i input -frames:v 1 -q:v 2 output.png`
 
 ### What scenes do you want to preview?
 1. Take a screenshot of the main menu
 2. Record the game while you're in a combo higher than 25
 3. Take a screenshot of the lose menu
 4. Record the start of the game *(wait for the introduction message to appear)*
+5. Take four screenshots from the two recording above
+
+### Note for Google Play Stores
+You won't be able to upload videos directly. You must create a Youtube video and use the link.
+> Add a video by entering a YouTube URL. This video must be public or unlisted, ads must be turned off, it must not be age restricted, and it should be landscape. 
 
