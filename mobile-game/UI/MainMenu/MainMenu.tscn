@@ -35,7 +35,7 @@ custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
 text = "Rainbow Rush"
 horizontal_alignment = 1
-autowrap_mode = 3
+autowrap_mode = 2
 
 [node name="Play" type="TextureButton" parent="MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2

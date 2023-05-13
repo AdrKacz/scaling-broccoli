@@ -68,6 +68,7 @@ You reach level `1` at combo `10` and level `2` and combo `20`. You can't go hig
   8. Check `Upload your app's symbols` and `Manage Version and Build Number`
   9. Select `Automatically manage signing`
   10. Click on `Upload`, this will take a while
+
 ### How to renew your developer certificate?
 You will need your developer certificate to export your app to the App Store.
 
@@ -77,15 +78,35 @@ You will need your developer certificate to export your app to the App Store.
 - [`152x152`](./arts/game-icon/GameIcon-152.png)
 - [`1024x1024`](./arts/game-icon/GameIcon-1024.png)
 
-### What dimensions do you need for app previews?
+### What dimensions do you need for screenshots?
+| Device  | Dimensions |
+| ------------- | ------------- |
+| 6.7" Display  | `1290 x 2796` |
+| 6.5" Display | `1284 x 2778` |
+| 5.5" Display  | `1242 x 2208`  |
+| 12.9" Display  | `2048 x 2732`  |
 
-| Device  | Dimensions | *Debug Dimensions* | *Debug Factors*
-| ------------- | ------------- | ------------- | ------------- |
-| iPad Pro 12.9"  | `2048x2732`  | `1024x1366` | `2` |
-| iPhone 8 Plus  | `1242x2208`  | `414x736` | `3` |
-| iPhone 14 Plus | `1284x2778` | `428x926` | `3` |
+### What dimensions do you need for app previews *(recordings)*?
+| Device  | Dimensions |
+| ------------- | ------------- |
+| 6.7" Display  | `886 x 1920` |
+| 6.5" Display | `886 x 1920` |
+| 5.5" Display  | `1080 x 1920`  |
+| 12.9" Display  | `1200 x 1600`  |
 
-### How to deploy to the App Store?
+### How to deploy to the Apple Store?
+1. Go the App Store Connect and select your game
+2. Get latest TestFlight version number
+  1. Go to `TestFlight` tab
+  2. Note the latest version number
+3. Go to `App Store` tab
+4. Click on the blue `+` sign next to `iOS App` on the upper-left
+5. Enter the latest version number and hit `Create`
+6. Edit the field according to [`./STORE_PRESENCE.md`](./STORE_PRESENCE.md)
+  1. Type the `Release Notes` in `What's new in This Version`
+7. Select `Add build` and select your latest build
+8. Hit `Save` ang go to `App information` under `General`
+9. Edit the field according to [`./STORE_PRESENCE.md`](./STORE_PRESENCE.md)
 
 ## Android
 1. Follow [Godot documentation *Exporting for Android*](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html)
@@ -105,7 +126,6 @@ You will need your developer certificate to export your app to the App Store.
   5. Hit **Save and publish**
 
 ### What icons will you need?
-
 - [`192x192`](./arts/game-icon/GameIcon-192.png)
 - [`432x432`](./arts/game-icon/GameIconForeground-432.png): foreground image, you will only use the inner `264px` circle
 - [`432x432`](./arts/game-icon/GameIconBackground-432.png): background image
@@ -121,7 +141,6 @@ If you say that your app uses advertising ID, we will block releases that don't 
 The option selected is **No**.
 
 ### What dimensions do you need for app previews?
-
 | Device  | Dimensions | *Debug Dimensions* | *Debug Factors*
 | ------------- | ------------- | ------------- | ------------- |
 | Any  | `1242x2208`  | `414x736` | `3` |
@@ -133,9 +152,16 @@ The option selected is **No**.
 2. Edit your app details
   1. Select `Main store listing` under `Store presence` on the left
   2. Edit the field according to [`./STORE_PRESENCE.md`](./STORE_PRESENCE.md)
+  3. Hit `Save` and **don't send the change to review**
 3. Create a new release
   1. Select `Production` under `Release` on the left
   2. Click `Create new release`
+  3. Click `Add from library` and select the latest app bundle
+  4. Enter the `release notes` from [`./STORE_PRESENCE.md`](./STORE_PRESENCE.md)
+  5. Hit `Save`
+  6. Review the release and click on `Save`
+  7. Select `Go to oveview` in the pop-up window
+  8. Click on `Send X changes for review` and confirm
 
 ## How to generetate app previews?
 1. Open your project in Godot
