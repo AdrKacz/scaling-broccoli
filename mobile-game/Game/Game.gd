@@ -47,7 +47,12 @@ func _on_swap_background_timer_timeout():
 	if Constants.state_matches:
 		emit_signal("miss")
 	update_background_state()
-
+	
+# Used for debugging, to comment out
+# func _input(event):
+# 	if event is InputEventKey and event.keycode == KEY_SPACE and event.is_pressed() and not event.is_echo():
+# 		Session.tap()
+# 		_on_character_tap()
 
 func _on_gui_input(event):
 	if event is InputEventScreenTouch and event.is_pressed() :
