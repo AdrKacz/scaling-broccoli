@@ -68,6 +68,7 @@ You reach level `1` at combo `10` and level `2` and combo `20`. You can't go hig
   8. Check `Upload your app's symbols` and `Manage Version and Build Number`
   9. Select `Automatically manage signing`
   10. Click on `Upload`, this will take a while
+
 ### How to renew your developer certificate?
 You will need your developer certificate to export your app to the App Store.
 
@@ -77,13 +78,35 @@ You will need your developer certificate to export your app to the App Store.
 - [`152x152`](./arts/game-icon/GameIcon-152.png)
 - [`1024x1024`](./arts/game-icon/GameIcon-1024.png)
 
-### What dimensions do you need for app previews?
+### What dimensions do you need for screenshots?
+| Device  | Dimensions | Folder | *Debug Window Dimensions* | *Capture Dimensions* |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| 6.7" Display  | `1290 x 2796` | `screen-67` | `695 x 1448` | `323 x 699` |
+| 6.5" Display | `1284 x 2778` | `screen-65` |
+| 5.5" Display  | `1242 x 2208`  | `screen-55` |
+| 12.9" Display  | `2048 x 2732`  | `screen-129` |
 
-| Device  | Dimensions | *Debug Dimensions* | *Debug Factors*
-| ------------- | ------------- | ------------- | ------------- |
-| iPad Pro 12.9"  | `2048x2732`  | `1024x1366` | `2` |
-| iPhone 8 Plus  | `1242x2208`  | `414x736` | `3` |
-| iPhone 14 Plus | `1284x2778` | `428x926` | `3` |
+### What dimensions do you need for app previews *(recordings)*?
+| Device  | Dimensions | Folder | *Debug Window Dimensions* | *Capture Dimensions* |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| 6.7" Display and 6.5" Display | `886 x 1920` | `preview-67-65` | `906 x 1940` | `443 x 960` |
+| 5.5" Display  | `1080 x 1920`  | `preview-55` | `1130 x 1970` | `540 x 960` |
+| 12.9" Display  | `1200 x 1600`  | `preview-129` | `1250 x 1650` | `600 x 800` |
+
+### How to deploy to the Apple Store?
+1. Go the App Store Connect and select your game
+2. Get latest TestFlight version number
+  1. Go to `TestFlight` tab
+  2. Note the latest version number
+3. Go to `App Store` tab
+4. Click on the blue `+` sign next to `iOS App` on the upper-left
+5. Enter the latest version number and hit `Create`
+6. Edit the field according to [`./STORE_PRESENCE.md`](./STORE_PRESENCE.md)
+  1. *You'll have to wait one hour before your app preview are done processing, you can close the browser meanwhile*
+  2. Type the `Release Notes` in `What's new in This Version`
+7. Select `Add build` and select your latest build
+8. Hit `Save` ang go to `App information` under `General`
+9. Edit the field according to [`./STORE_PRESENCE.md`](./STORE_PRESENCE.md)
 
 ## Android
 1. Follow [Godot documentation *Exporting for Android*](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html)
@@ -103,7 +126,6 @@ You will need your developer certificate to export your app to the App Store.
   5. Hit **Save and publish**
 
 ### What icons will you need?
-
 - [`192x192`](./arts/game-icon/GameIcon-192.png)
 - [`432x432`](./arts/game-icon/GameIconForeground-432.png): foreground image, you will only use the inner `264px` circle
 - [`432x432`](./arts/game-icon/GameIconBackground-432.png): background image
@@ -118,18 +140,77 @@ If you say that your app uses advertising ID, we will block releases that don't 
 
 The option selected is **No**.
 
+### What dimensions do you need for app previews?
+| Device  | Dimensions | *Debug Dimensions* | *Debug Factors*
+| ------------- | ------------- | ------------- | ------------- |
+| Any  | `1242x2208`  | `414x736` | `3` |
+| App icon  | `512x512`  | *N/A* | *N/A* |
+| Feature graphic  | `1024x500`  | *N/A* | *N/A* |
+
+### How to deploy to the Google Play Store?
+1. Go to the Google Play Console and select your app
+2. Edit your app details
+  1. Select `Main store listing` under `Store presence` on the left
+  2. Edit the field according to [`./STORE_PRESENCE.md`](./STORE_PRESENCE.md)
+  3. Hit `Save` and **don't send the change to review**
+3. Create a new release
+  1. Select `Production` under `Release` on the left
+  2. Click `Create new release`
+  3. Click `Add from library` and select the latest app bundle
+  4. Enter the `release notes` from [`./STORE_PRESENCE.md`](./STORE_PRESENCE.md)
+  5. Hit `Save`
+  6. Review the release and click on `Save`
+  7. Select `Go to oveview` in the pop-up window
+  8. Click on `Send X changes for review` and confirm
+
 ## How to generetate app previews?
+1. Install dependencies
+  1. Install [**Loopback**](https://rogueamoeba.com/loopback/)
+  2. Follow underboading step *(this will require to restart your computer)*
+  3. Open **Loopback** and click the `New Virtual Device` *(it should create a `Loopback Audio` device)*
+  4. Go to your computer `Settings > Audio` and select `Loopback Audio`
+  5. Turn the sound at maximum *(it will start emitting sounds in your virtual device, you won't hear anything)*
 1. Open your project in Godot
 2. Go to `Project > Settings` and select `Window`
 3. Update the `Debug dimensions`
 4. Add at least `20px` in each dimensions to not see window frame while recording
 5. Start the game and do the screenshots and screen recordings you need
-6. Trim each video to `10s`
+6. Trim each video to `20s`
 7. Scale up images and videos to their correct dimensions: `ffmpeg -i input -vf scale="iw*2:ih*2" output` *(scales times two)*
+  1. If you need to scale small pixel art assets use: `ffmpeg -i input -vf scale="iw*2:ih*2" -sws_flags neighbor output`
+  2. You can specify directly the dimensions to avoid artefacts: `ffmpeg -i input -vf scale="1200:1600" output`
+8. Convert videos to `mp4`: `ffmpeg -i input.mov -qscale 0 output.mp4`
+9. Extract frames from the videos: `ffmpeg -ss 01:23:45 -i input -frames:v 1 -q:v 2 output.png`
 
 ### What scenes do you want to preview?
-1. Take a screenshot of the main menu
+1. Set the dimensions for screenshots
+  1. Take a screenshot of the main menu
+  2. Start recording your screen with correct dimensions *(audio doesn't matter)*
+  3. Play a game with at least a combo higher than 25 and take screenshots of the lost menu
+  4. Stop recording and extract in-game frame from your recording
+    1. Take one frame with a combo higher than 20
+    2. Take one random frame in game
+    3. Take one frame with the introduction text
+    4. Take another random frame in game
+2. Set the dimensions for app preview
+  1. Change your audio output to `LoopBack Audio`
+  2. Change your recording audio channel to `LoopBack Audio`
+  3. Turn on the `Music` and set volume at maximum
+  4. Record your screen with correct dimensions
+  5. Start a game, wait at the beginning to see the introduction message
+  6. Do at least a combo higher than 50
+  7. Stop recording your screen when you lose.
 2. Record the game while you're in a combo higher than 25
 3. Take a screenshot of the lose menu
 4. Record the start of the game *(wait for the introduction message to appear)*
+5. Take four screenshots from the two recording above
+
+### Note for Apple Store
+You will need to use `iMovie` to create the app preview. They won't upload if you don't export them with iMovie.
+If you use `iMovie`, no need to rescale your `.mov` recording, `iMovie` will set the correct dimensions automatically.
+For `12.9" Display` you'll need to rescale the video to `1200 x 1600` before importing it in `iMovie`. If you don't, `iMovie` will rescale it to `900 x 1200`.
+
+### Note for Google Play Stores
+You won't be able to upload videos directly. You must create a Youtube video and use the link.
+> Add a video by entering a YouTube URL. This video must be public or unlisted, ads must be turned off, it must not be age restricted, and it should be landscape. 
 
