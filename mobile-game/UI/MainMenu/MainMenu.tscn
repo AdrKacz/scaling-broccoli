@@ -55,11 +55,11 @@ mouse_filter = 2
 layout_mode = 2
 text = "Play"
 
-[node name="SettingsControl" type="Control" parent="MarginContainer"]
+[node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/SettingsControl"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -69,22 +69,22 @@ size_flags_horizontal = 8
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/SettingsControl/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="SettingsButton" type="TextureButton" parent="MarginContainer/SettingsControl/MarginContainer/VBoxContainer"]
+[node name="SettingsButton" type="TextureButton" parent="MarginContainer/Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("6_tsfqk")
 texture_pressed = ExtResource("6_tsfqk")
 texture_hover = ExtResource("6_tsfqk")
 
-[node name="LeaderboardButton" type="TextureButton" parent="MarginContainer/SettingsControl/MarginContainer/VBoxContainer"]
+[node name="LeaderboardButton" type="TextureButton" parent="MarginContainer/Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("8_qclht")
 texture_pressed = ExtResource("8_qclht")
 texture_hover = ExtResource("8_qclht")
 
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/SettingsControl/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="MarginContainer/SettingsControl/MarginContainer/VBoxContainer/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/MarginContainer/VBoxContainer/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]

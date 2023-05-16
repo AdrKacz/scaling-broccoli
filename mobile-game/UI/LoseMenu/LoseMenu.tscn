@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://5kiirn6rgdru" path="res://Scenes/UIBackground/UIBackground.tscn" id="4_vvq6t"]
 [ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="5_omtlr"]
 [ext_resource type="Texture2D" uid="uid://4exmars5c0oj" path="res://assets/ButtonsV3/ButtonDown.png" id="6"]
-[ext_resource type="Texture2D" uid="uid://bhmd7efq1shkw" path="res://assets/exitLeft.png" id="7_wsalk"]
 [ext_resource type="Texture2D" uid="uid://xfa1vu6ckvuw" path="res://assets/ButtonsV3/SmallButtonUp.png" id="8_idkfi"]
 [ext_resource type="Texture2D" uid="uid://cb7cnilm5shk8" path="res://assets/ButtonsV3/SmallButtonDown.png" id="9_6kp0q"]
+[ext_resource type="Texture2D" uid="uid://k2sbxux3l8li" path="res://assets/exitRight.png" id="10_shn3u"]
 
 [sub_resource type="Animation" id="Animation_wfvst"]
 length = 0.001
@@ -173,25 +173,28 @@ use_parent_material = true
 layout_mode = 2
 text = "Submit"
 
-[node name="ExitControl" type="Control" parent="Control/MarginContainer"]
+[node name="Control" type="Control" parent="Control/MarginContainer"]
 use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/ExitControl"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/Control"]
 use_parent_material = true
 layout_mode = 1
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_left = 12
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+size_flags_horizontal = 8
 theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
 
-[node name="TextureButton" type="TextureButton" parent="Control/MarginContainer/ExitControl/MarginContainer"]
+[node name="ExitButton" type="TextureButton" parent="Control/MarginContainer/Control/MarginContainer"]
 use_parent_material = true
 layout_mode = 2
-texture_normal = ExtResource("7_wsalk")
-texture_pressed = ExtResource("7_wsalk")
-texture_hover = ExtResource("7_wsalk")
+texture_normal = ExtResource("10_shn3u")
+texture_pressed = ExtResource("10_shn3u")
+texture_hover = ExtResource("10_shn3u")
 
 [node name="BlockTouch" type="Control" parent="Control"]
 visible = false
@@ -213,4 +216,4 @@ libraries = {
 [connection signal="text_changed" from="Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/Name" to="." method="_on_name_text_changed"]
 [connection signal="text_submitted" from="Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/Name" to="." method="_on_name_text_submitted"]
 [connection signal="pressed" from="Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/SubmitScore" to="." method="_on_SubmitScore_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/ExitControl/MarginContainer/TextureButton" to="." method="_on_exit_texture_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/Control/MarginContainer/ExitButton" to="." method="_on_exit_button_pressed"]

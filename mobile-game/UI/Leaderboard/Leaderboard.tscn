@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwx23lkbhy5gw"]
+[gd_scene load_steps=11 format=3 uid="uid://dwx23lkbhy5gw"]
 
 [ext_resource type="Script" path="res://UI/Leaderboard/Leaderboard.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://w57mv4quu8j1" path="res://UI/Leaderboard/ScoreEntry/ScoreEntry.tscn" id="2_rwihr"]
-[ext_resource type="Texture2D" uid="uid://cb7cnilm5shk8" path="res://assets/ButtonsV3/SmallButtonDown.png" id="3"]
 [ext_resource type="PackedScene" uid="uid://clroajn1j1t5n" path="res://UI/Leaderboard/OwnScoreEntry/OwnScoreEntry.tscn" id="3_1xxpg"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="4_7axui"]
 [ext_resource type="PackedScene" uid="uid://5kiirn6rgdru" path="res://Scenes/UIBackground/UIBackground.tscn" id="4_pq4ut"]
 [ext_resource type="PackedScene" uid="uid://dvwhdcoimyavg" path="res://UI/Leaderboard/Loader/Loader.tscn" id="5_gaay2"]
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="5_ittk8"]
-[ext_resource type="Texture2D" uid="uid://xfa1vu6ckvuw" path="res://assets/ButtonsV3/SmallButtonUp.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="8_asmac"]
+[ext_resource type="Texture2D" uid="uid://4exmars5c0oj" path="res://assets/ButtonsV3/ButtonDown.png" id="9_8aj4u"]
+[ext_resource type="Texture2D" uid="uid://k2sbxux3l8li" path="res://assets/exitRight.png" id="10_i7xet"]
 
 [node name="Leaderboard" type="CanvasLayer"]
 script = ExtResource("1")
@@ -64,39 +65,43 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Replay" type="TextureButton" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer"]
+[node name="PlayButton" type="TextureButton" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-texture_normal = ExtResource("6")
-texture_pressed = ExtResource("3")
+texture_normal = ExtResource("8_asmac")
+texture_pressed = ExtResource("9_8aj4u")
+texture_hover = ExtResource("9_8aj4u")
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/Replay"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/PlayButton"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/Replay/CenterContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/PlayButton/CenterContainer"]
 layout_mode = 2
 text = "Play"
 
-[node name="MainMenu" type="TextureButton" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 2
-texture_normal = ExtResource("6")
-texture_pressed = ExtResource("3")
-
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/MainMenu"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/MainMenu/CenterContainer"]
-layout_mode = 2
-text = "Menu"
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/Replay" to="." method="_on_Replay_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
+[node name="ExitButton" type="TextureButton" parent="MarginContainer/Control/MarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("10_i7xet")
+texture_pressed = ExtResource("10_i7xet")
+texture_hover = ExtResource("10_i7xet")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/MarginContainer/ExitButton" to="." method="_on_exit_button_pressed"]
