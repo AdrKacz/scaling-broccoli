@@ -8,10 +8,10 @@ func _on_play_pressed():
 	Session.click()
 	Session.change_node_to(Session.GameMaster)
 
-func _on_leaderboard_pressed():
+func _on_leaderboard_button_pressed():
 	Session.click()
 	Session.change_node_to(Session.LeaderboardMenu)
 
-func _on_texture_button_pressed():
+func _on_settings_button_pressed():
 	Session.click()
 	Session.change_node_to(Session.SettingsMenu)
