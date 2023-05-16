@@ -38,22 +38,39 @@ text = "Rainbow Rush"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Play" type="TextureButton" parent="MarginContainer/CenterContainer/VBoxContainer"]
+[node name="Challenge" type="TextureButton" parent="MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("4_jla84")
 texture_pressed = ExtResource("5")
 texture_hover = ExtResource("5")
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/CenterContainer/VBoxContainer/Play"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/CenterContainer/VBoxContainer/Challenge"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/Play/CenterContainer"]
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/Challenge/CenterContainer"]
 layout_mode = 2
-text = "Play"
+text = "Challenge"
+
+[node name="Arcade" type="TextureButton" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("4_jla84")
+texture_pressed = ExtResource("5")
+texture_hover = ExtResource("5")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/CenterContainer/VBoxContainer/Arcade"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/Arcade/CenterContainer"]
+layout_mode = 2
+text = "Arcade"
 
 [node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
@@ -85,6 +102,6 @@ texture_normal = ExtResource("8_qclht")
 texture_pressed = ExtResource("8_qclht")
 texture_hover = ExtResource("8_qclht")
 
-[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Arcade" to="." method="_on_arcade_pressed"]
 [connection signal="pressed" from="MarginContainer/Control/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Control/MarginContainer/VBoxContainer/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]
