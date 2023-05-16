@@ -102,14 +102,9 @@ func _on_network_manager_leaderboard(leaders, player_position):
 func _on_network_manager_error():
 	animate_submit_error("Network Error")
 
-func _on_exit_texture_button_pressed():
-	Session.click()
-	Session.change_node_to(Session.MainMenu)
-
 func _on_replay_pressed():
 	Session.click()
 	Session.change_node_to(Session.GameMaster)
-
 
 func _on_name_text_changed(text: String):
 	if not text.right(1) in allowed:
@@ -117,7 +112,6 @@ func _on_name_text_changed(text: String):
 	var caret_column: int = name_line_edit.caret_column
 	name_line_edit.set_text(text.left(12).to_lower().capitalize())
 	name_line_edit.set_caret_column(caret_column)
-
 
 func _on_name_text_submitted(_new_text):
 	name_line_edit.release_focus()
@@ -134,3 +128,7 @@ func move_screen_up(up_offset: float, delta: float):
 		move_screen_up_tween.kill()
 	move_screen_up_tween = create_tween().bind_node(self)
 	move_screen_up_tween.tween_property(self, "offset", Vector2(0, -up_offset), delta)
+
+func _on_exit_button_pressed():
+	Session.click()
+	Session.change_node_to(Session.MainMenu)
