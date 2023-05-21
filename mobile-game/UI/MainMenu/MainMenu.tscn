@@ -102,6 +102,7 @@ texture_normal = ExtResource("8_qclht")
 texture_pressed = ExtResource("8_qclht")
 texture_hover = ExtResource("8_qclht")
 
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Challenge" to="." method="_on_challenge_pressed"]
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Arcade" to="." method="_on_arcade_pressed"]
 [connection signal="pressed" from="MarginContainer/Control/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Control/MarginContainer/VBoxContainer/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]

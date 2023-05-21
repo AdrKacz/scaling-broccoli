@@ -5,6 +5,7 @@ extends Node
 @export var LeaderboardMenu: PackedScene
 @export var SettingsMenu: PackedScene
 @export var LoseMenu: PackedScene
+@export var ChallengeMenu: PackedScene
 
 var read_leaderboard_from_memory: bool = false
 var in_memory_leaderboard: Dictionary

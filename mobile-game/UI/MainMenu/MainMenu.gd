@@ -15,3 +15,8 @@ func _on_settings_button_pressed():
 func _on_arcade_pressed():
 	Session.click()
 	Session.change_node_to(Session.GameMaster)
+
+
+func _on_challenge_pressed():
+	Session.click()
+	Session.change_node_to(Session.ChallengeMenu)

@@ -3,14 +3,28 @@
 [ext_resource type="PackedScene" uid="uid://cvy5u0gpfw0xa" path="res://Scenes/Hearts/Heart/Heart.tscn" id="1_4sh34"]
 [ext_resource type="Script" path="res://Scenes/Hearts/Hearts.gd" id="1_b5l2s"]
 
-[node name="Hearts" type="Node2D"]
+[node name="MarginContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="Hearts" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Hearts" type="Node2D" parent="Hearts"]
 scale = Vector2(10, 10)
 script = ExtResource("1_b5l2s")
 
-[node name="Heart1" parent="." instance=ExtResource("1_4sh34")]
+[node name="Heart1" parent="Hearts/Hearts" instance=ExtResource("1_4sh34")]
 position = Vector2(12, 0)
 
-[node name="Heart2" parent="." instance=ExtResource("1_4sh34")]
+[node name="Heart2" parent="Hearts/Hearts" instance=ExtResource("1_4sh34")]
 
-[node name="Heart3" parent="." instance=ExtResource("1_4sh34")]
+[node name="Heart3" parent="Hearts/Hearts" instance=ExtResource("1_4sh34")]
 position = Vector2(-12, 0)
