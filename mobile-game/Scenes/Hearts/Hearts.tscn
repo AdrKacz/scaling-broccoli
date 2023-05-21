@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cvy5u0gpfw0xa" path="res://Scenes/Hearts/Heart/Heart.tscn" id="1_4sh34"]
 [ext_resource type="Script" path="res://Scenes/Hearts/Hearts.gd" id="1_b5l2s"]
 
-[node name="MarginContainer" type="MarginContainer"]
+[node name="Hearts" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
