@@ -28,5 +28,5 @@ layout_mode = 1
 layout_mode = 1
 
 [connection signal="miss" from="Control/Game" to="." method="_on_game_miss"]
-[connection signal="score" from="Control/Game" to="." method="score"]
-[connection signal="wrong" from="Control/Game" to="." method="wrong"]
+[connection signal="score" from="Control/Game" to="." method="_on_game_score"]
+[connection signal="wrong" from="Control/Game" to="." method="_on_game_wrong"]

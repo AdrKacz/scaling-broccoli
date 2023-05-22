@@ -10,4 +10,10 @@ func _on_exit_button_pressed():
 
 func _on_play_pressed():
 	Session.click()
-	Session.change_node_to(Session.GameMaster)
+	Session.change_node_to(Session.GameMaster, {
+		"is_challenge": true,
+		"end_challenge_condition": func () -> bool:
+			if Constants.combos_strike >= 20:
+				return true
+			return false
+	})

@@ -7,9 +7,11 @@ func _ready():
 	Session.assign_main_node(self)
 	change_node_to(Session.MainMenu)
 	
-func change_node_to(scene: PackedScene):
+func change_node_to(scene: PackedScene, params: Dictionary = {}):
 	var node: Node = scene.instantiate()
 	node.on_screen.connect(_on_node_on_screen.bind(current_node))
+	for param in params:
+		node[param] = params[param]
 	add_child(node)
 	current_node = node
 
