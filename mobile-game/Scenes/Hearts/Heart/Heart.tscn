@@ -71,7 +71,6 @@ _data = {
 
 [node name="Heart" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_eim2n")
-frame = 2
 script = ExtResource("2_5vw6x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
