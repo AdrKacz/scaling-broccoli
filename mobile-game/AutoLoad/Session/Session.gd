@@ -6,6 +6,8 @@ extends Node
 @export var SettingsMenu: PackedScene
 @export var LoseMenu: PackedScene
 @export var ChallengeMenu: PackedScene
+@export var LoseChallenge: PackedScene
+@export var WinChallenge: PackedScene
 
 var read_leaderboard_from_memory: bool = false
 var in_memory_leaderboard: Dictionary
@@ -19,8 +21,8 @@ func assign_main_node(node: MainNode):
 	# Must be called first by Main Node
 	main_node = node
 	
-func change_node_to(scene: PackedScene):
-	main_node.change_node_to(scene)
+func change_node_to(scene: PackedScene, params: Dictionary = {}):
+	main_node.change_node_to(scene, params)
 
 var vibration_on: bool = true
 const LIGHT_HAPTIC_FEEDBACK: int = 4

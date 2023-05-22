@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bm1r4u6mgy0mw"]
+[gd_scene load_steps=10 format=3 uid="uid://bm1r4u6mgy0mw"]
 
 [ext_resource type="Script" path="res://AutoLoad/Session/Session.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://svj5gokj6888" path="res://UI/MainMenu/MainMenu.tscn" id="2_kh7io"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dwx23lkbhy5gw" path="res://UI/Leaderboard/Leaderboard.tscn" id="4_wx43q"]
 [ext_resource type="PackedScene" uid="uid://mvxeej36kptf" path="res://Scenes/Menus/Settings/Settings.tscn" id="5_w813k"]
 [ext_resource type="PackedScene" uid="uid://dq8ab8cc883k4" path="res://Scenes/Menus/Challenge/Challenge.tscn" id="7_nadfg"]
+[ext_resource type="PackedScene" uid="uid://cdu37lluywkvn" path="res://Scenes/Menus/LoseChallenge/LoseChallenge.tscn" id="8_j4he8"]
+[ext_resource type="PackedScene" uid="uid://d2k1fcwklbpns" path="res://Scenes/Menus/WinChallenge/WinChallenge.tscn" id="9_cw56c"]
 
 [node name="Session" type="Node"]
 script = ExtResource("1")
@@ -16,3 +18,5 @@ LeaderboardMenu = ExtResource("4_wx43q")
 SettingsMenu = ExtResource("5_w813k")
 LoseMenu = ExtResource("3")
 ChallengeMenu = ExtResource("7_nadfg")
+LoseChallenge = ExtResource("8_j4he8")
+WinChallenge = ExtResource("9_cw56c")

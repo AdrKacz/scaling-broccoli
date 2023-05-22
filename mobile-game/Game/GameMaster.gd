@@ -2,6 +2,9 @@ extends CanvasLayer
 
 signal on_screen
 
+@export var is_challenge: bool = false
+@export var end_challenge_condition: Callable
+
 func _ready():
 	Constants.score = 0
 	Constants.combos_strike = 0
@@ -18,12 +21,6 @@ func appear():
 	tween.tween_method(update_appear_radius, 0., 1., 1.)
 	tween.tween_callback(emit_signal.bind("on_screen"))
 
-func score(): 
-	increment_combos_strike()
-	Constants.score += Constants.score_factor * Constants.combos_strike
-	$Control/GameUI.update_score(Constants.score)
-	
-		
 func increment_combos_strike():
 	Constants.combos_strike += 1
 	
@@ -35,10 +32,22 @@ func increment_combos_strike():
 func reset_combos_strike():
 	$Control/SpeedLines.level = -1
 	Constants.combos_strike = 0
-
-func wrong():
-	reset_combos_strike()
-	Session.change_node_to(Session.LoseMenu)
-
+	
 func _on_game_miss():
 	reset_combos_strike()
+
+func _on_game_score():
+	increment_combos_strike()
+	Constants.score += Constants.score_factor * Constants.combos_strike
+	$Control/GameUI.update_score(Constants.score)
+	
+	if is_challenge and end_challenge_condition.call():
+		Session.change_node_to(Session.WinChallenge)
+
+func _on_game_wrong():
+	reset_combos_strike()
+	
+	if is_challenge == true:
+		Session.change_node_to(Session.LoseChallenge)
+	else:
+		Session.change_node_to(Session.LoseMenu)
