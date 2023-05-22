@@ -1,7 +1,11 @@
-extends Node2D
+extends MarginContainer
 
-# UNUSED: kept if needed in future version, pulsing heart to see lives remaining
-# no more lives in the game
+var hearts: Node2D
+
+func _ready():
+	hearts = $HeartsControl/Hearts
+	for i in Constants.remaining_lives:
+		hearts.get_child(i).frame = Status.FULL
 
 enum Status {
 	EMPTY,
@@ -9,11 +13,12 @@ enum Status {
 	FULL,
 }
 
-var lost_heart: int = 0
 func lose_heart():
-	if lost_heart >= get_child_count():
-		print('Cannot lose an heart')
-		return
-	get_child(lost_heart).pulse()
-	get_child(lost_heart).frame = Status.EMPTY
-	lost_heart += 1
+	if Constants.remaining_lives == 0:
+		return # cannot lose a life
+	var heart: AnimatedSprite2D = hearts.get_child(Constants.remaining_lives - 1)
+	heart.pulse()
+	heart.frame = Status.EMPTY
+	Constants.remaining_lives -= 1
+	if Constants.remaining_lives == 0:
+		pass # no more life
