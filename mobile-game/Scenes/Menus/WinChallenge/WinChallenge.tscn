@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d2k1fcwklbpns"]
 
-[ext_resource type="Script" path="res://Scenes/Menus/LoseChallenge/LoseChallenge.gd" id="1_t6a57"]
+[ext_resource type="Script" path="res://Scenes/Menus/WinChallenge/WinChallenge.gd" id="1_cvoxr"]
 [ext_resource type="PackedScene" uid="uid://5kiirn6rgdru" path="res://Scenes/UIBackground/UIBackground.tscn" id="2_04yf6"]
 [ext_resource type="Material" uid="uid://boqnkeusewign" path="res://Materials/Circle/Circle.tres" id="3_47ss0"]
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="4_wo4rn"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://k2sbxux3l8li" path="res://assets/exitRight.png" id="9_q1k0s"]
 
 [node name="WinChallenge" type="CanvasLayer"]
-script = ExtResource("1_t6a57")
+script = ExtResource("1_cvoxr")
 
 [node name="UIBackground" parent="." instance=ExtResource("2_04yf6")]
 material = ExtResource("3_47ss0")
@@ -21,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("4_wo4rn")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
@@ -31,15 +32,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("5_ohvmu")
 
 [node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer"]
 use_parent_material = true
 layout_mode = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/CenterContainer"]
 use_parent_material = true
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 64
 alignment = 1
 
@@ -47,7 +51,9 @@ alignment = 1
 use_parent_material = true
 custom_minimum_size = Vector2(680, 0)
 layout_mode = 2
-text = "Well done!"
+text = "Well done!
+
+See you tomorrow for a new challenge"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
