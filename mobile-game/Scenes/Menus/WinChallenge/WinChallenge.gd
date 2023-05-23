@@ -2,6 +2,8 @@ extends CanvasLayer
 signal on_screen
 
 func _ready():
+	if not Constants.challenge_completed:
+		Constants.challenge_completed = true
 	appear()
 	
 func update_appear_radius(radius: float):

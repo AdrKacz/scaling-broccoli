@@ -32,3 +32,6 @@ func reset_tween():
 	if tween:
 		tween.kill() # Abort the previous animation.
 	tween = get_tree().create_tween().bind_node(self)
+
+func _on_tree_exiting():
+	material.set_shader_parameter("radius", OUTER_RADIUS)

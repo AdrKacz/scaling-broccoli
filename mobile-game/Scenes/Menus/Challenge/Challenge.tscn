@@ -46,10 +46,19 @@ mouse_filter = 2
 theme_override_constants/separation = 128
 alignment = 1
 
+[node name="CompletionLabel" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(680, 0)
+layout_mode = 2
+text = "Completed!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="Hearts" parent="Control/MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource("5_6f0kh")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="ChallengeLabel" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(680, 0)
 layout_mode = 2
 text = "Do a combo 20"
@@ -73,6 +82,16 @@ mouse_filter = 2
 [node name="Label" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer/Play/CenterContainer"]
 layout_mode = 2
 text = "Play"
+
+[node name="InfoLabel" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(680, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "You already completed this challenge. You will not loss lives or earn rewards."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Control" type="Control" parent="Control/MarginContainer"]
 use_parent_material = true

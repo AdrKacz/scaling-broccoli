@@ -38,33 +38,46 @@ const State = {
 var score: int = 0
 var combos_strike: int = 0
 
+var config: ConfigFile
+
+var challenge_completed: bool:
+	get:
+		return challenge_completed
+	set(value):
+		challenge_completed = value
+		config.set_value('parameters', 'challenge_completed', challenge_completed)
+		config.save("user://parameters.cfg")
+
 var remaining_lives: int:
 	get:
 		return remaining_lives
 	set(value):
 		remaining_lives = clamp(value, min_life, max_life)
-		var config = ConfigFile.new()
 		config.set_value('parameters', 'remaining_lives', remaining_lives)
 		config.set_value('parameters', 'last_update_datetime', Time.get_datetime_string_from_system())
 		config.save("user://parameters.cfg")
 
 func _ready():
-	read_remaining_lives_from_memory()
-
-func read_remaining_lives_from_memory():
-	var config = ConfigFile.new()
+	config = ConfigFile.new()
 	var err = config.load("user://parameters.cfg")
 	if err != OK:
 		remaining_lives = max_life
-		return
+		challenge_completed = false
+	read_remaining_lives_from_memory()
+	read_challenge_completed_from_memory()
+	
+func read_challenge_completed_from_memory():
+	challenge_completed = config.get_value('parameters', 'challenge_completed', false)
+
+func read_remaining_lives_from_memory():
 	var last_remaining_lives: int = config.get_value('parameters', 'remaining_lives', max_life)
-	if is_same_update_day(config.get_value('parameters', 'last_update_datetime')):
+	if is_same_update_day(config.get_value('parameters', 'last_update_datetime', "")):
 		remaining_lives = last_remaining_lives
 	else:
 		remaining_lives = max_life
 
 func is_same_update_day(last_update_datetime) -> bool:
-	if last_update_datetime == null:
+	if last_update_datetime == "":
 		return false
 	var today_datetime_dict: Dictionary = Time.get_datetime_dict_from_system()
 	var last_update_datetime_dict: Dictionary = Time.get_datetime_dict_from_datetime_string(last_update_datetime, false)
