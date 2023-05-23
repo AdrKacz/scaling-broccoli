@@ -64,6 +64,7 @@ script = ExtResource("2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.870588, 0.368627, 0.34902, 1)
+texture_filter = 1
 use_parent_material = true
 scale = Vector2(20, 20)
 texture = ExtResource("1")

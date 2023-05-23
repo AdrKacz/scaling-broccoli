@@ -17,6 +17,7 @@ physics_material_override = SubResource("PhysicsMaterial_x44bt")
 script = ExtResource("1_ifgb7")
 
 [node name="UICharacter" type="Sprite2D" parent="."]
+texture_filter = 1
 use_parent_material = true
 scale = Vector2(20, 20)
 texture = ExtResource("1_vojl6")

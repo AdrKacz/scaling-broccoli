@@ -214,3 +214,8 @@ For `12.9" Display` you'll need to rescale the video to `1200 x 1600` before imp
 You won't be able to upload videos directly. You must create a Youtube video and use the link.
 > Add a video by entering a YouTube URL. This video must be public or unlisted, ads must be turned off, it must not be age restricted, and it should be landscape. 
 
+# Need to attribute
+
+> Paste these link on the website where your app is available for download or in the description section of the platform or marketplace you’re using.
+
+ - <a href="https://www.flaticon.com/free-icons/thunder" title="thunder icons">Thunder icons created by Smashicons - Flaticon</a>
