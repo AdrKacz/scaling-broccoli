@@ -70,6 +70,7 @@ _data = {
 }
 
 [node name="Heart" type="AnimatedSprite2D"]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_eim2n")
 script = ExtResource("2_5vw6x")
 

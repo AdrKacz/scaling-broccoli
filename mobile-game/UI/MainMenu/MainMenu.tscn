@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://svj5gokj6888"]
+[gd_scene load_steps=10 format=3 uid="uid://svj5gokj6888"]
 
 [ext_resource type="Script" path="res://UI/MainMenu/MainMenu.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://5kiirn6rgdru" path="res://Scenes/UIBackground/UIBackground.tscn" id="2_ccrco"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://4exmars5c0oj" path="res://assets/ButtonsV3/ButtonDown.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://bqmp3ie7fqww0" path="res://assets/gear.png" id="6_tsfqk"]
 [ext_resource type="Texture2D" uid="uid://ck8yun0dp54j1" path="res://assets/trophy.png" id="8_qclht"]
+[ext_resource type="PackedScene" uid="uid://c8m4a2p4hl454" path="res://Scenes/Menus/UIElements/Resources/Resources.tscn" id="9_roviw"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1")
@@ -101,6 +102,9 @@ layout_mode = 2
 texture_normal = ExtResource("8_qclht")
 texture_pressed = ExtResource("8_qclht")
 texture_hover = ExtResource("8_qclht")
+
+[node name="Resources" parent="MarginContainer" instance=ExtResource("9_roviw")]
+layout_mode = 2
 
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Challenge" to="." method="_on_challenge_pressed"]
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Arcade" to="." method="_on_arcade_pressed"]
