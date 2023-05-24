@@ -5,9 +5,9 @@ var hearts: MarginContainer
 
 func _ready():
 	hearts = $Control/MarginContainer/CenterContainer/VBoxContainer/Hearts
-	if Constants.remaining_lives <= 1: # if one lives, will lose it
+	if Memory.remaining_lives <= 1: # if one lives, will lose it
 		$Control/MarginContainer/CenterContainer/VBoxContainer/Play.queue_free()
-	if Constants.challenge_completed:
+	if Memory.challenge_completed:
 		hearts.visible = false
 	appear()
 	

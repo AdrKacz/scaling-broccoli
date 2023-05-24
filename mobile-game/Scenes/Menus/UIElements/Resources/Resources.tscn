@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8m4a2p4hl454"]
+[gd_scene load_steps=5 format=3 uid="uid://c8m4a2p4hl454"]
 
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="1_1cd4v"]
+[ext_resource type="Script" path="res://Scenes/Menus/UIElements/Resources/Resources.gd" id="2_7ssnm"]
 [ext_resource type="Texture2D" uid="uid://bm3r3v3dckna7" path="res://assets/rainbow.png" id="2_cwncr"]
 [ext_resource type="Texture2D" uid="uid://cr26f2almav1n" path="res://assets/lightning.png" id="3_tf52y"]
 
 [node name="Resources" type="Control"]
+use_parent_material = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,8 +15,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_1cd4v")
+script = ExtResource("2_7ssnm")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+use_parent_material = true
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 40.0
@@ -23,40 +27,75 @@ theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 12
 
 [node name="Rainbow" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 36
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Rainbow"]
-texture_filter = 2
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("2_cwncr")
-expand_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Rainbow"]
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Rainbow"]
+use_parent_material = true
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/Rainbow/Control"]
+use_parent_material = true
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Rainbow/Control/Sprite2D"]
+use_parent_material = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1cd4v")
 theme_override_font_sizes/font_size = 64
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Lightning" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 36
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Lightning"]
-texture_filter = 2
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("3_tf52y")
-expand_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Lightning"]
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Lightning"]
+use_parent_material = true
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/Lightning/Control"]
+use_parent_material = true
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Lightning/Control/Sprite2D"]
+use_parent_material = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1cd4v")
 theme_override_font_sizes/font_size = 64
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

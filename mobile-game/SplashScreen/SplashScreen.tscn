@@ -26,12 +26,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="SplashContainer" type="Node2D" parent="."]
 script = ExtResource("1_mrr3i")
-custom_node/type = 0
-custom_node/default_time = 1.0
-skip/type = 2
 move_to_scene = ExtResource("2_s1yjb")
-transition_time = 0.5
-fade_color = Color(1, 1, 1, 1)
 
 [node name="SplashZoom" parent="SplashContainer" instance=ExtResource("3_r1rb5")]
 title = "LALUF"

@@ -13,9 +13,9 @@ func _ready():
 	play_button_label = $Control/MarginContainer/CenterContainer/VBoxContainer/Play/CenterContainer/Label
 	info_label = $Control/MarginContainer/CenterContainer/VBoxContainer/InfoLabel
 	completion_label = $Control/MarginContainer/CenterContainer/VBoxContainer/CompletionLabel
-	if Constants.remaining_lives == 0:
+	if Memory.remaining_lives == 0:
 		play_button.visible = false
-	if Constants.challenge_completed:
+	if Memory.challenge_completed:
 		play_button_label.text = "Play again"
 		info_label.visible = true
 		completion_label.visible = true

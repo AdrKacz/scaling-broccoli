@@ -20,13 +20,13 @@ config/icon="res://../arts/game-icon/GameIcon-1024.png"
 [autoload]
 
 Constants="*res://AutoLoad/Constants/Constants.gd"
-DataStore="*res://AutoLoad/DataStore/data_store.gd"
 Session="*res://AutoLoad/Session/Session.tscn"
 StateManager="*res://AutoLoad/StateManager/StateManager.gd"
 NetworkManager="*res://AutoLoad/NetworkManager/NetworkManager.tscn"
 AudioManager="*res://AutoLoad/AudioManager/AudioManager.tscn"
 sp="*res://addons/awesome_splash/utils_splash.gd"
 gd="*res://addons/godot-action/utils_gd_action.tscn"
+Memory="*res://AutoLoad/Memory/Memory.gd"
 
 [display]
 
