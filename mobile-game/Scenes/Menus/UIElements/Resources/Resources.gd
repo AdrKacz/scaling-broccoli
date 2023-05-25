@@ -12,7 +12,7 @@ func _ready():
 	lightning_label.text = str(Memory.lightning)
 	Memory.lightning_update.connect(_on_memory_lightning_update)
 
-var tween = create_tween()
+var tween : Tween
 func pulse():
 	if tween:
 		tween.kill() # Abort the previous animation.

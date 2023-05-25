@@ -52,26 +52,20 @@ func reset_challenge():
 	
 func read_challenge_from_memory():
 	var last_update_datetime: String = config.get_value('parameters', 'last_update_datetime', "")
-	if is_same_update_day(last_update_datetime):
+	var days_since_last_update: int = get_difference_in_day(last_update_datetime, Time.get_date_string_from_system())
+	if days_since_last_update == 0:
 		remaining_lives = config.get_value('parameters', 'remaining_lives', max_life)
 		challenge_completed = config.get_value('parameters', 'challenge_completed', false)
-	else:
+	elif days_since_last_update == 1:
+		if not challenge_completed:
+			lightning = 0 # challenge not succeeded yesterday
 		reset_challenge()
-
-func is_same_update_day(last_update_datetime: String) -> bool:
-	if last_update_datetime == "":
-		return false
-	var today_datetime_dict: Dictionary = Time.get_datetime_dict_from_system()
-	var last_update_datetime_dict: Dictionary = Time.get_datetime_dict_from_datetime_string(last_update_datetime, false)
-	if is_same_day(today_datetime_dict, last_update_datetime_dict):
-		return true
-	return false
-
-func is_same_day(date_a: Dictionary, date_b: Dictionary) -> bool:
-	if date_a.day != date_b.day:
-		return false
-	if date_a.month != date_b.month:
-		return false
-	if date_a.year != date_b.year:
-		return false
-	return true
+	else:
+		lightning = 0 # streak lost
+		reset_challenge()
+		
+func get_difference_in_day(date_a: String, date_b: String) -> int:
+	var unix_a: int = Time.get_unix_time_from_datetime_string(date_a)
+	var unix_b: int = Time.get_unix_time_from_datetime_string(date_b)
+	
+	return abs(unix_b - unix_a) / 86400
