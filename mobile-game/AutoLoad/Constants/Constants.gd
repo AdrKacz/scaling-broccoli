@@ -4,6 +4,7 @@ extends Node
 const background_delta: float = 0.5
 const background_match_delta: float = 0.75
 const score_factor: int = 10
+const point_to_reward: int = 1000
 
 const max_swaps: Array[int] = [5, 4, 3]
 

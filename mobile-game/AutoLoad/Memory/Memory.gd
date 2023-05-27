@@ -7,6 +7,14 @@ const max_life = 3
 
 var config: ConfigFile
 
+var reward_points: int:
+	get:
+		return reward_points
+	set(value):
+		reward_points = clamp(0, Constants.point_to_reward, value)
+		config.set_value('parameters', 'reward_points', reward_points)
+		config.save("user://parameters.cfg")
+
 var lightning: int:
 	get:
 		return lightning
@@ -23,6 +31,14 @@ var challenge_completed: bool:
 		challenge_completed = value
 		config.set_value('parameters', 'challenge_completed', challenge_completed)
 		config.save("user://parameters.cfg")
+		
+var last_day_played: String:
+	get:
+		return last_day_played
+	set(value):
+		last_day_played = value
+		config.set_value('parameters', 'last_day_played', last_day_played)
+		config.save("user://parameters.cfg")
 
 var remaining_lives: int:
 	get:
@@ -30,47 +46,53 @@ var remaining_lives: int:
 	set(value):
 		remaining_lives = clamp(value, min_life, max_life)
 		config.set_value('parameters', 'remaining_lives', remaining_lives)
-		config.set_value('parameters', 'last_update_datetime', Time.get_datetime_string_from_system())
 		config.save("user://parameters.cfg")
 
 func _ready():
 	config = ConfigFile.new()
 	var err = config.load("user://parameters.cfg")
-	if err != OK:
+	if err != OK: # never played and file doesn't exit
 		reset_challenge()
-		lightning = 0
-	read_challenge_from_memory()
-	read_resources_from_memory()
-	
-func read_resources_from_memory():
-	lightning = config.get_value('parameters', 'lightning', 0)
-	
+		reset_resources()
+	last_day_played = config.get_value('parameters', 'last_day_played', "")
+	if last_day_played == "": # never played but file exist
+		reset_challenge()
+		reset_resources()
+	else:
+		read_challenge_from_memory()
+		read_resources_from_memory()
+	last_day_played = Time.get_datetime_string_from_system() # set to today
+
+func reset_resources():
+	lightning = 0
+	reward_points = 0
+
 func reset_challenge():
 	remaining_lives = max_life
 	challenge_completed = false
+
+func read_resources_from_memory():
+	lightning = config.get_value('parameters', 'lightning', 0)
+	reward_points = config.get_value('parameters', 'reward_points', 0)
 	
 func read_challenge_from_memory():
-	var last_update_datetime: String = config.get_value('parameters', 'last_update_datetime', "")
-	if last_update_datetime == "":
-		reset_challenge()
-		lightning = 0
-	
 	var today_datetime: String = Time.get_datetime_string_from_system()
 	
 	var local_remaining_lives = config.get_value('parameters', 'remaining_lives', max_life)
 	var local_challenge_completed = config.get_value('parameters', 'challenge_completed', false) 
-	if is_same_day(last_update_datetime, today_datetime):
-		print('Last update same day')
+
+	if is_same_day(last_day_played, today_datetime):
+		print('Last played today')
 		remaining_lives = local_remaining_lives
 		challenge_completed = local_challenge_completed
-	elif is_same_day(get_next_day(last_update_datetime), today_datetime):
-		print('Last update yesterday')
+	elif is_same_day(get_next_day(last_day_played), today_datetime):
+		print('Last played yesterday')
 		if not local_challenge_completed:
 			print('Challenge was not completed')
 			lightning = 0 # challenge not succeeded yesterday
 		reset_challenge()
 	else:
-		print('Last update before yesterday')
+		print('Last played before yesterday')
 		lightning = 0 # streak lost
 		reset_challenge()
 
