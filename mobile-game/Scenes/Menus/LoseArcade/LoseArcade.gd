@@ -60,6 +60,7 @@ func appear():
 	$Control/BlockTouch.visible = true
 	appear_tween = create_tween().bind_node(self).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT_IN)
 	appear_tween.tween_method(update_appear_radius, 0., 1., 1.)
+	appear_tween.tween_callback($Control/MarginContainer/VBoxContainer/LoadingGold.earn_points)
 	appear_tween.tween_callback($Control/BlockTouch.set_visible.bind(false))
 	appear_tween.tween_callback(emit_signal.bind("on_screen"))
 	

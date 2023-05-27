@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://h0hra31w66i5"]
+[gd_scene load_steps=6 format=3 uid="uid://h0hra31w66i5"]
 
+[ext_resource type="Script" path="res://Scenes/Menus/LoseArcade/LoadingGold/LoadingGold.gd" id="1_oppri"]
 [ext_resource type="Texture2D" uid="uid://dlcpvnf5suk8b" path="res://assets/loading-over.png" id="2_25i3c"]
 [ext_resource type="Texture2D" uid="uid://b84h08bfcu07y" path="res://assets/loading-under.png" id="2_yhfdk"]
 [ext_resource type="Texture2D" uid="uid://b03xr4shg6nvc" path="res://assets/loading-progress.png" id="4_ql27m"]
@@ -19,6 +20,7 @@ offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12
+script = ExtResource("1_oppri")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 texture_filter = 1
