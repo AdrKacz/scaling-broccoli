@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm3r3v3dckna7"
-path="res://.godot/imported/rainbow.png-e7369baf5796199d52fc46bdef19875a.ctex"
+uid="uid://b84h08bfcu07y"
+path="res://.godot/imported/loading-under.png-b1a7aee082e1c73e8f9b89254e968d58.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/rainbow.png"
-dest_files=["res://.godot/imported/rainbow.png-e7369baf5796199d52fc46bdef19875a.ctex"]
+source_file="res://assets/loading-under.png"
+dest_files=["res://.godot/imported/loading-under.png-b1a7aee082e1c73e8f9b89254e968d58.ctex"]
 
 [params]
 

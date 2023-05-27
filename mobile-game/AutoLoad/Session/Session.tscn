@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bm1r4u6mgy0mw"]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://AutoLoad/Session/Session.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://svj5gokj6888" path="res://UI/MainMenu/MainMenu.tscn" id="2_kh7io"]
-[ext_resource type="PackedScene" uid="uid://ilei4y43xwl3" path="res://UI/LoseMenu/LoseMenu.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://2oghmyku77dt" path="res://Scenes/Menus/LoseArcade/LoseArcade.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://bus6slw6nmt6e" path="res://Game/GameMaster.tscn" id="3_3p5hr"]
 [ext_resource type="PackedScene" uid="uid://dwx23lkbhy5gw" path="res://UI/Leaderboard/Leaderboard.tscn" id="4_wx43q"]
 [ext_resource type="PackedScene" uid="uid://mvxeej36kptf" path="res://Scenes/Menus/Settings/Settings.tscn" id="5_w813k"]

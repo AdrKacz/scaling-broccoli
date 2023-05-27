@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="1_07r1w"]
 [ext_resource type="PackedScene" uid="uid://5kiirn6rgdru" path="res://Scenes/UIBackground/UIBackground.tscn" id="2_25tlc"]
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="2_mkfaj"]
-[ext_resource type="Texture2D" uid="uid://k2sbxux3l8li" path="res://assets/exitRight.png" id="5_5dkyc"]
+[ext_resource type="PackedScene" uid="uid://dofspa3v0y84e" path="res://Scenes/Menus/UIElements/Exit.tscn" id="5_bkbqs"]
 
 [node name="Settings" type="CanvasLayer"]
 script = ExtResource("1_02iur")
@@ -49,27 +49,9 @@ button_pressed = true
 text = "Vibrations
 "
 
-[node name="ExitControl" type="Control" parent="MarginContainer"]
+[node name="Exit" parent="MarginContainer" instance=ExtResource("5_bkbqs")]
 layout_mode = 2
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ExitControl"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-grow_horizontal = 0
-size_flags_horizontal = 8
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/ExitControl/MarginContainer"]
-layout_mode = 2
-texture_normal = ExtResource("5_5dkyc")
-texture_pressed = ExtResource("5_5dkyc")
-texture_hover = ExtResource("5_5dkyc")
 
 [connection signal="toggled" from="MarginContainer/CenterContainer/VBoxContainer/MusicCheckBox" to="." method="_on_music_check_box_toggled"]
 [connection signal="toggled" from="MarginContainer/CenterContainer/VBoxContainer/SoundEffectCheckBox" to="." method="_on_sound_effect_check_box_toggled"]
 [connection signal="toggled" from="MarginContainer/CenterContainer/VBoxContainer/VibrationsCheckBox" to="." method="_on_vibration_check_box_toggled"]
-[connection signal="pressed" from="MarginContainer/ExitControl/MarginContainer/TextureButton" to="." method="_on_exit_button_pressed"]

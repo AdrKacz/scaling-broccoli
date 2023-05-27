@@ -25,12 +25,6 @@ func appear():
 	tween.tween_callback($Control/BlockTouch.set_visible.bind(false))
 	tween.tween_callback(emit_signal.bind("on_screen"))
 
-
-func _on_exit_button_pressed():
-	Session.click()
-	Session.change_node_to(Session.MainMenu)
-
-
 func _on_play_pressed():
 	Session.click()
 	Session.change_node_to(Session.GameMaster)

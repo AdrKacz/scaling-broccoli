@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://h0hra31w66i5"]
+
+[ext_resource type="Texture2D" uid="uid://dlcpvnf5suk8b" path="res://assets/loading-over.png" id="2_25i3c"]
+[ext_resource type="Texture2D" uid="uid://b84h08bfcu07y" path="res://assets/loading-under.png" id="2_yhfdk"]
+[ext_resource type="Texture2D" uid="uid://b03xr4shg6nvc" path="res://assets/loading-progress.png" id="4_ql27m"]
+[ext_resource type="Texture2D" uid="uid://byc1n8ilnu6s5" path="res://assets/pouch.png" id="5_owd5f"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+use_parent_material = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -292.0
+offset_top = -50.0
+offset_right = 292.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+texture_filter = 1
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 50.0
+texture_under = ExtResource("2_yhfdk")
+texture_over = ExtResource("2_25i3c")
+texture_progress = ExtResource("4_ql27m")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_owd5f")
+stretch_mode = 4

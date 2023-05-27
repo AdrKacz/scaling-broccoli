@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="5_4sjsb"]
 [ext_resource type="PackedScene" uid="uid://b58n06bsrcloe" path="res://Scenes/Hearts/Hearts.tscn" id="6_kptb7"]
 [ext_resource type="Texture2D" uid="uid://4exmars5c0oj" path="res://assets/ButtonsV3/ButtonDown.png" id="6_r232o"]
-[ext_resource type="Texture2D" uid="uid://k2sbxux3l8li" path="res://assets/exitRight.png" id="8_48h0a"]
+[ext_resource type="PackedScene" uid="uid://dofspa3v0y84e" path="res://Scenes/Menus/UIElements/Exit.tscn" id="9_bpxmm"]
 
 [node name="LoseChallenge" type="CanvasLayer"]
 script = ExtResource("1_ssl6w")
@@ -82,28 +82,8 @@ use_parent_material = true
 layout_mode = 2
 text = "Retry"
 
-[node name="Control" type="Control" parent="Control/MarginContainer"]
-use_parent_material = true
+[node name="Exit" parent="Control/MarginContainer" instance=ExtResource("9_bpxmm")]
 layout_mode = 2
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/Control"]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-grow_horizontal = 0
-size_flags_horizontal = 8
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-
-[node name="ExitButton" type="TextureButton" parent="Control/MarginContainer/Control/MarginContainer"]
-use_parent_material = true
-layout_mode = 2
-texture_normal = ExtResource("8_48h0a")
-texture_pressed = ExtResource("8_48h0a")
-texture_hover = ExtResource("8_48h0a")
 
 [node name="BlockTouch" type="Control" parent="Control"]
 visible = false
@@ -115,4 +95,3 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [connection signal="pressed" from="Control/MarginContainer/CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/Control/MarginContainer/ExitButton" to="." method="_on_exit_button_pressed"]

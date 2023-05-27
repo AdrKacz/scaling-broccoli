@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dofspa3v0y84e"]
+
+[ext_resource type="Texture2D" uid="uid://k2sbxux3l8li" path="res://assets/exitRight.png" id="1_m3i8x"]
+[ext_resource type="Script" path="res://Scenes/Menus/UIElements/Exit.gd" id="1_xtjm8"]
+
+[node name="Exit" type="Control"]
+use_parent_material = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_xtjm8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+
+[node name="ExitButton" type="TextureButton" parent="MarginContainer"]
+use_parent_material = true
+layout_mode = 2
+texture_normal = ExtResource("1_m3i8x")
+texture_pressed = ExtResource("1_m3i8x")
+texture_hover = ExtResource("1_m3i8x")
+
+[connection signal="pressed" from="MarginContainer/ExitButton" to="." method="_on_exit_button_pressed"]
