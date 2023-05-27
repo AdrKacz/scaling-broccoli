@@ -4,9 +4,22 @@ signal on_screen
 
 var allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
+
 var submit_label: Label
 var name_line_edit: LineEdit
 var mobile_keyboard_height: float
+
+func _ready():
+	mobile_keyboard_height = get_mobile_keyboard_height_from_memory()
+	
+	submit_label = $Control/MarginContainer/VBoxContainer/SubmitContainer/VBoxContainer/SubmitScore/CenterContainer/Label
+	name_line_edit = $Control/MarginContainer/VBoxContainer/SubmitContainer/VBoxContainer/Name
+	NetworkManager.connect("leaderboard", Callable(self, "_on_network_manager_leaderboard"))
+	NetworkManager.connect("error", Callable(self, "_on_network_manager_error"))
+	
+	$AnimationPlayer.play('RESET')
+	$Control/MarginContainer/VBoxContainer/ScoreLabel.text = str(Constants.score)
+	appear()
 
 func get_mobile_keyboard_height_from_memory() -> float:
 	var config = ConfigFile.new()
@@ -23,18 +36,7 @@ func save_mobile_keyboard_height_to_memory():
 	config.set_value('config', 'mobile_keyboard_height', mobile_keyboard_height)
 	config.save("user://config.cfg")
 
-func _ready():
-	mobile_keyboard_height = get_mobile_keyboard_height_from_memory()
-	
-	submit_label = $Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/SubmitScore/CenterContainer/Label
-	name_line_edit = $Control/MarginContainer/MarginContainer/CenterContainer/VBoxContainer/Name
-	NetworkManager.connect("leaderboard", Callable(self, "_on_network_manager_leaderboard"))
-	NetworkManager.connect("error", Callable(self, "_on_network_manager_error"))
-	
-	$AnimationPlayer.play('RESET')
-	$Control/MarginContainer/MarginContainerScore/Score.text = str(Constants.score)
-	appear()
-	
+
 func _process(_delta):
 	if not DisplayServer.has_feature(DisplayServer.FEATURE_VIRTUAL_KEYBOARD):
 		return
@@ -128,7 +130,3 @@ func move_screen_up(up_offset: float, delta: float):
 		move_screen_up_tween.kill()
 	move_screen_up_tween = create_tween().bind_node(self)
 	move_screen_up_tween.tween_property(self, "offset", Vector2(0, -up_offset), delta)
-
-func _on_exit_button_pressed():
-	Session.click()
-	Session.change_node_to(Session.MainMenu)

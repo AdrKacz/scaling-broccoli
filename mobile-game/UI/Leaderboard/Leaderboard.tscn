@@ -9,7 +9,7 @@
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="5_ittk8"]
 [ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="8_asmac"]
 [ext_resource type="Texture2D" uid="uid://4exmars5c0oj" path="res://assets/ButtonsV3/ButtonDown.png" id="9_8aj4u"]
-[ext_resource type="Texture2D" uid="uid://k2sbxux3l8li" path="res://assets/exitRight.png" id="10_i7xet"]
+[ext_resource type="PackedScene" uid="uid://dofspa3v0y84e" path="res://Scenes/Menus/UIElements/Exit.tscn" id="10_mape8"]
 
 [node name="Leaderboard" type="CanvasLayer"]
 script = ExtResource("1")
@@ -83,25 +83,7 @@ mouse_filter = 2
 layout_mode = 2
 text = "Play"
 
-[node name="Control" type="Control" parent="MarginContainer"]
+[node name="Exit" parent="MarginContainer" instance=ExtResource("10_mape8")]
 layout_mode = 2
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-grow_horizontal = 0
-size_flags_horizontal = 8
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-
-[node name="ExitButton" type="TextureButton" parent="MarginContainer/Control/MarginContainer"]
-layout_mode = 2
-texture_normal = ExtResource("10_i7xet")
-texture_pressed = ExtResource("10_i7xet")
-texture_hover = ExtResource("10_i7xet")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BottomCenterContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MarginContainer/Control/MarginContainer/ExitButton" to="." method="_on_exit_button_pressed"]

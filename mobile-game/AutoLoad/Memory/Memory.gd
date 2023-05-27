@@ -41,7 +41,6 @@ func _ready():
 		lightning = 0
 	read_challenge_from_memory()
 	read_resources_from_memory()
-	reset_challenge()
 	
 func read_resources_from_memory():
 	lightning = config.get_value('parameters', 'lightning', 0)

@@ -5,8 +5,8 @@
 [ext_resource type="Material" uid="uid://boqnkeusewign" path="res://Materials/Circle/Circle.tres" id="3_47ss0"]
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="4_wo4rn"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="5_ohvmu"]
+[ext_resource type="PackedScene" uid="uid://dofspa3v0y84e" path="res://Scenes/Menus/UIElements/Exit.tscn" id="7_roh4j"]
 [ext_resource type="PackedScene" uid="uid://c8m4a2p4hl454" path="res://Scenes/Menus/UIElements/Resources/Resources.tscn" id="7_uejiy"]
-[ext_resource type="Texture2D" uid="uid://k2sbxux3l8li" path="res://assets/exitRight.png" id="9_q1k0s"]
 
 [node name="WinChallenge" type="CanvasLayer"]
 script = ExtResource("1_cvoxr")
@@ -59,30 +59,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Control" type="Control" parent="Control/MarginContainer"]
-use_parent_material = true
-layout_mode = 2
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/Control"]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-grow_horizontal = 0
-size_flags_horizontal = 8
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-
-[node name="ExitButton" type="TextureButton" parent="Control/MarginContainer/Control/MarginContainer"]
-use_parent_material = true
-layout_mode = 2
-texture_normal = ExtResource("9_q1k0s")
-texture_pressed = ExtResource("9_q1k0s")
-texture_hover = ExtResource("9_q1k0s")
-
 [node name="Resources" parent="Control/MarginContainer" instance=ExtResource("7_uejiy")]
+layout_mode = 2
+
+[node name="Exit" parent="Control/MarginContainer" instance=ExtResource("7_roh4j")]
 layout_mode = 2
 
 [node name="BlockTouch" type="Control" parent="Control"]
@@ -93,5 +73,3 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[connection signal="pressed" from="Control/MarginContainer/Control/MarginContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://Scenes/Menus/Challenge/Challenge.gd" id="1_08biq"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="2_tymqx"]
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="3_ay4qe"]
-[ext_resource type="Texture2D" uid="uid://k2sbxux3l8li" path="res://assets/exitRight.png" id="3_uuh0g"]
 [ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="5_2unaf"]
 [ext_resource type="PackedScene" uid="uid://b58n06bsrcloe" path="res://Scenes/Hearts/Hearts.tscn" id="5_6f0kh"]
 [ext_resource type="Texture2D" uid="uid://4exmars5c0oj" path="res://assets/ButtonsV3/ButtonDown.png" id="6_gscbw"]
+[ext_resource type="PackedScene" uid="uid://dofspa3v0y84e" path="res://Scenes/Menus/UIElements/Exit.tscn" id="8_ujilc"]
 
 [node name="Challenge" type="CanvasLayer"]
 script = ExtResource("1_08biq")
@@ -93,28 +93,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Control" type="Control" parent="Control/MarginContainer"]
-use_parent_material = true
+[node name="Exit" parent="Control/MarginContainer" instance=ExtResource("8_ujilc")]
 layout_mode = 2
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/Control"]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-grow_horizontal = 0
-size_flags_horizontal = 8
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-
-[node name="ExitButton" type="TextureButton" parent="Control/MarginContainer/Control/MarginContainer"]
-use_parent_material = true
-layout_mode = 2
-texture_normal = ExtResource("3_uuh0g")
-texture_pressed = ExtResource("3_uuh0g")
-texture_hover = ExtResource("3_uuh0g")
 
 [connection signal="pressed" from="Control/MarginContainer/CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/Control/MarginContainer/ExitButton" to="." method="_on_exit_button_pressed"]

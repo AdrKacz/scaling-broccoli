@@ -82,10 +82,6 @@ func validate_last_submission() -> bool:
 func _on_network_manager_leaderboard(leaders, player_position):
 	display_leaderboard(leaders, player_position)
 	
-func _on_exit_button_pressed():
-	Session.click()
-	Session.change_node_to(Session.MainMenu)
-
 func _on_play_button_pressed():
 	Session.click()
 	Session.change_node_to(Session.GameMaster)
