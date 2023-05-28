@@ -1,10 +1,95 @@
-[gd_scene load_steps=6 format=3 uid="uid://h0hra31w66i5"]
+[gd_scene load_steps=10 format=3 uid="uid://h0hra31w66i5"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/LoseArcade/LoadingGold/LoadingGold.gd" id="1_oppri"]
 [ext_resource type="Texture2D" uid="uid://dlcpvnf5suk8b" path="res://assets/loading-over.png" id="2_25i3c"]
 [ext_resource type="Texture2D" uid="uid://b84h08bfcu07y" path="res://assets/loading-under.png" id="2_yhfdk"]
 [ext_resource type="Texture2D" uid="uid://b03xr4shg6nvc" path="res://assets/loading-progress.png" id="4_ql27m"]
 [ext_resource type="Texture2D" uid="uid://byc1n8ilnu6s5" path="res://assets/pouch.png" id="5_owd5f"]
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="6_jmmon"]
+
+[sub_resource type="Animation" id="Animation_cvxek"]
+resource_name = "pop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(50, 50), Vector2(50, -30), Vector2(50, -30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_nmewu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y6rn5"]
+_data = {
+"RESET": SubResource("Animation_nmewu"),
+"pop": SubResource("Animation_cvxek")
+}
 
 [node name="HBoxContainer" type="HBoxContainer"]
 use_parent_material = true
@@ -41,3 +126,40 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("5_owd5f")
 stretch_mode = 4
+
+[node name="Control" type="Control" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="TextureRect/Control"]
+position = Vector2(50, 50)
+scale = Vector2(1e-05, 1e-05)
+
+[node name="CenterContainer" type="CenterContainer" parent="TextureRect/Control/Sprite2D"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("6_jmmon")
+
+[node name="Label" type="Label" parent="TextureRect/Control/Sprite2D/CenterContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 64
+text = "+1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect/Control"]
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_y6rn5")
+}

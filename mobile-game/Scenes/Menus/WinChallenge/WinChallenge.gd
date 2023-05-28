@@ -10,7 +10,7 @@ func update_appear_radius(radius: float):
 	
 func complete_challenge():
 	Memory.challenge_completed = true
-	Memory.lightning += 1
+	Memory.streak += 1
 
 var tween: Tween
 func appear():
