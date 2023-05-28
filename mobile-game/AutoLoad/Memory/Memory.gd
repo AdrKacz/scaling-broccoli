@@ -1,12 +1,21 @@
 extends Node
 
-signal lightning_update
+signal streak_update
 
 const min_life = 0
 const max_life = 3
 
 var config: ConfigFile
 
+var gold: int:
+	get:
+		return gold
+	set(value):
+		gold = max(0, value)
+		config.set_value('parameters', 'gold', gold)
+		config.save("user://parameters.cfg")
+
+# points to get a gold reward (every Constants.point_to_reward)
 var reward_points: int:
 	get:
 		return reward_points
@@ -15,14 +24,14 @@ var reward_points: int:
 		config.set_value('parameters', 'reward_points', reward_points)
 		config.save("user://parameters.cfg")
 
-var lightning: int:
+var streak: int:
 	get:
-		return lightning
+		return streak
 	set(value):
-		lightning = value
-		config.set_value('parameters', 'lightning', lightning)
+		streak = value
+		config.set_value('parameters', 'streak', streak)
 		config.save("user://parameters.cfg")
-		emit_signal("lightning_update")
+		emit_signal("streak_update")
 
 var challenge_completed: bool:
 	get:
@@ -64,7 +73,7 @@ func _ready():
 	last_day_played = Time.get_datetime_string_from_system() # set to today
 
 func reset_resources():
-	lightning = 0
+	streak = 0
 	reward_points = 0
 
 func reset_challenge():
@@ -72,8 +81,9 @@ func reset_challenge():
 	challenge_completed = false
 
 func read_resources_from_memory():
-	lightning = config.get_value('parameters', 'lightning', 0)
+	streak = config.get_value('parameters', 'streak', 0)
 	reward_points = config.get_value('parameters', 'reward_points', 0)
+	gold = config.get_value('parameters', 'gold', 0)
 	
 func read_challenge_from_memory():
 	var today_datetime: String = Time.get_datetime_string_from_system()
@@ -89,11 +99,11 @@ func read_challenge_from_memory():
 		print('Last played yesterday')
 		if not local_challenge_completed:
 			print('Challenge was not completed')
-			lightning = 0 # challenge not succeeded yesterday
+			streak = 0 # challenge not succeeded yesterday
 		reset_challenge()
 	else:
 		print('Last played before yesterday')
-		lightning = 0 # streak lost
+		streak = 0 # streak lost
 		reset_challenge()
 
 func get_next_day(date_string: String) -> String:

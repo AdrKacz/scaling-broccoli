@@ -7,10 +7,9 @@ func _ready():
 
 func get_progress(points: int) -> float:
 	return 100. * points / Constants.point_to_reward
-	
+
 func earn_golds():
-	# animate earn gold (already saved)
-	pass
+	$TextureRect/Control/AnimationPlayer.play("pop")
 	
 func earn_points():
 	# get points
@@ -19,7 +18,8 @@ func earn_points():
 	var gold_earned: int = total_reward_points / Constants.point_to_reward
 	var remaining_points: int = total_reward_points % Constants.point_to_reward
 	
-	# TODO: save new golds
+	Memory.gold += gold_earned # gold animation won't display has no gold
+	# Update gold update if you add resources so it increases incrementally
 	Memory.reward_points = remaining_points # save remaining points
 	
 	# animate to new_reward points

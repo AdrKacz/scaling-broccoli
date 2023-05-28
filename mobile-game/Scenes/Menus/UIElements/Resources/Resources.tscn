@@ -32,72 +32,76 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 12
 
-[node name="Rainbow" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Gold" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 36
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Rainbow"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Gold"]
 modulate = Color(0, 0, 0, 1)
 use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("3_nhbfx")
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Rainbow"]
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Gold"]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/Rainbow/Control"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/Gold/Control"]
 use_parent_material = true
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Rainbow/Control/Sprite2D"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Gold/Control/Sprite2D"]
 use_parent_material = true
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -45.0
+offset_right = 29.0
+offset_bottom = 45.0
 grow_vertical = 2
+size_flags_horizontal = 4
 theme = ExtResource("1_1cd4v")
 theme_override_font_sizes/font_size = 64
 text = "0"
-horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lightning" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Streak" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 36
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Lightning"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Streak"]
 modulate = Color(0, 0, 0, 1)
 use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("4_meim5")
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Lightning"]
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Streak"]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/Lightning/Control"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/Streak/Control"]
 use_parent_material = true
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Lightning/Control/Sprite2D"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Streak/Control/Sprite2D"]
 use_parent_material = true
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -45.0
+offset_right = 29.0
+offset_bottom = 45.0
 grow_vertical = 2
+size_flags_horizontal = 4
 theme = ExtResource("1_1cd4v")
 theme_override_font_sizes/font_size = 64
 text = "0"
-horizontal_alignment = 1
 vertical_alignment = 1
