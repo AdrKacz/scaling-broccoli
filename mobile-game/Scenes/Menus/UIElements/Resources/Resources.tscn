@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8m4a2p4hl454"]
+[gd_scene load_steps=5 format=3 uid="uid://dda0j6twcxp1p"]
 
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="1_1cd4v"]
 [ext_resource type="Script" path="res://Scenes/Menus/UIElements/Resources/Resources.gd" id="2_7ssnm"]
-[ext_resource type="Texture2D" uid="uid://byc1n8ilnu6s5" path="res://assets/pouch.png" id="3_nhbfx"]
+[ext_resource type="Texture2D" uid="uid://bjgnik0xy7yle" path="res://assets/pouch.png" id="3_nhbfx"]
 [ext_resource type="Texture2D" uid="uid://dr17nb1sgtkmq" path="res://assets/fire.png" id="4_meim5"]
 
 [node name="Resources" type="Control"]
@@ -36,7 +36,7 @@ theme_override_constants/separation = 12
 use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 36
+theme_override_constants/separation = 24
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Gold"]
 modulate = Color(0, 0, 0, 1)
@@ -65,7 +65,7 @@ offset_bottom = 45.0
 grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_1cd4v")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 48
 text = "0"
 vertical_alignment = 1
 
@@ -73,7 +73,7 @@ vertical_alignment = 1
 use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 36
+theme_override_constants/separation = 24
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Streak"]
 modulate = Color(0, 0, 0, 1)
@@ -81,6 +81,7 @@ use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("4_meim5")
+stretch_mode = 5
 
 [node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Streak"]
 use_parent_material = true
@@ -102,6 +103,6 @@ offset_bottom = 45.0
 grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_1cd4v")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 48
 text = "0"
 vertical_alignment = 1
