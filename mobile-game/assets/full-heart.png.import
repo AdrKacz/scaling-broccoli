@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjgnik0xy7yle"
-path="res://.godot/imported/pouch.png-68be1d522e2fcec412a00daf875cc022.ctex"
+uid="uid://barx6iw6n5f8o"
+path="res://.godot/imported/full-heart.png-7a3fd408024e525d2a5137da484391d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pouch.png"
-dest_files=["res://.godot/imported/pouch.png-68be1d522e2fcec412a00daf875cc022.ctex"]
+source_file="res://assets/full-heart.png"
+dest_files=["res://.godot/imported/full-heart.png-7a3fd408024e525d2a5137da484391d4.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdu37lluywkvn"]
+[gd_scene load_steps=13 format=3 uid="uid://dbtnullfiah7c"]
 
 [ext_resource type="PackedScene" uid="uid://5kiirn6rgdru" path="res://Scenes/UIBackground/UIBackground.tscn" id="1_kyyye"]
 [ext_resource type="Script" path="res://Scenes/Menus/LoseChallenge/LoseChallenge.gd" id="1_ssl6w"]
@@ -8,7 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="5_4sjsb"]
 [ext_resource type="PackedScene" uid="uid://b58n06bsrcloe" path="res://Scenes/Hearts/Hearts.tscn" id="6_kptb7"]
 [ext_resource type="Texture2D" uid="uid://4exmars5c0oj" path="res://assets/ButtonsV3/ButtonDown.png" id="6_r232o"]
+[ext_resource type="Texture2D" uid="uid://byc1n8ilnu6s5" path="res://assets/pouch-100.png" id="9_62fc8"]
 [ext_resource type="PackedScene" uid="uid://dofspa3v0y84e" path="res://Scenes/Menus/UIElements/Exit.tscn" id="9_bpxmm"]
+[ext_resource type="Texture2D" uid="uid://barx6iw6n5f8o" path="res://assets/full-heart.png" id="10_qslkw"]
+[ext_resource type="PackedScene" uid="uid://dda0j6twcxp1p" path="res://Scenes/Menus/UIElements/Resources/Resources.tscn" id="12_qh47c"]
 
 [node name="LoseChallenge" type="CanvasLayer"]
 script = ExtResource("1_ssl6w")
@@ -62,6 +65,43 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="BuyHeart" type="TextureButton" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+visible = false
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("5_4sjsb")
+texture_pressed = ExtResource("6_r232o")
+texture_hover = ExtResource("6_r232o")
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer/CenterContainer/VBoxContainer/BuyHeart"]
+use_parent_material = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/CenterContainer/VBoxContainer/BuyHeart/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="pouch" type="TextureRect" parent="Control/MarginContainer/CenterContainer/VBoxContainer/BuyHeart/CenterContainer/HBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("9_62fc8")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="for" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer/BuyHeart/CenterContainer/HBoxContainer"]
+layout_mode = 2
+text = "for"
+
+[node name="heart" type="TextureRect" parent="Control/MarginContainer/CenterContainer/VBoxContainer/BuyHeart/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_qslkw")
+expand_mode = 3
+stretch_mode = 5
+
 [node name="Play" type="TextureButton" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
 use_parent_material = true
 layout_mode = 2
@@ -83,6 +123,9 @@ layout_mode = 2
 text = "Retry"
 
 [node name="Exit" parent="Control/MarginContainer" instance=ExtResource("9_bpxmm")]
+layout_mode = 2
+
+[node name="Resources" parent="Control/MarginContainer" instance=ExtResource("12_qh47c")]
 layout_mode = 2
 
 [node name="BlockTouch" type="Control" parent="Control"]
