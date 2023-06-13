@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/Hearts/Hearts.gd" id="1_b5l2s"]
 
 [node name="Hearts" type="MarginContainer"]
+use_parent_material = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,11 +16,13 @@ theme_override_constants/margin_bottom = 64
 script = ExtResource("1_b5l2s")
 
 [node name="HeartsControl" type="Control" parent="."]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Hearts" type="Node2D" parent="HeartsControl"]
+use_parent_material = true
 scale = Vector2(10, 10)
 
 [node name="Heart1" parent="HeartsControl/Hearts" instance=ExtResource("1_4sh34")]

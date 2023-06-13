@@ -15,17 +15,17 @@ func earn_points():
 	# get points
 	var total_reward_points: int = Memory.reward_points + Constants.score
 	@warning_ignore("integer_division")
-	var gold_earned: int = total_reward_points / Constants.point_to_reward
+	var golds_earned: int = total_reward_points / Constants.point_to_reward
 	var remaining_points: int = total_reward_points % Constants.point_to_reward
 	
-	Memory.gold += gold_earned # gold animation won't display has no gold
-	# Update gold update if you add resources so it increases incrementally
+	Memory.golds += golds_earned
+	# Update golds update if you add resources so it increases incrementally
 	Memory.reward_points = remaining_points # save remaining points
 	
 	# animate to new_reward points
 	var tween: Tween = create_tween()
 	var last_value = $TextureProgressBar.value
-	for i in gold_earned: # animate gold earned
+	for i in golds_earned: # animate golds earned
 		tween.tween_property(
 			$TextureProgressBar,
 			"value",
