@@ -1,12 +1,14 @@
 extends CanvasLayer
 signal on_screen
 
-var hearts: MarginContainer
+@onready var hearts: MarginContainer =  $Control/MarginContainer/CenterContainer/VBoxContainer/Hearts
+@onready var play: TextureButton = $Control/MarginContainer/CenterContainer/VBoxContainer/Play
+@onready var buy_heart: TextureButton = $Control/MarginContainer/CenterContainer/VBoxContainer/BuyHeart
 
 func _ready():
-	hearts = $Control/MarginContainer/CenterContainer/VBoxContainer/Hearts
 	if Memory.remaining_lives <= 1: # if one lives, will lose it
-		$Control/MarginContainer/CenterContainer/VBoxContainer/Play.queue_free()
+		play.visible = false
+		buy_heart.visible = true
 	if Memory.challenge_completed:
 		hearts.visible = false
 	appear()
