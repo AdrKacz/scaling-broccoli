@@ -1,21 +1,17 @@
 extends Control
 
-var gold_label: Label
-var gold_sprite: Sprite2D
-var streak_label: Label
-var streak_sprite: Sprite2D
+@onready var golds_label: Label = $MarginContainer/VBoxContainer/Gold/Control/Sprite2D/Label
+@onready var golds_sprite: Sprite2D = $MarginContainer/VBoxContainer/Gold/Control/Sprite2D
+@onready var streaks_label: Label = $MarginContainer/VBoxContainer/Streak/Control/Sprite2D/Label
+@onready var streaks_sprite: Sprite2D = $MarginContainer/VBoxContainer/Streak/Control/Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	gold_label = $MarginContainer/VBoxContainer/Gold/Control/Sprite2D/Label
-	gold_sprite = $MarginContainer/VBoxContainer/Streak/Control/Sprite2D
-	gold_label.text = str(Memory.gold)
-	Memory.streak_update.connect(_on_memory_gold_update)
+	golds_label.text = str(Memory.golds)
+	Memory.update_golds.connect(_on_memory_update_golds)
 	
-	streak_label = $MarginContainer/VBoxContainer/Streak/Control/Sprite2D/Label
-	streak_sprite = $MarginContainer/VBoxContainer/Streak/Control/Sprite2D
-	streak_label.text = str(Memory.streak)
-	Memory.streak_update.connect(_on_memory_streak_update)
+	streaks_label.text = str(Memory.streaks)
+	Memory.update_streaks.connect(_on_memory_update_streaks)
 
 func pulse(tween, sprite):
 	if tween:
@@ -24,12 +20,12 @@ func pulse(tween, sprite):
 	tween.tween_property(sprite, "scale", Vector2(1.3, 1.3), 0.3)
 	tween.tween_property(sprite, "scale", Vector2(1, 1), 0.2)
 
-var gold_tween : Tween
-func _on_memory_gold_update():
-	pulse(gold_tween, gold_sprite)
-	gold_label.text = str(Memory.gold)
+var golds_tween : Tween
+func _on_memory_update_golds(_delta: int):
+	pulse(golds_tween, golds_sprite)
+	golds_label.text = str(Memory.golds)
 
-var streak_tween : Tween
-func _on_memory_streak_update():
-	pulse(streak_tween, streak_sprite)
-	streak_label.text = str(Memory.streak)
+var streaks_tween : Tween
+func _on_memory_update_streaks(_delta: int):
+	pulse(streaks_tween, streaks_sprite)
+	streaks_label.text = str(Memory.streaks)

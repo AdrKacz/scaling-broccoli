@@ -4,8 +4,9 @@ var hearts: Node2D
 
 func _ready():
 	hearts = $HeartsControl/Hearts
-	for i in Memory.remaining_lives:
+	for i in Memory.hearts:
 		hearts.get_child(i).frame = Status.FULL
+	Memory.update_hearts.connect(_on_memory_update_hearts)
 
 enum Status {
 	EMPTY,
@@ -13,12 +14,18 @@ enum Status {
 	FULL,
 }
 
-func lose_heart():
-	if Memory.remaining_lives == 0:
-		return # cannot lose a life
-	var heart: AnimatedSprite2D = hearts.get_child(Memory.remaining_lives - 1)
-	heart.pulse()
-	heart.frame = Status.EMPTY
-	Memory.remaining_lives -= 1
-	if Memory.remaining_lives == 0:
+func _on_memory_update_hearts(delta: int):
+	if delta == 0:
+		return # nothing to do
+	
+	var from_heart: int = min(Memory.hearts - delta, Memory.hearts)
+	var to_heart: int = max(Memory.hearts - delta, Memory.hearts)
+	var frame = Status.EMPTY if delta < 0 else Status.FULL
+	for i in range(from_heart, to_heart):
+		hearts.get_child(i).pulse()
+		hearts.get_child(i).frame = frame
+
+	if Memory.hearts == Memory.min_hearts:
 		pass # no more life
+	elif Memory.hearts == Memory.max_hearts:
+		pass # full life

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://4exmars5c0oj" path="res://assets/ButtonsV3/ButtonDown.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://bqmp3ie7fqww0" path="res://assets/gear.png" id="6_tsfqk"]
 [ext_resource type="Texture2D" uid="uid://ck8yun0dp54j1" path="res://assets/trophy.png" id="8_qclht"]
-[ext_resource type="PackedScene" uid="uid://c8m4a2p4hl454" path="res://Scenes/Menus/UIElements/Resources/Resources.tscn" id="9_roviw"]
+[ext_resource type="PackedScene" uid="uid://dda0j6twcxp1p" path="res://Scenes/Menus/UIElements/Resources/Resources.tscn" id="9_roviw"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1")

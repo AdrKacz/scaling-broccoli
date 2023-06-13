@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dq8ab8cc883k4"]
+[gd_scene load_steps=11 format=3 uid="uid://dq8ab8cc883k4"]
 
 [ext_resource type="PackedScene" uid="uid://5kiirn6rgdru" path="res://Scenes/UIBackground/UIBackground.tscn" id="1_7saq3"]
 [ext_resource type="Script" path="res://Scenes/Menus/Challenge/Challenge.gd" id="1_08biq"]
@@ -6,8 +6,10 @@
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="3_ay4qe"]
 [ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="5_2unaf"]
 [ext_resource type="PackedScene" uid="uid://b58n06bsrcloe" path="res://Scenes/Hearts/Hearts.tscn" id="5_6f0kh"]
+[ext_resource type="PackedScene" uid="uid://lhr2jjriuj17" path="res://Scenes/Menus/Challenge/UIElements/BuyHeart/BuyHeart.tscn" id="6_1ip6b"]
 [ext_resource type="Texture2D" uid="uid://4exmars5c0oj" path="res://assets/ButtonsV3/ButtonDown.png" id="6_gscbw"]
 [ext_resource type="PackedScene" uid="uid://dofspa3v0y84e" path="res://Scenes/Menus/UIElements/Exit.tscn" id="8_ujilc"]
+[ext_resource type="PackedScene" uid="uid://dda0j6twcxp1p" path="res://Scenes/Menus/UIElements/Resources/Resources.tscn" id="9_ftmpu"]
 
 [node name="Challenge" type="CanvasLayer"]
 script = ExtResource("1_08biq")
@@ -66,6 +68,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="BuyHeart" parent="Control/MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource("6_1ip6b")]
+visible = false
+layout_mode = 2
+
 [node name="Play" type="TextureButton" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -88,12 +94,15 @@ visible = false
 custom_minimum_size = Vector2(680, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "You already completed this challenge. You will not loss lives or earn rewards."
+text = "You already completed this challenge. You will not loss hearts or earn rewards."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Exit" parent="Control/MarginContainer" instance=ExtResource("8_ujilc")]
+layout_mode = 2
+
+[node name="Resources" parent="Control/MarginContainer" instance=ExtResource("9_ftmpu")]
 layout_mode = 2
 
 [connection signal="pressed" from="Control/MarginContainer/CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]

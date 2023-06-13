@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://lhr2jjriuj17"]
+
+[ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="1_520a2"]
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="1_i1ivl"]
+[ext_resource type="Texture2D" uid="uid://4exmars5c0oj" path="res://assets/ButtonsV3/ButtonDown.png" id="2_iawlv"]
+[ext_resource type="Texture2D" uid="uid://byc1n8ilnu6s5" path="res://assets/pouch-100.png" id="3_oq3re"]
+[ext_resource type="Texture2D" uid="uid://barx6iw6n5f8o" path="res://assets/full-heart.png" id="4_8ocxd"]
+[ext_resource type="Script" path="res://Scenes/Menus/Challenge/UIElements/BuyHeart/BuyHeart.gd" id="4_oh7q6"]
+
+[node name="BuyHeart" type="TextureButton"]
+use_parent_material = true
+size_flags_horizontal = 4
+theme = ExtResource("1_i1ivl")
+texture_normal = ExtResource("1_520a2")
+texture_pressed = ExtResource("2_iawlv")
+texture_hover = ExtResource("2_iawlv")
+script = ExtResource("4_oh7q6")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+use_parent_material = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="pouch" type="TextureRect" parent="CenterContainer/HBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("3_oq3re")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="for" type="Label" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+text = "for"
+
+[node name="heart" type="TextureRect" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_8ocxd")
+expand_mode = 3
+stretch_mode = 5
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

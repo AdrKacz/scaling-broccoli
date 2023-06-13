@@ -1,19 +1,23 @@
 extends Node
+signal update_golds(delta: int)
+signal update_streaks(delta: int)
+signal update_hearts(delta: int)
 
-signal streak_update
-
-const min_life = 0
-const max_life = 3
+const min_hearts: int = 0
+const max_hearts: int = 3
 
 var config: ConfigFile
 
-var gold: int:
+var golds: int:
 	get:
-		return gold
+		return golds
 	set(value):
-		gold = max(0, value)
-		config.set_value('parameters', 'gold', gold)
+		value = max(0, value)
+		var delta: int = value - golds
+		golds = value
+		config.set_value('parameters', 'golds', golds)
 		config.save("user://parameters.cfg")
+		emit_signal("update_golds", delta)
 
 # points to get a gold reward (every Constants.point_to_reward)
 var reward_points: int:
@@ -24,14 +28,16 @@ var reward_points: int:
 		config.set_value('parameters', 'reward_points', reward_points)
 		config.save("user://parameters.cfg")
 
-var streak: int:
+var streaks: int:
 	get:
-		return streak
+		return streaks
 	set(value):
-		streak = value
-		config.set_value('parameters', 'streak', streak)
+		value = max(0, value)
+		var delta: int = value - streaks
+		streaks = value
+		config.set_value('parameters', 'streaks', streaks)
 		config.save("user://parameters.cfg")
-		emit_signal("streak_update")
+		emit_signal("update_streaks", delta)
 
 var challenge_completed: bool:
 	get:
@@ -49,13 +55,16 @@ var last_day_played: String:
 		config.set_value('parameters', 'last_day_played', last_day_played)
 		config.save("user://parameters.cfg")
 
-var remaining_lives: int:
+var hearts: int:
 	get:
-		return remaining_lives
+		return hearts
 	set(value):
-		remaining_lives = clamp(value, min_life, max_life)
-		config.set_value('parameters', 'remaining_lives', remaining_lives)
+		value = clamp(value, min_hearts, max_hearts)
+		var delta: int = value - hearts
+		hearts = value
+		config.set_value('parameters', 'hearts', hearts)
 		config.save("user://parameters.cfg")
+		emit_signal("update_hearts", delta)
 
 func _ready():
 	config = ConfigFile.new()
@@ -73,37 +82,37 @@ func _ready():
 	last_day_played = Time.get_datetime_string_from_system() # set to today
 
 func reset_resources():
-	streak = 0
+	streaks = 0
 	reward_points = 0
 
 func reset_challenge():
-	remaining_lives = max_life
+	hearts = max_hearts
 	challenge_completed = false
 
 func read_resources_from_memory():
-	streak = config.get_value('parameters', 'streak', 0)
+	streaks = config.get_value('parameters', 'streaks', 0)
 	reward_points = config.get_value('parameters', 'reward_points', 0)
-	gold = config.get_value('parameters', 'gold', 0)
+	golds = config.get_value('parameters', 'golds', 0)
 	
 func read_challenge_from_memory():
 	var today_datetime: String = Time.get_datetime_string_from_system()
 	
-	var local_remaining_lives = config.get_value('parameters', 'remaining_lives', max_life)
+	var local_hearts = config.get_value('parameters', 'hearts', max_hearts)
 	var local_challenge_completed = config.get_value('parameters', 'challenge_completed', false) 
 
 	if is_same_day(last_day_played, today_datetime):
 		print('Last played today')
-		remaining_lives = local_remaining_lives
+		hearts = local_hearts
 		challenge_completed = local_challenge_completed
 	elif is_same_day(get_next_day(last_day_played), today_datetime):
 		print('Last played yesterday')
 		if not local_challenge_completed:
 			print('Challenge was not completed')
-			streak = 0 # challenge not succeeded yesterday
+			streaks = 0 # challenge not succeeded yesterday
 		reset_challenge()
 	else:
 		print('Last played before yesterday')
-		streak = 0 # streak lost
+		streaks = 0 # streak lost
 		reset_challenge()
 
 func get_next_day(date_string: String) -> String:

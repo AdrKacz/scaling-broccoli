@@ -1,0 +1,106 @@
+[gd_scene load_steps=12 format=3 uid="uid://bw0ei7qmoewvp"]
+
+[ext_resource type="Script" path="res://Scenes/Menus/Challenge/LoseChallenge/LoseChallenge.gd" id="1_0aq6p"]
+[ext_resource type="PackedScene" uid="uid://5kiirn6rgdru" path="res://Scenes/UIBackground/UIBackground.tscn" id="2_qqaun"]
+[ext_resource type="Material" uid="uid://boqnkeusewign" path="res://Materials/Circle/Circle.tres" id="3_ctk3j"]
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="4_yebae"]
+[ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="5_gnedu"]
+[ext_resource type="PackedScene" uid="uid://b58n06bsrcloe" path="res://Scenes/Hearts/Hearts.tscn" id="6_gvvb2"]
+[ext_resource type="Texture2D" uid="uid://jvvqc4manxa" path="res://assets/ButtonsV3/ButtonUp.png" id="7_n8ug2"]
+[ext_resource type="PackedScene" uid="uid://lhr2jjriuj17" path="res://Scenes/Menus/Challenge/UIElements/BuyHeart/BuyHeart.tscn" id="7_ndrqd"]
+[ext_resource type="Texture2D" uid="uid://4exmars5c0oj" path="res://assets/ButtonsV3/ButtonDown.png" id="8_3uuig"]
+[ext_resource type="PackedScene" uid="uid://dofspa3v0y84e" path="res://Scenes/Menus/UIElements/Exit.tscn" id="11_o5yiq"]
+[ext_resource type="PackedScene" uid="uid://dda0j6twcxp1p" path="res://Scenes/Menus/UIElements/Resources/Resources.tscn" id="12_vu2ky"]
+
+[node name="LoseChallenge" type="CanvasLayer"]
+script = ExtResource("1_0aq6p")
+
+[node name="UIBackground" parent="." instance=ExtResource("2_qqaun")]
+material = ExtResource("3_ctk3j")
+
+[node name="Control" type="Control" parent="."]
+material = ExtResource("3_ctk3j")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_yebae")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_gnedu")
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer"]
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/CenterContainer"]
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Hearts" parent="Control/MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource("6_gvvb2")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+use_parent_material = true
+custom_minimum_size = Vector2(680, 0)
+layout_mode = 2
+text = "Maybe next time"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BuyHeart" parent="Control/MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource("7_ndrqd")]
+visible = false
+layout_mode = 2
+
+[node name="Play" type="TextureButton" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("7_n8ug2")
+texture_pressed = ExtResource("8_3uuig")
+texture_hover = ExtResource("8_3uuig")
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer/CenterContainer/VBoxContainer/Play"]
+use_parent_material = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer/Play/CenterContainer"]
+use_parent_material = true
+layout_mode = 2
+text = "Retry"
+
+[node name="Exit" parent="Control/MarginContainer" instance=ExtResource("11_o5yiq")]
+layout_mode = 2
+
+[node name="Resources" parent="Control/MarginContainer" instance=ExtResource("12_vu2ky")]
+layout_mode = 2
+
+[node name="BlockTouch" type="Control" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Control/MarginContainer/CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
