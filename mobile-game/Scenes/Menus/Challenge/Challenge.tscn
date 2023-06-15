@@ -63,6 +63,7 @@ layout_mode = 2
 [node name="ChallengeLabel" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(680, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 72
 text = "Do a combo 20"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -72,29 +73,33 @@ autowrap_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="Play" type="TextureButton" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Play" type="TextureButton" parent="Control/MarginContainer/CenterContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("5_2unaf")
 texture_pressed = ExtResource("6_gscbw")
 texture_hover = ExtResource("6_gscbw")
 
-[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer/CenterContainer/VBoxContainer/Play"]
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/Play"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer/Play/CenterContainer"]
+[node name="Label" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/Play/CenterContainer"]
 layout_mode = 2
 text = "Play"
 
-[node name="InfoLabel" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="InfoLabel" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(680, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "You already completed this challenge. You will not loss hearts or earn rewards."
+text = "You will not loss hearts or earn rewards."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -105,4 +110,4 @@ layout_mode = 2
 [node name="Resources" parent="Control/MarginContainer" instance=ExtResource("9_ftmpu")]
 layout_mode = 2
 
-[connection signal="pressed" from="Control/MarginContainer/CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]

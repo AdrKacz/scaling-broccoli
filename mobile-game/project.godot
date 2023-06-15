@@ -27,6 +27,7 @@ AudioManager="*res://AutoLoad/AudioManager/AudioManager.tscn"
 sp="*res://addons/awesome_splash/utils_splash.gd"
 gd="*res://addons/godot-action/utils_gd_action.tscn"
 Memory="*res://AutoLoad/Memory/Memory.gd"
+Challenges="*res://AutoLoad/Challenges/Challenges.gd"
 
 [display]
 

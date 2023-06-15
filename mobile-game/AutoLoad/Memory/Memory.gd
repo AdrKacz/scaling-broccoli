@@ -80,6 +80,18 @@ func _ready():
 		read_challenge_from_memory()
 		read_resources_from_memory()
 	last_day_played = Time.get_datetime_string_from_system() # set to today
+	
+func get_challenge() -> Dictionary:
+	var challenge_args: Dictionary = config.get_value('challenge', 'args', {})
+	var challenge: Dictionary
+	if challenge_args.has('name'):
+		challenge = Challenges.getter[challenge_args['name']].call(challenge_args)
+	else:
+		challenge = Challenges.getter.values().pick_random().call()
+		config.set_value('challenge', 'args', challenge.get('args'))
+		print('Saved challenge:', challenge)
+	return challenge
+	
 
 func reset_resources():
 	streaks = 0
@@ -88,6 +100,7 @@ func reset_resources():
 func reset_challenge():
 	hearts = max_hearts
 	challenge_completed = false
+	config.set_value('challenge', 'args', null) # prepare to reset challenge
 
 func read_resources_from_memory():
 	streaks = config.get_value('parameters', 'streaks', 0)

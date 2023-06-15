@@ -12,6 +12,10 @@ extends Node
 var read_leaderboard_from_memory: bool = false
 var in_memory_leaderboard: Dictionary
 
+var character_state: int
+var background_state: int
+var challenge_args: Dictionary
+
 var main_node: MainNode
 
 func _ready():
@@ -20,6 +24,13 @@ func _ready():
 func assign_main_node(node: MainNode):
 	# Must be called first by Main Node
 	main_node = node
+	
+func change_node_to_challenge(args: Dictionary):
+	var params: Dictionary = {
+		'is_challenge': true,
+		'challenge': args
+	}
+	change_node_to(GameMaster, params)
 	
 func change_node_to(scene: PackedScene, params: Dictionary = {}):
 	main_node.change_node_to(scene, params)

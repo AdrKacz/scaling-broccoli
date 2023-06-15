@@ -3,7 +3,7 @@ extends CanvasLayer
 signal on_screen
 
 @export var is_challenge: bool = false
-@export var end_challenge_condition: Callable
+@export var challenge: Dictionary
 
 func _ready():
 	Constants.score = 0
@@ -35,19 +35,30 @@ func reset_combos_strike():
 	
 func _on_game_miss():
 	reset_combos_strike()
+	challenge_action('miss')
 
-func _on_game_score():
+func _on_game_score() -> void:
 	increment_combos_strike()
 	Constants.score += Constants.score_factor * Constants.combos_strike
 	$Control/GameUI.update_score(Constants.score)
+	challenge_action('score')
 	
-	if is_challenge and end_challenge_condition.call():
-		Session.change_node_to(Session.WinChallenge)
-
 func _on_game_wrong():
 	reset_combos_strike()
-	
 	if is_challenge == true:
 		Session.change_node_to(Session.LoseChallenge)
 	else:
 		Session.change_node_to(Session.LoseMenu)
+		
+func challenge_action(action: String) -> void:
+	if is_challenge and challenge.has(action):
+		var state: Challenges.States = challenge[action].call()
+		match state:
+			Challenges.States.WIN:
+				Session.change_node_to(Session.WinChallenge)
+			Challenges.States.LOSE:
+				Session.change_node_to(Session.LoseChallenge)
+
+
+func _on_game_skip():
+	challenge_action('skip')

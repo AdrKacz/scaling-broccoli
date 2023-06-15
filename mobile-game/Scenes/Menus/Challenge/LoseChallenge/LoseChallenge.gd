@@ -4,6 +4,7 @@ signal on_screen
 @onready var hearts: MarginContainer =  $Control/MarginContainer/CenterContainer/VBoxContainer/Hearts
 @onready var play: TextureButton = $Control/MarginContainer/CenterContainer/VBoxContainer/Play
 @onready var buy_heart: TextureButton = $Control/MarginContainer/CenterContainer/VBoxContainer/BuyHeart
+@onready var label: Label = $Control/MarginContainer/CenterContainer/VBoxContainer/Label
 
 func _ready():
 	if Memory.challenge_completed:
@@ -41,10 +42,4 @@ func appear():
 
 func _on_play_pressed():
 	Session.click()
-	Session.change_node_to(Session.GameMaster, {
-		"is_challenge": true,
-		"end_challenge_condition": func () -> bool:
-			if Constants.combos_strike >= 20:
-				return true
-			return false
-	})
+	Session.change_node_to_challenge(Memory.get_challenge())

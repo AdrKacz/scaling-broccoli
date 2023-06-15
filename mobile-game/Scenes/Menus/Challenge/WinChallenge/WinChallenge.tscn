@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://bpg0m18vt3qjv"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/Challenge/WinChallenge/WinChallenge.gd" id="1_cvoxr"]
 [ext_resource type="PackedScene" uid="uid://5kiirn6rgdru" path="res://Scenes/UIBackground/UIBackground.tscn" id="2_04yf6"]
