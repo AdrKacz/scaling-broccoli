@@ -17,7 +17,7 @@ func pick_random_with_weight(values: Array[int], weight: Array[int]) -> int:
 enum States {
 	WIN,
 	LOSE,
-	PASS
+	SKIP
 }
 
 var getter: Dictionary= {
@@ -36,7 +36,7 @@ func get_combo(args: Dictionary = {}) -> Dictionary:
 		'score': func () -> States:
 			if Constants.combos_strike >= _combo:
 				return States.WIN
-			return States.PASS
+			return States.SKIP
 	}
 
 func get_match_color(args: Dictionary = {}) -> Dictionary:
@@ -51,7 +51,7 @@ func get_match_color(args: Dictionary = {}) -> Dictionary:
 				Session.challenge_args['counter'] += 1
 			if Session.challenge_args['counter'] >= _match:
 				return States.WIN
-			return States.PASS
+			return States.SKIP
 	}
 	
 func get_score_without_color(args: Dictionary = {}) -> Dictionary:
@@ -65,7 +65,7 @@ func get_score_without_color(args: Dictionary = {}) -> Dictionary:
 				return States.LOSE
 			if Constants.score >= _score:
 				return States.WIN
-			return States.PASS
+			return States.SKIP
 	}
 
 func get_match_in_row(args: Dictionary = {}) -> Dictionary:
@@ -76,12 +76,12 @@ func get_match_in_row(args: Dictionary = {}) -> Dictionary:
 		'label': 'Match %s in a row' % _match,
 		'skip': func () -> States:
 			Session.challenge_args['counter'] = 0
-			return States.PASS,
+			return States.SKIP,
 		'score': func () -> States:
 			Session.challenge_args['counter'] += 1
 			if Session.challenge_args['counter'] >= _match:
 				return States.WIN
-			return States.PASS
+			return States.SKIP
 	}
 	
 func get_score(args: Dictionary = {}) -> Dictionary:
@@ -92,5 +92,5 @@ func get_score(args: Dictionary = {}) -> Dictionary:
 		'score': func () -> States:
 			if Constants.score >= _score:
 				return States.WIN
-			return States.PASS
+			return States.SKIP
 	}
