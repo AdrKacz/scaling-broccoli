@@ -5,12 +5,22 @@ extends Control
 signal score
 signal miss
 signal wrong
+signal skip
+
+var character_state: int = 0:
+	get:
+		return background_state
+	set(value):
+		$Character.state = value
+		Session.character_state = value
+		character_state = value
 
 var background_state: int = 0:
 	get:
 		return background_state
 	set(value):
 		$Background.color = Constants.State[value]
+		Session.background_state = background_state
 		background_state = value
 		
 func _ready():
@@ -24,7 +34,7 @@ func _ready():
 	Constants.state_matches = true
 
 func update_character_state():
-	$Character.state = StateManager.get_character_next_state($Character.state)
+	character_state = StateManager.get_character_next_state($Character.state)
 	
 func update_background_state():
 	background_state = StateManager.get_background_next_state(background_state, $Character.state)
@@ -46,6 +56,8 @@ func _on_character_tap():
 func _on_swap_background_timer_timeout():
 	if Constants.state_matches:
 		emit_signal("miss")
+	else:
+		emit_signal("skip")
 	update_background_state()
 	
 # Used for debugging, to comment out

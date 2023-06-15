@@ -2,13 +2,16 @@ extends CanvasLayer
 signal on_screen
 
 @onready var hearts: MarginContainer = $Control/MarginContainer/CenterContainer/VBoxContainer/Hearts
-@onready var play_button: TextureButton = $Control/MarginContainer/CenterContainer/VBoxContainer/Play
-@onready var play_button_label: Label = $Control/MarginContainer/CenterContainer/VBoxContainer/Play/CenterContainer/Label
-@onready var info_label: Label = $Control/MarginContainer/CenterContainer/VBoxContainer/InfoLabel
+@onready var play_button: TextureButton = $Control/MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/Play
+@onready var play_button_label: Label = $Control/MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/Play/CenterContainer/Label
+@onready var info_label: Label = $Control/MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/InfoLabel
 @onready var completion_label: Label = $Control/MarginContainer/CenterContainer/VBoxContainer/CompletionLabel
 @onready var buy_heart: TextureButton = $Control/MarginContainer/CenterContainer/VBoxContainer/BuyHeart
+@onready var challenge_label: Label = $Control/MarginContainer/CenterContainer/VBoxContainer/ChallengeLabel
+@onready var challenge: Dictionary = Memory.get_challenge()
 
 func _ready():
+	challenge_label.text = challenge['label']
 	if Memory.hearts == 0:
 		play_button.visible = false
 		buy_heart.visible = true
@@ -27,10 +30,4 @@ func _on_memory_update_hearts(_delta: int):
 
 func _on_play_pressed():
 	Session.click()
-	Session.change_node_to(Session.GameMaster, {
-		"is_challenge": true,
-		"end_challenge_condition": func () -> bool:
-			if Constants.combos_strike >= 20:
-				return true
-			return false
-	})
+	Session.change_node_to_challenge(challenge)
