@@ -34,7 +34,11 @@ workflows:
             --password $CM_KEY_PASSWORD
       - name: Build Android app
         script: |
-          cat ./mobile-game/export_presets.cfg 
+          cat ./mobile-game/export_presets.cfg
+          mkdir -p ../exports/android
+          cd mobile-game/
+          godot --export-release "Android" ../exports/android/scaling-broccoli.aab
+          cd ../
     artifacts:
       - exports/**/*.aab
       
