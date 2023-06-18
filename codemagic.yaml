@@ -15,11 +15,13 @@ workflows:
           unzip commandlinetools-mac-9477386_latest.zip
           mkdir android-sdk/
           mv cmdline-tools android-sdk/
+          cd android-sdk/
           mkdir -p latest/
           mv lib latest/
           mv bin latest/
           mv NOTICE.txt latest/
           mv source.properties latest/
+          cd ../
           alias sdkmanager=/Users/builder/android-sdk/cmdline-tools/latest/bin/sdkmanager
           sdkmanager --sdk_root=/Users/builder/android-sdk/ "platform-tools" "build-tools;33.0.2" "platforms;android-33" "cmdline-tools;latest" "cmake;3.10.2.4988404" "ndk;23.2.8568313"
       - name:  Install godot latest
