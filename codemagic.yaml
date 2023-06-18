@@ -21,7 +21,7 @@ workflows:
           mv NOTICE.txt latest/
           mv source.properties latest/
           cd ~/clone
-          /Users/builder/android-sdk/cmdline-tools/latest/bin/sdkmanager \
+          yes | /Users/builder/android-sdk/cmdline-tools/latest/bin/sdkmanager \
             --sdk_root=/Users/builder/android-sdk/ \
             "platform-tools" "build-tools;33.0.2" "platforms;android-33" \
             "cmdline-tools;latest" "cmake;3.10.2.4988404" "ndk;23.2.8568313"
@@ -34,21 +34,26 @@ workflows:
           GODOT_VERSION=$(godot --version | awk -F '.' '{print $1"."$2"."$3}')
           curl -LO https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz
           unzip Godot_v${GODOT_VERSION}-stable_export_templates.tpz
-          GODOT_TEMPLATE_DIR="/Users/builder/Library/Application\ Support/Godot/export_templates/${GODOT_VERSION}.stable/"
+          GODOT_TEMPLATE_DIR="/Users/builder/Library/Application Support/Godot/export_templates/${GODOT_VERSION}.stable/"
           mkdir -p $GODOT_TEMPLATE_DIR && mv templates/* $GODOT_TEMPLATE_DIR
           cd ~/clone
-      - name: Update Android SDK path in Godot Editor
-        script: |
-          python3 scripts/exports/update-editor-settings.py \
-            --path "/Users/builder/Library/Application\ Support/Godot/editor_settings-4.tres" \
-            --sdk "/Users/builder/android-sdk/"
       - name: Create export presets
         script: |
           python3 scripts/exports/create-export-preset.py \
             --path $CM_KEYSTORE_PATH \
             --alias $CM_KEY_ALIAS \
             --password $CM_KEY_PASSWORD
-      - name: Build Android app
+      - name: Build Android app - First attempt
+        script: |
+          cd mobile-game/
+          godot --export-release "Android" ../exports/android/scaling-broccoli.aab --headless
+          cd ~/clone
+      - name: Update Android SDK path in Godot Editor
+        script: |
+          python3 scripts/exports/update-editor-settings.py \
+            --path "/Users/builder/Library/Application Support/Godot/editor_settings-4.tres" \
+            --sdk "/Users/builder/android-sdk/"
+      - name: Build Android app - Second attempt
         script: |
           cd mobile-game/
           godot --export-release "Android" ../exports/android/scaling-broccoli.aab --headless
