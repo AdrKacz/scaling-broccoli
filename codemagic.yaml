@@ -32,6 +32,9 @@ workflows:
             --path $CM_KEYSTORE_PATH \
             --alias $CM_KEY_ALIAS \
             --password $CM_KEY_PASSWORD
+      - name: Build Android app
+        script: |
+          cat ./mobile-game/export-presets.cfg 
     artifacts:
       - exports/**/*.aab
       
