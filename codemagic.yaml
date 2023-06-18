@@ -32,6 +32,10 @@ workflows:
             --path $CM_KEYSTORE_PATH \
             --alias $CM_KEY_ALIAS \
             --password $CM_KEY_PASSWORD
+      - name: Import resources
+        script: |
+          # https://github.com/godotengine/godot-proposals/issues/1362#issuecomment-1379140108
+          echo "Workaround to import assets"
       - name: Build Android app
         script: |
           mkdir -p ../exports/android
