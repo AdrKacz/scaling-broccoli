@@ -11,6 +11,7 @@ workflows:
     scripts:
       - name:  Install android sdk
         script: |
+          cd ~/
           curl -LO https://dl.google.com/android/repository/commandlinetools-mac-9477386_latest.zip
           unzip commandlinetools-mac-9477386_latest.zip
           mkdir android-sdk/ && mv cmdline-tools android-sdk/ && cd android-sdk/cmdline-tools
@@ -27,12 +28,13 @@ workflows:
           brew install --cask godot
       - name: Install export templates
         script: |
+          cd ~/
           GODOT_VERSION=$(godot --version | awk -F '.' '{print $1"."$2"."$3}')
           curl -LO https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz
           unzip Godot_v${GODOT_VERSION}-stable_export_templates.tpz
           GODOT_TEMPLATE_DIR="/Users/builder/Library/Application\ Support/Godot/export_templates/${GODOT_VERSION}.stable/"
-          mkdir -p $GODOT_TEMPLATE_DIR
-          mv templates/* $GODOT_TEMPLATE_DIR
+          mkdir -p $GODOT_TEMPLATE_DIR && mv templates/* $GODOT_TEMPLATE_DIR
+          cd ~/clone
       - name: Update Android SDK path in Godot Editor
         script: |
           python3 scripts/exports/update-editor-settings.py \
