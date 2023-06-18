@@ -25,7 +25,7 @@ workflows:
         script: |
           mkdir -p "${GODOT_TEMPLATES_DIR}" && mv templates "${GODOT_TEMPLATES_DIR}/${GODOT_VERSION}.stable"
       - name: Create build directory
-          script: |
+        script: |
           mkdir -p exports/android/
     artifacts:
       - exports/**/*.aab
