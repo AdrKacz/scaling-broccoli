@@ -37,18 +37,23 @@ workflows:
           GODOT_TEMPLATE_DIR="/Users/builder/Library/Application\ Support/Godot/export_templates/${GODOT_VERSION}.stable/"
           mkdir -p $GODOT_TEMPLATE_DIR && mv templates/* $GODOT_TEMPLATE_DIR
           cd ~/clone
-      - name: Update Android SDK path in Godot Editor
-        script: |
-          python3 scripts/exports/update-editor-settings.py \
-            --path "/Users/builder/Library/Application\ Support/Godot/editor_settings-4.tres" \
-            --sdk "/Users/builder/android-sdk/"
       - name: Create export presets
         script: |
           python3 scripts/exports/create-export-preset.py \
             --path $CM_KEYSTORE_PATH \
             --alias $CM_KEY_ALIAS \
             --password $CM_KEY_PASSWORD
-      - name: Build Android app
+      - name: Build Android app - First attempt
+        script: |
+          cd mobile-game/
+          godot --export-release "Android" ../exports/android/scaling-broccoli.aab --headless
+          cd ~/clone
+      - name: Update Android SDK path in Godot Editor
+        script: |
+          python3 scripts/exports/update-editor-settings.py \
+            --path "/Users/builder/Library/Application\ Support/Godot/editor_settings-4.tres" \
+            --sdk "/Users/builder/android-sdk/"
+      - name: Build Android app - Second attempt
         script: |
           cd mobile-game/
           godot --export-release "Android" ../exports/android/scaling-broccoli.aab --headless
