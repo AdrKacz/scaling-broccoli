@@ -25,11 +25,6 @@ workflows:
             --path $CM_KEYSTORE_PATH \
             --alias $CM_KEY_ALIAS \
             --password $CM_KEY_PASSWORD
-      - name: Import resources
-        script: |
-          cd mobile-game/
-          godot --headless --editor --quite
-          cd ../
       - name: Build Android app
         script: |
           mkdir -p ../exports/android
