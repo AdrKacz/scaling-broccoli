@@ -13,9 +13,7 @@ workflows:
         script: |
           curl -LO https://dl.google.com/android/repository/commandlinetools-mac-9477386_latest.zip
           unzip commandlinetools-mac-9477386_latest.zip
-          mkdir android-sdk/
-          mv cmdline-tools android-sdk/
-          cd android-sdk/
+          mkdir android-sdk/ && mv cmdline-tools android-sdk/ && cd android-sdk/
           mkdir -p latest/
           mv lib latest/
           mv bin latest/
