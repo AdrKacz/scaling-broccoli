@@ -7,31 +7,14 @@ workflows:
         - scaling_broccoli
       vars:
         PACKAGE_NAME: "org.godotengine.gamejammerge"
-        GODOT_VERSION: 4.0.3
-        GODOT_EXEC_URL: https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_macos.universal.zip
-        GODOT_TEMPLATES_URL: https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz
-        GODOT_TEMPLATES_DIR: "/Users/builder/Library/Application\ Support/Godot/export_templates"
-        GODOT_EXEC: "Godot.app/Contents/MacOS/Godot"
         EXPORT_TYPE: "Android"
     scripts:
-      - name:  Download Godot
+      - name:  Install Godot Latest
         script: |
-          pwd && ls
-          echo ${GODOT_EXEC_URL}
-          curl -LO ${GODOT_EXEC_URL} && unzip Godot_v${GODOT_VERSION}-stable_macos.universal.zip
-          pwd && ls
-      - name:  Download Godot templates
+          brew install --cask godot
+      - name:  Install export templates
         script: |
-          pwd && ls
-          echo ${GODOT_TEMPLATES_URL}
-          curl -LO ${GODOT_TEMPLATES_URL} && unzip Godot_v${GODOT_VERSION}-stable_export_templates.tpz
-          pwd && ls
-      - name:  Setup templates
-        script: |
-          pwd && ls
-          echo ${GODOT_TEMPLATES_DIR}
-          mkdir -p "${GODOT_TEMPLATES_DIR}" && mv templates "${GODOT_TEMPLATES_DIR}/${GODOT_VERSION}.stable"
-          pwd && ls
+          godot --install-export-templates
       - name: Create build directory
         script: |
           mkdir -p exports/android/
@@ -49,7 +32,7 @@ workflows:
         script: |
           mkdir -p ../exports/android
           cd mobile-game/
-          ${GODOT_EXEC} --export-release "Android" ../exports/android/scaling-broccoli.aab --headless
+          godot --export-release "Android" ../exports/android/scaling-broccoli.aab --headless
           cd ../
     artifacts:
       - exports/**/*.aab
