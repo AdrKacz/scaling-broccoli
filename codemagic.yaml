@@ -9,12 +9,9 @@ workflows:
         PACKAGE_NAME: "org.godotengine.gamejammerge"
         EXPORT_TYPE: "Android"
     scripts:
-      - name:  Install Godot Latest
+      - name:  Install godot latest
         script: |
           brew install --cask godot
-      - name:  Install export templates
-        script: |
-          godot --install-export-templates
       - name: Create build directory
         script: |
           mkdir -p exports/android/
@@ -26,8 +23,7 @@ workflows:
             --password $CM_KEY_PASSWORD
       - name: Import resources
         script: |
-          # https://github.com/godotengine/godot-proposals/issues/1362#issuecomment-1379140108
-          echo "Workaround to import assets"
+          godot --headless --editor --quite
       - name: Build Android app
         script: |
           mkdir -p ../exports/android
