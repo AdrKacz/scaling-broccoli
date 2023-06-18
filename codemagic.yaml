@@ -9,6 +9,10 @@ workflows:
         PACKAGE_NAME: "org.godotengine.gamejammerge"
         EXPORT_TYPE: "Android"
     scripts:
+      - name:  Install dependencies
+        script: |
+          brew install openjdk@11
+          brew install --cask android-sdk
       - name:  Install godot latest
         script: |
           brew install --cask godot
