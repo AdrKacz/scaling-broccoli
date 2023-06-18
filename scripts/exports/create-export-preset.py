@@ -27,7 +27,10 @@ args = parser.parse_args()
 replacement_pairs = {
     'keystore/release': args.path,
     'keystore/release_user': args.alias,
-    'keystore/release_password': args.password
+    'keystore/release_password': args.password,
+    'keystore/debug': args.path,
+    'keystore/debug_user': args.alias,
+    'keystore/debug_password': args.password
 }
 
 replace_config_values(template_config_file, config_file, replacement_pairs)

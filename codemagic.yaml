@@ -6,23 +6,20 @@ workflows:
       android_signing:
         - scaling_broccoli
       vars:
-        GODOT_VERSION: 4.0.3
         PACKAGE_NAME: "org.godotengine.gamejammerge"
         EXPORT_TYPE: "Android"
     scripts:
       - name:  Install godot latest
         script: |
-          brew install --cask godot
+          brew install --cask "godot@$GODOT_VERSION"
       - name: Install export templates
         script: |
+          GODOT_VERSION=$(godot --version | awk -F '.' '{print $1"."$2"."$3}')
           curl -LO https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz
           unzip Godot_v${GODOT_VERSION}-stable_export_templates.tpz
           GODOT_TEMPLATE_DIR="/Users/builder/Library/Application Support/Godot/export_templates/${GODOT_VERSION}.stable/"
           mkdir -p $GODOT_TEMPLATE_DIR
-          mv templates/* "$GODOT_TEMPLATE_DIR
-      - name: Create build directory
-        script: |
-          mkdir -p exports/android/
+          mv templates/* $GODOT_TEMPLATE_DIR
       - name: Create export presets
         script: |
           python3 scripts/exports/create-export-preset.py \
@@ -31,7 +28,6 @@ workflows:
             --password $CM_KEY_PASSWORD
       - name: Build Android app
         script: |
-          mkdir -p ../exports/android
           cd mobile-game/
           godot --export-release "Android" ../exports/android/scaling-broccoli.aab --headless
           cd ../
