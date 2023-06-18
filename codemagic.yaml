@@ -1,6 +1,6 @@
 workflows:
-  google-play-store-beta:
-    name: Build and Deploy to Google Play Store Beta Track
+  build-deploy-beta:
+    name: Build and Deploy to Beta
     max_build_duration: 60
     environment:
       android_signing:
@@ -16,13 +16,22 @@ workflows:
     scripts:
       - name:  Download Godot
         script: |
+          pwd && ls
+          echo ${GODOT_EXEC_URL}
           curl -LO ${GODOT_EXEC_URL} && unzip Godot_v${GODOT_VERSION}-stable_macos.universal.zip
+          pwd && ls
       - name:  Download Godot templates
         script: |
+          pwd && ls
+          echo ${GODOT_TEMPLATES_URL}
           curl -LO ${GODOT_TEMPLATES_URL} && unzip Godot_v${GODOT_VERSION}-stable_export_templates.tpz
+          pwd && ls
       - name:  Setup templates
         script: |
+          pwd && ls
+          echo ${GODOT_TEMPLATES_DIR}
           mkdir -p "${GODOT_TEMPLATES_DIR}" && mv templates "${GODOT_TEMPLATES_DIR}/${GODOT_VERSION}.stable"
+          pwd && ls
       - name: Create build directory
         script: |
           mkdir -p exports/android/
@@ -40,7 +49,7 @@ workflows:
         script: |
           mkdir -p ../exports/android
           cd mobile-game/
-          ${GODOT_EXEC} --export-release "Android" ../exports/android/scaling-broccoli.aab
+          ${GODOT_EXEC} --export-release "Android" ../exports/android/scaling-broccoli.aab --headless
           cd ../
     artifacts:
       - exports/**/*.aab
