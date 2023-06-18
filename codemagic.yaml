@@ -1,0 +1,32 @@
+workflows:
+  google-play-store-beta:
+    name: Build and Deploy to Google Play Store Beta Track
+    max_build_duration: 60
+    instance_type: max_mini_m1
+    environment:
+      android_signing:
+        - scaling_broccoli
+      vars:
+        PACKAGE_NAME: "org.godotengine.gamejammerge"
+        GODOT_VERSION: 4.0.3
+        GODOT_EXEC_URL: https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_macos.universal.zip
+        GODOT_TEMPLATES_URL: https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz
+        GODOT_TEMPLATES_DIR: "/Users/builder/Library/Application\ Support/Godot/export_templates"
+        GODOT_EXEC: "Godot.app/Contents/MacOS/Godot"
+        EXPORT_TYPE: "Android"
+    scripts:
+      - name:  Download Godot
+        script: |
+          curl -LO ${GODOT_EXEC_URL} && unzip Godot_v${GODOT_VERSION}-stable_macos.universal.zip
+      - name:  Download Godot templates
+        script: |
+          curl -LO ${GODOT_TEMPLATES_URL} && unzip Godot_v${GODOT_VERSION}-stable_export_templates.tpz
+      - name:  Setup templates
+        script: |
+          mkdir -p "${GODOT_TEMPLATES_DIR}" && mv templates "${GODOT_TEMPLATES_DIR}/${GODOT_VERSION}.stable"
+      - name: Create build directory
+          script: mkdir -p exports/android/
+    artifacts:
+      - exports/**/*.aab
+      
+      

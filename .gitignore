@@ -1,3 +1,4 @@
 exports/
+!scripts/exports
 
 *.DS_Store

@@ -219,3 +219,20 @@ You won't be able to upload videos directly. You must create a Youtube video and
 > Paste these link on the website where your app is available for download or in the description section of the platform or marketplace you’re using.
 
  - <a href="https://www.flaticon.com/free-icons/thunder" title="thunder icons">Thunder icons created by Smashicons - Flaticon</a>
+
+# Automatic deployment to Google Play Console
+
+We use [Google API Python Client](https://github.com/googleapis/google-api-python-client) which is in maintenance mode. However it is the one given by the [official documentation](https://developers.google.com/android-publisher/libraries).
+
+In the near future, we will update to [Google Cloud Python](https://github.com/googleapis/google-cloud-python) but we don't see any *libraries* to communicate with Google Play Console yet.
+
+ ## How to configure Google Play Console API access
+
+1. Follow guide on [official documentation](https://developers.google.com/android-publisher/getting_started)
+2. When asked to create a service account, **add the permission `Service Account User`**
+  1. You should now see your new service account in Google Play Console under API access
+  2. Click on `Manage Play Console permissions` on its left
+  3. Select `App permissions` tab and add your app with `Add app`
+  4. Keep the permissions by default and select `Apply`
+  5. Click on `Invite user` and then `Send invite` to save your change
+3. Create a new key with `JSON` format and download it
