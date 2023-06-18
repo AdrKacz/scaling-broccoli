@@ -28,7 +28,10 @@ workflows:
           mkdir -p exports/android/
       - name: Create export presets
         script: |
-          python3 scripts/exports/create-export-preset.py
+          python3 scripts/exports/create-export-preset.py \
+            --path $CM_KEYSTORE_PATH \
+            --alias $CM_KEY_ALIAS \
+            --password $CM_KEY_PASSWORD
     artifacts:
       - exports/**/*.aab
       
