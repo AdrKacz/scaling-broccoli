@@ -26,6 +26,9 @@ workflows:
       - name: Create build directory
         script: |
           mkdir -p exports/android/
+      - name: Create export presets
+        script: |
+          python3 scripts/exports/create-export-preset.py
     artifacts:
       - exports/**/*.aab
       
