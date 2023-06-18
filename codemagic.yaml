@@ -21,8 +21,10 @@ workflows:
           mv NOTICE.txt latest/
           mv source.properties latest/
           cd ~/clone
-          alias sdkmanager=/Users/builder/android-sdk/cmdline-tools/latest/bin/sdkmanager
-          sdkmanager --sdk_root=/Users/builder/android-sdk/ "platform-tools" "build-tools;33.0.2" "platforms;android-33" "cmdline-tools;latest" "cmake;3.10.2.4988404" "ndk;23.2.8568313"
+          /Users/builder/android-sdk/cmdline-tools/latest/bin/sdkmanager \
+            --sdk_root=/Users/builder/android-sdk/ \
+            "platform-tools" "build-tools;33.0.2" "platforms;android-33" \
+            "cmdline-tools;latest" "cmake;3.10.2.4988404" "ndk;23.2.8568313"
       - name:  Install godot latest
         script: |
           brew install --cask godot
