@@ -34,7 +34,7 @@ workflows:
             --password $CM_KEY_PASSWORD
       - name: Build Android app
         script: |
-          cat ./mobile-game/export-presets.cfg 
+          cat ./mobile-game/export_presets.cfg 
     artifacts:
       - exports/**/*.aab
       
