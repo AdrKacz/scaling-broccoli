@@ -9,6 +9,19 @@ workflows:
         PACKAGE_NAME: "org.godotengine.gamejammerge"
         EXPORT_TYPE: "Android"
     scripts:
+      - name:  Install android sdk
+        script: |
+          curl -LO https://dl.google.com/android/repository/commandlinetools-mac-9477386_latest.zip
+          unzip commandlinetools-mac-9477386_latest.zip
+          mkdir android-sdk/
+          mv cmdline-tools android-sdk/
+          mkdir -p latest/
+          mv lib latest/
+          mv bin latest/
+          mv NOTICE.txt latest/
+          mv source.properties latest/
+          alias sdkmanager=/Users/builder/android-sdk/cmdline-tools/latest/bin/sdkmanager
+          sdkmanager --sdk_root=/Users/builder/android-sdk/ "platform-tools" "build-tools;33.0.2" "platforms;android-33" "cmdline-tools;latest" "cmake;3.10.2.4988404" "ndk;23.2.8568313"
       - name:  Install godot latest
         script: |
           brew install --cask godot
@@ -17,9 +30,14 @@ workflows:
           GODOT_VERSION=$(godot --version | awk -F '.' '{print $1"."$2"."$3}')
           curl -LO https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz
           unzip Godot_v${GODOT_VERSION}-stable_export_templates.tpz
-          GODOT_TEMPLATE_DIR="/Users/builder/Library/Application Support/Godot/export_templates/${GODOT_VERSION}.stable/"
+          GODOT_TEMPLATE_DIR="/Users/builder/Library/Application\ Support/Godot/export_templates/${GODOT_VERSION}.stable/"
           mkdir -p $GODOT_TEMPLATE_DIR
           mv templates/* $GODOT_TEMPLATE_DIR
+      - name: Update Android SDK path in Godot Editor
+        script: |
+          python3 scripts/exports/update-editor-settings.py \
+            --path "/Users/builder/Library/Application\ Support/Godot/editor_settings-4.tres" \
+            --sdk "/Users/builder/android-sdk/"
       - name: Create export presets
         script: |
           python3 scripts/exports/create-export-preset.py \
