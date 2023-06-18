@@ -13,13 +13,13 @@ workflows:
         script: |
           curl -LO https://dl.google.com/android/repository/commandlinetools-mac-9477386_latest.zip
           unzip commandlinetools-mac-9477386_latest.zip
-          mkdir android-sdk/ && mv cmdline-tools android-sdk/ && cd android-sdk/
+          mkdir android-sdk/ && mv cmdline-tools android-sdk/ && cd android-sdk/cmdline-tools
           mkdir -p latest/
           mv lib latest/
           mv bin latest/
           mv NOTICE.txt latest/
           mv source.properties latest/
-          cd ../
+          cd ~/clone
           alias sdkmanager=/Users/builder/android-sdk/cmdline-tools/latest/bin/sdkmanager
           sdkmanager --sdk_root=/Users/builder/android-sdk/ "platform-tools" "build-tools;33.0.2" "platforms;android-33" "cmdline-tools;latest" "cmake;3.10.2.4988404" "ndk;23.2.8568313"
       - name:  Install godot latest
@@ -48,7 +48,7 @@ workflows:
         script: |
           cd mobile-game/
           godot --export-release "Android" ../exports/android/scaling-broccoli.aab --headless
-          cd ../
+          cd ~/clone
     artifacts:
       - exports/**/*.aab
       
