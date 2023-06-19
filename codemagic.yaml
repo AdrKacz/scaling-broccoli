@@ -50,11 +50,6 @@ workflows:
           unzip "${GODOT_TEMPLATE_DIR}android_source.zip" ./mobile-game/
           mv ./mobile-game/android_source ./mobile-game/android
           ls ./mobile-game
-        script: |
-          python3 scripts/exports/create-export-preset.py \
-            --path $CM_KEYSTORE_PATH \
-            --alias $CM_KEY_ALIAS \
-            --password $CM_KEY_PASSWORD
       - name: Build Android app - First attempt
         script: |
           cd mobile-game/
