@@ -48,7 +48,7 @@ workflows:
           GODOT_VERSION=$(godot --version | awk -F '.' '{print $1"."$2"."$3}')
           GODOT_TEMPLATE_ANDROID="/Users/builder/Library/Application Support/Godot/export_templates/${GODOT_VERSION}.stable/android_source.zip"
           mkdir -p ./mobile-game/android/
-          unzip "$GODOT_TEMPLATE_DIR_ANDROID" -d ./mobile-game/android/
+          unzip "$GODOT_TEMPLATE_ANDROID" -d ./mobile-game/android/
           ls ./mobile-game
       - name: Build Android app - First attempt
         script: |
