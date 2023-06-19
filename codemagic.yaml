@@ -45,9 +45,10 @@ workflows:
             --password $CM_KEY_PASSWORD
       - name: Create android template
         script: |
-          echo $GODOT_TEMPLATE_DIR
-          pwd
-          unzip "${GODOT_TEMPLATE_DIR}android_source.zip" ./mobile-game/
+          GODOT_VERSION=$(godot --version | awk -F '.' '{print $1"."$2"."$3}')
+          GODOT_TEMPLATE_DIR="/Users/builder/Library/Application Support/Godot/export_templates/${GODOT_VERSION}.stable/"
+          cp "${GODOT_TEMPLATE_DIR}android_source.zip" ./mobile-game/
+          unzip ./mobile-game/android_source.zip && rm -rf ./mobile-game/android_source.zip
           mv ./mobile-game/android_source ./mobile-game/android
           ls ./mobile-game
       - name: Build Android app - First attempt
