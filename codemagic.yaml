@@ -34,7 +34,7 @@ workflows:
           GODOT_VERSION=$(godot --version | awk -F '.' '{print $1"."$2"."$3}')
           curl -LO https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz
           unzip Godot_v${GODOT_VERSION}-stable_export_templates.tpz
-          GODOT_TEMPLATE_DIR="/Users/builder/Library/Application Support/Godot/export_templates/${GODOT_VERSION}.stable/"
+          GODOT_TEMPLATE_DIR="/Users/builder/Library/Application\ Support/Godot/export_templates/${GODOT_VERSION}.stable/"
           mkdir -p $GODOT_TEMPLATE_DIR && mv templates/* $GODOT_TEMPLATE_DIR
           cd ~/clone
       - name: Create export presets
@@ -46,7 +46,7 @@ workflows:
       - name: Create android template
         script: |
           GODOT_VERSION=$(godot --version | awk -F '.' '{print $1"."$2"."$3}')
-          GODOT_TEMPLATE_ANDROID="/Users/builder/Library/Application Support/Godot/export_templates/${GODOT_VERSION}.stable/android_source.zip"
+          GODOT_TEMPLATE_ANDROID="/Users/builder/Library/Application\ Support/Godot/export_templates/${GODOT_VERSION}.stable/android_source.zip"
           mkdir -p ./mobile-game/android/
           unzip $GODOT_TEMPLATE_ANDROID -d ./mobile-game/android/
           ls ./mobile-game
