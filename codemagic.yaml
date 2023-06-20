@@ -47,8 +47,11 @@ workflows:
         script: |
           GODOT_VERSION=$(godot --version | awk -F '.' '{print $1"."$2"."$3}')
           GODOT_TEMPLATE_ANDROID="/Users/builder/Library/Application Support/Godot/export_templates/${GODOT_VERSION}.stable/android_source.zip"
-          mkdir -p ./mobile-game/android/
-          unzip "$GODOT_TEMPLATE_ANDROID" -d ./mobile-game/android/
+          mkdir -p ./mobile-game/android/build/
+          mkdir -p ./mobile-game/android/plugins/
+          echo "${GODOT_VERSION}.stable" > ./mobile-game/android/.build_version
+          touch ./mobile-game/android/build/.gdignore
+          unzip "$GODOT_TEMPLATE_ANDROID" -d ./mobile-game/android/build/
           ls ./mobile-game
       - name: Build Android app - First attempt
         script: |
