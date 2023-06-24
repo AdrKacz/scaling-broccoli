@@ -53,16 +53,16 @@ workflows:
           touch ./test-cicd/android/build/.gdignore
           unzip "$GODOT_TEMPLATE_ANDROID" -d ./test-cicd/android/build/
           ls ./test-cicd
-      - name: Build Android app - First attempt
-        script: |
-          cd test-cicd/
-          godot --export-release "Android" ../exports/android/scaling-broccoli.aab --headless
-          cd ~/clone
       - name: Update Android SDK path in Godot Editor
         script: |
           python3 scripts/exports/update-editor-settings.py \
             --path "/Users/builder/Library/Application Support/Godot/editor_settings-4.tres" \
             --sdk "/Users/builder/android-sdk/"
+      - name: Build Android app - First attempt
+        script: |
+          cd test-cicd/
+          godot --export-release "Android" ../exports/android/scaling-broccoli.aab --headless
+          cd ~/clone
       - name: Build Android app - Second attempt
         script: |
           cd test-cicd/
