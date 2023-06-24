@@ -3,7 +3,7 @@ workflows:
     name: Build and Deploy to Beta
     max_build_duration: 60
     integrations:
-      app_store_connect: codemagic
+      app_store_connect: Scaling Broccoli
     environment:
       xcode: latest
       android_signing:
