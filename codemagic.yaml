@@ -5,13 +5,21 @@ workflows:
     environment:
       android_signing:
         - scaling_broccoli
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.kida.matchymatchysamesame
       vars:
         PACKAGE_NAME: "org.godotengine.gamejammerge"
         EXPORT_TYPE: "Android"
+        GAME_DIR: "mobile-game"
+        IOS_EXPORT_DIR: "exports/ios"
+        BUNDLE_ID: "com.kida.matchymatchysamesame"
+        XCODE_WORKSPACE: "scaling-broccoli.xcodeproj"
+        XCODE_SCHEME: "scaling-broccoli"
     scripts:
       - name:  Install android sdk
         script: |
-          cd ~/
+          cd
           curl -LO https://dl.google.com/android/repository/commandlinetools-mac-9477386_latest.zip
           unzip commandlinetools-mac-9477386_latest.zip
           mkdir android-sdk/ && mv cmdline-tools android-sdk/ && cd android-sdk/cmdline-tools
@@ -20,7 +28,7 @@ workflows:
           mv bin latest/
           mv NOTICE.txt latest/
           mv source.properties latest/
-          cd ~/clone
+          cd $CM_BUILD_DIR
           yes | /Users/builder/android-sdk/cmdline-tools/latest/bin/sdkmanager \
             --sdk_root=/Users/builder/android-sdk/ \
             "platform-tools" "build-tools;33.0.2" "platforms;android-33" \
@@ -30,13 +38,13 @@ workflows:
           brew install --cask godot
       - name: Install export templates
         script: |
-          cd ~/
+          cd
           GODOT_VERSION=$(godot --version | awk -F '.' '{print $1"."$2"."$3}')
           curl -LO https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz
           unzip Godot_v${GODOT_VERSION}-stable_export_templates.tpz
           GODOT_TEMPLATE_DIR="/Users/builder/Library/Application Support/Godot/export_templates/${GODOT_VERSION}.stable/"
           mkdir -p "$GODOT_TEMPLATE_DIR" && mv templates/* "$GODOT_TEMPLATE_DIR"
-          cd ~/clone
+          cd $CM_BUILD_DIR
       - name: Create export presets
         script: |
           python3 scripts/exports/create-export-preset.py \
@@ -47,17 +55,16 @@ workflows:
         script: |
           GODOT_VERSION=$(godot --version | awk -F '.' '{print $1"."$2"."$3}')
           GODOT_TEMPLATE_ANDROID="/Users/builder/Library/Application Support/Godot/export_templates/${GODOT_VERSION}.stable/android_source.zip"
-          mkdir -p ./test-cicd/android/build/
-          mkdir -p ./test-cicd/android/plugins/
-          echo "${GODOT_VERSION}.stable" > ./test-cicd/android/.build_version
-          touch ./test-cicd/android/build/.gdignore
-          unzip "$GODOT_TEMPLATE_ANDROID" -d ./test-cicd/android/build/
-          ls ./test-cicd
-      - name: Build Android app - First attempt
+          mkdir -p "./$GAME_DIR/android/build/"
+          mkdir -p "./$GAME_DIR/android/plugins/"
+          echo "${GODOT_VERSION}.stable" > "./$GAME_DIR/android/.build_version"
+          touch "./$GAME_DIR/android/build/.gdignore"
+          unzip "$GODOT_TEMPLATE_ANDROID" -d "./$GAME_DIR/android/build/"
+          ls $GAME_DIR
+      - name: Build Android app - First attempt to import files
         script: |
-          cd test-cicd/
-          godot --export-release "Android" ../exports/android/test-cicd.aab --headless
-          cd ~/clone
+          cd "$CM_BUILD_DIR/$GAME_DIR"
+          godot --export-release "Android" --headless
       - name: Update Android SDK path in Godot Editor
         script: |
           python3 scripts/exports/update-editor-settings.py \
@@ -65,15 +72,21 @@ workflows:
             --sdk "/Users/builder/android-sdk/"
       - name: Build Android app - Second attempt
         script: |
-          cd test-cicd/
-          godot --export-release "Android" ../exports/android/test-cicd.aab --headless
-          cd ~/clone
-      - name: Build Android app - Third attempt
+          cd "$CM_BUILD_DIR/$GAME_DIR"
+          godot --export-release "Android" --headless
+      - name: Set up code signing settings on Xcode project
+        script: xcode-project use-profiles
+      - name: Build iOS app with Godot
         script: |
-          cd test-cicd/
-          godot --export-release "Android" ../exports/android/test-cicd.aab --headless
-          cd ~/clone
+          cd "$CM_BUILD_DIR/$GAME_DIR"
+          godot --export-release "iOS Production" --headless
+      - name: Build iOS ipa app for distribution
+        script: |
+          xcode-project build-ipa \
+            --workspace "$CM_BUILD_DIR/$IOS_EXPORT_DIR/$XCODE_WORKSPACE" \
+            --scheme "$XCODE_SCHEME"
     artifacts:
       - exports/**/*.aab
+      - exports/**/*.ipa
       
       
