@@ -3,6 +3,7 @@ workflows:
     name: Build and Deploy to Beta
     max_build_duration: 60
     environment:
+      xcode: latest
       android_signing:
         - scaling_broccoli
       ios_signing:
