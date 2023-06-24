@@ -47,15 +47,15 @@ workflows:
         script: |
           GODOT_VERSION=$(godot --version | awk -F '.' '{print $1"."$2"."$3}')
           GODOT_TEMPLATE_ANDROID="/Users/builder/Library/Application Support/Godot/export_templates/${GODOT_VERSION}.stable/android_source.zip"
-          mkdir -p ./mobile-game/android/build/
-          mkdir -p ./mobile-game/android/plugins/
-          echo "${GODOT_VERSION}.stable" > ./mobile-game/android/.build_version
-          touch ./mobile-game/android/build/.gdignore
-          unzip "$GODOT_TEMPLATE_ANDROID" -d ./mobile-game/android/build/
-          ls ./mobile-game
+          mkdir -p ./test-cicd/android/build/
+          mkdir -p ./test-cicd/android/plugins/
+          echo "${GODOT_VERSION}.stable" > ./test-cicd/android/.build_version
+          touch ./test-cicd/android/build/.gdignore
+          unzip "$GODOT_TEMPLATE_ANDROID" -d ./test-cicd/android/build/
+          ls ./test-cicd
       - name: Build Android app - First attempt
         script: |
-          cd mobile-game/
+          cd test-cicd/
           godot --export-release "Android" ../exports/android/scaling-broccoli.aab --headless
           cd ~/clone
       - name: Update Android SDK path in Godot Editor
@@ -65,8 +65,8 @@ workflows:
             --sdk "/Users/builder/android-sdk/"
       - name: Build Android app - Second attempt
         script: |
-          cd mobile-game/
-          godot --export-release "Android" ../exports/android/scaling-broccoli.aab --headless
+          cd test-cicd/
+          godot --export-release "Android" ../exports/android/test-cicd.aab --headless
           cd ~/clone
     artifacts:
       - exports/**/*.aab
