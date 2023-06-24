@@ -16,6 +16,7 @@ workflows:
         BUNDLE_ID: "com.kida.matchymatchysamesame"
         XCODE_WORKSPACE: "scaling-broccoli.xcodeproj"
         XCODE_SCHEME: "scaling-broccoli"
+        APP_ID: 1580700973
     scripts:
       - name:  Install android sdk
         script: |
@@ -80,6 +81,12 @@ workflows:
         script: |
           cd "$CM_BUILD_DIR/$GAME_DIR"
           godot --export-release "iOS Production" --headless
+      - name: Increment build number
+        script: | 
+          #!/bin/sh
+          cd $CM_BUILD_DIR
+          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
+          agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
       - name: Build iOS ipa app for distribution
         script: |
           xcode-project build-ipa \
@@ -88,5 +95,9 @@ workflows:
     artifacts:
       - exports/**/*.aab
       - exports/**/*.ipa
+    publishing: 
+      email:
+        recipients:
+          - adrien.kaczmarek@gmail.com
       
       

@@ -11,7 +11,7 @@ def replace_config_values(input_file, output_file, key_value_pairs):
                         line = f'{key}="{value}"\n'
                         break
                 output_f.write(line)
-config_file = './test-cicd/export_presets.cfg'
+config_file = './mobile-game/export_presets.cfg'
 template_config_file = './scripts/exports/export_presets.cfg'
 
 parser = argparse.ArgumentParser(
