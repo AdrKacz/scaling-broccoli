@@ -2,6 +2,8 @@ workflows:
   build-deploy-beta:
     name: Build and Deploy to Beta
     max_build_duration: 60
+    integrations:
+      app_store_connect: codemagic
     environment:
       xcode: latest
       android_signing:
