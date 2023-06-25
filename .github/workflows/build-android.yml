@@ -17,7 +17,6 @@ jobs:
         run: brew install --cask godot
       - name: Install Android SDK
         run: |
-          which godot
           curl -LO https://dl.google.com/android/repository/commandlinetools-mac-9477386_latest.zip
           unzip commandlinetools-mac-9477386_latest.zip
           mkdir android-sdk/ && mv cmdline-tools android-sdk/ && cd android-sdk/cmdline-tools
@@ -26,7 +25,7 @@ jobs:
           mv bin latest/
           mv NOTICE.txt latest/
           mv source.properties latest/
-          ls
+          cd ../../
           yes | android-sdk/cmdline-tools/latest/bin/sdkmanager \
             --sdk_root=android-sdk/ \
             "platform-tools" "build-tools;33.0.2" "platforms;android-33" \
