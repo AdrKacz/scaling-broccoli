@@ -25,6 +25,7 @@ jobs:
           mv bin latest/
           mv NOTICE.txt latest/
           mv source.properties latest/
+          ls
           yes | android-sdk/cmdline-tools/latest/bin/sdkmanager \
             --sdk_root=android-sdk/ \
             "platform-tools" "build-tools;33.0.2" "platforms;android-33" \
