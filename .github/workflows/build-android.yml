@@ -9,19 +9,10 @@ on:
 
 jobs:
   build-android-app:
-    name: Publish iOS App
+    name: Build Android App
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Get details
-        run: |
-          pwd
-          ls
-          cd
-          pwd
-          ls
-          whoami
-          ls -la /Users/$USER/
       - name: Install Godot
         run: brew install --cask godot
       - name: Install Android SDK
@@ -34,8 +25,8 @@ jobs:
           mv bin latest/
           mv NOTICE.txt latest/
           mv source.properties latest/
-          yes | /Users/$USER/android-sdk/cmdline-tools/latest/bin/sdkmanager \
-            --sdk_root=/Users/$USER/android-sdk/ \
+          yes | android-sdk/cmdline-tools/latest/bin/sdkmanager \
+            --sdk_root=android-sdk/ \
             "platform-tools" "build-tools;33.0.2" "platforms;android-33" \
             "cmdline-tools;latest" "cmake;3.10.2.4988404" "ndk;23.2.8568313"
       - name: Extract Android keystore
@@ -61,7 +52,7 @@ jobs:
         run: |
           python3 scripts/exports/update-editor-settings.py \
             --path "/Users/$USER/Library/Application Support/Godot/editor_settings-4.tres" \
-            --sdk "/Users/$USER/android-sdk/"
+            --sdk "android-sdk/"
       - name: Build Android app - Second attempt
         run: |
           cd mobile-game/
