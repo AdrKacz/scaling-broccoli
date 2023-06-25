@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsikvydbv1sif"]
+
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="1_bjn5k"]
+[ext_resource type="Script" path="res://Scenes/GameUI/ComboLabel/ComboLabel.gd" id="2_f5ypt"]
+
+[node name="ComboLabel" type="Control"]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_f5ypt")
+
+[node name="NextSprite" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(0, 65)
+rotation = -6.28319
+scale = Vector2(1, 1e-05)
+
+[node name="NextLabel" type="Label" parent="NextSprite"]
+use_parent_material = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.5
+offset_top = -134.0
+offset_right = 45.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("1_bjn5k")
+theme_type_variation = &"ComboLabel"
+text = "x3"
+
+[node name="CurrentSprite" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(0, -65)
+
+[node name="CurrentLabel" type="Label" parent="CurrentSprite"]
+use_parent_material = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.5
+offset_right = 44.5
+offset_bottom = 128.0
+grow_horizontal = 2
+theme = ExtResource("1_bjn5k")
+theme_type_variation = &"ComboLabel"
+text = "x2"

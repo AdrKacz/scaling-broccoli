@@ -1,5 +1,8 @@
 extends Node
 
+signal update_combo
+signal update_score
+
 # Gameplay
 const background_delta: float = 0.5
 const background_match_delta: float = 0.75
@@ -34,5 +37,15 @@ const State = {
 
 # ==== ===== =====
 # Variables definitions
-var score: int = 0
-var combos_strike: int = 0
+var score: int = 0:
+	get:
+		return score
+	set(value):
+		score = value
+		emit_signal('update_score')
+var combos_strike: int = 0:
+	get:
+		return combos_strike
+	set(value):
+		combos_strike = value
+		emit_signal('update_combo')

@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://Scenes/GameUI/GameUI.gd" id="1_1j4ix"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="1_42cip"]
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="1_q7r7u"]
-[ext_resource type="PackedScene" uid="uid://bkyi6nop5h5e7" path="res://Scenes/BonusText/BonusText.tscn" id="2_2t8mw"]
 [ext_resource type="PackedScene" uid="uid://pp33xbgsxk1" path="res://Scenes/GameUI/IntroductionText/IntroductionText.tscn" id="4_vn6yi"]
 [ext_resource type="Texture2D" uid="uid://4x328o3ivuls" path="res://assets/pause.png" id="5_m0cpc"]
-[ext_resource type="PackedScene" uid="uid://belmo1q5j7eh" path="res://Scenes/ScoreText/ScoreText.tscn" id="5_y8wyq"]
 [ext_resource type="PackedScene" uid="uid://cwcepou6wxegl" path="res://UI/PauseMenu/PauseMenu.tscn" id="7_6m4jd"]
+[ext_resource type="PackedScene" uid="uid://cdk06ma6o60nb" path="res://Scenes/GameUI/ScoreLabel/ScoreLabel.tscn" id="7_yrx6g"]
+[ext_resource type="PackedScene" uid="uid://bsikvydbv1sif" path="res://Scenes/GameUI/ComboLabel/ComboLabel.tscn" id="8_sndij"]
 
 [node name="GameUI" type="Control"]
 use_parent_material = true
@@ -20,9 +20,6 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_q7r7u")
 script = ExtResource("1_1j4ix")
-BonusText = ExtResource("2_2t8mw")
-
-[node name="ScoreText" parent="." instance=ExtResource("5_y8wyq")]
 
 [node name="IntroductionText" parent="." instance=ExtResource("4_vn6yi")]
 use_parent_material = true
@@ -36,11 +33,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_q7r7u")
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 script = ExtResource("1_42cip")
+
+[node name="ComboControl" type="MarginContainer" parent="MarginContainer"]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_top = 76
+
+[node name="ComboLabel" parent="MarginContainer/ComboControl" instance=ExtResource("8_sndij")]
+layout_mode = 2
+
+[node name="ScoreControl" type="MarginContainer" parent="MarginContainer"]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 76
+
+[node name="ScoreLabel" parent="MarginContainer/ScoreControl" instance=ExtResource("7_yrx6g")]
+layout_mode = 2
 
 [node name="PauseControl" type="Control" parent="MarginContainer"]
 use_parent_material = true

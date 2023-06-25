@@ -27,7 +27,6 @@ func increment_combos_strike():
 	if Constants.combos_strike >= 2:
 		@warning_ignore("integer_division")
 		$Control/SpeedLines.level = int(Constants.combos_strike / 10)
-		$Control/GameUI.display_bonus_text('x' + str(Constants.combos_strike))
 	
 func reset_combos_strike():
 	$Control/SpeedLines.level = -1
@@ -40,7 +39,6 @@ func _on_game_miss():
 func _on_game_score() -> void:
 	increment_combos_strike()
 	Constants.score += Constants.score_factor * Constants.combos_strike
-	$Control/GameUI.update_score(Constants.score)
 	challenge_action('score')
 	
 func _on_game_wrong():
