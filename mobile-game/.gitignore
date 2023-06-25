@@ -19,6 +19,11 @@
 # - OS specific
 
 ###########################
+### Imports ###
+###########################
+*.import
+
+###########################
 ### Build configuration ###
 ###########################
 
@@ -73,15 +78,13 @@ __pycache__/
 doc/_build/
 
 # Android
-android/
-.gradle/
-local.properties
-*.iml
-.gradletasknamecache
-project.properties
-platform/android/java/*/.cxx/
-platform/android/java/*/build/
-platform/android/java/*/libs/
+# android/build/*
+# !android/build/.gdignore
+# !android/build/build.gradle
+# !android/build/gradle.properties
+# !android/build/settings.gradle
+# !android/build/gradle/
+# !android/build/src/
 
 # iOS
 *.dSYM
