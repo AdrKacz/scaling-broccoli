@@ -2,8 +2,7 @@
 
 ## *Release Notes*
 
-- Improved gameplay mechanics: Removed the timer and introduced a one-life system, providing a more challenging and intense experience.
-- Enhanced user interface and added leaderboard functionality for a cleaner and more competitive gaming environment.
+- You can now challenge yourself once a day!
 
 ## App name
 Rainbow Rush
