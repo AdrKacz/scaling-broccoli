@@ -84,12 +84,13 @@ func _ready():
 func get_challenge() -> Dictionary:
 	var challenge_args: Dictionary = config.get_value('challenge', 'args', {})
 	var challenge: Dictionary
+	print('Saved challenge:', challenge)
 	if challenge_args.has('name'):
 		challenge = Challenges.getter[challenge_args['name']].call(challenge_args)
 	else:
 		challenge = Challenges.getter.values().pick_random().call()
 		config.set_value('challenge', 'args', challenge.get('args'))
-		print('Saved challenge:', challenge)
+		print('Save challenge:', challenge)
 	return challenge
 	
 

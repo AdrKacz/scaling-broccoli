@@ -81,10 +81,10 @@ You will need your developer certificate to export your app to the App Store.
 ### What dimensions do you need for screenshots?
 | Device  | Dimensions | Folder | *Debug Window Dimensions* | *Capture Dimensions* |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| 6.7" Display  | `1290 x 2796` | `screen-67` | `695 x 1448` | `323 x 699` |
-| 6.5" Display | `1284 x 2778` | `screen-65` |
-| 5.5" Display  | `1242 x 2208`  | `screen-55` |
-| 12.9" Display  | `2048 x 2732`  | `screen-129` |
+| 6.7" Display  | `1290 x 2796` | `screen-67` | `665 x 1418` | `323 x 699` |
+| 6.5" Display | `1284 x 2778` | `screen-65` | `662 x 1409` | `321 x 695` |
+| 5.5" Display  | `1242 x 2208`  | `screen-55` | `641 x 1124` | `311 x 552` |
+| 12.9" Display  | `2048 x 2732`  | `screen-129` | `1044 x 1386` | `512 x 683` |
 
 ### What dimensions do you need for app previews *(recordings)*?
 | Device  | Dimensions | Folder | *Debug Window Dimensions* | *Capture Dimensions* |
