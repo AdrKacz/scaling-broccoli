@@ -1,0 +1,69 @@
+# This workflow take the latest app an submit it for review (to go in production)
+
+name: Build Android App
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ 114-add-automation-to-deploy-to-google-play-beta ]
+
+jobs:
+  build-android-app:
+    name: Publish iOS App
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get details
+        run: |
+          pwd
+          ls
+          cd
+          pwd
+          ls
+          whoami
+          ls -la /Users/$USER/
+      - name: Install Godot
+        run: brew install --cask godot
+      - name: Install Android SDK
+        run: |
+          curl -LO https://dl.google.com/android/repository/commandlinetools-mac-9477386_latest.zip
+          unzip commandlinetools-mac-9477386_latest.zip
+          mkdir android-sdk/ && mv cmdline-tools android-sdk/ && cd android-sdk/cmdline-tools
+          mkdir -p latest/
+          mv lib latest/
+          mv bin latest/
+          mv NOTICE.txt latest/
+          mv source.properties latest/
+          yes | /Users/$USER/android-sdk/cmdline-tools/latest/bin/sdkmanager \
+            --sdk_root=/Users/$USER/android-sdk/ \
+            "platform-tools" "build-tools;33.0.2" "platforms;android-33" \
+            "cmdline-tools;latest" "cmake;3.10.2.4988404" "ndk;23.2.8568313"
+      - name: Extract Android keystore
+        run: |
+          echo $ANDROID_KEYSTORE_BASE64 | base64 -d > scaling-broccoli.jks
+        env:
+            ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      - name: Create export presets
+        run: |
+          python3 scripts/exports/create-export-preset.py \
+            --path scaling-broccoli.jks \
+            --alias $ANDROID_KEY_ALIAS \
+            --password $ANDROID_KEY_PASSWORD
+        env:
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+      - name: Build Android app - First attempt to import files
+        run: |
+          cd mobile-game/
+          godot --export-release "Android" --headless
+          cd ../
+      - name: Update Android SDK path in Godot Editor
+        run: |
+          python3 scripts/exports/update-editor-settings.py \
+            --path "/Users/$USER/Library/Application Support/Godot/editor_settings-4.tres" \
+            --sdk "/Users/$USER/android-sdk/"
+      - name: Build Android app - Second attempt
+        run: |
+          cd mobile-game/
+          godot --export-release "Android" --headless
+          cd ../
