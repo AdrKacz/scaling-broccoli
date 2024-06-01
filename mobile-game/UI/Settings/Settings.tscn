@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://mvxeej36kptf"]
+
+[ext_resource type="Script" path="res://UI/Settings/Settings.gd" id="1_tghoq"]
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="2_c6igw"]
+[ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="3_ekd8p"]
+[ext_resource type="PackedScene" uid="uid://dofspa3v0y84e" path="res://UI/UIElements/Exit.tscn" id="4_nct6u"]
+
+[node name="Settings" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_tghoq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.490196)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_c6igw")
+script = ExtResource("3_ekd8p")
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="MusicCheckBox" type="CheckBox" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Music"
+
+[node name="SoundEffectCheckBox" type="CheckBox" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Sound effects"
+
+[node name="VibrationsCheckBox" type="CheckBox" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Vibrations
+"
+
+[node name="Exit" parent="Control/MarginContainer" instance=ExtResource("4_nct6u")]
+layout_mode = 2
+
+[connection signal="toggled" from="Control/MarginContainer/CenterContainer/VBoxContainer/MusicCheckBox" to="." method="_on_music_check_box_toggled"]
+[connection signal="toggled" from="Control/MarginContainer/CenterContainer/VBoxContainer/SoundEffectCheckBox" to="." method="_on_sound_effect_check_box_toggled"]
+[connection signal="toggled" from="Control/MarginContainer/CenterContainer/VBoxContainer/VibrationsCheckBox" to="." method="_on_vibration_check_box_toggled"]
+[connection signal="clicked" from="Control/MarginContainer/Exit" to="." method="_on_exit_clicked"]

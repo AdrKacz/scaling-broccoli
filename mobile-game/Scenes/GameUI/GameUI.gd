@@ -5,11 +5,11 @@ extends Control
 var display_bonus_text_position: Vector2
 
 func _ready():
-	$ScoreText.text = str(0)
+	$LevelText.text = 'Level ' + str(0)
 	
 	# get position for bonus text
 	var computed_safe_area: Rect2 = $MarginContainer.computed_safe_area
-	$ScoreText.position = Vector2(
+	$LevelText.position = Vector2(
 		computed_safe_area.position.x + computed_safe_area.size.x * .5,
 		computed_safe_area.position.y + 96,
 	)
@@ -24,14 +24,23 @@ func _ready():
 		computed_safe_area.position.y + computed_safe_area.size.y * .8,
 	)
 
-func _on_pause_button_pressed():
+func _on_settings_button_pressed():
 	Session.click()
 	get_tree().paused = true
-	$MarginContainer/PauseMenu.visible = true
+	$MarginContainer/PauseControl/MarginContainer.visible = false
+	$MarginContainer/Settings.visible = true
 	
-func update_score(score):
-	$ScoreText.text = str(score)
-	$ScoreText.pulse()
+func _on_settings_exit():
+	Session.click()
+	get_tree().paused = false
+	$MarginContainer/PauseControl/MarginContainer.visible = true 
+	$MarginContainer/Settings.visible = false
+	
+func update_level(level: int):
+	$LevelText.text = 'Level ' + str(level)
+	$LevelText.pulse()
+
+func remove_introduction_text():
 	if find_child('IntroductionText', false):
 		$IntroductionText.leave()
 

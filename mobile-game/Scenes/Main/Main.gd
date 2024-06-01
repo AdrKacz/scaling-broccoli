@@ -5,7 +5,7 @@ var current_node: Node
 
 func _ready():
 	Session.assign_main_node(self)
-	change_node_to(Session.MainMenu)
+	change_node_to(Session.GameMaster)
 
 func change_node_to(scene: PackedScene, params: Dictionary = {}):
 	var node: Node = scene.instantiate()
