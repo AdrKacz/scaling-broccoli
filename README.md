@@ -1,50 +1,12 @@
 # 🌈 Rainbow Rush
 
-Rainbow Rush is a mobile arcade-like video game where you have to touch a square when its colour matches the colour of the background.
-The square will keep its colour until you touch it when it has the same colour as the background.
-The background keeps changing colour, and you must be fast and reactive!
+# Develop
+Open `project.godot` with [**Godot**](https://godotengine.org/download/).
 
-You can take two directions to decide the rules.
-  - Time is the main element
-  - Hit is the main element
-In the rules below, the main element is **hit** (*when you tap the square when its colour matches the colour of the background*). *Hit* is the dynamics. You **hit** when you play, so it keeps the central position for all the rules.
+To see your changes, just click play in the top left corner.
 
-# How do I earn points?
-Points are a common language between players to compare their performance and challenge each other. Points in arcade games be the best translation of the player's level possible.
-
-## ~~Option 1: The longer you survive, the more points you'll have~~
-## Option 2: You get points when you hit the correct colour
-Each time you hit, you earn ten points times your current combo strike.
-
-### Variables
-- `score_factor`: the number of times you multiple your combo strike (*ten above*)
-
-# What is a combo?
-Combos are essential in arcade games as they incentivise you to continue the perfect strike and improve your skills.
-
-## Option 1: You don't miss between two hits
-After your second hit without a miss, you will start a combo. Then, you'll continue the combo until you don't miss it.
-You miss if:
-  - you tap when the square and the background don't have the same colour,
-  - you don't tape when the square and the background have the same colour.
-You will always have the chance to hit within the next five changement of colors. Five being the number of colors.
-
-# How do I lose?
-You lose when you miss.
-You miss if you tap when the square and the background differ from the same colour.
-
-# How do I play longer?
-You can't play longer.
-
-# How does the difficulty increase?
-When you reach a given combo, you will increase your level.
-The higher your level, the more likely you are to have match new to each other.
-You reach level `1` at combo `10` and level `2` and combo `20`. You can't go higher than level `2`.
-
-### Variables
-- `background_delta`: the time the background keeps its colour when it doesn't match the colour of the square
-- `background_match_delta`: the time the background keeps its colour when it matches the colour of the square
-- `max_swaps`: array of maximum number of background color swaps before if match the color of the character at level `n`
+## Play on mobile
+To be written...
 
 # How to export?
 *Make sure to copy the `export_presets.cfg` in `mobile-game` below before opening Godot.*
@@ -219,3 +181,50 @@ You won't be able to upload videos directly. You must create a Youtube video and
 > Paste these link on the website where your app is available for download or in the description section of the platform or marketplace you’re using.
 
  - <a href="https://www.flaticon.com/free-icons/thunder" title="thunder icons">Thunder icons created by Smashicons - Flaticon</a>
+
+# The game
+Rainbow Rush is a mobile arcade-like video game where you have to touch a square when its colour matches the colour of the background.
+The square will keep its colour until you touch it when it has the same colour as the background.
+The background keeps changing colour, and you must be fast and reactive!
+
+You can take two directions to decide the rules.
+  - Time is the main element
+  - Hit is the main element
+In the rules below, the main element is **hit** (*when you tap the square when its colour matches the colour of the background*). *Hit* is the dynamics. You **hit** when you play, so it keeps the central position for all the rules.
+
+## How do I earn points?
+Points are a common language between players to compare their performance and challenge each other. Points in arcade games be the best translation of the player's level possible.
+
+### ~~Option 1: The longer you survive, the more points you'll have~~
+### Option 2: You get points when you hit the correct colour
+Each time you hit, you earn ten points times your current combo strike.
+
+#### Variables
+- `score_factor`: the number of times you multiple your combo strike (*ten above*)
+
+## What is a combo?
+Combos are essential in arcade games as they incentivise you to continue the perfect strike and improve your skills.
+
+### Option 1: You don't miss between two hits
+After your second hit without a miss, you will start a combo. Then, you'll continue the combo until you don't miss it.
+You miss if:
+  - you tap when the square and the background don't have the same colour,
+  - you don't tape when the square and the background have the same colour.
+You will always have the chance to hit within the next five changement of colors. Five being the number of colors.
+
+## How do I lose?
+You lose when you miss.
+You miss if you tap when the square and the background differ from the same colour.
+
+## How do I play longer?
+You can't play longer.
+
+## How does the difficulty increase?
+When you reach a given combo, you will increase your level.
+The higher your level, the more likely you are to have match new to each other.
+You reach level `1` at combo `10` and level `2` and combo `20`. You can't go higher than level `2`.
+
+#### Variables
+- `background_delta`: the time the background keeps its colour when it doesn't match the colour of the square
+- `background_match_delta`: the time the background keeps its colour when it matches the colour of the square
+- `max_swaps`: array of maximum number of background color swaps before if match the color of the character at level `n`
