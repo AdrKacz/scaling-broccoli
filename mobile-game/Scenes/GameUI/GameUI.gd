@@ -5,7 +5,7 @@ extends Control
 var display_bonus_text_position: Vector2
 
 func _ready():
-	$StageText.text = 'Stage ' + str(Constants.stage)
+	$StageText.text = 'Stage ' + str(Memory.stage)
 	
 	# get position for bonus text
 	var computed_safe_area: Rect2 = $MarginContainer.computed_safe_area
@@ -37,8 +37,8 @@ func _on_settings_exit():
 	$MarginContainer/Settings.visible = false
 	
 func increase_stage():
-	Constants.stage += 1
-	$StageText.text = 'Stage ' + str(Constants.stage)
+	Memory.stage += 1
+	$StageText.text = 'Stage ' + str(Memory.stage)
 	$StageText.pulse()
 
 func remove_introduction_text():

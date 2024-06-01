@@ -19,6 +19,7 @@ config/icon="res://../arts/game-icon/GameIcon-1024.png"
 
 [autoload]
 
+Memory="*res://AutoLoad/Memory/Memory.gd"
 Constants="*res://AutoLoad/Constants/Constants.gd"
 Session="*res://AutoLoad/Session/Session.tscn"
 StateManager="*res://AutoLoad/StateManager/StateManager.gd"
