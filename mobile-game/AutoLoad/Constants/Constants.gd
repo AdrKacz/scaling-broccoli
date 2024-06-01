@@ -32,3 +32,16 @@ const State = {
 # ==== ===== =====
 # Variables definitions
 var combos_strike: int = 0
+var local_combos_strike: int = 0 # used only within a stage to know when to go to next one
+var stage: int = 1
+
+var local_combo_for_next_stage: int:
+	get:
+		if stage < 5:
+			return stage
+		elif stage < 10:
+			return 2 * stage
+		elif stage < 15:
+			return 4 * stage
+		else:
+			return 8 * stage

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://belmo1q5j7eh"]
 
-[ext_resource type="Script" path="res://Scenes/LevelText/LevelText.gd" id="1_kgg34"]
-[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="2_galiq"]
+[ext_resource type="Script" path="res://Scenes/StageText/StageText.gd" id="1_lp7wx"]
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="2_n4t0j"]
 
 [sub_resource type="Animation" id="Animation_8mneg"]
 length = 0.001
@@ -42,7 +42,7 @@ _data = {
 
 [node name="Node2D" type="Sprite2D"]
 use_parent_material = true
-script = ExtResource("1_kgg34")
+script = ExtResource("1_lp7wx")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 use_parent_material = true
@@ -57,9 +57,9 @@ mouse_filter = 2
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 1
-theme = ExtResource("2_galiq")
+theme = ExtResource("2_n4t0j")
 theme_type_variation = &"ScoreLabel"
-text = "Level 12"
+text = "Stage 12"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

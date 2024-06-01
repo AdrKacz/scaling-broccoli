@@ -1,6 +1,6 @@
 extends Sprite2D
 
-var text: String = 'Level 1':
+var text: String = 'Stage 1':
 	get:
 		return text
 	set(value):

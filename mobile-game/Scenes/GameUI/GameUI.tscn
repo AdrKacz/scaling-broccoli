@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="1_42cip"]
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="1_q7r7u"]
 [ext_resource type="PackedScene" uid="uid://bkyi6nop5h5e7" path="res://Scenes/BonusText/BonusText.tscn" id="2_2t8mw"]
-[ext_resource type="PackedScene" uid="uid://belmo1q5j7eh" path="res://Scenes/LevelText/LevelText.tscn" id="4_mrnqi"]
+[ext_resource type="PackedScene" uid="uid://belmo1q5j7eh" path="res://Scenes/StageText/StageText.tscn" id="4_l0a1d"]
 [ext_resource type="PackedScene" uid="uid://pp33xbgsxk1" path="res://Scenes/GameUI/IntroductionText/IntroductionText.tscn" id="4_vn6yi"]
 [ext_resource type="Texture2D" uid="uid://bqmp3ie7fqww0" path="res://assets/gear.png" id="7_ijvbw"]
 [ext_resource type="PackedScene" uid="uid://mvxeej36kptf" path="res://UI/Settings/Settings.tscn" id="8_m0y7d"]
@@ -22,7 +22,7 @@ theme = ExtResource("1_q7r7u")
 script = ExtResource("1_1j4ix")
 BonusText = ExtResource("2_2t8mw")
 
-[node name="LevelText" parent="." instance=ExtResource("4_mrnqi")]
+[node name="StageText" parent="." instance=ExtResource("4_l0a1d")]
 
 [node name="IntroductionText" parent="." instance=ExtResource("4_vn6yi")]
 use_parent_material = true
