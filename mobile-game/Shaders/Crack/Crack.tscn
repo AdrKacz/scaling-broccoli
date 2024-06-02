@@ -1,14 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://ckr7my86lhauv"]
 
-[ext_resource type="Shader" path="res://Shaders/Crack/Crack.gdshader" id="1_c1x5q"]
-[ext_resource type="Texture2D" uid="uid://ovos87c2g1nw" path="res://assets/crack-1500.png" id="2_g3ymq"]
+[ext_resource type="Shader" path="res://Shaders/Crack/CrackTexture.gdshader" id="1_a5pfa"]
+[ext_resource type="Texture2D" uid="uid://t1coaxf7msl3" path="res://icon.png" id="1_j3u5k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i7ayr"]
-shader = ExtResource("1_c1x5q")
-shader_parameter/refraction_offset = Vector2(25, 25)
-shader_parameter/reflection_offset = Vector2(1, 1)
-shader_parameter/reflection_color = Color(1, 1, 1, 0.8)
-shader_parameter/visible_proportion = 0.5
+shader = ExtResource("1_a5pfa")
+shader_parameter/seed = 0.123457
+shader_parameter/resolution = 64.0
+shader_parameter/use_pixel = true
 
 [node name="Crack" type="TextureRect"]
 material = SubResource("ShaderMaterial_i7ayr")
@@ -17,6 +16,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_g3ymq")
-expand_mode = 1
-stretch_mode = 3
+texture = ExtResource("1_j3u5k")
+expand_mode = 2
+stretch_mode = 6
