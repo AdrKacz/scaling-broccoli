@@ -5,7 +5,6 @@ var config: ConfigFile
 func _ready():
 	config = ConfigFile.new()
 	var err = config.load("user://memory.cfg")
-	print(err, OK)
 	if err != OK: # never played and file doesn't exit
 		stage = 1
 	else:

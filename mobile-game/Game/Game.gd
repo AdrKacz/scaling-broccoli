@@ -19,7 +19,7 @@ var background_state: int = 0:
 	get:
 		return background_state
 	set(value):
-		$Background.color = Constants.State[value]
+		$MarginContainer/Background.color = Constants.State[value]
 		Session.background_state = background_state
 		background_state = value
 		
