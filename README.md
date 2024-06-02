@@ -1,3 +1,7 @@
+Stack to check
+- in_memory_leaderboard
+- read_leaderboard_from_memory
+- _on_network_manager_leaderboard
 # 🌈 Rainbow Rush
 
 # Develop

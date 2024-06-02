@@ -1,9 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://boqnkeusewign"]
-
-[ext_resource type="Shader" path="res://Materials/Circle/Circle.gdshader" id="1_l8el8"]
-
-[resource]
-resource_local_to_scene = true
-shader = ExtResource("1_l8el8")
-shader_parameter/radius = 1.0
-shader_parameter/center = Vector2(0.5, 0.5)

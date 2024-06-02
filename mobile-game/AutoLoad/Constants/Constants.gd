@@ -3,9 +3,6 @@ extends Node
 # Gameplay
 const background_delta: float = 0.5
 const background_match_delta: float = 0.75
-const score_factor: int = 10
-const point_to_reward: int = 1000
-const golds_to_life: int = 1
 
 const max_swaps: Array[int] = [5, 4, 3]
 
@@ -34,5 +31,16 @@ const State = {
 
 # ==== ===== =====
 # Variables definitions
-var score: int = 0
 var combos_strike: int = 0
+var local_combos_strike: int = 0 # used only within a stage to know when to go to next one
+
+var local_combo_for_next_stage: int:
+	get:
+		if Memory.stage < 5:
+			return Memory.stage
+		elif Memory.stage < 10:
+			return 2 * Memory.stage
+		elif Memory.stage < 15:
+			return 4 * Memory.stage
+		else:
+			return 8 * Memory.stage

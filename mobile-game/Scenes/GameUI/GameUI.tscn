@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="1_42cip"]
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="1_q7r7u"]
 [ext_resource type="PackedScene" uid="uid://bkyi6nop5h5e7" path="res://Scenes/BonusText/BonusText.tscn" id="2_2t8mw"]
+[ext_resource type="PackedScene" uid="uid://belmo1q5j7eh" path="res://Scenes/StageText/StageText.tscn" id="4_l0a1d"]
 [ext_resource type="PackedScene" uid="uid://pp33xbgsxk1" path="res://Scenes/GameUI/IntroductionText/IntroductionText.tscn" id="4_vn6yi"]
-[ext_resource type="Texture2D" uid="uid://4x328o3ivuls" path="res://assets/pause.png" id="5_m0cpc"]
-[ext_resource type="PackedScene" uid="uid://belmo1q5j7eh" path="res://Scenes/ScoreText/ScoreText.tscn" id="5_y8wyq"]
-[ext_resource type="PackedScene" uid="uid://cwcepou6wxegl" path="res://UI/PauseMenu/PauseMenu.tscn" id="7_6m4jd"]
+[ext_resource type="Texture2D" uid="uid://bqmp3ie7fqww0" path="res://assets/gear.png" id="7_ijvbw"]
+[ext_resource type="PackedScene" uid="uid://mvxeej36kptf" path="res://UI/Settings/Settings.tscn" id="8_m0y7d"]
 
 [node name="GameUI" type="Control"]
 use_parent_material = true
@@ -22,7 +22,7 @@ theme = ExtResource("1_q7r7u")
 script = ExtResource("1_1j4ix")
 BonusText = ExtResource("2_2t8mw")
 
-[node name="ScoreText" parent="." instance=ExtResource("5_y8wyq")]
+[node name="StageText" parent="." instance=ExtResource("4_l0a1d")]
 
 [node name="IntroductionText" parent="." instance=ExtResource("4_vn6yi")]
 use_parent_material = true
@@ -64,11 +64,12 @@ size_flags_horizontal = 8
 [node name="TextureButton" type="TextureButton" parent="MarginContainer/PauseControl/MarginContainer"]
 use_parent_material = true
 layout_mode = 2
-texture_normal = ExtResource("5_m0cpc")
-texture_pressed = ExtResource("5_m0cpc")
-texture_hover = ExtResource("5_m0cpc")
+texture_normal = ExtResource("7_ijvbw")
+texture_pressed = ExtResource("7_ijvbw")
+texture_hover = ExtResource("7_ijvbw")
 
-[node name="PauseMenu" parent="MarginContainer" instance=ExtResource("7_6m4jd")]
+[node name="Settings" parent="MarginContainer" instance=ExtResource("8_m0y7d")]
 visible = false
 
-[connection signal="pressed" from="MarginContainer/PauseControl/MarginContainer/TextureButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PauseControl/MarginContainer/TextureButton" to="." method="_on_settings_button_pressed"]
+[connection signal="exit" from="MarginContainer/Settings" to="." method="_on_settings_exit"]

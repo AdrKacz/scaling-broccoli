@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bus6slw6nmt6e"]
+[gd_scene load_steps=5 format=3 uid="uid://bus6slw6nmt6e"]
 
 [ext_resource type="Script" path="res://Game/GameMaster.gd" id="1"]
-[ext_resource type="Material" uid="uid://boqnkeusewign" path="res://Materials/Circle/Circle.tres" id="2_fpdci"]
 [ext_resource type="PackedScene" uid="uid://ba724pdrff37e" path="res://Game/Game.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://pt2ge8rnffl0" path="res://Scenes/SpeedLines/SpeedLines.tscn" id="3_yp3k5"]
 [ext_resource type="PackedScene" uid="uid://b5a8hcvmbiai0" path="res://Scenes/GameUI/GameUI.tscn" id="6_8abi2"]
@@ -10,7 +9,6 @@
 script = ExtResource("1")
 
 [node name="Control" type="Control" parent="."]
-material = ExtResource("2_fpdci")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,7 +25,6 @@ layout_mode = 1
 [node name="GameUI" parent="Control" instance=ExtResource("6_8abi2")]
 layout_mode = 1
 
-[connection signal="miss" from="Control/Game" to="." method="_on_game_miss"]
+[connection signal="miss" from="Control/Game" to="." method="_on_game_miss_or_wrong"]
 [connection signal="score" from="Control/Game" to="." method="_on_game_score"]
-[connection signal="skip" from="Control/Game" to="." method="_on_game_skip"]
-[connection signal="wrong" from="Control/Game" to="." method="_on_game_wrong"]
+[connection signal="wrong" from="Control/Game" to="." method="_on_game_miss_or_wrong"]
