@@ -3,7 +3,7 @@ uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_n
 uniform vec2 refraction_offset = vec2(-25., -25.);
 uniform vec2 reflection_offset = vec2(1., 1.);
 uniform vec4 reflection_color: source_color = vec4(1., 1., 1., .8);
-uniform float visible_proportion: hint_range(0, 1) = .0;
+uniform float visible_proportion: hint_range(0, 1) = .5;
 
 const vec2 CENTER = vec2(.5, .5);
 
@@ -19,9 +19,9 @@ void fragment() {
 	float screen_ratio = SCREEN_PIXEL_SIZE.x / SCREEN_PIXEL_SIZE.y;
 	vec2 scaled_UV = (SCREEN_UV - vec2(.5, 0.)) / vec2(screen_ratio, 1.) + vec2(.5, 0.);
 	float max_radius = sqrt(1. + pow(1. / screen_ratio, 2.)) * .5;
-	float size = max_radius * visible_proportion;
+	float size = max_radius * pow(visible_proportion, 1) ;
 	float mask = step(size, length(scaled_UV - CENTER));
 	
-	if (abs(1. - mask) < .0001)
+	if (mask < .0001)
 		COLOR.a = 0.;
 }
