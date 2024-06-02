@@ -8,6 +8,7 @@ shader = ExtResource("1_c1x5q")
 shader_parameter/refraction_offset = Vector2(25, 25)
 shader_parameter/reflection_offset = Vector2(1, 1)
 shader_parameter/reflection_color = Color(1, 1, 1, 0.8)
+shader_parameter/visible_proportion = 0.5
 
 [node name="Crack" type="TextureRect"]
 material = SubResource("ShaderMaterial_i7ayr")

@@ -9,6 +9,8 @@ Open `project.godot` with [**Godot**](https://godotengine.org/download/).
 
 To see your changes, just click play in the top left corner.
 
+See [tween cheat sheet](https://raw.githubusercontent.com/godotengine/godot-docs/master/img/tween_cheatsheet.webp).
+
 ## Play on mobile
 To be written...
 

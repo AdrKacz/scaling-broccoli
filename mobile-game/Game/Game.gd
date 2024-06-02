@@ -7,6 +7,12 @@ signal miss
 signal wrong
 signal skip
 
+var cracks: float:
+	get:
+		return $Crack.material.get_shader_parameter('visible_proportion')
+	set(value):
+		$Crack.material.set_shader_parameter('visible_proportion', min(1., value))
+
 var character_state: int = 0:
 	get:
 		return background_state
@@ -24,6 +30,7 @@ var background_state: int = 0:
 		background_state = value
 		
 func _ready():
+	cracks = 0.
 	# center character on screen
 	$Character.position = get_parent_area_size() / 2
 	
