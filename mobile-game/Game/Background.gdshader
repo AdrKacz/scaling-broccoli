@@ -15,7 +15,12 @@ group_uniforms;
 group_uniforms Lighting;
 uniform vec2 refraction_offset = vec2(-16., -16.);
 uniform vec2 reflection_offset = vec2(4., 4.);
-uniform vec4 reflection_color: source_color = vec4(1., 1., 1., .8);
+uniform vec4 reflection_color: source_color = vec4(1., 1., 1., 1.);
+group_uniforms;
+group_uniforms Glass;
+uniform float blur_direction: hint_range(4.0, 32.0, 0.1) = 16.0; // more is better but slower
+uniform float blur_quality: hint_range(2.0, 64.0, 0.1) = 3.0; // more is better but slower
+uniform float blur_size: hint_range(2.0, 32.0, 0.1) = 16.0; // compute radius with PIXEL_SIZE
 group_uniforms;
 
 float when_lt(float x, float y) {
@@ -108,7 +113,7 @@ float crack(vec2 uv, vec2 screen_pixel_size) {
 	return value;
 }
 
-vec4 image(vec2 uv, sampler2D image_texture) {
+vec4 image(sampler2D image_texture, vec2 uv) {
 	vec4 image_color = vec4(1.);
 	vec4 texture_color = texture(image_texture, uv);
 	if (!use_color)
@@ -117,6 +122,22 @@ vec4 image(vec2 uv, sampler2D image_texture) {
 	image_color.rgb = pow(grey, .5) * color.rgb;
 	return image_color;
 }
+
+vec4 image_blur(sampler2D image_texture, vec2 uv, vec2 texture_pixel_size) {
+	vec2 radius = blur_size * texture_pixel_size;
+	
+	vec4 texture_color = image(image_texture, uv);
+	int count = 0;
+	for (float d = 0.; d < 2. * PI; d += PI / blur_direction) {
+		for (float i = 1.0 / blur_quality; i <= 1.0; i += 1.0 / blur_quality) {
+			texture_color += image(image_texture, uv + vec2(cos(d), sin(d)) * radius * i);
+			count += 1;
+		}
+	}
+	
+	return texture_color / float(count);
+}
+
 
 vec2 scaled_vector(vec2 vector, float pixel_ratio) {
 	return (vector - vec2(0.5, 0.0)) / vec2(pixel_ratio, 1.0) + vec2(0.5, 0.0);
@@ -127,16 +148,17 @@ void fragment() {
 	vec2 scaled_uv = scaled_vector(UV, pixel_ratio);
 	vec2 scaled_refraction_offset = scaled_vector(refraction_offset, pixel_ratio);
 	vec2 scaled_reflection_offset = scaled_vector(reflection_offset, pixel_ratio);
-
-	vec4 image_color = image(UV, TEXTURE);
-	vec4 adjacent_color = image(UV + TEXTURE_PIXEL_SIZE * scaled_refraction_offset, TEXTURE);
 	
 	float crack_color = crack(scaled_uv, TEXTURE_PIXEL_SIZE);
 	float adjacent_crack_color = crack(scaled_uv + TEXTURE_PIXEL_SIZE * scaled_reflection_offset, TEXTURE_PIXEL_SIZE);
-	 if (abs(adjacent_crack_color  - 1.) < 0.001)
-		COLOR = mix(image_color, reflection_color, reflection_color.a);
-	else if (abs(crack_color  - 1.) < 0.001)
-		COLOR = adjacent_color;
-	else
-		COLOR = image_color;
+	 if (abs(adjacent_crack_color  - 1.) < 0.001) {
+		// Light relection in cracks (use color)
+		COLOR = mix(image(TEXTURE, UV), reflection_color, reflection_color.a);
+	} else if (abs(crack_color  - 1.) < 0.001) {
+		// Refraction (use adjacent color)
+		COLOR = image(TEXTURE, UV + TEXTURE_PIXEL_SIZE * scaled_refraction_offset);
+	} else {
+		// Normal (use blur color)
+		COLOR = image_blur(TEXTURE, UV, TEXTURE_PIXEL_SIZE);
+	}
 }

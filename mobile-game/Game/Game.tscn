@@ -20,7 +20,10 @@ shader_parameter/final_number_of_circles = 5
 shader_parameter/number_of_lines = 15
 shader_parameter/refraction_offset = Vector2(-16, -16)
 shader_parameter/reflection_offset = Vector2(4, 4)
-shader_parameter/reflection_color = Color(1, 1, 1, 0.8)
+shader_parameter/reflection_color = Color(1, 1, 1, 1)
+shader_parameter/blur_direction = 16.0
+shader_parameter/blur_quality = 3.0
+shader_parameter/blur_size = 16.0
 
 [node name="Game" type="Control" groups=["game"]]
 process_mode = 1
