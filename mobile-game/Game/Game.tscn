@@ -11,16 +11,16 @@ shader = ExtResource("3_fsrnv")
 shader_parameter/seed = 0.123457
 shader_parameter/use_color = true
 shader_parameter/color = Color(0.584314, 0.345098, 0.945098, 1)
-shader_parameter/resolution = 64.0
+shader_parameter/resolution = 128.0
 shader_parameter/use_pixel = true
 shader_parameter/minimum_circle_radius = 0.15
 shader_parameter/maximum_circle_radius = 0.5
 shader_parameter/current_number_of_circles = 2
 shader_parameter/final_number_of_circles = 5
 shader_parameter/number_of_lines = 15
-shader_parameter/refraction_offset = Vector2(-25, -25)
+shader_parameter/refraction_offset = Vector2(-16, -16)
 shader_parameter/reflection_offset = Vector2(4, 4)
-shader_parameter/reflection_color = Color(1, 1, 1, 1)
+shader_parameter/reflection_color = Color(1, 1, 1, 0.8)
 
 [node name="Game" type="Control" groups=["game"]]
 process_mode = 1

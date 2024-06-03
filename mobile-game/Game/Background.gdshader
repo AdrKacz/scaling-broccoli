@@ -4,7 +4,7 @@ uniform float seed: hint_range(0.0, 1.0, 0.01) = 0.12345678;
 uniform bool use_color = true;
 uniform vec4 color: source_color = vec4(0.584314, 0.345098, 0.945098, 1.);
 group_uniforms Cracks;
-uniform float resolution: hint_range(2, 128, .1) = 64.;
+uniform float resolution: hint_range(2, 128, .1) = 128.;
 uniform bool use_pixel = true;
 uniform float minimum_circle_radius: hint_range(0.01, 0.5, 0.01) = 0.15;
 uniform float maximum_circle_radius: hint_range(0.01, 0.5, 0.01) = 0.5;
@@ -13,22 +13,13 @@ uniform int final_number_of_circles: hint_range(4, 6, 1) = 5;
 uniform int number_of_lines: hint_range(0, 20, 1) = 15; // final number of lines between 15 and 20 for best results
 group_uniforms;
 group_uniforms Lighting;
-uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
-uniform vec2 refraction_offset = vec2(-25., -25.);
+uniform vec2 refraction_offset = vec2(-16., -16.);
 uniform vec2 reflection_offset = vec2(4., 4.);
-uniform vec4 reflection_color: source_color = vec4(1., 1., 1., 1.);
+uniform vec4 reflection_color: source_color = vec4(1., 1., 1., .8);
 group_uniforms;
-
-float when_gt(float x, float y) {
-  return max(sign(x - y), 0.0);
-}
 
 float when_lt(float x, float y) {
   return max(sign(y - x), 0.0);
-}
-
-float and(float a, float b) {
-  return a * b;
 }
 
 float or(float a, float b) {
@@ -43,14 +34,6 @@ vec2 rotate(vec2 uv, vec2 pivot, float angle)
 	uv = uv * rotation;
 	uv += pivot;
 	return uv;
-}
-
-float circle(vec2 position, vec2 origin, float radius, float feather) {
-	return smoothstep(radius, radius + feather, length(position - origin));
-}
-
-float circle_stroke(vec2 position, vec2 origin, float radius, float feather, float stroke_width) {
-	return circle(position, origin, radius - stroke_width, feather) - circle(position, origin, radius, feather);
 }
 
 float arc(vec2 position, vec2 origin, float radius, float width, float feather, float to_angle, float rotation) {
@@ -74,10 +57,6 @@ float line(vec2 p1, vec2 p2, float width, vec2 uv, vec2 screen_pixel_size)
 float random_float (vec2 uv) {
     return fract(sin(dot(uv.xy,
         vec2(12.9898,78.233))) * 100000. * (1. + seed));
-}
-
-int random_int (vec2 uv) {
-    return int(floor(random_float(uv) * 100000. * (1. + seed)));
 }
 
 float crack(vec2 uv, vec2 screen_pixel_size) {
@@ -135,22 +114,28 @@ vec4 image(vec2 uv, sampler2D image_texture) {
 	if (!use_color)
 		return texture_color;
 	float grey = 0.299 * texture_color.r + 0.587 * texture_color.g + 0.114 * texture_color.b;
-	image_color.rgb = step(0.3, grey) * color.rgb;
+	image_color.rgb = pow(grey, .5) * color.rgb;
 	return image_color;
+}
+
+vec2 scaled_vector(vec2 vector, float pixel_ratio) {
+	return (vector - vec2(0.5, 0.0)) / vec2(pixel_ratio, 1.0) + vec2(0.5, 0.0);
 }
 
 void fragment() {
 	float pixel_ratio = TEXTURE_PIXEL_SIZE.x / TEXTURE_PIXEL_SIZE.y;
-	vec2 scaled_uv = (UV - vec2(0.5, 0.0)) / vec2(pixel_ratio, 1.0) + vec2(0.5, 0.0);
+	vec2 scaled_uv = scaled_vector(UV, pixel_ratio);
+	vec2 scaled_refraction_offset = scaled_vector(refraction_offset, pixel_ratio);
+	vec2 scaled_reflection_offset = scaled_vector(reflection_offset, pixel_ratio);
 
 	vec4 image_color = image(UV, TEXTURE);
-	vec4 adjacent_color = image(UV + TEXTURE_PIXEL_SIZE * refraction_offset, TEXTURE);
+	vec4 adjacent_color = image(UV + TEXTURE_PIXEL_SIZE * scaled_refraction_offset, TEXTURE);
 	
 	float crack_color = crack(scaled_uv, TEXTURE_PIXEL_SIZE);
-	float adjacent_crack_color = crack(scaled_uv + TEXTURE_PIXEL_SIZE * reflection_offset, TEXTURE_PIXEL_SIZE);
-	 if (adjacent_crack_color == 1.)
+	float adjacent_crack_color = crack(scaled_uv + TEXTURE_PIXEL_SIZE * scaled_reflection_offset, TEXTURE_PIXEL_SIZE);
+	 if (abs(adjacent_crack_color  - 1.) < 0.001)
 		COLOR = mix(image_color, reflection_color, reflection_color.a);
-	else if (crack_color == 1.)
+	else if (abs(crack_color  - 1.) < 0.001)
 		COLOR = adjacent_color;
 	else
 		COLOR = image_color;
