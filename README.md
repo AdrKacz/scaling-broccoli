@@ -1,3 +1,7 @@
+TODO:
+- Add fun effect when glass broken
+- Double check the impact effect
+- Add a slow-mo or something so you have time to see the image you just unlock
 # 🌈 Rainbow Rush
 
 # Develop
