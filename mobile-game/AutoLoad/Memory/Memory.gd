@@ -9,6 +9,7 @@ func _ready():
 		stage = 1
 	else:
 		stage = config.get_value('memory', 'stage', 1)
+	stage = 1
 	
 var stage: int:
 	get:
