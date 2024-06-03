@@ -72,20 +72,15 @@ func _on_gui_input(event):
 		_on_character_tap()
 		
 func update_crack(circles: int, lines: int) -> void:
-	var current_circles = $Crack.material.get_shader_parameter('current_number_of_circles')
-	var current_lines = $Crack.material.get_shader_parameter('number_of_lines')
+	# var current_circles = $Crack.material.get_shader_parameter('current_number_of_circles')
+	# var current_lines = $Crack.material.get_shader_parameter('number_of_lines')
 	# var add_circles: bool = circles > current_circles
 	# var add_lines: bool = lines != current_lines
-	print("Update crack")
-	print("From: ", current_circles, ' | ', current_lines)
-	print("To:   ", circles, ' | ', lines)
-	# TODO: add effects when add_circles or add_lines (bigger effect for add_circles, maybe no effects of add_lines)
 	# Update
 	$Crack.material.set_shader_parameter('current_number_of_circles', circles)
 	$Crack.material.set_shader_parameter('number_of_lines', lines)
 
 func generate_crack(final_number_of_circles: int, minimum_circle_radius: float = 0.15, maximum_circle_radius: float = 0.5) -> void:
-	print('Generate crack: ', final_number_of_circles, ' | ', minimum_circle_radius, ' | ', maximum_circle_radius)
 	$Crack.material.set_shader_parameter('minimum_circle_radius', minimum_circle_radius)
 	$Crack.material.set_shader_parameter('maximum_circle_radius', maximum_circle_radius)
 	$Crack.material.set_shader_parameter('final_number_of_circles', final_number_of_circles)

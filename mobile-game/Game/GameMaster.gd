@@ -31,14 +31,13 @@ func reset_combos_strike():
 func _on_game_miss_or_wrong():
 	reset_combos_strike()
 	Constants.local_combos_strike = 0
-	$Control/Game.reset_crack() # TODO: check to do a progressive reset (one crack at a time, quickly)
+	$Control/Game.reset_crack()
 
 func _on_game_score() -> void:
 	$Control/GameUI.remove_introduction_text()
 	increment_combos_strike()
 	
 	if Constants.local_combos_strike >= Constants.local_combo_for_next_stage:
-		# TODO: Add fancy effects
 		Constants.local_combos_strike = 0
 		$Control/GameUI.increase_stage()
 		$Control/Game.reset_crack()
@@ -51,10 +50,6 @@ func _on_game_score() -> void:
 		# as local_combos_strike will always be equal or greater than 1 after you score
 		var new_number_of_circle: int = int(Constants.local_combos_strike / circle_step)
 		var new_number_of_line: int = int(Constants.local_combos_strike / line_step)
-		print()
-		print('Smash! (', Constants.local_combos_strike, ')')
-		print('Circle step: ', circle_step)
-		print('Line step: ', line_step)
 		$Control/Game.update_crack(new_number_of_circle, new_number_of_line)
 
 func init_level() -> void:
