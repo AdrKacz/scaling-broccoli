@@ -3,7 +3,6 @@ TODO:
 - Double check the impact effect
 - Add a slow-mo or something so you have time to see the image you just unlock
 # 🌈 Rainbow Rush
-
 # Develop
 Open `project.godot` with [**Godot**](https://godotengine.org/download/).
 

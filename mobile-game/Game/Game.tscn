@@ -9,6 +9,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eu7oe"]
 shader = ExtResource("3_fsrnv")
 shader_parameter/seed = 0.123457
+shader_parameter/use_cracks_and_glass = true
 shader_parameter/use_color = true
 shader_parameter/color = Color(0.584314, 0.345098, 0.945098, 1)
 shader_parameter/resolution = 128.0
@@ -24,6 +25,8 @@ shader_parameter/reflection_color = Color(1, 1, 1, 1)
 shader_parameter/blur_direction = 16.0
 shader_parameter/blur_quality = 3.0
 shader_parameter/blur_size = 16.0
+shader_parameter/abberation_levels = 3
+shader_parameter/abberation_spread = 0.1
 
 [node name="Game" type="Control" groups=["game"]]
 process_mode = 1
