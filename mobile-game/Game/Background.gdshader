@@ -4,6 +4,7 @@ uniform float seed: hint_range(0.0, 1.0, 0.01) = 0.12345678;
 uniform bool use_cracks_and_glass = true;
 uniform bool use_color = true;
 uniform vec4 color: source_color = vec4(0.584314, 0.345098, 0.945098, 1.);
+uniform float zoom: hint_range(0.5, 1., 0.01) = 1.;
 
 group_uniforms Cracks.Sprite;
 uniform float resolution: hint_range(2, 128, .1) = 128.;
@@ -47,6 +48,16 @@ vec2 rotate(vec2 uv, vec2 pivot, float angle)
 	uv -= pivot;
 	uv = uv * rotation;
 	uv += pivot;
+	return uv;
+}
+
+vec2 scale(vec2 uv, float x, float y)
+{
+	mat2 scale = mat2(vec2(x, 0.0), vec2(0.0, y));
+	
+	uv -= 0.5;
+	uv = uv * scale;
+	uv += 0.5;
 	return uv;
 }
 
@@ -128,7 +139,8 @@ float crack(vec2 uv, vec2 screen_pixel_size) {
 
 vec4 image(sampler2D image_texture, vec2 uv) {
 	vec4 image_color = vec4(1.);
-	vec4 texture_color = texture(image_texture, uv);
+	
+	vec4 texture_color = texture(image_texture, scale(uv, zoom, zoom));
 	if (!use_color)
 		return texture_color;
 	float grey = 0.299 * texture_color.r + 0.587 * texture_color.g + 0.114 * texture_color.b;

@@ -59,7 +59,7 @@ layout_mode = 2
 size_flags_vertical = 1
 theme = ExtResource("2_n4t0j")
 theme_type_variation = &"ScoreLabel"
-text = "Stage 12"
+text = "Level 12"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

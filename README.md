@@ -1,7 +1,7 @@
 TODO:
-- Add fun effect when glass broken
-- Double check the impact effect
-- Add a slow-mo or something so you have time to see the image you just unlock
+- Add flash and screen shake and slow-mo (maybe slow-mo not needed)
+- Remove zoom in shader if not used
+- Replace the logic to write "Level X" inside the Level object so I can change the display text in one place only
 # 🌈 Rainbow Rush
 # Develop
 Open `project.godot` with [**Godot**](https://godotengine.org/download/).
