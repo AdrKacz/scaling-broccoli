@@ -19,7 +19,7 @@ var background_state: int = 0:
 	get:
 		return background_state
 	set(value):
-		$MarginContainer/Background.color = Constants.State[value]
+		$MarginContainer/Background.material.set_shader_parameter('color', Constants.State[value])
 		Session.background_state = background_state
 		background_state = value
 		
@@ -39,6 +39,9 @@ func update_character_state():
 func update_background_state():
 	background_state = StateManager.get_background_next_state(background_state, $Character.state)
 	$SwapBackgroundTimer.start(Constants.swap_delta)
+	
+func update_background_image(path: String):
+	$MarginContainer/Background.set_texture(load(path))
 
 func _on_character_tap():
 	# Hitted
@@ -77,16 +80,16 @@ func update_crack(circles: int, lines: int) -> void:
 	# var add_circles: bool = circles > current_circles
 	# var add_lines: bool = lines != current_lines
 	# Update
-	$Crack.material.set_shader_parameter('current_number_of_circles', circles)
-	$Crack.material.set_shader_parameter('number_of_lines', lines)
+	$MarginContainer/Background.material.set_shader_parameter('current_number_of_circles', circles)
+	$MarginContainer/Background.material.set_shader_parameter('number_of_lines', lines)
 
 func generate_crack(final_number_of_circles: int, minimum_circle_radius: float = 0.15, maximum_circle_radius: float = 0.5) -> void:
-	$Crack.material.set_shader_parameter('minimum_circle_radius', minimum_circle_radius)
-	$Crack.material.set_shader_parameter('maximum_circle_radius', maximum_circle_radius)
-	$Crack.material.set_shader_parameter('final_number_of_circles', final_number_of_circles)
-	$Crack.material.set_shader_parameter('seed', randf())
+	$MarginContainer/Background.material.set_shader_parameter('minimum_circle_radius', minimum_circle_radius)
+	$MarginContainer/Background.material.set_shader_parameter('maximum_circle_radius', maximum_circle_radius)
+	$MarginContainer/Background.material.set_shader_parameter('final_number_of_circles', final_number_of_circles)
+	$MarginContainer/Background.material.set_shader_parameter('seed', randf())
 	
 func reset_crack() -> void:
-	$Crack.material.set_shader_parameter('current_number_of_circles', 0)
-	$Crack.material.set_shader_parameter('number_of_lines', 0)
+	$MarginContainer/Background.material.set_shader_parameter('current_number_of_circles', 0)
+	$MarginContainer/Background.material.set_shader_parameter('number_of_lines', 0)
 	

@@ -1,5 +1,8 @@
 shader_type canvas_item;
+
 uniform float seed: hint_range(0.0, 1.0, 0.01) = 0.12345678;
+uniform bool use_color = true;
+uniform vec4 color: source_color = vec4(0.584314, 0.345098, 0.945098, 1.);
 group_uniforms Cracks;
 uniform float resolution: hint_range(2, 128, .1) = 64.;
 uniform bool use_pixel = true;
@@ -12,8 +15,8 @@ group_uniforms;
 group_uniforms Lighting;
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 uniform vec2 refraction_offset = vec2(-25., -25.);
-uniform vec2 reflection_offset = vec2(1., 1.);
-uniform vec4 reflection_color: source_color = vec4(1., 1., 1., .8);
+uniform vec2 reflection_offset = vec2(4., 4.);
+uniform vec4 reflection_color: source_color = vec4(1., 1., 1., 1.);
 group_uniforms;
 
 float when_gt(float x, float y) {
@@ -118,7 +121,7 @@ float crack(vec2 uv, vec2 screen_pixel_size) {
 			mod(random_float(vec2(.9814 * seed * index)), .02) - .01
 		);
 		
-		float size = 10. + random_float(vec2(.9827 * seed * index)) * 20.;
+		float size = 2. + random_float(vec2(.9827 * seed * index)) * 4.;
 		
 		value = or(value, line(point_a, point_b, size, uv, screen_pixel_size));
 	}
@@ -126,11 +129,29 @@ float crack(vec2 uv, vec2 screen_pixel_size) {
 	return value;
 }
 
-void fragment() {
-	float color = crack(UV, SCREEN_PIXEL_SIZE);
-	float adjacent_color = crack(UV + TEXTURE_PIXEL_SIZE * reflection_offset, SCREEN_PIXEL_SIZE);
+vec4 image(vec2 uv, sampler2D image_texture) {
+	vec4 image_color = vec4(1.);
+	vec4 texture_color = texture(image_texture, uv);
+	if (!use_color)
+		return texture_color;
+	float grey = 0.299 * texture_color.r + 0.587 * texture_color.g + 0.114 * texture_color.b;
+	image_color.rgb = step(0.3, grey) * color.rgb;
+	return image_color;
+}
 
-	vec4 refraction_color = texture(screen_texture, SCREEN_UV + SCREEN_PIXEL_SIZE * refraction_offset);
+void fragment() {
+	float pixel_ratio = TEXTURE_PIXEL_SIZE.x / TEXTURE_PIXEL_SIZE.y;
+	vec2 scaled_uv = (UV - vec2(0.5, 0.0)) / vec2(pixel_ratio, 1.0) + vec2(0.5, 0.0);
+
+	vec4 image_color = image(UV, TEXTURE);
+	vec4 adjacent_color = image(UV + TEXTURE_PIXEL_SIZE * refraction_offset, TEXTURE);
 	
-	COLOR = mix(reflection_color, refraction_color, adjacent_color) * color;
+	float crack_color = crack(scaled_uv, TEXTURE_PIXEL_SIZE);
+	float adjacent_crack_color = crack(scaled_uv + TEXTURE_PIXEL_SIZE * reflection_offset, TEXTURE_PIXEL_SIZE);
+	 if (adjacent_crack_color == 1.)
+		COLOR = mix(image_color, reflection_color, reflection_color.a);
+	else if (crack_color == 1.)
+		COLOR = adjacent_color;
+	else
+		COLOR = image_color;
 }

@@ -53,6 +53,12 @@ func _on_game_score() -> void:
 		$Control/Game.update_crack(new_number_of_circle, new_number_of_line)
 
 func init_level() -> void:
+	# Images
+	var tmp_level = Memory.stage % 5
+	tmp_level = 5 if tmp_level == 0 else tmp_level
+	var path: String = "res://assets/Cards/Level_" + str(tmp_level) + ".jpeg"
+	$Control/Game.update_background_image(path)
+	# Cracks
 	level_final_number_of_crack_circles = min(Memory.stage, randi_range(4, 6))
 	level_final_number_of_crack_lines = min(Memory.stage * 2, randi_range(15, 20))
 	$Control/Game.generate_crack(level_final_number_of_crack_circles)

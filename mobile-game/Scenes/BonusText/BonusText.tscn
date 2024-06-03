@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" path="res://Scenes/BonusText/BonusText.gd" id="2"]
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="3_mge8y"]
-[ext_resource type="Texture2D" uid="uid://c2yyhogogs1vf" path="res://assets/EmptyBigSquare.png" id="4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a421n"]
+load_path = "res://.godot/imported/EmptyBigSquare.png-c019e008d933c5c0ebd283d19b1c9841.ctex"
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Popup"
@@ -42,7 +44,7 @@ _data = {
 [node name="BonusText" type="Sprite2D" groups=["combo"]]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 2
-texture = ExtResource("4")
+texture = SubResource("CompressedTexture2D_a421n")
 script = ExtResource("2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
