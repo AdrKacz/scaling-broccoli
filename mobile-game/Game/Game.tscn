@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ba724pdrff37e"]
+[gd_scene load_steps=5 format=3 uid="uid://ba724pdrff37e"]
 
 [ext_resource type="PackedScene" uid="uid://dsngmds587kx2" path="res://Scenes/Character/Character.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://bkyi6nop5h5e7" path="res://Scenes/BonusText/BonusText.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://ckr7my86lhauv" path="res://Shaders/Crack/Crack.tscn" id="3_k6q6p"]
 [ext_resource type="Script" path="res://Game/Game.gd" id="5"]
 
 [node name="Game" type="Control" groups=["game"]]
@@ -17,16 +18,26 @@ mouse_filter = 1
 script = ExtResource("5")
 ComboScene = ExtResource("3")
 
-[node name="Background" type="ColorRect" parent="."]
-use_parent_material = true
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = -128
+theme_override_constants/margin_top = -128
+theme_override_constants/margin_right = -128
+theme_override_constants/margin_bottom = -128
+
+[node name="Background" type="ColorRect" parent="MarginContainer"]
+use_parent_material = true
+layout_mode = 2
 mouse_filter = 2
 color = Color(0.584314, 0.345098, 0.945098, 1)
+
+[node name="Crack" parent="." instance=ExtResource("3_k6q6p")]
+layout_mode = 1
 
 [node name="Character" parent="." instance=ExtResource("1")]
 position = Vector2(360, 640)

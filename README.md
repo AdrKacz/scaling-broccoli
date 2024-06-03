@@ -1,13 +1,15 @@
-Stack to check
-- in_memory_leaderboard
-- read_leaderboard_from_memory
-- _on_network_manager_leaderboard
 # 🌈 Rainbow Rush
 
 # Develop
 Open `project.godot` with [**Godot**](https://godotengine.org/download/).
 
 To see your changes, just click play in the top left corner.
+
+See [tween cheat sheet](https://raw.githubusercontent.com/godotengine/godot-docs/master/img/tween_cheatsheet.webp).
+
+## Resources for shaders
+- [The book of shaders](https://thebookofshaders.com)
+- [Godot shader snippets](https://godotshaders.com/snippet/useful-code-snippets/)
 
 ## Play on mobile
 To be written...

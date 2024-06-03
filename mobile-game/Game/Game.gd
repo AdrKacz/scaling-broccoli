@@ -19,7 +19,7 @@ var background_state: int = 0:
 	get:
 		return background_state
 	set(value):
-		$Background.color = Constants.State[value]
+		$MarginContainer/Background.color = Constants.State[value]
 		Session.background_state = background_state
 		background_state = value
 		
@@ -70,3 +70,23 @@ func _on_gui_input(event):
 	if event is InputEventScreenTouch and event.is_pressed() :
 		Session.tap()
 		_on_character_tap()
+		
+func update_crack(circles: int, lines: int) -> void:
+	# var current_circles = $Crack.material.get_shader_parameter('current_number_of_circles')
+	# var current_lines = $Crack.material.get_shader_parameter('number_of_lines')
+	# var add_circles: bool = circles > current_circles
+	# var add_lines: bool = lines != current_lines
+	# Update
+	$Crack.material.set_shader_parameter('current_number_of_circles', circles)
+	$Crack.material.set_shader_parameter('number_of_lines', lines)
+
+func generate_crack(final_number_of_circles: int, minimum_circle_radius: float = 0.15, maximum_circle_radius: float = 0.5) -> void:
+	$Crack.material.set_shader_parameter('minimum_circle_radius', minimum_circle_radius)
+	$Crack.material.set_shader_parameter('maximum_circle_radius', maximum_circle_radius)
+	$Crack.material.set_shader_parameter('final_number_of_circles', final_number_of_circles)
+	$Crack.material.set_shader_parameter('seed', randf())
+	
+func reset_crack() -> void:
+	$Crack.material.set_shader_parameter('current_number_of_circles', 0)
+	$Crack.material.set_shader_parameter('number_of_lines', 0)
+	
