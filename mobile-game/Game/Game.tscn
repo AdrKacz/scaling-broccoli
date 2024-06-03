@@ -38,6 +38,8 @@ color = Color(0.584314, 0.345098, 0.945098, 1)
 
 [node name="Crack" parent="." instance=ExtResource("3_k6q6p")]
 layout_mode = 1
+offset_left = -280.0
+offset_right = 280.0
 
 [node name="Character" parent="." instance=ExtResource("1")]
 position = Vector2(360, 640)
