@@ -2,6 +2,11 @@ shader_type canvas_item;
 uniform float seed: hint_range(0.0, 1.0, 0.01) = 0.12345678;
 uniform float resolution: hint_range(2, 128, .1) = 64.;
 uniform bool use_pixel = true;
+uniform float minimum_circle_radius: hint_range(0.01, 0.5, 0.01) = 0.1;
+uniform float maximum_circle_radius: hint_range(0.01, 0.5, 0.01) = 0.5;
+uniform int current_number_of_circles: hint_range(0, 6, 1) = 2;
+uniform int final_number_of_circles: hint_range(4, 6, 1) = 5;
+uniform int number_of_lines: hint_range(0, 20, 1) = 15; // final number of lines between 15 and 20 for best results
 
 float when_gt(float x, float y) {
   return max(sign(x - y), 0.0);
@@ -69,16 +74,15 @@ void fragment() {
 	float value = 0.;
 	
 	// Add circles (radius between 0 excluded and 0.5 included)
-	int number_of_circles = 4 + random_int(vec2(seed)) % 2;
-	float radius_step = 0.5 / float(number_of_circles);
-	for (int i = 0; i < number_of_circles; i++) {
-		float index = 1. * float(i);
+	float radius_step = (maximum_circle_radius - minimum_circle_radius) / float(final_number_of_circles - 1);
+	for (int i = 0; i < current_number_of_circles; i++) {
+		float index = float(i + 1);
 		vec2 offset = vec2(
 			mod(random_float(vec2(.8721 * seed * index)), .02) - .01,
 			mod(random_float(vec2(.1837 * seed * index)), .02) - .01
 		);
 
-		float radius = radius_step * float(i);
+		float radius = minimum_circle_radius + radius_step * (index - 1.);
 		radius += mod(random_float(vec2(.1204 * seed * index)), 0.02) - 0.01;
 		radius = max(0.01, radius);
 		
@@ -88,7 +92,6 @@ void fragment() {
 	}
 	
 	// Add lines
-	int number_of_lines = 15 + random_int(vec2(seed)) % 5;
 	for (int i = 0; i < number_of_lines; i++) {
 		float index = 1. * float(i);
 		

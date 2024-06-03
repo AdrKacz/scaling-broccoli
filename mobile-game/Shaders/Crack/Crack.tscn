@@ -8,6 +8,11 @@ shader = ExtResource("1_a5pfa")
 shader_parameter/seed = 0.123457
 shader_parameter/resolution = 64.0
 shader_parameter/use_pixel = true
+shader_parameter/minimum_circle_radius = 0.1
+shader_parameter/maximum_circle_radius = 0.5
+shader_parameter/current_number_of_circles = 2
+shader_parameter/final_number_of_circles = 5
+shader_parameter/number_of_lines = 15
 
 [node name="Crack" type="TextureRect"]
 material = SubResource("ShaderMaterial_i7ayr")

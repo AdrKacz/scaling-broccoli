@@ -1,7 +1,3 @@
-Todo:
-- Make better pixel art cracks (see if can be done with scripts)
-- Try in to out and out to in
-- Try a "not circle" shape for expension/contraction
 # 🌈 Rainbow Rush
 
 # Develop
