@@ -1,9 +1,7 @@
-TODO:
-- Add flash and screen shake and slow-mo (maybe slow-mo not needed)
-- Remove zoom in shader if not used
-- Replace the logic to write "Level X" inside the Level object so I can change the display text in one place only
 # 🌈 Rainbow Rush
 # Develop
+
+
 Open `project.godot` with [**Godot**](https://godotengine.org/download/).
 
 To see your changes, just click play in the top left corner.
@@ -13,6 +11,7 @@ See [tween cheat sheet](https://raw.githubusercontent.com/godotengine/godot-docs
 ## Resources for shaders
 - [The book of shaders](https://thebookofshaders.com)
 - [Godot shader snippets](https://godotshaders.com/snippet/useful-code-snippets/)
+- [Optimize your shaders](https://godotshaders.com/shader/optimize-your-shaders/)
 
 ## Play on mobile
 To be written...
