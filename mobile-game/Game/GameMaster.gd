@@ -24,10 +24,6 @@ func increment_combos_strike():
 		$Control/SpeedLines.level = int(Constants.combos_strike / 10)
 		$Control/GameUI.display_bonus_text('x' + str(Constants.combos_strike))
 
-func reset_speed_lines_level():
-	# used by tween callback in unlock_stage
-	$Control/SpeedLines.level = -1
-
 var tween: Tween
 func unlock_stage():
 	if tween:
@@ -36,20 +32,20 @@ func unlock_stage():
 	$Control/Game.character_visible = false
 	# TODO: Add flash and screen shake
 	$Control/Game.show_background_image() # remove glass
-	tween = create_tween().bind_node(self).set_trans(Tween.TRANS_SINE)
+	tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_SINE)
 	tween.tween_property($Control/Game, "background_abberation", 0.1, 0.3).set_ease(Tween.EASE_IN)
 	# tween.parallel().tween_property($Control/Game, "background_zoom", 0.9, 0.3).set_ease(Tween.EASE_IN)
 	tween.tween_property($Control/Game, "background_abberation", 0, 0.3).set_ease(Tween.EASE_OUT)
 	# tween.parallel().tween_property($Control/Game, "background_zoom", 1, 0.3).set_ease(Tween.EASE_OUT)
-	tween.tween_callback(reset_speed_lines_level).set_delay(1)
+	tween.tween_callback($Control/SpeedLines.set_level.bind(-1))
 
 func reset_combos_strike():
 	$Control/SpeedLines.level = -1
 	Constants.combos_strike = 0
+	Constants.local_combos_strike = 0
 
 func _on_game_miss_or_wrong():
 	reset_combos_strike()
-	Constants.local_combos_strike = 0
 	$Control/Game.reset_crack()
 
 func _on_game_score() -> void:
@@ -92,9 +88,9 @@ func _on_game_neutral_hit():
 		# set parameters to what they should be after the tween (from unlock_stage)
 		tween.kill()
 		$Control/Game.background_abberation = 0
-		if Constants.combos_strike >= 2:
-			@warning_ignore("integer_division")
-			$Control/SpeedLines.level = int(Constants.combos_strike / 10)
+	if Constants.combos_strike >= 2:
+		@warning_ignore("integer_division")
+		$Control/SpeedLines.level = int(Constants.combos_strike / 10)
 	Memory.stage += 1 # will automatically animate StageText
 	$Control/Game.reset_crack()
 	init_level()
