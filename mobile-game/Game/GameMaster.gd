@@ -93,7 +93,8 @@ func _on_game_neutral_hit():
 		tween.kill()
 		$Control/Game.background_abberation = 0
 		if Constants.combos_strike >= 2:
+			@warning_ignore("integer_division")
 			$Control/SpeedLines.level = int(Constants.combos_strike / 10)
-	$Control/GameUI.increase_stage()
+	Memory.stage += 1 # will automatically animate StageText
 	$Control/Game.reset_crack()
 	init_level()

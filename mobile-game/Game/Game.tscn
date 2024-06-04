@@ -12,11 +12,11 @@ shader_parameter/seed = 0.123457
 shader_parameter/use_cracks_and_glass = true
 shader_parameter/use_color = true
 shader_parameter/color = Color(0.584314, 0.345098, 0.945098, 1)
-shader_parameter/zoom = 1.0
 shader_parameter/resolution = 128.0
 shader_parameter/use_pixel = true
 shader_parameter/minimum_circle_radius = 0.15
 shader_parameter/maximum_circle_radius = 0.5
+shader_parameter/margin_circle_radius = 128.0
 shader_parameter/current_number_of_circles = 2
 shader_parameter/final_number_of_circles = 5
 shader_parameter/number_of_lines = 15
@@ -61,6 +61,7 @@ texture = ExtResource("3_movpk")
 stretch_mode = 6
 
 [node name="Character" parent="." instance=ExtResource("1")]
+visible = false
 position = Vector2(360, 640)
 
 [node name="SwapBackgroundTimer" type="Timer" parent="."]

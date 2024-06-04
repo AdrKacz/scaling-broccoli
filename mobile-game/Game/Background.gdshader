@@ -4,15 +4,15 @@ uniform float seed: hint_range(0.0, 1.0, 0.01) = 0.12345678;
 uniform bool use_cracks_and_glass = true;
 uniform bool use_color = true;
 uniform vec4 color: source_color = vec4(0.584314, 0.345098, 0.945098, 1.);
-uniform float zoom: hint_range(0.5, 1., 0.01) = 1.;
 
 group_uniforms Cracks.Sprite;
 uniform float resolution: hint_range(2, 128, .1) = 128.;
 uniform bool use_pixel = true;
 uniform float minimum_circle_radius: hint_range(0.01, 0.5, 0.01) = 0.15;
 uniform float maximum_circle_radius: hint_range(0.01, 0.5, 0.01) = 0.5;
+uniform float margin_circle_radius: hint_range(0., 256., 0.1) = 128.; // apply symmetrical margin in Y-axis (scaled only applied to Y-axis)
 uniform int current_number_of_circles: hint_range(0, 6, 1) = 2;
-uniform int final_number_of_circles: hint_range(4, 6, 1) = 5;
+uniform int final_number_of_circles: hint_range(2, 6, 1) = 5;
 uniform int number_of_lines: hint_range(0, 20, 1) = 15; // final number of lines between 15 and 20 for best results
 group_uniforms;
 
@@ -51,18 +51,12 @@ vec2 rotate(vec2 uv, vec2 pivot, float angle)
 	return uv;
 }
 
-vec2 scale(vec2 uv, float x, float y)
-{
-	mat2 scale = mat2(vec2(x, 0.0), vec2(0.0, y));
-	
-	uv -= 0.5;
-	uv = uv * scale;
-	uv += 0.5;
-	return uv;
-}
+//vec2 scaled_vector(vec2 vector, float pixel_ratio) {
+	//return (vector - vec2(0.5, 0.)) / vec2(pixel_ratio, 1.0) + vec2(0.5, 0.);
+//}
 
 vec2 scaled_vector(vec2 vector, float pixel_ratio) {
-	return (vector - vec2(0.5, 0.0)) / vec2(pixel_ratio, 1.0) + vec2(0.5, 0.0);
+	return (vector - vec2(0., 0.5)) / vec2(1.0, pixel_ratio) + vec2(0., 0.5);
 }
 
 float arc(vec2 position, vec2 origin, float radius, float width, float feather, float to_angle, float rotation) {
@@ -93,7 +87,8 @@ float crack(vec2 uv, vec2 screen_pixel_size) {
 	float value = 0.;
 	
 	// Add circles (radius between 0 excluded and 0.5 included)
-	float radius_step = (maximum_circle_radius - minimum_circle_radius) / float(final_number_of_circles - 1);
+	float margin_x = margin_circle_radius * screen_pixel_size.x; // pixel space to uv space
+	float radius_step = (maximum_circle_radius - margin_x - minimum_circle_radius) / float(final_number_of_circles - 1);
 	for (int i = 0; i < current_number_of_circles; i++) {
 		float index = float(i + 1);
 		vec2 offset = vec2(
@@ -105,7 +100,7 @@ float crack(vec2 uv, vec2 screen_pixel_size) {
 		radius += mod(random_float(vec2(.1204 * seed * index)), 0.02) - 0.01;
 		radius = max(0.01, radius);
 		
-		float angle = random_float(vec2(.8294 * seed * index)) * 2. * PI;
+		float angle = 0.2 * PI + random_float(vec2(.8294 * seed * index)) * 1.8 * PI;
 		float rotation = random_float(vec2(.0185 * seed * index)) * 2. * PI;
 		value = or(value, arc(uv, vec2(.5) + offset, radius, 0.02, 0.005, angle, rotation));
 	}
@@ -140,7 +135,7 @@ float crack(vec2 uv, vec2 screen_pixel_size) {
 vec4 image(sampler2D image_texture, vec2 uv) {
 	vec4 image_color = vec4(1.);
 	
-	vec4 texture_color = texture(image_texture, scale(uv, zoom, zoom));
+	vec4 texture_color = texture(image_texture, uv);
 	if (!use_color)
 		return texture_color;
 	float grey = 0.299 * texture_color.r + 0.587 * texture_color.g + 0.114 * texture_color.b;
@@ -188,7 +183,7 @@ void fragment() {
 			COLOR = image(TEXTURE, UV);
 		}
 	} else {
-		float pixel_ratio = TEXTURE_PIXEL_SIZE.x / TEXTURE_PIXEL_SIZE.y;
+		float pixel_ratio = TEXTURE_PIXEL_SIZE.y / TEXTURE_PIXEL_SIZE.x;
 		vec2 scaled_uv = scaled_vector(UV, pixel_ratio);
 		vec2 scaled_refraction_offset = scaled_vector(refraction_offset, pixel_ratio);
 		vec2 scaled_reflection_offset = scaled_vector(reflection_offset, pixel_ratio);

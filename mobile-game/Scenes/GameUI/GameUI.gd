@@ -5,8 +5,6 @@ extends Control
 var display_bonus_text_position: Vector2
 
 func _ready():
-	$StageText.text = 'Level ' + str(Memory.stage)
-	
 	# get position for bonus text
 	var computed_safe_area: Rect2 = $MarginContainer.computed_safe_area
 	$StageText.position = Vector2(
@@ -36,11 +34,6 @@ func _on_settings_exit():
 	$MarginContainer/PauseControl/MarginContainer.visible = true 
 	$MarginContainer/Settings.visible = false
 	
-func increase_stage():
-	Memory.stage += 1
-	$StageText.text = 'Level ' + str(Memory.stage)
-	$StageText.pulse()
-
 func remove_introduction_text():
 	if find_child('IntroductionText', false):
 		$IntroductionText.leave()
