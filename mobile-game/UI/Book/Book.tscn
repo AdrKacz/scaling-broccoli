@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2f5a3yellhw3"]
+
+[ext_resource type="Script" path="res://UI/Book/Book.gd" id="1_gsv7l"]
+[ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="1_mb3ny"]
+[ext_resource type="Shader" path="res://UI/Book/Blur.gdshader" id="2_inquw"]
+[ext_resource type="Texture2D" uid="uid://xlru3l4six6o" path="res://assets/book_open.png" id="2_ukaox"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d6um7"]
+shader = ExtResource("2_inquw")
+shader_parameter/color = Color(1, 1, 1, 0.8)
+shader_parameter/blur_direction = 16.0
+shader_parameter/blur_quality = 3.0
+shader_parameter/blur_size = 16.0
+
+[node name="Book" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_gsv7l")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Blur" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_d6um7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.490196)
+
+[node name="ContentMarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mb3ny")
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/ContentMarginContainer"]
+layout_mode = 2
+
+[node name="ExitMarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ExitTextureButton" type="TextureButton" parent="Control/ExitMarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_ukaox")
+
+[connection signal="pressed" from="Control/ExitMarginContainer/ExitTextureButton" to="." method="_on_exit_texture_button_pressed"]

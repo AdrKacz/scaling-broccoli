@@ -1,7 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://dofspa3v0y84e"]
 
 [ext_resource type="Script" path="res://UI/UIElements/Exit.gd" id="1_ytwg3"]
-[ext_resource type="Texture2D" uid="uid://k2sbxux3l8li" path="res://assets/exitRight.png" id="2_6uyos"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sutyk"]
+load_path = "res://.godot/imported/exitRight.png-a2992691341a31e224d6647214c18faa.ctex"
 
 [node name="Exit" type="Control"]
 use_parent_material = true
@@ -33,8 +35,6 @@ theme_override_constants/margin_bottom = 12
 [node name="ExitButton" type="TextureButton" parent="MarginContainer"]
 use_parent_material = true
 layout_mode = 2
-texture_normal = ExtResource("2_6uyos")
-texture_pressed = ExtResource("2_6uyos")
-texture_hover = ExtResource("2_6uyos")
+texture_normal = SubResource("CompressedTexture2D_sutyk")
 
 [connection signal="pressed" from="MarginContainer/ExitButton" to="." method="_on_exit_button_pressed"]
