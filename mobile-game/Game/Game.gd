@@ -6,6 +6,19 @@ signal score
 signal miss
 signal wrong
 signal skip
+signal neutral_hit
+
+var paused: bool:
+	get:
+		return $SwapBackgroundTimer.paused
+	set(value):
+		$SwapBackgroundTimer.paused = value
+		
+var character_visible: bool:
+	get:
+		return $Character.visible
+	set(value):
+		$Character.visible = value
 
 var character_state: int = 0:
 	get:
@@ -19,7 +32,7 @@ var background_state: int = 0:
 	get:
 		return background_state
 	set(value):
-		$MarginContainer/Background.color = Constants.State[value]
+		$MarginContainer/Background.material.set_shader_parameter('color', Constants.State[value])
 		Session.background_state = background_state
 		background_state = value
 		
@@ -39,10 +52,29 @@ func update_character_state():
 func update_background_state():
 	background_state = StateManager.get_background_next_state(background_state, $Character.state)
 	$SwapBackgroundTimer.start(Constants.swap_delta)
+	
+func update_background_image(path: String):
+	$MarginContainer/Background.set_texture(load(path))
+	
+func show_background_image():
+	$MarginContainer/Background.material.set_shader_parameter('use_cracks_and_glass', false)
+	$MarginContainer/Background.material.set_shader_parameter('use_color', false)
+	
+func hide_background_image():
+	$MarginContainer/Background.material.set_shader_parameter('use_cracks_and_glass', true)
+	$MarginContainer/Background.material.set_shader_parameter('use_color', true)
+	
+var background_abberation: float:
+	get:
+		return $MarginContainer/Background.material.get_shader_parameter('abberation_spread')
+	set(value):
+		$MarginContainer/Background.material.set_shader_parameter('abberation_spread', value)
 
 func _on_character_tap():
 	# Hitted
-	if Constants.state_matches:
+	if paused: # Don't count, the game is paused
+		emit_signal("neutral_hit")
+	elif Constants.state_matches:
 		$Character.pulse()
 		emit_signal("score")
 		# Update background and character
@@ -77,16 +109,15 @@ func update_crack(circles: int, lines: int) -> void:
 	# var add_circles: bool = circles > current_circles
 	# var add_lines: bool = lines != current_lines
 	# Update
-	$Crack.material.set_shader_parameter('current_number_of_circles', circles)
-	$Crack.material.set_shader_parameter('number_of_lines', lines)
+	$MarginContainer/Background.material.set_shader_parameter('current_number_of_circles', circles)
+	$MarginContainer/Background.material.set_shader_parameter('number_of_lines', lines)
 
 func generate_crack(final_number_of_circles: int, minimum_circle_radius: float = 0.15, maximum_circle_radius: float = 0.5) -> void:
-	$Crack.material.set_shader_parameter('minimum_circle_radius', minimum_circle_radius)
-	$Crack.material.set_shader_parameter('maximum_circle_radius', maximum_circle_radius)
-	$Crack.material.set_shader_parameter('final_number_of_circles', final_number_of_circles)
-	$Crack.material.set_shader_parameter('seed', randf())
+	$MarginContainer/Background.material.set_shader_parameter('minimum_circle_radius', minimum_circle_radius)
+	$MarginContainer/Background.material.set_shader_parameter('maximum_circle_radius', maximum_circle_radius)
+	$MarginContainer/Background.material.set_shader_parameter('final_number_of_circles', final_number_of_circles)
+	$MarginContainer/Background.material.set_shader_parameter('seed', randf())
 	
 func reset_crack() -> void:
-	$Crack.material.set_shader_parameter('current_number_of_circles', 0)
-	$Crack.material.set_shader_parameter('number_of_lines', 0)
-	
+	$MarginContainer/Background.material.set_shader_parameter('current_number_of_circles', 0)
+	$MarginContainer/Background.material.set_shader_parameter('number_of_lines', 0)

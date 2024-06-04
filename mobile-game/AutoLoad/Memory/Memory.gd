@@ -1,4 +1,5 @@
 extends Node
+signal update_stage(value: int)
 
 var config: ConfigFile
 
@@ -18,3 +19,4 @@ var stage: int:
 		stage = max(0, value)
 		config.set_value('memory', 'stage', stage)
 		config.save("user://memory.cfg")
+		emit_signal("update_stage", stage)

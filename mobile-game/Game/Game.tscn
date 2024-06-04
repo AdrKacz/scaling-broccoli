@@ -1,9 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba724pdrff37e"]
+[gd_scene load_steps=7 format=3 uid="uid://ba724pdrff37e"]
 
 [ext_resource type="PackedScene" uid="uid://dsngmds587kx2" path="res://Scenes/Character/Character.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://bkyi6nop5h5e7" path="res://Scenes/BonusText/BonusText.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://ckr7my86lhauv" path="res://Shaders/Crack/Crack.tscn" id="3_k6q6p"]
+[ext_resource type="Shader" path="res://Game/Background.gdshader" id="3_fsrnv"]
+[ext_resource type="Texture2D" uid="uid://1xa5cs6m2jx7" path="res://assets/Cards/Level_1.jpeg" id="3_movpk"]
 [ext_resource type="Script" path="res://Game/Game.gd" id="5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eu7oe"]
+shader = ExtResource("3_fsrnv")
+shader_parameter/seed = 0.123457
+shader_parameter/use_cracks_and_glass = true
+shader_parameter/use_color = true
+shader_parameter/color = Color(0.584314, 0.345098, 0.945098, 1)
+shader_parameter/resolution = 128.0
+shader_parameter/use_pixel = true
+shader_parameter/minimum_circle_radius = 0.15
+shader_parameter/maximum_circle_radius = 0.5
+shader_parameter/margin_circle_radius = 128.0
+shader_parameter/current_number_of_circles = 2
+shader_parameter/final_number_of_circles = 5
+shader_parameter/number_of_lines = 15
+shader_parameter/refraction_offset = Vector2(-16, -16)
+shader_parameter/reflection_offset = Vector2(4, 4)
+shader_parameter/reflection_color = Color(1, 1, 1, 1)
+shader_parameter/blur_direction = 16.0
+shader_parameter/blur_quality = 3.0
+shader_parameter/blur_size = 16.0
+shader_parameter/abberation_levels = 3
+shader_parameter/abberation_spread = 0.1
 
 [node name="Game" type="Control" groups=["game"]]
 process_mode = 1
@@ -30,16 +54,14 @@ theme_override_constants/margin_top = -128
 theme_override_constants/margin_right = -128
 theme_override_constants/margin_bottom = -128
 
-[node name="Background" type="ColorRect" parent="MarginContainer"]
-use_parent_material = true
+[node name="Background" type="TextureRect" parent="MarginContainer"]
+material = SubResource("ShaderMaterial_eu7oe")
 layout_mode = 2
-mouse_filter = 2
-color = Color(0.584314, 0.345098, 0.945098, 1)
-
-[node name="Crack" parent="." instance=ExtResource("3_k6q6p")]
-layout_mode = 1
+texture = ExtResource("3_movpk")
+stretch_mode = 6
 
 [node name="Character" parent="." instance=ExtResource("1")]
+visible = false
 position = Vector2(360, 640)
 
 [node name="SwapBackgroundTimer" type="Timer" parent="."]

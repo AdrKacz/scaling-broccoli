@@ -1,13 +1,14 @@
 extends Sprite2D
 
-var text: String = 'Stage 1':
-	get:
-		return text
-	set(value):
-		text = value
-		$CenterContainer/Label.text = text
+func _ready():
+	$CenterContainer/Label.text = 'Level ' + str(Memory.stage)
+	Memory.update_stage.connect(_on_memory_update_stage)
 
-func pulse():
+func _on_memory_update_stage(stage: int):
+	$CenterContainer/Label.text = "Level " + str(stage)
+	_pulse()
+
+func _pulse():
 	if $AnimationPlayer.is_playing():
 		$AnimationPlayer.stop()
 	$AnimationPlayer.play("pulse")

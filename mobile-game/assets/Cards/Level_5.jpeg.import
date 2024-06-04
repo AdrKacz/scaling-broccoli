@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jvvqc4manxa"
-path="res://.godot/imported/ButtonUp.png-5af5d122a0a8205e7cb1131596055348.ctex"
+uid="uid://dmnwdkweniaxg"
+path="res://.godot/imported/Level_5.jpeg-434cf9e12ae230086701e4f47854319f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ButtonsV3/ButtonUp.png"
-dest_files=["res://.godot/imported/ButtonUp.png-5af5d122a0a8205e7cb1131596055348.ctex"]
+source_file="res://assets/Cards/Level_5.jpeg"
+dest_files=["res://.godot/imported/Level_5.jpeg-434cf9e12ae230086701e4f47854319f.ctex"]
 
 [params]
 

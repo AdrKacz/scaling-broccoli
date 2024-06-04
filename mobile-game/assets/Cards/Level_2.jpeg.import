@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b03xr4shg6nvc"
-path="res://.godot/imported/loading-progress.png-08dad8816d5d785668472cd585398ad7.ctex"
+uid="uid://qg6wf6f8jur4"
+path="res://.godot/imported/Level_2.jpeg-87afe2594a10676223b7f5437a86542b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/loading-progress.png"
-dest_files=["res://.godot/imported/loading-progress.png-08dad8816d5d785668472cd585398ad7.ctex"]
+source_file="res://assets/Cards/Level_2.jpeg"
+dest_files=["res://.godot/imported/Level_2.jpeg-87afe2594a10676223b7f5437a86542b.ctex"]
 
 [params]
 

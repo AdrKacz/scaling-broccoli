@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://barx6iw6n5f8o"
-path="res://.godot/imported/full-heart.png-7a3fd408024e525d2a5137da484391d4.ctex"
+uid="uid://1xa5cs6m2jx7"
+path="res://.godot/imported/Level_1.jpeg-b2e20724b24c23353dbc483bf3351e3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/full-heart.png"
-dest_files=["res://.godot/imported/full-heart.png-7a3fd408024e525d2a5137da484391d4.ctex"]
+source_file="res://assets/Cards/Level_1.jpeg"
+dest_files=["res://.godot/imported/Level_1.jpeg-b2e20724b24c23353dbc483bf3351e3e.ctex"]
 
 [params]
 
