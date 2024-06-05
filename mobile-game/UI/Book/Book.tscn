@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2f5a3yellhw3"]
+[gd_scene load_steps=7 format=3 uid="uid://d2f5a3yellhw3"]
 
 [ext_resource type="Script" path="res://UI/Book/Book.gd" id="1_gsv7l"]
-[ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="1_mb3ny"]
 [ext_resource type="Shader" path="res://UI/Book/Blur.gdshader" id="2_inquw"]
 [ext_resource type="Texture2D" uid="uid://xlru3l4six6o" path="res://assets/book_open.png" id="2_ukaox"]
+[ext_resource type="PackedScene" uid="uid://56vsdrkgrrpj" path="res://UI/Book/Card/Card.tscn" id="3_ceuql"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d6um7"]
 shader = ExtResource("2_inquw")
@@ -11,6 +11,12 @@ shader_parameter/color = Color(1, 1, 1, 0.8)
 shader_parameter/blur_direction = 16.0
 shader_parameter/blur_quality = 3.0
 shader_parameter/blur_size = 16.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8e0mv"]
+content_margin_left = 16.0
+content_margin_top = 32.0
+content_margin_right = 16.0
+content_margin_bottom = 32.0
 
 [node name="Book" type="CanvasLayer"]
 process_mode = 2
@@ -44,16 +50,55 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0.490196)
 
-[node name="ContentMarginContainer" type="MarginContainer" parent="Control"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_mb3ny")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8e0mv")
 
-[node name="CenterContainer" type="CenterContainer" parent="Control/ContentMarginContainer"]
+[node name="HFlowContainer" type="HFlowContainer" parent="Control/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 32
+
+[node name="Card3" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
+layout_mode = 2
+
+[node name="Card" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
+layout_mode = 2
+
+[node name="Card2" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
+layout_mode = 2
+
+[node name="Card4" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
+layout_mode = 2
+
+[node name="Card5" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
+layout_mode = 2
+
+[node name="Card6" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
+layout_mode = 2
+
+[node name="Card7" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
+layout_mode = 2
+
+[node name="Card8" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
+layout_mode = 2
+
+[node name="Card9" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
+layout_mode = 2
+
+[node name="Card10" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
+layout_mode = 2
+
+[node name="Card11" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
+layout_mode = 2
+
+[node name="Card12" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
 layout_mode = 2
 
 [node name="ExitMarginContainer" type="MarginContainer" parent="Control"]
