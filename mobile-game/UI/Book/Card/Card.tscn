@@ -1,15 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://56vsdrkgrrpj"]
+[gd_scene load_steps=4 format=3 uid="uid://56vsdrkgrrpj"]
 
-[ext_resource type="Shader" path="res://UI/Book/Card/Card.gdshader" id="1_1fq7d"]
 [ext_resource type="Texture2D" uid="uid://1xa5cs6m2jx7" path="res://assets/Cards/Level_1.jpeg" id="1_173em"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d4ki0"]
-shader = ExtResource("1_1fq7d")
-shader_parameter/image_texture = ExtResource("1_173em")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6suq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2s05c"]
 bg_color = Color(0, 0, 0, 1)
-border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -17,6 +11,13 @@ corner_radius_bottom_left = 16
 shadow_color = Color(0, 0, 0, 0.392157)
 shadow_size = 16
 shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7cd2"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [node name="Card" type="MarginContainer"]
 custom_minimum_size = Vector2(307, 512)
@@ -29,6 +30,17 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_d4ki0")
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_o6suq")
+theme_override_styles/panel = SubResource("StyleBoxFlat_2s05c")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+clip_children = 2
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j7cd2")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+clip_contents = true
+layout_mode = 2
+texture = ExtResource("1_173em")
+expand_mode = 1
+stretch_mode = 6
