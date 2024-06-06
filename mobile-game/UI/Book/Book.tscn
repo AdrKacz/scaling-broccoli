@@ -22,6 +22,7 @@ content_margin_bottom = 32.0
 [node name="Book" type="CanvasLayer"]
 process_mode = 2
 script = ExtResource("1_gsv7l")
+Card = ExtResource("3_ceuql")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -66,42 +67,6 @@ size_flags_horizontal = 3
 theme_override_constants/h_separation = 32
 theme_override_constants/v_separation = 32
 
-[node name="Card3" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
-layout_mode = 2
-
-[node name="Card" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
-layout_mode = 2
-
-[node name="Card2" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
-layout_mode = 2
-
-[node name="Card4" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
-layout_mode = 2
-
-[node name="Card5" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
-layout_mode = 2
-
-[node name="Card6" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
-layout_mode = 2
-
-[node name="Card7" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
-layout_mode = 2
-
-[node name="Card8" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
-layout_mode = 2
-
-[node name="Card9" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
-layout_mode = 2
-
-[node name="Card10" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
-layout_mode = 2
-
-[node name="Card11" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
-layout_mode = 2
-
-[node name="Card12" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
-layout_mode = 2
-
 [node name="ExitMarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 2
@@ -128,6 +93,6 @@ texture_normal = ExtResource("5_uju0a")
 ignore_texture_size = true
 stretch_mode = 6
 
-[connection signal="pressed" from="Control/ScrollContainer/HFlowContainer/Card3" to="." method="_on_card_pressed"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Control/ExitMarginContainer/ExitTextureButton" to="." method="_on_exit_texture_button_pressed"]
 [connection signal="pressed" from="CardFullScreen" to="." method="_on_card_full_screen_pressed"]
