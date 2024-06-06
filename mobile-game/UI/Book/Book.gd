@@ -30,4 +30,5 @@ func _on_visibility_changed():
 			card.pressed.connect(_on_card_pressed.bind(i + 1))
 			$Control/ScrollContainer/HFlowContainer.add_child(card)
 		else:
-			pass
+			var locked_card = LockedCard.instantiate()
+			$Control/ScrollContainer/HFlowContainer.add_child(locked_card)

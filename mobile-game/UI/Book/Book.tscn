@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2f5a3yellhw3"]
+[gd_scene load_steps=9 format=3 uid="uid://d2f5a3yellhw3"]
 
 [ext_resource type="Script" path="res://UI/Book/Book.gd" id="1_gsv7l"]
 [ext_resource type="Shader" path="res://UI/Book/Blur.gdshader" id="2_inquw"]
 [ext_resource type="Texture2D" uid="uid://xlru3l4six6o" path="res://assets/book_open.png" id="2_ukaox"]
+[ext_resource type="PackedScene" uid="uid://cnvq1enqlfaji" path="res://UI/Book/LockedCard/LockedCard.tscn" id="3_03lgm"]
 [ext_resource type="PackedScene" uid="uid://56vsdrkgrrpj" path="res://UI/Book/Card/Card.tscn" id="3_ceuql"]
 [ext_resource type="Texture2D" uid="uid://1xa5cs6m2jx7" path="res://assets/Cards/Level_1.jpeg" id="5_uju0a"]
 
@@ -23,6 +24,7 @@ content_margin_bottom = 32.0
 process_mode = 2
 script = ExtResource("1_gsv7l")
 Card = ExtResource("3_ceuql")
+LockedCard = ExtResource("3_03lgm")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
