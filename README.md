@@ -14,6 +14,7 @@ See [tween cheat sheet](https://raw.githubusercontent.com/godotengine/godot-docs
 - [The book of shaders](https://thebookofshaders.com)
 - [Godot shader snippets](https://godotshaders.com/snippet/useful-code-snippets/)
 - [Optimize your shaders](https://godotshaders.com/shader/optimize-your-shaders/)
+- [TextureRect with rounded corners](https://godotforums.org/d/37589-texturerect/13)
 
 ## Play on mobile
 To be written...

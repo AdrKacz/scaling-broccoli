@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2f5a3yellhw3"]
+[gd_scene load_steps=8 format=3 uid="uid://d2f5a3yellhw3"]
 
 [ext_resource type="Script" path="res://UI/Book/Book.gd" id="1_gsv7l"]
 [ext_resource type="Shader" path="res://UI/Book/Blur.gdshader" id="2_inquw"]
 [ext_resource type="Texture2D" uid="uid://xlru3l4six6o" path="res://assets/book_open.png" id="2_ukaox"]
 [ext_resource type="PackedScene" uid="uid://56vsdrkgrrpj" path="res://UI/Book/Card/Card.tscn" id="3_ceuql"]
+[ext_resource type="Texture2D" uid="uid://1xa5cs6m2jx7" path="res://assets/Cards/Level_1.jpeg" id="5_uju0a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d6um7"]
 shader = ExtResource("2_inquw")
@@ -116,4 +117,17 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 texture_normal = ExtResource("2_ukaox")
 
+[node name="CardFullScreen" type="TextureButton" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_uju0a")
+ignore_texture_size = true
+stretch_mode = 6
+
+[connection signal="pressed" from="Control/ScrollContainer/HFlowContainer/Card3" to="." method="_on_card_pressed"]
 [connection signal="pressed" from="Control/ExitMarginContainer/ExitTextureButton" to="." method="_on_exit_texture_button_pressed"]
+[connection signal="pressed" from="CardFullScreen" to="." method="_on_card_full_screen_pressed"]
