@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 def replace_config_values(input_file, output_file, key_value_pairs):
     with open(input_file, 'r') as input_f:
         with open(output_file, 'w') as output_f:

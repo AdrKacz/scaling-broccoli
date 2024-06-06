@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2f5a3yellhw3"]
+[gd_scene load_steps=10 format=3 uid="uid://d2f5a3yellhw3"]
 
 [ext_resource type="Script" path="res://UI/Book/Book.gd" id="1_gsv7l"]
 [ext_resource type="Shader" path="res://UI/Book/Blur.gdshader" id="2_inquw"]
 [ext_resource type="Texture2D" uid="uid://xlru3l4six6o" path="res://assets/book_open.png" id="2_ukaox"]
 [ext_resource type="PackedScene" uid="uid://cnvq1enqlfaji" path="res://UI/Book/LockedCard/LockedCard.tscn" id="3_03lgm"]
 [ext_resource type="PackedScene" uid="uid://56vsdrkgrrpj" path="res://UI/Book/Card/Card.tscn" id="3_ceuql"]
+[ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="5_l8tuw"]
 [ext_resource type="Texture2D" uid="uid://1xa5cs6m2jx7" path="res://assets/Cards/Level_1.jpeg" id="5_uju0a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d6um7"]
@@ -66,21 +67,37 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_8e0mv")
 [node name="HFlowContainer" type="HFlowContainer" parent="Control/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/h_separation = 32
 theme_override_constants/v_separation = 32
 
-[node name="ExitMarginContainer" type="MarginContainer" parent="Control"]
+[node name="Card" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
+layout_mode = 2
+
+[node name="Card2" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
+layout_mode = 2
+
+[node name="Card3" parent="Control/ScrollContainer/HFlowContainer" instance=ExtResource("3_ceuql")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_l8tuw")
+
+[node name="ExitMarginContainer" type="MarginContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="ExitTextureButton" type="TextureButton" parent="Control/ExitMarginContainer"]
+[node name="ExitTextureButton" type="TextureButton" parent="Control/MarginContainer/ExitMarginContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_ukaox")
 
@@ -96,5 +113,5 @@ ignore_texture_size = true
 stretch_mode = 6
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="pressed" from="Control/ExitMarginContainer/ExitTextureButton" to="." method="_on_exit_texture_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/ExitMarginContainer/ExitTextureButton" to="." method="_on_exit_texture_button_pressed"]
 [connection signal="pressed" from="CardFullScreen" to="." method="_on_card_full_screen_pressed"]
