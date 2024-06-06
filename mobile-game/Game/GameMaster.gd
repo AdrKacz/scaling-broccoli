@@ -28,6 +28,7 @@ var tween: Tween
 func unlock_stage():
 	if tween:
 		tween.kill()
+	Memory.stage += 1
 	$Control/Game.paused = true
 	$Control/Game.character_visible = false
 	# TODO: Add flash and screen shake
@@ -91,6 +92,6 @@ func _on_game_neutral_hit():
 	if Constants.combos_strike >= 2:
 		@warning_ignore("integer_division")
 		$Control/SpeedLines.level = int(Constants.combos_strike / 10)
-	Memory.stage += 1 # will automatically animate StageText
+	$Control/GameUI.update_stage_text() # stage text won't update unless asked to
 	$Control/Game.reset_crack()
 	init_level()

@@ -57,3 +57,6 @@ func _on_book_exit():
 	get_tree().paused = false
 	$MarginContainer/PauseControl/BookMarginContainer.visible = true 
 	$MarginContainer/Book.visible = false
+
+func update_stage_text() -> void:
+	$StageText.update()
