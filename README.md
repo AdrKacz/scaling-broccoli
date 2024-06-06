@@ -1,3 +1,5 @@
+TODO:
+- Start a MacOS VM and try the MacOS build to see if it works
 # 🌈 Rainbow Rush
 # Develop
 Open `project.godot` with [**Godot**](https://godotengine.org/download/).
