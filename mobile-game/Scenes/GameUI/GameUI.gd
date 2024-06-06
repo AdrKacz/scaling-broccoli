@@ -25,13 +25,13 @@ func _ready():
 func _on_settings_button_pressed():
 	Session.click()
 	get_tree().paused = true
-	$MarginContainer/PauseControl/MarginContainer.visible = false
+	$MarginContainer/PauseControl/SettingsMarginContainer.visible = false
 	$MarginContainer/Settings.visible = true
 	
 func _on_settings_exit():
 	Session.click()
 	get_tree().paused = false
-	$MarginContainer/PauseControl/MarginContainer.visible = true 
+	$MarginContainer/PauseControl/SettingsMarginContainer.visible = true 
 	$MarginContainer/Settings.visible = false
 	
 func remove_introduction_text():
@@ -43,3 +43,20 @@ func display_bonus_text(text):
 	bonus_text.text = text
 	bonus_text.position = display_bonus_text_position + Vector2(randf_range(-64, 64), randf_range(-64, 64)) # randomise
 	add_child(bonus_text)
+
+
+func _on_book_texture_button_pressed():
+	Session.click()
+	get_tree().paused = true
+	$MarginContainer/PauseControl/BookMarginContainer.visible = false
+	$MarginContainer/Book.visible = true
+
+
+func _on_book_exit():
+	Session.click()
+	get_tree().paused = false
+	$MarginContainer/PauseControl/BookMarginContainer.visible = true 
+	$MarginContainer/Book.visible = false
+
+func update_stage_text() -> void:
+	$StageText.update()

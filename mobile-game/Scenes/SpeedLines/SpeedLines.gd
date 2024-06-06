@@ -9,7 +9,6 @@ const RADIUS_STEP: float = (MAX_LEVEL - MIN_RADIUS) / MAX_LEVEL
 var tween: Tween
 
 func set_level(value: int):
-	print('Call SET_LEVEL')
 	level = value
 
 var level: int = -1:
@@ -19,7 +18,6 @@ var level: int = -1:
 		value = floor(clamp(value, -1, MAX_LEVEL))
 		if value == level:
 			return
-		print('Update level to: ', value)
 		level = value
 		reset_tween()
 		if level == -1:

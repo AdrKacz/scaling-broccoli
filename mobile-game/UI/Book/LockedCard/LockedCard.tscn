@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnvq1enqlfaji"]
+
+[ext_resource type="Texture2D" uid="uid://bielirgngvinn" path="res://assets/lock_closed.png" id="1_w6nrl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sufwe"]
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.392157)
+shadow_size = 16
+shadow_offset = Vector2(8, 8)
+
+[node name="LockedCard" type="MarginContainer"]
+custom_minimum_size = Vector2(307, 512)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_sufwe")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_w6nrl")

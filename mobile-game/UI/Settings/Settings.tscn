@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://mvxeej36kptf"]
+[gd_scene load_steps=7 format=3 uid="uid://mvxeej36kptf"]
 
 [ext_resource type="Script" path="res://UI/Settings/Settings.gd" id="1_tghoq"]
+[ext_resource type="Shader" path="res://UI/Book/Blur.gdshader" id="2_8jbjs"]
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="2_c6igw"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="3_ekd8p"]
 [ext_resource type="PackedScene" uid="uid://dofspa3v0y84e" path="res://UI/UIElements/Exit.tscn" id="4_nct6u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3fins"]
+shader = ExtResource("2_8jbjs")
+shader_parameter/color = Color(1, 1, 1, 0.8)
+shader_parameter/blur_direction = 16.0
+shader_parameter/blur_quality = 3.0
+shader_parameter/blur_size = 16.0
 
 [node name="Settings" type="CanvasLayer"]
 process_mode = 2
@@ -17,6 +25,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Blur" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_3fins")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
@@ -24,6 +42,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(1, 1, 1, 0.490196)
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]

@@ -1,5 +1,4 @@
 extends CanvasLayer
-
 signal exit
 
 func _ready():

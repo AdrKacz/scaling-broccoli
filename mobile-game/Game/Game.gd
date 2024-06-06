@@ -104,11 +104,6 @@ func _on_gui_input(event):
 		_on_character_tap()
 		
 func update_crack(circles: int, lines: int) -> void:
-	# var current_circles = $Crack.material.get_shader_parameter('current_number_of_circles')
-	# var current_lines = $Crack.material.get_shader_parameter('number_of_lines')
-	# var add_circles: bool = circles > current_circles
-	# var add_lines: bool = lines != current_lines
-	# Update
 	$MarginContainer/Background.material.set_shader_parameter('current_number_of_circles', circles)
 	$MarginContainer/Background.material.set_shader_parameter('number_of_lines', lines)
 

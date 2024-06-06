@@ -1,7 +1,5 @@
 # 🌈 Rainbow Rush
 # Develop
-
-
 Open `project.godot` with [**Godot**](https://godotengine.org/download/).
 
 To see your changes, just click play in the top left corner.
@@ -12,6 +10,7 @@ See [tween cheat sheet](https://raw.githubusercontent.com/godotengine/godot-docs
 - [The book of shaders](https://thebookofshaders.com)
 - [Godot shader snippets](https://godotshaders.com/snippet/useful-code-snippets/)
 - [Optimize your shaders](https://godotshaders.com/shader/optimize-your-shaders/)
+- [TextureRect with rounded corners](https://godotforums.org/d/37589-texturerect/13)
 
 ## Play on mobile
 To be written...
@@ -188,7 +187,7 @@ You won't be able to upload videos directly. You must create a Youtube video and
 
 > Paste these link on the website where your app is available for download or in the description section of the platform or marketplace you’re using.
 
- - <a href="https://www.flaticon.com/free-icons/thunder" title="thunder icons">Thunder icons created by Smashicons - Flaticon</a>
+- Kenney [Game Icons](https://www.kenney.nl/assets/game-icons) and [Board Game Icons](https://www.kenney.nl/assets/board-game-icons)
 
 # The game
 Rainbow Rush is a mobile arcade-like video game where you have to touch a square when its colour matches the colour of the background.
