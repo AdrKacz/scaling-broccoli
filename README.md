@@ -1,7 +1,3 @@
-TODO:
-- Fix shader to have 1. correct ration and 2. display good shape/size
-- Add lock card
-- Only display the card unlocked
 # 🌈 Rainbow Rush
 # Develop
 Open `project.godot` with [**Godot**](https://godotengine.org/download/).
