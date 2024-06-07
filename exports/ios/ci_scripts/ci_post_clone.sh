@@ -11,5 +11,6 @@ echo "Directory Contents:\n$(ls)"
 Godot.app/Contents/MacOS/Godot --version
 
 echo "Exporting iOS Production"
+mv ./export_presets.cfg ./mobile-game/
 cd ./mobile-game
 ../Godot.app/Contents/MacOS/Godot ---headless --export-release "iOS Production" ../exports/ios/scaling-broccoli.xcodeproj
