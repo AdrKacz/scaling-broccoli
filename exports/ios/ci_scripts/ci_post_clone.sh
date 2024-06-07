@@ -10,6 +10,10 @@ unzip ./Godot_v$VERSION-stable_macos.universal.zip
 echo "Directory Contents:\n$(ls)"
 Godot.app/Contents/MacOS/Godot --version
 
+echo "Installing Export Templates"
+curl -LO https://github.com/godotengine/godot/releases/download/$VERSION-stable/Godot_v$VERSION-stable_export_templates.tpz
+unzip ./Godot_v$VERSION-stable_export_templates.tpz
+
 echo "Exporting iOS Production"
 mv ./export_presets.cfg ./mobile-game/
 cd ./mobile-game
