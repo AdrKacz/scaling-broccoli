@@ -1,7 +1,3 @@
-TODO:
-- Try with custom export template instead (from https://github.com/godotengine/godot/releases/download/4.2.2-stable/Godot_v4.2.2-stable_export_templates.tpz)
-- Set it in export_presets
-
 # 🌈 Rainbow Rush
 # Develop
 Open `project.godot` with [**Godot**](https://godotengine.org/download/).
