@@ -8,9 +8,8 @@ cd ../../../
 curl -LO https://github.com/godotengine/godot/releases/download/$VERSION-stable/Godot_v$VERSION-stable_macos.universal.zip
 unzip ./Godot_v$VERSION-stable_macos.universal.zip
 echo "Directory Contents:\n$(ls)"
-alias godot="Godot.app/Contents/MacOS/Godot"
-godot --version
+Godot.app/Contents/MacOS/Godot --version
 
 echo "Exporting iOS Production"
 cd ./mobile-game
-godot ---headless --export-release "iOS Production" ../exports/ios/scaling-broccoli.xcodeproj
+../Godot.app/Contents/MacOS/Godot ---headless --export-release "iOS Production" ../exports/ios/scaling-broccoli.xcodeproj
