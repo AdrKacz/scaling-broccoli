@@ -1,8 +1,3 @@
-TOOD:
-- EXIT NOT WORKING
-- SAVE EFFECT
-- DO EFFECT IN GAME
-- RESET EFFECT ON FAILURE (think of a visual)
 # 🌈 Rainbow Rush
 # Develop
 Open `project.godot` with [**Godot**](https://godotengine.org/download/).
