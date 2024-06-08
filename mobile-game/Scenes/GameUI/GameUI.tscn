@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b5a8hcvmbiai0"]
+[gd_scene load_steps=14 format=3 uid="uid://b5a8hcvmbiai0"]
 
 [ext_resource type="Script" path="res://Scenes/GameUI/GameUI.gd" id="1_1j4ix"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="1_42cip"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bw4ckwulbyo76" path="res://assets/pouch.png" id="9_igfwo"]
 [ext_resource type="PackedScene" uid="uid://d2f5a3yellhw3" path="res://UI/Book/Book.tscn" id="10_gcpq4"]
 [ext_resource type="PackedScene" uid="uid://1a16faoh6ypn" path="res://UI/Store/Store.tscn" id="12_xwt2s"]
+[ext_resource type="PackedScene" uid="uid://c7w3ggv0adwjq" path="res://UI/Items/Items.tscn" id="13_c7dut"]
 
 [node name="GameUI" type="Control"]
 use_parent_material = true
@@ -100,6 +101,8 @@ visible = false
 
 [node name="Store" parent="MarginContainer" instance=ExtResource("12_xwt2s")]
 visible = false
+
+[node name="Items" parent="MarginContainer" instance=ExtResource("13_c7dut")]
 
 [connection signal="pressed" from="MarginContainer/PauseControl/SettingsMarginContainer/SettingsTextureButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PauseControl/BookMarginContainer/BookTextureButton" to="." method="_on_book_texture_button_pressed"]

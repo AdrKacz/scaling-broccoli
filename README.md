@@ -1,3 +1,8 @@
+TOOD:
+- EXIT NOT WORKING
+- SAVE EFFECT
+- DO EFFECT IN GAME
+- RESET EFFECT ON FAILURE (think of a visual)
 # 🌈 Rainbow Rush
 # Develop
 Open `project.godot` with [**Godot**](https://godotengine.org/download/).
@@ -5,6 +10,8 @@ Open `project.godot` with [**Godot**](https://godotengine.org/download/).
 To see your changes, just click play in the top left corner.
 
 See [tween cheat sheet](https://raw.githubusercontent.com/godotengine/godot-docs/master/img/tween_cheatsheet.webp).
+
+Use [CloudConvert](https://cloudconvert.com/svg-to-png) to convert SVG to PNG.
 
 ## Resources for shaders
 - [The book of shaders](https://thebookofshaders.com)
