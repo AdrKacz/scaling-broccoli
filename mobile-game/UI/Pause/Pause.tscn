@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://wht22eoes7lb"]
+
+[ext_resource type="Shader" path="res://UI/Book/Blur.gdshader" id="1_34i4s"]
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="2_6mh73"]
+[ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="3_n1752"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckofy"]
+shader = ExtResource("1_34i4s")
+shader_parameter/color = Color(1, 1, 1, 0.8)
+shader_parameter/blur_direction = 16.0
+shader_parameter/blur_quality = 3.0
+shader_parameter/blur_size = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0f02n"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 12.0
+expand_margin_top = 12.0
+expand_margin_right = 12.0
+expand_margin_bottom = 12.0
+shadow_color = Color(0, 0, 0, 0.588235)
+shadow_size = 8
+shadow_offset = Vector2(8, 8)
+
+[node name="Pause" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Blur" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_ckofy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.490196)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_6mh73")
+script = ExtResource("3_n1752")
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0f02n")
+text = "Continue"

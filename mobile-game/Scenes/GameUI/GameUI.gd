@@ -1,4 +1,6 @@
 extends Control
+signal continue_game
+signal pause_game
 
 @export var BonusText: PackedScene
 
@@ -7,10 +9,6 @@ var display_bonus_text_position: Vector2
 func _ready():
 	# get position for bonus text
 	var computed_safe_area: Rect2 = $MarginContainer.computed_safe_area
-	$StageText.position = Vector2(
-		computed_safe_area.position.x + computed_safe_area.size.x * .5,
-		computed_safe_area.position.y + computed_safe_area.size.y - 96,
-	)
 	
 	$IntroductionText.position = Vector2(
 		computed_safe_area.position.x + computed_safe_area.size.x * .5,
@@ -25,13 +23,13 @@ func _ready():
 func _on_settings_button_pressed():
 	Session.click()
 	get_tree().paused = true
-	$MarginContainer/PauseControl/SettingsMarginContainer.visible = false
+	$MarginContainer/UIControl/SettingsMarginContainer.visible = false
 	$MarginContainer/Settings.visible = true
 	
 func _on_settings_exit():
 	Session.click()
 	get_tree().paused = false
-	$MarginContainer/PauseControl/SettingsMarginContainer.visible = true 
+	$MarginContainer/UIControl/SettingsMarginContainer.visible = true 
 	$MarginContainer/Settings.visible = false
 	
 func remove_introduction_text():
@@ -48,27 +46,45 @@ func display_bonus_text(text):
 func _on_book_texture_button_pressed():
 	Session.click()
 	get_tree().paused = true
-	$MarginContainer/PauseControl/BookMarginContainer.visible = false
+	$MarginContainer/UIControl/BookMarginContainer.visible = false
 	$MarginContainer/Book.visible = true
 
 
 func _on_book_exit():
 	Session.click()
 	get_tree().paused = false
-	$MarginContainer/PauseControl/BookMarginContainer.visible = true 
+	$MarginContainer/UIControl/BookMarginContainer.visible = true 
 	$MarginContainer/Book.visible = false
-
-func update_stage_text() -> void:
-	$StageText.update()
 
 func _on_store_texture_button_pressed():
 	Session.click()
 	get_tree().paused = true
-	$MarginContainer/PauseControl/StoreMarginContainer.visible = false
+	$MarginContainer/UIControl/StoreMarginContainer.visible = false
 	$MarginContainer/Store.visible = true
 
 func _on_store_exit():
 	Session.click()
 	get_tree().paused = false
-	$MarginContainer/PauseControl/StoreMarginContainer.visible = true 
+	$MarginContainer/UIControl/StoreMarginContainer.visible = true 
 	$MarginContainer/Store.visible = false
+
+
+func toggle_game_mode(is_game: bool):
+	# Display only information during Game
+	$MarginContainer/PauseControl.visible = is_game
+	$MarginContainer/UIControl.visible = not is_game
+	$MarginContainer/Items.toggle_game_mode(is_game)
+
+
+func _on_pause_texture_button_pressed():
+	Session.click()
+	$MarginContainer/PauseControl.visible = false
+	$PauseDivider.visible = true
+	emit_signal("pause_game")
+
+
+func _on_continue_button_pressed():
+	Session.click()
+	$MarginContainer/PauseControl.visible = true
+	$PauseDivider.visible = false
+	emit_signal("continue_game")

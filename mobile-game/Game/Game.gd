@@ -7,6 +7,7 @@ signal miss
 signal wrong
 signal skip
 signal neutral_hit
+signal paused_changed
 
 # Used by GameMaster when it needs to know the player tap during paused Game
 # 	- When you completed a card, the Game paused, the GameMaster wants to know when to init the new card
@@ -17,6 +18,7 @@ var paused: bool:
 		return $SwapBackgroundTimer.paused
 	set(value):
 		$SwapBackgroundTimer.paused = value
+		emit_signal("paused_changed")
 		
 var character_visible: bool:
 	get:

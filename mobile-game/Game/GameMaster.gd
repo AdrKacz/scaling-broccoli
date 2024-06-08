@@ -11,6 +11,7 @@ func _ready():
 	$Control/Game.reset_crack()
 	init_level()
 	emit_signal("on_screen")
+	$Control/Game.paused = true
 	
 func increment_combos_strike():
 	var increment: int = int(pow(2, Memory.active_hammers))
@@ -93,6 +94,15 @@ func _on_game_neutral_hit():
 	if Constants.combos_strike >= 2:
 		@warning_ignore("integer_division")
 		$Control/SpeedLines.level = int(Constants.combos_strike / 10)
-	$Control/GameUI.update_stage_text() # stage text won't update unless asked to
 	$Control/Game.reset_crack()
 	init_level()
+
+
+func _on_game_paused_changed():
+	$Control/GameUI.toggle_game_mode(not $Control/Game.paused)
+
+func _on_game_ui_continue_game():
+	$Control/Game.paused = false
+
+func _on_game_ui_pause_game():
+	$Control/Game.paused = true
