@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b5a8hcvmbiai0"]
+[gd_scene load_steps=13 format=3 uid="uid://b5a8hcvmbiai0"]
 
 [ext_resource type="Script" path="res://Scenes/GameUI/GameUI.gd" id="1_1j4ix"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="1_42cip"]
@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://djd0bbfp18u8d" path="res://assets/gear.png" id="7_ijvbw"]
 [ext_resource type="Texture2D" uid="uid://dr1uvtml7ha5e" path="res://assets/book_closed.png" id="8_a1os5"]
 [ext_resource type="PackedScene" uid="uid://mvxeej36kptf" path="res://UI/Settings/Settings.tscn" id="8_m0y7d"]
+[ext_resource type="Texture2D" uid="uid://bw4ckwulbyo76" path="res://assets/pouch.png" id="9_igfwo"]
 [ext_resource type="PackedScene" uid="uid://d2f5a3yellhw3" path="res://UI/Book/Book.tscn" id="10_gcpq4"]
+[ext_resource type="PackedScene" uid="uid://1a16faoh6ypn" path="res://UI/Store/Store.tscn" id="12_xwt2s"]
 
 [node name="GameUI" type="Control"]
 use_parent_material = true
@@ -81,13 +83,27 @@ grow_vertical = 0
 layout_mode = 2
 texture_normal = ExtResource("8_a1os5")
 
+[node name="StoreMarginContainer" type="MarginContainer" parent="MarginContainer/PauseControl"]
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 128.0
+
+[node name="StoreTextureButton" type="TextureButton" parent="MarginContainer/PauseControl/StoreMarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_igfwo")
+
 [node name="Settings" parent="MarginContainer" instance=ExtResource("8_m0y7d")]
 visible = false
 
 [node name="Book" parent="MarginContainer" instance=ExtResource("10_gcpq4")]
 visible = false
 
+[node name="Store" parent="MarginContainer" instance=ExtResource("12_xwt2s")]
+visible = false
+
 [connection signal="pressed" from="MarginContainer/PauseControl/SettingsMarginContainer/SettingsTextureButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PauseControl/BookMarginContainer/BookTextureButton" to="." method="_on_book_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PauseControl/StoreMarginContainer/StoreTextureButton" to="." method="_on_store_texture_button_pressed"]
 [connection signal="exit" from="MarginContainer/Settings" to="." method="_on_settings_exit"]
 [connection signal="exit" from="MarginContainer/Book" to="." method="_on_book_exit"]
+[connection signal="exit" from="MarginContainer/Store" to="." method="_on_store_exit"]

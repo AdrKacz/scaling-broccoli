@@ -2,9 +2,6 @@ extends CanvasLayer
 
 signal on_screen
 
-@export var is_challenge: bool = false
-@export var challenge: Dictionary
-
 var level_final_number_of_crack_circles: int
 var level_final_number_of_crack_lines: int
 

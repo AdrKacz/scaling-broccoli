@@ -45,6 +45,5 @@ LineEdit/styles/normal = SubResource("StyleBoxFlat_jq6eg")
 LineEdit/styles/read_only = SubResource("StyleBoxFlat_1ikkk")
 ScoreLabel/base_type = &"Label"
 ScoreLabel/colors/font_color = Color(1, 1, 1, 1)
-ScoreLabel/colors/font_outline_color = Color(0, 0, 0, 1)
-ScoreLabel/constants/outline_size = 24
+ScoreLabel/font_sizes/font_size = 64
 ScoreLabel/fonts/font = SubResource("FontVariation_os87q")

@@ -60,3 +60,15 @@ func _on_book_exit():
 
 func update_stage_text() -> void:
 	$StageText.update()
+
+func _on_store_texture_button_pressed():
+	Session.click()
+	get_tree().paused = true
+	$MarginContainer/PauseControl/StoreMarginContainer.visible = false
+	$MarginContainer/Store.visible = true
+
+func _on_store_exit():
+	Session.click()
+	get_tree().paused = false
+	$MarginContainer/PauseControl/StoreMarginContainer.visible = true 
+	$MarginContainer/Store.visible = false
