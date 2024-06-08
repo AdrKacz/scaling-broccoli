@@ -48,9 +48,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ExitButton" type="Button" parent="HammerControl"]
-layout_mode = 2
-offset_right = 720.0
-offset_bottom = 1280.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -77,7 +78,6 @@ mouse_filter = 2
 color = Color(1, 1, 1, 0.490196)
 
 [node name="MarginContainer" type="MarginContainer" parent="HammerControl"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,8 +112,8 @@ theme_override_constants/separation = 16
 [node name="Question" type="Label" parent="HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_6vlfm")
-theme_override_font_sizes/font_size = 32
-text = "How many you want to use?
+theme_override_font_sizes/font_size = 48
+text = "How many do you want to use?
 "
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -149,11 +149,14 @@ theme_override_font_sizes/font_size = 64
 text = "-"
 
 [node name="Quantity" type="Label" parent="HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_i3axa")
 theme_override_font_sizes/font_size = 64
 text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlusAspectRatioContainer" type="AspectRatioContainer" parent="HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(96, 96)
@@ -186,7 +189,7 @@ text = "+"
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_i3axa")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_t8c6x")
 text = "Confirm (x8)"
 
@@ -206,6 +209,77 @@ layout_mode = 2
 [node name="HammerTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_hmp30")
+
+[node name="ExtraHammers" type="Control" parent="MarginContainer/VBoxContainer/HammerTextureButton"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Extra2" type="MarginContainer" parent="MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 128
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers/Extra2"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_hmp30")
+
+[node name="Extra1" type="MarginContainer" parent="MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 64
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers/Extra1"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_hmp30")
+
+[node name="InStock" type="Control" parent="MarginContainer/VBoxContainer/HammerTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HammerTextureButton/InStock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 25
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HammerTextureButton/InStock/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_i3axa")
+theme_override_font_sizes/font_size = 32
+text = "3"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="HammerControl/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MinusAspectRatioContainer/MinusButton" to="." method="_on_minus_button_pressed"]
