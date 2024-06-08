@@ -1,18 +1,45 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5a8hcvmbiai0"]
+[gd_scene load_steps=17 format=3 uid="uid://b5a8hcvmbiai0"]
 
 [ext_resource type="Script" path="res://Scenes/GameUI/GameUI.gd" id="1_1j4ix"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="1_42cip"]
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="1_q7r7u"]
 [ext_resource type="PackedScene" uid="uid://bkyi6nop5h5e7" path="res://Scenes/BonusText/BonusText.tscn" id="2_2t8mw"]
-[ext_resource type="PackedScene" uid="uid://belmo1q5j7eh" path="res://Scenes/StageText/StageText.tscn" id="4_l0a1d"]
 [ext_resource type="PackedScene" uid="uid://pp33xbgsxk1" path="res://Scenes/GameUI/IntroductionText/IntroductionText.tscn" id="4_vn6yi"]
 [ext_resource type="Texture2D" uid="uid://djd0bbfp18u8d" path="res://assets/gear.png" id="7_ijvbw"]
+[ext_resource type="Texture2D" uid="uid://4x328o3ivuls" path="res://assets/pause.png" id="7_l6vmo"]
 [ext_resource type="Texture2D" uid="uid://dr1uvtml7ha5e" path="res://assets/book_closed.png" id="8_a1os5"]
 [ext_resource type="PackedScene" uid="uid://mvxeej36kptf" path="res://UI/Settings/Settings.tscn" id="8_m0y7d"]
 [ext_resource type="Texture2D" uid="uid://bw4ckwulbyo76" path="res://assets/pouch.png" id="9_igfwo"]
 [ext_resource type="PackedScene" uid="uid://d2f5a3yellhw3" path="res://UI/Book/Book.tscn" id="10_gcpq4"]
 [ext_resource type="PackedScene" uid="uid://1a16faoh6ypn" path="res://UI/Store/Store.tscn" id="12_xwt2s"]
 [ext_resource type="PackedScene" uid="uid://c7w3ggv0adwjq" path="res://UI/Items/Items.tscn" id="13_c7dut"]
+[ext_resource type="Shader" path="res://UI/Book/Blur.gdshader" id="14_umg2d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c8jmy"]
+shader = ExtResource("14_umg2d")
+shader_parameter/color = Color(1, 1, 1, 0.8)
+shader_parameter/blur_direction = 16.0
+shader_parameter/blur_quality = 3.0
+shader_parameter/blur_size = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03k8r"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 12.0
+expand_margin_top = 12.0
+expand_margin_right = 12.0
+expand_margin_bottom = 12.0
+shadow_color = Color(0, 0, 0, 0.588235)
+shadow_size = 8
+shadow_offset = Vector2(8, 8)
 
 [node name="GameUI" type="Control"]
 use_parent_material = true
@@ -27,10 +54,59 @@ theme = ExtResource("1_q7r7u")
 script = ExtResource("1_1j4ix")
 BonusText = ExtResource("2_2t8mw")
 
-[node name="StageText" parent="." instance=ExtResource("4_l0a1d")]
-
 [node name="IntroductionText" parent="." instance=ExtResource("4_vn6yi")]
 use_parent_material = true
+
+[node name="PauseDivider" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Blur" type="ColorRect" parent="PauseDivider"]
+material = SubResource("ShaderMaterial_c8jmy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="PauseDivider"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.490196)
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseDivider"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -12.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_q7r7u")
+script = ExtResource("1_42cip")
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseDivider/MarginContainer"]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="PauseDivider/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_03k8r")
+text = "Continue"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 use_parent_material = true
@@ -48,11 +124,11 @@ theme_override_constants/margin_bottom = 12
 script = ExtResource("1_42cip")
 
 [node name="PauseControl" type="Control" parent="MarginContainer"]
-use_parent_material = true
+visible = false
 layout_mode = 2
 mouse_filter = 2
 
-[node name="SettingsMarginContainer" type="MarginContainer" parent="MarginContainer/PauseControl"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PauseControl"]
 use_parent_material = true
 layout_mode = 1
 anchors_preset = 3
@@ -65,13 +141,39 @@ offset_top = -100.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 8
+mouse_filter = 2
 
-[node name="SettingsTextureButton" type="TextureButton" parent="MarginContainer/PauseControl/SettingsMarginContainer"]
+[node name="PauseTextureButton" type="TextureButton" parent="MarginContainer/PauseControl/MarginContainer"]
+use_parent_material = true
+layout_mode = 2
+texture_normal = ExtResource("7_l6vmo")
+
+[node name="UIControl" type="Control" parent="MarginContainer"]
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SettingsMarginContainer" type="MarginContainer" parent="MarginContainer/UIControl"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+mouse_filter = 2
+
+[node name="SettingsTextureButton" type="TextureButton" parent="MarginContainer/UIControl/SettingsMarginContainer"]
 use_parent_material = true
 layout_mode = 2
 texture_normal = ExtResource("7_ijvbw")
 
-[node name="BookMarginContainer" type="MarginContainer" parent="MarginContainer/PauseControl"]
+[node name="BookMarginContainer" type="MarginContainer" parent="MarginContainer/UIControl"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -79,17 +181,19 @@ anchor_bottom = 1.0
 offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
+mouse_filter = 2
 
-[node name="BookTextureButton" type="TextureButton" parent="MarginContainer/PauseControl/BookMarginContainer"]
+[node name="BookTextureButton" type="TextureButton" parent="MarginContainer/UIControl/BookMarginContainer"]
 layout_mode = 2
 texture_normal = ExtResource("8_a1os5")
 
-[node name="StoreMarginContainer" type="MarginContainer" parent="MarginContainer/PauseControl"]
+[node name="StoreMarginContainer" type="MarginContainer" parent="MarginContainer/UIControl"]
 layout_mode = 1
 offset_right = 128.0
 offset_bottom = 128.0
+mouse_filter = 2
 
-[node name="StoreTextureButton" type="TextureButton" parent="MarginContainer/PauseControl/StoreMarginContainer"]
+[node name="StoreTextureButton" type="TextureButton" parent="MarginContainer/UIControl/StoreMarginContainer"]
 layout_mode = 2
 texture_normal = ExtResource("9_igfwo")
 
@@ -104,9 +208,11 @@ visible = false
 [node name="Store" parent="MarginContainer" instance=ExtResource("12_xwt2s")]
 visible = false
 
-[connection signal="pressed" from="MarginContainer/PauseControl/SettingsMarginContainer/SettingsTextureButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="MarginContainer/PauseControl/BookMarginContainer/BookTextureButton" to="." method="_on_book_texture_button_pressed"]
-[connection signal="pressed" from="MarginContainer/PauseControl/StoreMarginContainer/StoreTextureButton" to="." method="_on_store_texture_button_pressed"]
+[connection signal="pressed" from="PauseDivider/MarginContainer/CenterContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PauseControl/MarginContainer/PauseTextureButton" to="." method="_on_pause_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/UIControl/SettingsMarginContainer/SettingsTextureButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/UIControl/BookMarginContainer/BookTextureButton" to="." method="_on_book_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/UIControl/StoreMarginContainer/StoreTextureButton" to="." method="_on_store_texture_button_pressed"]
 [connection signal="exit" from="MarginContainer/Settings" to="." method="_on_settings_exit"]
 [connection signal="exit" from="MarginContainer/Book" to="." method="_on_book_exit"]
 [connection signal="exit" from="MarginContainer/Store" to="." method="_on_store_exit"]
