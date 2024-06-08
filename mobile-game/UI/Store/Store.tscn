@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://1a16faoh6ypn"]
+
+[ext_resource type="Shader" path="res://UI/Book/Blur.gdshader" id="1_o34g3"]
+[ext_resource type="Script" path="res://UI/Store/Store.gd" id="1_ylu17"]
+[ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="3_1e4ue"]
+[ext_resource type="Texture2D" uid="uid://d23bhf40qscag" path="res://assets/exitRight.png" id="4_j7w7l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_62b8k"]
+shader = ExtResource("1_o34g3")
+shader_parameter/color = Color(1, 1, 1, 0.8)
+shader_parameter/blur_direction = 16.0
+shader_parameter/blur_quality = 3.0
+shader_parameter/blur_size = 16.0
+
+[node name="Store" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_ylu17")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Blur" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_62b8k")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.490196)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_1e4ue")
+
+[node name="ExitMarginContainer" type="MarginContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+
+[node name="ExitTextureButton" type="TextureButton" parent="Control/MarginContainer/ExitMarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_j7w7l")
+flip_h = true
+
+[connection signal="pressed" from="Control/MarginContainer/ExitMarginContainer/ExitTextureButton" to="." method="_on_exit_texture_button_pressed"]

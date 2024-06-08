@@ -2,9 +2,6 @@ extends CanvasLayer
 
 signal on_screen
 
-@export var is_challenge: bool = false
-@export var challenge: Dictionary
-
 var level_final_number_of_crack_circles: int
 var level_final_number_of_crack_lines: int
 
@@ -16,8 +13,9 @@ func _ready():
 	emit_signal("on_screen")
 	
 func increment_combos_strike():
-	Constants.combos_strike += 1
-	Constants.local_combos_strike += 1
+	var increment: int = int(pow(2, Memory.active_hammers))
+	Constants.combos_strike += increment
+	Constants.local_combos_strike += increment
 	
 	if Constants.combos_strike >= 2:
 		@warning_ignore("integer_division")
@@ -48,6 +46,7 @@ func reset_combos_strike():
 func _on_game_miss_or_wrong():
 	reset_combos_strike()
 	$Control/Game.reset_crack()
+	Memory.active_hammers = 0
 
 func _on_game_score() -> void:
 	$Control/GameUI.remove_introduction_text()

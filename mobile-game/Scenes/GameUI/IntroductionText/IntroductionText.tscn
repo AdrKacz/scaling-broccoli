@@ -18,9 +18,11 @@ mouse_filter = 2
 theme = ExtResource("2_rcgit")
 
 [node name="Label" type="Label" parent="CenterContainer"]
+custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 108
+theme_override_font_sizes/font_size = 80
 text = "Same colors? Smash!"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
