@@ -22,7 +22,7 @@ shader_parameter/final_number_of_circles = 5
 shader_parameter/number_of_lines = 15
 shader_parameter/refraction_offset = Vector2(-16, -16)
 shader_parameter/reflection_offset = Vector2(4, 4)
-shader_parameter/reflection_color = Color(1, 1, 1, 1)
+shader_parameter/reflection_color = Color(0.584314, 0.345098, 0.945098, 1)
 shader_parameter/blur_direction = 16.0
 shader_parameter/blur_quality = 3.0
 shader_parameter/blur_size = 16.0
@@ -49,10 +49,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = -128
-theme_override_constants/margin_top = -128
-theme_override_constants/margin_right = -128
-theme_override_constants/margin_bottom = -128
+theme_override_constants/margin_left = -64
+theme_override_constants/margin_top = -64
+theme_override_constants/margin_right = -64
+theme_override_constants/margin_bottom = -64
 
 [node name="Background" type="TextureRect" parent="MarginContainer"]
 material = SubResource("ShaderMaterial_eu7oe")

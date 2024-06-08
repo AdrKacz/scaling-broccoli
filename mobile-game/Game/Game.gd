@@ -33,6 +33,7 @@ var background_state: int = 0:
 		return background_state
 	set(value):
 		$MarginContainer/Background.material.set_shader_parameter('color', Constants.State[value])
+		$MarginContainer/Background.material.set_shader_parameter('reflection_color', Constants.State[value])
 		Session.background_state = background_state
 		background_state = value
 		

@@ -19,7 +19,7 @@ group_uniforms;
 group_uniforms Cracks.Lighting;
 uniform vec2 refraction_offset = vec2(-16., -16.);
 uniform vec2 reflection_offset = vec2(4., 4.);
-uniform vec4 reflection_color: source_color = vec4(1., 1., 1., 1.);
+uniform vec4 reflection_color: source_color = vec4(0.584314, 0.345098, 0.945098, 1.);
 group_uniforms;
 
 group_uniforms Glass;
