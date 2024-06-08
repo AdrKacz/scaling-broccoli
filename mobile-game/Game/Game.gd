@@ -8,6 +8,10 @@ signal wrong
 signal skip
 signal neutral_hit
 
+# Used by GameMaster when it needs to know the player tap during paused Game
+# 	- When you completed a card, the Game paused, the GameMaster wants to know when to init the new card
+var emit_neutral_hit: bool = false
+
 var paused: bool:
 	get:
 		return $SwapBackgroundTimer.paused
@@ -73,9 +77,14 @@ var background_abberation: float:
 
 func _on_character_tap():
 	# Hitted
-	if paused: # Don't count, the game is paused
+	if emit_neutral_hit and paused:
 		emit_signal("neutral_hit")
-	elif Constants.state_matches:
+		return
+		
+	if paused:
+		paused = false # (Re)start the game
+	
+	if Constants.state_matches:
 		$Character.pulse()
 		emit_signal("score")
 		# Update background and character
@@ -85,13 +94,22 @@ func _on_character_tap():
 	else:
 		$Character.shake()
 		emit_signal("wrong")
+		# Let the player breath after failure, force next match
+		paused = true
+		$Character.state = background_state
+		Constants.state_matches = true
 
 func _on_swap_background_timer_timeout():
 	if Constants.state_matches:
 		emit_signal("miss")
+		# Let the player breath after failure, force next match
+		paused = true
+		update_background_state()
+		$Character.state = background_state
+		Constants.state_matches = true
 	else:
 		emit_signal("skip")
-	update_background_state()
+		update_background_state()
 	
 # Used for debugging, to comment out
 # func _input(event):

@@ -28,6 +28,7 @@ func unlock_stage():
 		tween.kill()
 	Memory.stage += 1
 	$Control/Game.paused = true
+	$Control/Game.emit_neutral_hit = true # Wait for signal to move on to next card
 	$Control/Game.character_visible = false
 	# TODO: Add flash and screen shake
 	$Control/Game.show_background_image() # remove glass
@@ -84,6 +85,7 @@ func init_level() -> void:
 func _on_game_neutral_hit():
 	if not $Control/Game.paused:
 		return # Game should only emit this signal when paused
+	$Control/Game.emit_neutral_hit = false
 	if tween:
 		# set parameters to what they should be after the tween (from unlock_stage)
 		tween.kill()
