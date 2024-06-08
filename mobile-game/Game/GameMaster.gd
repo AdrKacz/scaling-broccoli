@@ -46,7 +46,6 @@ func reset_combos_strike():
 func _on_game_miss_or_wrong():
 	reset_combos_strike()
 	$Control/Game.reset_crack()
-	# TODO: Warn the user they lose their hammers
 	Memory.active_hammers = 0
 
 func _on_game_score() -> void:
