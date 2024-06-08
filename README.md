@@ -16,9 +16,8 @@ See [tween cheat sheet](https://raw.githubusercontent.com/godotengine/godot-docs
 Follow [official guide](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_ios.html#active-development-considerations) to test on iOS.
 
 # How to export?
-*Make sure to copy the `export_presets.cfg` in `mobile-game` below before opening Godot.*
-
-If you edit the export preset, run `./scripts/obscur-export-preset.py`
+Export to iOS is automatically manage when you merge in **main**, you'll receive your latest version in **Testflight**.
+You can still build manually if you want to test your feature on mobile before merging. You will very rarely have to manually create an **Archive** though.
   
 ## iOS
 1. Open the project in your Godot editor
