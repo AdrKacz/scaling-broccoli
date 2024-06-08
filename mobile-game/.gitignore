@@ -48,8 +48,6 @@ tests/data/*.translation
 ### General build output ###
 ############################
 
-export_presets.cfg
-
 # C/C++ generated
 *.a
 *.ax

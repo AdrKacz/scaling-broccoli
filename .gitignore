@@ -1,3 +1,5 @@
-exports/
+exports/**
+!exports/**/
+!exports/ios/ci_scripts/**
 
 *.DS_Store
