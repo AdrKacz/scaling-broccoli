@@ -8,13 +8,21 @@ var current_card: String
 var combo_required_for_current_card: int
 
 const CARDS_FOLDER: String = "res://assets/Cards"
-const TUTORIAL_CARDS: Array[String] = [
-	"2_Tutorial1.jpeg",
-	"4_Tutorial2.jpeg",
-	"6_Tutorial3.jpeg",
-	"8_Tutorial4.jpeg",
-	"10_Tutorial5.jpeg"
-]
+func dir_contents(path, filter):
+	var dir = DirAccess.open(path)
+	var file_names: Array[String] = []
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if not (dir.current_is_dir() or file_name.contains('.import')) and file_name.contains(filter):
+				file_names.append(file_name)
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.") 
+	file_names.sort_custom(func(a, b): return a.naturalnocasecmp_to(b) < 0)
+	return file_names
+@onready var tutorial_cards: Array[String] = dir_contents(CARDS_FOLDER, 'Tutorial')
 
 func _ready():
 	Constants.combos_strike = 0
@@ -81,15 +89,21 @@ func _on_game_score() -> void:
 		var new_number_of_line: int = int(Constants.local_combos_strike / line_step)
 		$Control/Game.update_crack(new_number_of_circle, new_number_of_line)
 
+func _get_next_tutorial_card():
+	var unlocked_cards: Array[String] = Memory.get_unlocked_cards()
+	for tutorial_card in tutorial_cards:
+		if not tutorial_card in unlocked_cards:
+			return tutorial_card
+
 func init_level() -> void:
 	$Control/Game.paused = false
 	$Control/Game.character_visible = true
 	$Control/Game.hide_background_image() # add glass
 	$Control/Game.background_abberation = 0
 	# Images
-	var unlocked_cards: Array[String] = Memory.get_unlocked_cards()
-	if unlocked_cards.size() < TUTORIAL_CARDS.size(): # Tutorial not finished yet
-		current_card = TUTORIAL_CARDS[unlocked_cards.size()]
+	var next_tutorial_card = _get_next_tutorial_card()
+	if next_tutorial_card:  # Tutorial not finished yet
+		current_card = next_tutorial_card
 	else:
 		pass
 	combo_required_for_current_card = int(current_card.get_slice('_', 0))
@@ -98,7 +112,6 @@ func init_level() -> void:
 	level_final_number_of_crack_circles = min(combo_required_for_current_card, randi_range(4, 6))
 	level_final_number_of_crack_lines = min(combo_required_for_current_card * 2, randi_range(15, 20))
 	$Control/Game.generate_crack(level_final_number_of_crack_circles)
-
 
 func _on_game_neutral_hit():
 	if not $Control/Game.paused:

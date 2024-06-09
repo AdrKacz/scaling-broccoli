@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cnvq1enqlfaji" path="res://UI/Book/LockedCard/LockedCard.tscn" id="3_03lgm"]
 [ext_resource type="PackedScene" uid="uid://56vsdrkgrrpj" path="res://UI/Book/Card/Card.tscn" id="3_ceuql"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="5_l8tuw"]
-[ext_resource type="Texture2D" uid="uid://1xa5cs6m2jx7" path="res://assets/Cards/2_Tutorial1.jpeg" id="7_3tu33"]
+[ext_resource type="Texture2D" uid="uid://1xa5cs6m2jx7" path="res://assets/Cards/1_Tutorial1.jpeg" id="7_vfy5b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d6um7"]
 shader = ExtResource("2_inquw")
@@ -108,7 +108,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("7_3tu33")
+texture_normal = ExtResource("7_vfy5b")
 ignore_texture_size = true
 stretch_mode = 6
 

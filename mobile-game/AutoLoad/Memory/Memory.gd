@@ -39,7 +39,7 @@ var active_hammers: int:
 # TODO: As the number of cards scale, it would be more efficient using a Set instead
 func get_unlocked_cards() -> Array[String]:
 	var unlocked_cards: Array[Variant] = config.get_value('memory', 'unlocked_cards', [])
-	var converted_unlocked_cards: Array[String]
+	var converted_unlocked_cards: Array[String] = []
 	converted_unlocked_cards.assign(unlocked_cards)
 	return converted_unlocked_cards
 

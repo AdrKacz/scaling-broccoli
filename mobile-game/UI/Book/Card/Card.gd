@@ -1,7 +1,7 @@
 extends MarginContainer
 signal pressed
 
-@export var file_name: String = "2_Tutorial1.jpeg"
+@export var file_name: String
 
 @onready var star1: TextureRect = $PanelContainer/MarginContainer/HBoxContainer/Star1
 @onready var star2: TextureRect = $PanelContainer/MarginContainer/HBoxContainer/Star2
@@ -16,6 +16,8 @@ func get_level(combo_required: int) -> int:
 		return 3
 
 func _ready():
+	if not file_name:
+		return
 	$PanelContainer/TextureButton.texture_normal = load("res://assets/Cards/" + file_name)
 	var combo_required: int = int(file_name.get_slice('_', 0))
 	var level: int = get_level(combo_required)

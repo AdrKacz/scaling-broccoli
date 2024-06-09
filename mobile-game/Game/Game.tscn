@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dsngmds587kx2" path="res://Scenes/Character/Character.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://bkyi6nop5h5e7" path="res://Scenes/BonusText/BonusText.tscn" id="3"]
 [ext_resource type="Shader" path="res://Game/Background.gdshader" id="3_fsrnv"]
-[ext_resource type="Texture2D" uid="uid://1xa5cs6m2jx7" path="res://assets/Cards/2_Tutorial1.jpeg" id="3_movpk"]
+[ext_resource type="Texture2D" uid="uid://1xa5cs6m2jx7" path="res://assets/Cards/1_Tutorial1.jpeg" id="4_jrrvg"]
 [ext_resource type="Script" path="res://Game/Game.gd" id="5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eu7oe"]
@@ -57,7 +57,7 @@ theme_override_constants/margin_bottom = -64
 [node name="Background" type="TextureRect" parent="MarginContainer"]
 material = SubResource("ShaderMaterial_eu7oe")
 layout_mode = 2
-texture = ExtResource("3_movpk")
+texture = ExtResource("4_jrrvg")
 stretch_mode = 6
 
 [node name="Character" parent="." instance=ExtResource("1")]
