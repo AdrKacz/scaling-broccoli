@@ -1,5 +1,3 @@
-TODO:
-- Saved Acgive cards (to restart where you left) doesn't work
 # 🌈 Rainbow Rush
 # Develop
 Open `project.godot` with [**Godot**](https://godotengine.org/download/).
