@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm4266d3x6xma"]
+
+[ext_resource type="Texture2D" uid="uid://b08j7mgfqtqrl" path="res://assets/star.png" id="1_g0g6w"]
+
+[node name="Star1" type="TextureRect"]
+modulate = Color(1, 0.866667, 0, 1)
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+texture = ExtResource("1_g0g6w")
+expand_mode = 1
+stretch_mode = 5

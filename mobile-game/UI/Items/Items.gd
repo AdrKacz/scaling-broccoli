@@ -69,5 +69,5 @@ func _on_confirm_button_pressed():
 	Memory.active_hammers += quantity
 	Memory.hammers -= quantity
 	
-func toggle_game_mode(is_game: bool):
+func toggle_game_mode(_is_game: bool):
 	pass
