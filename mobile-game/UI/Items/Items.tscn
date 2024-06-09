@@ -195,23 +195,27 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_t8c6x")
 text = "Confirm (x8)"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -128.0
-offset_bottom = 128.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ara7a")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="HammerTextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+[node name="HammerTextureButton" type="TextureButton" parent="MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_hmp30")
 
-[node name="ExtraHammers" type="Control" parent="MarginContainer/VBoxContainer/HammerTextureButton"]
+[node name="ExtraHammers" type="Control" parent="MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -221,7 +225,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Extra2" type="MarginContainer" parent="MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers"]
+[node name="Extra2" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -234,12 +238,12 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/margin_right = 128
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers/Extra2"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers/Extra2"]
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("2_hmp30")
 
-[node name="Extra1" type="MarginContainer" parent="MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers"]
+[node name="Extra1" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -250,12 +254,12 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/margin_right = 64
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers/Extra1"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers/Extra1"]
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("2_hmp30")
 
-[node name="InStock" type="Control" parent="MarginContainer/VBoxContainer/HammerTextureButton"]
+[node name="InStock" type="Control" parent="MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -264,7 +268,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HammerTextureButton/InStock"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton/InStock"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -274,7 +278,7 @@ grow_vertical = 2
 theme_override_constants/margin_right = 35
 theme_override_constants/margin_bottom = 25
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HammerTextureButton/InStock/MarginContainer"]
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton/InStock/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_i3axa")
@@ -286,4 +290,4 @@ horizontal_alignment = 1
 [connection signal="pressed" from="HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MinusAspectRatioContainer/MinusButton" to="." method="_on_minus_button_pressed"]
 [connection signal="pressed" from="HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PlusAspectRatioContainer/PlusButton" to="." method="_on_plus_button_pressed"]
 [connection signal="pressed" from="HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HammerTextureButton" to="." method="_on_hammer_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton" to="." method="_on_hammer_texture_button_pressed"]

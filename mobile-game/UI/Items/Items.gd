@@ -4,6 +4,11 @@ extends CanvasLayer
 @onready var minus_button: Button = $HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MinusAspectRatioContainer/MinusButton
 @onready var plus_button: Button = $HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PlusAspectRatioContainer/PlusButton
 @onready var confirm_button: Button = $HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ConfirmButton
+@onready var hammer_button: TextureButton = $MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton
+
+@onready var hammer_label: Label = $MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton/InStock/MarginContainer/Label
+@onready var hammer_extra_1: MarginContainer = $MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers/Extra1
+@onready var hammer_extra_2: MarginContainer = $MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers/Extra2
 
 var quantity: int = 1:
 	get:
@@ -33,17 +38,17 @@ func _ready():
 	
 func _on_Memory_update_active_hammers(value: int):
 	if value == 0:
-		$MarginContainer/VBoxContainer/HammerTextureButton.self_modulate = Color(Color.WHITE, 0.5)
+		hammer_button.self_modulate = Color(Color.WHITE, 0.5)
 	else:
-		$MarginContainer/VBoxContainer/HammerTextureButton.self_modulate = Color.WHITE
-	$MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers/Extra1.visible = value > 1
-	$MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers/Extra2.visible = value > 2
+		hammer_button.self_modulate = Color.WHITE
+	hammer_extra_1.visible = value > 1
+	hammer_extra_2.visible = value > 2
 	
 func _on_Memory_update_hammers(value: int):
 	if value >= 10:
-		$MarginContainer/VBoxContainer/HammerTextureButton/InStock/MarginContainer/Label.text = "9+"
+		hammer_label.text = "9+"
 	else:
-		$MarginContainer/VBoxContainer/HammerTextureButton/InStock/MarginContainer/Label.text = str(value)
+		hammer_label.text = str(value)
 
 func _on_hammer_texture_button_pressed():
 	quantity = min(3 - Memory.active_hammers, Memory.hammers)
