@@ -4,19 +4,19 @@ signal on_screen
 
 var level_final_number_of_crack_circles: int
 var level_final_number_of_crack_lines: int
-var current_card: String
 var combo_required_for_current_card: int
 
 const CARDS_FOLDER: String = "res://assets/Cards"
-func dir_contents(path, filter):
+func dir_contents(path, filter=null):
 	var dir = DirAccess.open(path)
 	var file_names: Array[String] = []
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if not (dir.current_is_dir() or file_name.contains('.import')) and file_name.contains(filter):
-				file_names.append(file_name)
+			if not (dir.current_is_dir() or file_name.contains('.import')):
+				if filter and file_name.contains(filter) or not filter:
+					file_names.append(file_name)
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.") 
@@ -44,12 +44,12 @@ func increment_combos_strike():
 
 var tween: Tween
 func unlock_card():
-	if not current_card:
+	if not Memory.active_card:
 		print('No active card. This should never happen.')
 		return
 	if tween:
 		tween.kill()
-	Memory.unlock_card(current_card)
+	Memory.unlock_card(Memory.active_card)
 	$Control/Game.paused = true
 	$Control/Game.emit_neutral_hit = true # Wait for signal to move on to next card
 	$Control/Game.character_visible = false
@@ -89,6 +89,21 @@ func _on_game_score() -> void:
 		var new_number_of_line: int = int(Constants.local_combos_strike / line_step)
 		$Control/Game.update_crack(new_number_of_circle, new_number_of_line)
 
+func _get_random_card() -> String:
+	# TODO: Don't return a card too hard if the player if not good enough
+	var all_cards: Array[String] = dir_contents(CARDS_FOLDER)
+	var unlocked_cards: Array[String] = Memory.get_unlocked_cards()
+	var locked_cards: Array[String] = []
+	for card in all_cards:
+		if not card in unlocked_cards:
+			locked_cards.append(card)
+	if locked_cards.size() > 0:
+		return locked_cards.pick_random()
+	else:  
+		# TODO: handle when no more cards
+		print('All cards unlocked, redo a random one.')
+		return all_cards.pick_random()
+
 func _get_next_tutorial_card():
 	var unlocked_cards: Array[String] = Memory.get_unlocked_cards()
 	for tutorial_card in tutorial_cards:
@@ -103,11 +118,11 @@ func init_level() -> void:
 	# Images
 	var next_tutorial_card = _get_next_tutorial_card()
 	if next_tutorial_card:  # Tutorial not finished yet
-		current_card = next_tutorial_card
+		Memory.active_card = next_tutorial_card
 	else:
-		pass
-	combo_required_for_current_card = int(current_card.get_slice('_', 0))
-	$Control/Game.update_background_image(CARDS_FOLDER + "/" + current_card)
+		Memory.active_card = _get_random_card()
+	combo_required_for_current_card = int(Memory.active_card.get_slice('_', 0))
+	$Control/Game.update_background_image(CARDS_FOLDER + "/" + Memory.active_card)
 	# Cracks
 	level_final_number_of_crack_circles = min(combo_required_for_current_card, randi_range(4, 6))
 	level_final_number_of_crack_lines = min(combo_required_for_current_card * 2, randi_range(15, 20))

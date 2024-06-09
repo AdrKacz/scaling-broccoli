@@ -43,12 +43,20 @@ func _on_visibility_changed():
 		
 	# TODO: we want to cache the results to not re-initiate all cards everytime
 	# Fine for now, we have just 20 cards
+	var unlocked_cards: Array[Node] = []
+	var locked_cards: Array[Node] = []  
 	for file_name in dir_contents(CARDS_FOLDER):
 		if file_name in Memory.get_unlocked_cards():
 			var card = Card.instantiate()
 			card.file_name = file_name
 			card.pressed.connect(_on_card_pressed.bind(file_name))
-			flow_container.add_child(card)
+			unlocked_cards.append(card)
+			
 		else:
-			var locked_card = LockedCard.instantiate()
-			flow_container.add_child(locked_card)
+			var card = LockedCard.instantiate()
+			locked_cards.append(card)
+	# Display unlocked one first
+	for card in unlocked_cards:
+		flow_container.add_child(card)
+	for card in locked_cards:
+		flow_container.add_child(card)

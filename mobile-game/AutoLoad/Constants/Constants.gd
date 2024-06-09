@@ -33,3 +33,11 @@ const State = {
 # Variables definitions
 var combos_strike: int = 0
 var local_combos_strike: int = 0 # used only within a stage to know when to go to next one
+
+func get_card_level(combo_required: int) -> int:
+	if combo_required < 20:
+		return 1
+	elif combo_required < 50:
+		return 2
+	else:
+		return 3

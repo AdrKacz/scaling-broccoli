@@ -3,7 +3,8 @@ signal update_stage(value: int)
 
 signal update_hammers(value: int)
 signal update_active_hammers(value: int)
-signal update_unlocked_cards(value: int)
+signal update_unlocked_cards(value: Array[String])
+signal update_active_card(value: String)
 
 var config: ConfigFile
 func _ready():
@@ -35,6 +36,14 @@ var active_hammers: int:
 		config.set_value('memory', 'active_hammers', value)
 		config.save("user://memory.cfg")
 		emit_signal("update_active_hammers", value)
+		
+var active_card: String:
+	get:
+		return config.get_value('memory', 'active_card', null)
+	set(value):
+		config.set_value('memory', 'active_card', value)
+		config.save("user://memory.cfg")
+		emit_signal("update_active_card", value)
 
 # TODO: As the number of cards scale, it would be more efficient using a Set instead
 func get_unlocked_cards() -> Array[String]:
