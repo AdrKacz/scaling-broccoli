@@ -34,13 +34,10 @@ const State = {
 var combos_strike: int = 0
 var local_combos_strike: int = 0 # used only within a stage to know when to go to next one
 
-var local_combo_for_next_stage: int:
-	get:
-		if Memory.stage < 5:
-			return Memory.stage
-		elif Memory.stage < 10:
-			return 2 * Memory.stage
-		elif Memory.stage < 15:
-			return 4 * Memory.stage
-		else:
-			return 8 * Memory.stage
+func get_card_level(combo_required: int) -> int:
+	if combo_required < 20:
+		return 1
+	elif combo_required < 50:
+		return 2
+	else:
+		return 3

@@ -8,6 +8,8 @@ See [tween cheat sheet](https://raw.githubusercontent.com/godotengine/godot-docs
 
 Use [CloudConvert](https://cloudconvert.com/svg-to-png) to convert SVG to PNG.
 
+To add new card, follow the following format for names: `{combo_required}_{id}.jpeg`. `id` can be a name without space or just a number, make sure it's unique across all cards.
+
 ## Resources for shaders
 - [The book of shaders](https://thebookofshaders.com)
 - [Godot shader snippets](https://godotshaders.com/snippet/useful-code-snippets/)

@@ -4,6 +4,25 @@ signal on_screen
 
 var level_final_number_of_crack_circles: int
 var level_final_number_of_crack_lines: int
+var combo_required_for_current_card: int
+
+const CARDS_FOLDER: String = "res://assets/Cards"
+func dir_contents(path, filter=null):
+	var dir = DirAccess.open(path)
+	var file_names: Array[String] = []
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if not (dir.current_is_dir() or file_name.contains('.import')):
+				if filter and file_name.contains(filter) or not filter:
+					file_names.append(file_name)
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.") 
+	file_names.sort_custom(func(a, b): return a.naturalnocasecmp_to(b) < 0)
+	return file_names
+@onready var tutorial_cards: Array[String] = dir_contents(CARDS_FOLDER, 'Tutorial')
 
 func _ready():
 	Constants.combos_strike = 0
@@ -24,10 +43,13 @@ func increment_combos_strike():
 		$Control/GameUI.display_bonus_text('x' + str(Constants.combos_strike))
 
 var tween: Tween
-func unlock_stage():
+func unlock_card():
+	if not Memory.active_card:
+		print('No active card. This should never happen.')
+		return
 	if tween:
 		tween.kill()
-	Memory.stage += 1
+	Memory.unlock_active_card() # side-effect: reset active card
 	$Control/Game.paused = true
 	$Control/Game.emit_neutral_hit = true # Wait for signal to move on to next card
 	$Control/Game.character_visible = false
@@ -54,18 +76,39 @@ func _on_game_score() -> void:
 	$Control/GameUI.remove_introduction_text()
 	increment_combos_strike()
 	
-	if Constants.local_combos_strike >= Constants.local_combo_for_next_stage:
+	if Constants.local_combos_strike >= combo_required_for_current_card:
 		Constants.local_combos_strike = 0
-		unlock_stage()
+		unlock_card()
 	else:
-		var circle_step: float = float(Constants.local_combo_for_next_stage - 1) / float(level_final_number_of_crack_circles)
-		var line_step: float = float(Constants.local_combo_for_next_stage - 1) / float(level_final_number_of_crack_lines)
+		var circle_step: float = float(combo_required_for_current_card - 1) / float(level_final_number_of_crack_circles)
+		var line_step: float = float(combo_required_for_current_card - 1) / float(level_final_number_of_crack_lines)
 		# circle_step and line_step will never be null`
-		# if local_combo_for_next_stage is 1, then it's catched in first condition
+		# if combo_required_for_current_card is 1, then it's catched in first condition
 		# as local_combos_strike will always be equal or greater than 1 after you score
 		var new_number_of_circle: int = int(Constants.local_combos_strike / circle_step)
 		var new_number_of_line: int = int(Constants.local_combos_strike / line_step)
 		$Control/Game.update_crack(new_number_of_circle, new_number_of_line)
+
+func _get_random_card() -> String:
+	# TODO: Don't return a card too hard if the player if not good enough
+	var all_cards: Array[String] = dir_contents(CARDS_FOLDER)
+	var unlocked_cards: Array[String] = Memory.get_unlocked_cards()
+	var locked_cards: Array[String] = []
+	for card in all_cards:
+		if not card in unlocked_cards:
+			locked_cards.append(card)
+	if locked_cards.size() > 0:
+		return locked_cards.pick_random()
+	else:  
+		# TODO: handle when no more cards
+		print('All cards unlocked, redo a random one.')
+		return all_cards.pick_random()
+
+func _get_next_tutorial_card():
+	var unlocked_cards: Array[String] = Memory.get_unlocked_cards()
+	for tutorial_card in tutorial_cards:
+		if not tutorial_card in unlocked_cards:
+			return tutorial_card
 
 func init_level() -> void:
 	$Control/Game.paused = false
@@ -73,15 +116,18 @@ func init_level() -> void:
 	$Control/Game.hide_background_image() # add glass
 	$Control/Game.background_abberation = 0
 	# Images
-	var tmp_level = Memory.stage % 5
-	tmp_level = 5 if tmp_level == 0 else tmp_level
-	var path: String = "res://assets/Cards/Level_" + str(tmp_level) + ".jpeg"
-	$Control/Game.update_background_image(path)
+	if not Memory.active_card:
+		var next_tutorial_card = _get_next_tutorial_card()
+		if next_tutorial_card:  # Tutorial not finished yet
+			Memory.active_card = next_tutorial_card
+		else:
+			Memory.active_card = _get_random_card()
+	combo_required_for_current_card = int(Memory.active_card.get_slice('_', 0))
+	$Control/Game.update_background_image(CARDS_FOLDER + "/" + Memory.active_card)
 	# Cracks
-	level_final_number_of_crack_circles = min(Memory.stage, randi_range(4, 6))
-	level_final_number_of_crack_lines = min(Memory.stage * 2, randi_range(15, 20))
+	level_final_number_of_crack_circles = min(combo_required_for_current_card, randi_range(4, 6))
+	level_final_number_of_crack_lines = min(combo_required_for_current_card * 2, randi_range(15, 20))
 	$Control/Game.generate_crack(level_final_number_of_crack_circles)
-
 
 func _on_game_neutral_hit():
 	if not $Control/Game.paused:

@@ -2,20 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmnwdkweniaxg"
-path="res://.godot/imported/Level_5.jpeg-434cf9e12ae230086701e4f47854319f.ctex"
+uid="uid://b3uhjkjuqxacv"
+path.s3tc="res://.godot/imported/50_0.png-4cf489458c4ca96b46b28182ec7f2afe.s3tc.ctex"
+path.etc2="res://.godot/imported/50_0.png-4cf489458c4ca96b46b28182ec7f2afe.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://assets/Cards/Level_5.jpeg"
-dest_files=["res://.godot/imported/Level_5.jpeg-434cf9e12ae230086701e4f47854319f.ctex"]
+source_file="res://assets/Cards/50_0.png"
+dest_files=["res://.godot/imported/50_0.png-4cf489458c4ca96b46b28182ec7f2afe.s3tc.ctex", "res://.godot/imported/50_0.png-4cf489458c4ca96b46b28182ec7f2afe.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
