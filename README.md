@@ -1,3 +1,5 @@
+TODO:
+- Add cards at random after tutorial
 # 🌈 Rainbow Rush
 # Develop
 Open `project.godot` with [**Godot**](https://godotengine.org/download/).
