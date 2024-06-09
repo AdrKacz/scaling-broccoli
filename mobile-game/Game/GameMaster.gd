@@ -49,7 +49,7 @@ func unlock_card():
 		return
 	if tween:
 		tween.kill()
-	Memory.unlock_card(Memory.active_card)
+	Memory.unlock_active_card() # side-effect: reset active card
 	$Control/Game.paused = true
 	$Control/Game.emit_neutral_hit = true # Wait for signal to move on to next card
 	$Control/Game.character_visible = false
@@ -116,11 +116,12 @@ func init_level() -> void:
 	$Control/Game.hide_background_image() # add glass
 	$Control/Game.background_abberation = 0
 	# Images
-	var next_tutorial_card = _get_next_tutorial_card()
-	if next_tutorial_card:  # Tutorial not finished yet
-		Memory.active_card = next_tutorial_card
-	else:
-		Memory.active_card = _get_random_card()
+	if not Memory.active_card:
+		var next_tutorial_card = _get_next_tutorial_card()
+		if next_tutorial_card:  # Tutorial not finished yet
+			Memory.active_card = next_tutorial_card
+		else:
+			Memory.active_card = _get_random_card()
 	combo_required_for_current_card = int(Memory.active_card.get_slice('_', 0))
 	$Control/Game.update_background_image(CARDS_FOLDER + "/" + Memory.active_card)
 	# Cracks

@@ -17,7 +17,7 @@ func _ready():
 	# DEBUG
 	hammers = 10
 	active_hammers = 0
-	# reset_unlocked_cards()
+	# reset_unlocked_cards() # Uncomment to start from beginning at each iteration
 	
 var hammers: int:
 	get:
@@ -39,7 +39,7 @@ var active_hammers: int:
 		
 var active_card: String:
 	get:
-		return config.get_value('memory', 'active_card', null)
+		return config.get_value('memory', 'active_card', "")
 	set(value):
 		config.set_value('memory', 'active_card', value)
 		config.save("user://memory.cfg")
@@ -52,14 +52,16 @@ func get_unlocked_cards() -> Array[String]:
 	converted_unlocked_cards.assign(unlocked_cards)
 	return converted_unlocked_cards
 
-func unlock_card(card: String) -> void:
+func unlock_active_card() -> void:
 	var unlocked_cards: Array[String] = get_unlocked_cards()
-	unlocked_cards.append(card)
+	unlocked_cards.append(active_card)
 	config.set_value('memory', 'unlocked_cards', unlocked_cards)
+	config.set_value('memory', 'active_card', "") # the card is not active anymore as it is unlocked
 	config.save("user://memory.cfg")
 	emit_signal("update_unlocked_cards", unlocked_cards)
 
 func reset_unlocked_cards() -> void:
 	config.set_value('memory', 'unlocked_cards', [])
+	config.set_value('memory', 'active_card', "") # force restart if no more unlocked card
 	config.save("user://memory.cfg")
 	emit_signal("update_unlocked_cards", [])
