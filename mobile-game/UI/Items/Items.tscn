@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7w3ggv0adwjq"]
+[gd_scene load_steps=13 format=3 uid="uid://c7w3ggv0adwjq"]
 
 [ext_resource type="Script" path="res://UI/Items/Items.gd" id="1_56j1j"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="1_ara7a"]
@@ -7,6 +7,8 @@
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="3_6vlfm"]
 [ext_resource type="StyleBox" uid="uid://by0teqdyeo3sc" path="res://UI/Items/ButtonNormal.tres" id="4_eiyf8"]
 [ext_resource type="FontFile" uid="uid://ddsrcnmbc0ew7" path="res://assets/fonts/Patrick_Hand_SC/PatrickHandSC-Regular.ttf" id="4_i3axa"]
+[ext_resource type="PackedScene" uid="uid://shxvfcvqf53c" path="res://UI/Items/Shield/Shield.tscn" id="8_ow40f"]
+[ext_resource type="PackedScene" uid="uid://cg2m44e470200" path="res://UI/Items/Shield/ShieldButton.tscn" id="8_wb48c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6xrc4"]
 shader = ExtResource("2_ktq1t")
@@ -279,6 +281,75 @@ theme_override_constants/margin_right = 35
 theme_override_constants/margin_bottom = 25
 
 [node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton/InStock/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_i3axa")
+theme_override_font_sizes/font_size = 32
+text = "3"
+horizontal_alignment = 1
+
+[node name="ShieldButton" parent="MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("8_wb48c")]
+layout_mode = 2
+
+[node name="ExtraShields" type="Control" parent="MarginContainer/MarginContainer/VBoxContainer/ShieldButton"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Extra2" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer/ShieldButton/ExtraShields"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 128
+
+[node name="Shield" parent="MarginContainer/MarginContainer/VBoxContainer/ShieldButton/ExtraShields/Extra2" instance=ExtResource("8_ow40f")]
+layout_mode = 2
+
+[node name="Extra1" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer/ShieldButton/ExtraShields"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 64
+
+[node name="Shield" parent="MarginContainer/MarginContainer/VBoxContainer/ShieldButton/ExtraShields/Extra1" instance=ExtResource("8_ow40f")]
+layout_mode = 2
+
+[node name="InStock" type="Control" parent="MarginContainer/MarginContainer/VBoxContainer/ShieldButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer/ShieldButton/InStock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/ShieldButton/InStock/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_i3axa")
