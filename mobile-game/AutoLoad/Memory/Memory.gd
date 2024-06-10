@@ -2,6 +2,7 @@ extends Node
 signal update_stage(value: int)
 
 signal update_hammers(value: int)
+signal update_shields(value: int)
 signal update_active_hammers(value: int)
 signal update_unlocked_cards(value: Array[String])
 signal update_active_card(value: String)
@@ -13,10 +14,12 @@ func _ready():
 	if err != OK: # never played and file doesn't exit
 		hammers = 0
 		active_hammers = 0
+		shields = 0
 		reset_unlocked_cards()
 	# DEBUG
 	hammers = 10
 	active_hammers = 0
+	shields = 10
 	# reset_unlocked_cards() # Uncomment to start from beginning at each iteration
 	
 var hammers: int:
@@ -27,6 +30,15 @@ var hammers: int:
 		config.set_value('memory', 'hammers', value)
 		config.save("user://memory.cfg")
 		emit_signal("update_hammers", value)
+
+var shields: int:
+	get:
+		return config.get_value('memory', 'shields', 0)
+	set(value):
+		value = max(0, value)
+		config.set_value('memory', 'shields', value)
+		config.save("user://memory.cfg")
+		emit_signal("update_shields", value)
 		
 var active_hammers: int:
 	get:

@@ -10,6 +10,25 @@ extends CanvasLayer
 @onready var hammer_extra_1: MarginContainer = $MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers/Extra1
 @onready var hammer_extra_2: MarginContainer = $MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers/Extra2
 
+@onready var shield_label: Label = $MarginContainer/MarginContainer/VBoxContainer/ShieldButton/InStock/MarginContainer/Label
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$HammerControl.visible = false
+	
+	_on_Memory_update_active_hammers(Memory.active_hammers)
+	Memory.update_active_hammers.connect(_on_Memory_update_active_hammers)
+	_on_Memory_update_hammers(Memory.hammers)
+	Memory.update_hammers.connect(_on_Memory_update_hammers)
+	
+	_on_Memory_update_shields(Memory.shields)
+	Memory.update_shields.connect(_on_Memory_update_shields)
+	
+func toggle_game_mode(_is_game: bool):
+	pass
+
+# ===== ===== ===== 
+# HAMMERS
+# ===== ===== ===== 
 var quantity: int = 1:
 	get:
 		return quantity
@@ -26,16 +45,6 @@ var quantity: int = 1:
 		else:
 			plus_button.visible = true
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	$HammerControl.visible = false
-	
-	_on_Memory_update_active_hammers(Memory.active_hammers)
-	Memory.update_active_hammers.connect(_on_Memory_update_active_hammers)
-	
-	_on_Memory_update_hammers(Memory.hammers)
-	Memory.update_hammers.connect(_on_Memory_update_hammers)
-	
 func _on_Memory_update_active_hammers(value: int):
 	if value == 0:
 		hammer_button.self_modulate = Color(Color.WHITE, 0.5)
@@ -69,5 +78,11 @@ func _on_confirm_button_pressed():
 	Memory.active_hammers += quantity
 	Memory.hammers -= quantity
 	
-func toggle_game_mode(_is_game: bool):
-	pass
+# ===== ===== ===== 
+# SHIELD
+# ===== ===== =====
+func _on_Memory_update_shields(value: int):
+	if value >= 10:
+		shield_label.text = "9+"
+	else:
+		shield_label.text = str(value)
