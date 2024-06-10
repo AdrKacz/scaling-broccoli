@@ -60,12 +60,12 @@ func fail():
 	Memory.active_hammers = 0
 	Session.active_shields = min(3, Memory.shields)
 
-func _on_game_miss_or_wrong(is_wrong: bool):
+func _on_game_miss_or_wrong():
 	if Session.active_shields > 0:
 		# Offer the player the possiblity to use a shield to continue
 		$Control/Game.paused = true
 		wait_for_shield_submit = true
-		$Control/GameUI.submit_shield(is_wrong) # is_wrong means that there was a tap
+		$Control/GameUI.submit_shield()
 	else:
 		fail()
 
