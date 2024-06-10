@@ -29,7 +29,6 @@ func _on_visibility_changed():
 	# Fine for now, we have just 20 cards
 	var unlocked_cards: Array[Node] = []
 	var locked_cards: Array[Node] = []  
-	var all_cards: Array[String] = Constants.dir_contents(CARDS_FOLDER)
 	for file_name in Constants.dir_contents(CARDS_FOLDER):
 		if file_name in Memory.get_unlocked_cards():
 			var card = Card.instantiate()

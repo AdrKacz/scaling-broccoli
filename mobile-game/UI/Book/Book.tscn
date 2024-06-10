@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2f5a3yellhw3"]
+[gd_scene load_steps=11 format=3 uid="uid://d2f5a3yellhw3"]
 
 [ext_resource type="Script" path="res://UI/Book/Book.gd" id="1_gsv7l"]
 [ext_resource type="Shader" path="res://UI/Book/Blur.gdshader" id="2_inquw"]
 [ext_resource type="Texture2D" uid="uid://xlru3l4six6o" path="res://assets/book_open.png" id="2_ukaox"]
 [ext_resource type="PackedScene" uid="uid://cnvq1enqlfaji" path="res://UI/Book/LockedCard/LockedCard.tscn" id="3_03lgm"]
 [ext_resource type="PackedScene" uid="uid://56vsdrkgrrpj" path="res://UI/Book/Card/Card.tscn" id="3_ceuql"]
+[ext_resource type="Script" path="res://UI/Book/SafeScrollContainer.gd" id="5_ha76y"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="5_l8tuw"]
 [ext_resource type="Texture2D" uid="uid://1xa5cs6m2jx7" path="res://assets/Cards/1_Tutorial1.jpeg" id="7_vfy5b"]
 
@@ -63,6 +64,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_8e0mv")
+script = ExtResource("5_ha76y")
 
 [node name="HFlowContainer" type="HFlowContainer" parent="Control/ScrollContainer"]
 layout_mode = 2
