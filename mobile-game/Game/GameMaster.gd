@@ -7,22 +7,7 @@ var level_final_number_of_crack_lines: int
 var combo_required_for_current_card: int
 
 const CARDS_FOLDER: String = "res://assets/Cards"
-func dir_contents(path, filter=null):
-	var dir = DirAccess.open(path)
-	var file_names: Array[String] = []
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if not (dir.current_is_dir() or file_name.contains('.import')):
-				if filter and file_name.contains(filter) or not filter:
-					file_names.append(file_name)
-			file_name = dir.get_next()
-	else:
-		print("An error occurred when trying to access the path.") 
-	file_names.sort_custom(func(a, b): return a.naturalnocasecmp_to(b) < 0)
-	return file_names
-@onready var tutorial_cards: Array[String] = dir_contents(CARDS_FOLDER, 'Tutorial')
+@onready var tutorial_cards: Array[String] = Constants.dir_contents(CARDS_FOLDER, 'Tutorial')
 
 func _ready():
 	Constants.combos_strike = 0
@@ -91,7 +76,7 @@ func _on_game_score() -> void:
 
 func _get_random_card() -> String:
 	# TODO: Don't return a card too hard if the player if not good enough
-	var all_cards: Array[String] = dir_contents(CARDS_FOLDER)
+	var all_cards: Array[String] = Constants.dir_contents(CARDS_FOLDER)
 	var unlocked_cards: Array[String] = Memory.get_unlocked_cards()
 	var locked_cards: Array[String] = []
 	for card in all_cards:
