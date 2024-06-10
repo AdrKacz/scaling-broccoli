@@ -1,16 +1,23 @@
 extends CanvasLayer
+signal shield_submitted(use_shield: bool)
 
 @onready var quantity_label: Label = $HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Quantity
 @onready var minus_button: Button = $HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MinusAspectRatioContainer/MinusButton
 @onready var plus_button: Button = $HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PlusAspectRatioContainer/PlusButton
 @onready var confirm_button: Button = $HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ConfirmButton
-@onready var hammer_button: TextureButton = $MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton
 
+@onready var hammer_button: TextureButton = $MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton
 @onready var hammer_label: Label = $MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton/InStock/MarginContainer/Label
 @onready var hammer_extra_1: MarginContainer = $MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers/Extra1
 @onready var hammer_extra_2: MarginContainer = $MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton/ExtraHammers/Extra2
 
+@onready var shield_button: ShieldButton = $MarginContainer/MarginContainer/VBoxContainer/ShieldButton
 @onready var shield_label: Label = $MarginContainer/MarginContainer/VBoxContainer/ShieldButton/InStock/MarginContainer/Label
+@onready var shield_extra_1: MarginContainer = $MarginContainer/MarginContainer/VBoxContainer/ShieldButton/ExtraShields/Extra1
+@onready var shield_extra_2: MarginContainer = $MarginContainer/MarginContainer/VBoxContainer/ShieldButton/ExtraShields/Extra2
+@onready var shield_note: Label = $ShieldControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Note
+
+var shield_control_just_shown: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$HammerControl.visible = false
@@ -22,9 +29,14 @@ func _ready():
 	
 	_on_Memory_update_shields(Memory.shields)
 	Memory.update_shields.connect(_on_Memory_update_shields)
-	
+	# active_shields is stored in Session and not Memory because it doesn't need to be saved
+	# It is only valid for the current Session and will be re-init at each new Session
+	_on_Session_update_active_shields(Session.active_shields)
+	Session.update_active_shields.connect(_on_Session_update_active_shields)
+
 func toggle_game_mode(_is_game: bool):
-	pass
+	hammer_label.visible = not _is_game
+	shield_label.visible = not _is_game
 
 # ===== ===== ===== 
 # HAMMERS
@@ -46,10 +58,7 @@ var quantity: int = 1:
 			plus_button.visible = true
 
 func _on_Memory_update_active_hammers(value: int):
-	if value == 0:
-		hammer_button.self_modulate = Color(Color.WHITE, 0.5)
-	else:
-		hammer_button.self_modulate = Color.WHITE
+	hammer_button.self_modulate.a = 1.0 - 0.5 * float(0 == 0)
 	hammer_extra_1.visible = value > 1
 	hammer_extra_2.visible = value > 2
 	
@@ -60,6 +69,7 @@ func _on_Memory_update_hammers(value: int):
 		hammer_label.text = str(value)
 
 func _on_hammer_texture_button_pressed():
+	Session.click()
 	quantity = min(3 - Memory.active_hammers, Memory.hammers)
 	$HammerControl.visible = true
 
@@ -67,13 +77,15 @@ func _on_exit_button_pressed():
 	$HammerControl.visible = false
 
 func _on_plus_button_pressed():
+	Session.click()
 	quantity += 1
 
 func _on_minus_button_pressed():
+	Session.click()
 	quantity -= 1
 
 func _on_confirm_button_pressed():
-	#TODO: Register confirmation
+	Session.click()
 	$HammerControl.visible = false
 	Memory.active_hammers += quantity
 	Memory.hammers -= quantity
@@ -81,8 +93,46 @@ func _on_confirm_button_pressed():
 # ===== ===== ===== 
 # SHIELD
 # ===== ===== =====
+func show_shield_contol():
+	# Activated during a tap, we need to unvalid the next click (because it's just the player removing its finger, not an actual click)
+	shield_control_just_shown = true
+	shield_note.visible = Memory.active_hammers > 0
+	if Memory.active_hammers > 1:
+		shield_note.text = "You will your %d activated hammers if you quit" % [Memory.active_hammers]
+	else:
+		shield_note.text = "You will your activated hammer if you quit"
+	$ShieldControl.visible = true
+
 func _on_Memory_update_shields(value: int):
 	if value >= 10:
 		shield_label.text = "9+"
 	else:
 		shield_label.text = str(value)
+
+func _on_Session_update_active_shields(value: int):
+	shield_button.inactive = value == 0
+	shield_extra_1.visible = value > 1
+	shield_extra_2.visible = value > 2
+
+func _on_yes_shield_button_pressed():
+	if shield_control_just_shown:
+		shield_control_just_shown = false
+		return
+	Session.click()
+	$ShieldControl.visible = false
+	emit_signal("shield_submitted", true)
+
+func _on_no_shield_button_pressed():
+	if shield_control_just_shown:
+		shield_control_just_shown = false
+		return
+	Session.click()
+	$ShieldControl.visible = false
+	emit_signal("shield_submitted", false)
+
+func _on_exit_shield_button_pressed():
+	if shield_control_just_shown:
+		shield_control_just_shown = false
+		return
+	$ShieldControl.visible = false
+	emit_signal("shield_submitted", false)

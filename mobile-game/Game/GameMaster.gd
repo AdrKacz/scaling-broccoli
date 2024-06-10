@@ -5,6 +5,7 @@ signal on_screen
 var level_final_number_of_crack_circles: int
 var level_final_number_of_crack_lines: int
 var combo_required_for_current_card: int
+var wait_for_shield_submit: bool = false
 
 const CARDS_FOLDER: String = "res://assets/Cards"
 @onready var tutorial_cards: Array[String] = Constants.dir_contents(CARDS_FOLDER, 'Tutorial')
@@ -51,11 +52,20 @@ func reset_combos_strike():
 	$Control/SpeedLines.level = -1
 	Constants.combos_strike = 0
 	Constants.local_combos_strike = 0
-
-func _on_game_miss_or_wrong():
+	
+func fail():
 	reset_combos_strike()
 	$Control/Game.reset_crack()
 	Memory.active_hammers = 0
+
+func _on_game_miss_or_wrong():
+	if Session.active_shields > 0:
+		# Offer the player the possiblity to use a shield to continue
+		$Control/Game.paused = true
+		wait_for_shield_submit = true
+		$Control/GameUI.submit_shield()
+	else:
+		fail()
 
 func _on_game_score() -> void:
 	$Control/GameUI.remove_introduction_text()
@@ -137,3 +147,13 @@ func _on_game_ui_continue_game():
 
 func _on_game_ui_pause_game():
 	$Control/Game.paused = true
+
+
+func _on_game_ui_shield_submitted(use_shield):
+	if not wait_for_shield_submit:
+		return # GameUI should never emit this signal if not asked to
+	if use_shield:
+		Session.active_shields -= 1
+		Memory.shields -= 1
+	else:
+		fail()

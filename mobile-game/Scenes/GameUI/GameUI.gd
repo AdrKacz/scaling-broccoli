@@ -1,4 +1,5 @@
 extends Control
+signal shield_submitted(use_shield: bool)
 signal continue_game
 signal pause_game
 
@@ -88,3 +89,9 @@ func _on_continue_button_pressed():
 	$MarginContainer/PauseControl.visible = true
 	$PauseDivider.visible = false
 	emit_signal("continue_game")
+	
+func submit_shield():
+	$MarginContainer/Items.show_shield_contol()
+
+func _on_items_shield_submitted(use_shield):
+	emit_signal("shield_submitted", use_shield)

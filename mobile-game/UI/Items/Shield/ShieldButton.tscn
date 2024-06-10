@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cg2m44e470200"]
+[gd_scene load_steps=3 format=3 uid="uid://cg2m44e470200"]
 
 [ext_resource type="PackedScene" uid="uid://shxvfcvqf53c" path="res://UI/Items/Shield/Shield.tscn" id="1_i8iqm"]
+[ext_resource type="Script" path="res://UI/Items/Shield/ShieldButton.gd" id="1_ygmh8"]
 
 [node name="ShieldButton" type="Button"]
 custom_minimum_size = Vector2(128, 128)
 offset_right = 128.0
 offset_bottom = 128.0
 flat = true
+script = ExtResource("1_ygmh8")
 metadata/_edit_use_anchors_ = true
 
 [node name="Shield" parent="." instance=ExtResource("1_i8iqm")]

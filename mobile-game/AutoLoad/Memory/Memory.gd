@@ -1,6 +1,5 @@
 extends Node
 signal update_stage(value: int)
-
 signal update_hammers(value: int)
 signal update_shields(value: int)
 signal update_active_hammers(value: int)

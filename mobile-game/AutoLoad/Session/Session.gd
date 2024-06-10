@@ -1,4 +1,5 @@
 extends Node
+signal update_active_shields(value: int)
 
 @export var GameMaster: PackedScene
 @export var SettingsMenu: PackedScene
@@ -10,6 +11,7 @@ var main_node: MainNode
 
 func _ready():
 	randomize()
+	active_shields = min(3, Memory.shields)
 	
 func assign_main_node(node: MainNode):
 	# Must be called first by Main Node
@@ -36,3 +38,10 @@ func click():
 func tap():
 	AudioManager.play_sound_effects(AudioManager.SOUND_EFFECTS.TAP)
 	medium_haptic_feedback()
+	
+var active_shields: int:
+	get:
+		return active_shields
+	set(value):
+		active_shields = clamp(value, 0, 3)
+		emit_signal("update_active_shields", active_shields)
