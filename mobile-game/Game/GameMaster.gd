@@ -35,6 +35,7 @@ func unlock_card():
 		return
 	if tween:
 		tween.kill()
+	Session.active_shields = min(3, Memory.shields)
 	Memory.unlock_active_card() # side-effect: reset active card
 	$Control/Game.paused = true
 	$Control/Game.emit_neutral_hit = true # Wait for signal to move on to next card
@@ -57,13 +58,14 @@ func fail():
 	reset_combos_strike()
 	$Control/Game.reset_crack()
 	Memory.active_hammers = 0
+	Session.active_shields = min(3, Memory.shields)
 
-func _on_game_miss_or_wrong():
+func _on_game_miss_or_wrong(is_wrong: bool):
 	if Session.active_shields > 0:
 		# Offer the player the possiblity to use a shield to continue
 		$Control/Game.paused = true
 		wait_for_shield_submit = true
-		$Control/GameUI.submit_shield()
+		$Control/GameUI.submit_shield(is_wrong) # is_wrong means that there was a tap
 	else:
 		fail()
 
@@ -147,7 +149,6 @@ func _on_game_ui_continue_game():
 
 func _on_game_ui_pause_game():
 	$Control/Game.paused = true
-
 
 func _on_game_ui_shield_submitted(use_shield):
 	if not wait_for_shield_submit:

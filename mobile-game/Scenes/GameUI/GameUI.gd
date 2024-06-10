@@ -90,8 +90,8 @@ func _on_continue_button_pressed():
 	$PauseDivider.visible = false
 	emit_signal("continue_game")
 	
-func submit_shield():
-	$MarginContainer/Items.show_shield_contol()
+func submit_shield(within_tap: bool):
+	$MarginContainer/Items.show_shield_contol(within_tap)
 
 func _on_items_shield_submitted(use_shield):
 	emit_signal("shield_submitted", use_shield)

@@ -17,7 +17,7 @@ signal shield_submitted(use_shield: bool)
 @onready var shield_extra_2: MarginContainer = $MarginContainer/MarginContainer/VBoxContainer/ShieldButton/ExtraShields/Extra2
 @onready var shield_note: Label = $ShieldControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Note
 
-var shield_control_just_shown: bool = false
+var shield_control_skip_next_click: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$HammerControl.visible = false
@@ -93,14 +93,15 @@ func _on_confirm_button_pressed():
 # ===== ===== ===== 
 # SHIELD
 # ===== ===== =====
-func show_shield_contol():
-	# Activated during a tap, we need to unvalid the next click (because it's just the player removing its finger, not an actual click)
-	shield_control_just_shown = true
+func show_shield_contol(within_tap: bool):
+	if within_tap:
+		# Activated during a tap, we need to unvalid the next click (because it's just the player removing its finger, not an actual click)
+		shield_control_skip_next_click = true
 	shield_note.visible = Memory.active_hammers > 0
 	if Memory.active_hammers > 1:
-		shield_note.text = "You will your %d activated hammers if you quit" % [Memory.active_hammers]
+		shield_note.text = "You will lose your %d activated hammers if you quit" % [Memory.active_hammers]
 	else:
-		shield_note.text = "You will your activated hammer if you quit"
+		shield_note.text = "You will lose your activated hammer if you quit"
 	$ShieldControl.visible = true
 
 func _on_Memory_update_shields(value: int):
@@ -115,24 +116,24 @@ func _on_Session_update_active_shields(value: int):
 	shield_extra_2.visible = value > 2
 
 func _on_yes_shield_button_pressed():
-	if shield_control_just_shown:
-		shield_control_just_shown = false
+	if shield_control_skip_next_click:
+		shield_control_skip_next_click = false
 		return
 	Session.click()
 	$ShieldControl.visible = false
 	emit_signal("shield_submitted", true)
 
 func _on_no_shield_button_pressed():
-	if shield_control_just_shown:
-		shield_control_just_shown = false
+	if shield_control_skip_next_click:
+		shield_control_skip_next_click = false
 		return
 	Session.click()
 	$ShieldControl.visible = false
 	emit_signal("shield_submitted", false)
 
 func _on_exit_shield_button_pressed():
-	if shield_control_just_shown:
-		shield_control_just_shown = false
+	if shield_control_skip_next_click:
+		shield_control_skip_next_click = false
 		return
 	$ShieldControl.visible = false
 	emit_signal("shield_submitted", false)
