@@ -194,16 +194,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ExitShieldButton" type="Button" parent="ShieldControl"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-flat = true
-
 [node name="Blur" type="ColorRect" parent="ShieldControl"]
 material = SubResource("ShaderMaterial_6xrc4")
 layout_mode = 1
@@ -456,7 +446,6 @@ horizontal_alignment = 1
 [connection signal="pressed" from="HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MinusAspectRatioContainer/MinusButton" to="." method="_on_minus_button_pressed"]
 [connection signal="pressed" from="HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PlusAspectRatioContainer/PlusButton" to="." method="_on_plus_button_pressed"]
 [connection signal="pressed" from="HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]
-[connection signal="pressed" from="ShieldControl/ExitShieldButton" to="." method="_on_exit_shield_button_pressed"]
 [connection signal="pressed" from="ShieldControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/YesShieldButton" to="." method="_on_yes_shield_button_pressed"]
 [connection signal="pressed" from="ShieldControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/NoShieldButton" to="." method="_on_no_shield_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton" to="." method="_on_hammer_texture_button_pressed"]

@@ -25,11 +25,11 @@ layout_mode = 1
 [node name="GameUI" parent="Control" instance=ExtResource("6_8abi2")]
 layout_mode = 1
 
-[connection signal="miss" from="Control/Game" to="." method="_on_game_miss_or_wrong" binds= [false]]
+[connection signal="miss" from="Control/Game" to="." method="_on_game_miss_or_wrong"]
 [connection signal="neutral_hit" from="Control/Game" to="." method="_on_game_neutral_hit"]
 [connection signal="paused_changed" from="Control/Game" to="." method="_on_game_paused_changed"]
 [connection signal="score" from="Control/Game" to="." method="_on_game_score"]
-[connection signal="wrong" from="Control/Game" to="." method="_on_game_miss_or_wrong" binds= [true]]
+[connection signal="wrong" from="Control/Game" to="." method="_on_game_miss_or_wrong"]
 [connection signal="continue_game" from="Control/GameUI" to="." method="_on_game_ui_continue_game"]
 [connection signal="pause_game" from="Control/GameUI" to="." method="_on_game_ui_pause_game"]
 [connection signal="shield_submitted" from="Control/GameUI" to="." method="_on_game_ui_shield_submitted"]
