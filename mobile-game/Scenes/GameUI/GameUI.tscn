@@ -213,6 +213,7 @@ visible = false
 [connection signal="pressed" from="MarginContainer/UIControl/SettingsMarginContainer/SettingsTextureButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MarginContainer/UIControl/BookMarginContainer/BookTextureButton" to="." method="_on_book_texture_button_pressed"]
 [connection signal="pressed" from="MarginContainer/UIControl/StoreMarginContainer/StoreTextureButton" to="." method="_on_store_texture_button_pressed"]
+[connection signal="shield_submitted" from="MarginContainer/Items" to="." method="_on_items_shield_submitted"]
 [connection signal="exit" from="MarginContainer/Settings" to="." method="_on_settings_exit"]
 [connection signal="exit" from="MarginContainer/Book" to="." method="_on_book_exit"]
 [connection signal="exit" from="MarginContainer/Store" to="." method="_on_store_exit"]

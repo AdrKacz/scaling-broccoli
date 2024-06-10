@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7w3ggv0adwjq"]
+[gd_scene load_steps=13 format=3 uid="uid://c7w3ggv0adwjq"]
 
 [ext_resource type="Script" path="res://UI/Items/Items.gd" id="1_56j1j"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="1_ara7a"]
@@ -7,6 +7,9 @@
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="3_6vlfm"]
 [ext_resource type="StyleBox" uid="uid://by0teqdyeo3sc" path="res://UI/Items/ButtonNormal.tres" id="4_eiyf8"]
 [ext_resource type="FontFile" uid="uid://ddsrcnmbc0ew7" path="res://assets/fonts/Patrick_Hand_SC/PatrickHandSC-Regular.ttf" id="4_i3axa"]
+[ext_resource type="StyleBox" uid="uid://b387w3gu5d7q" path="res://UI/Items/YesNoButton.tres" id="7_sn7ju"]
+[ext_resource type="PackedScene" uid="uid://shxvfcvqf53c" path="res://UI/Items/Shield/Shield.tscn" id="8_ow40f"]
+[ext_resource type="PackedScene" uid="uid://cg2m44e470200" path="res://UI/Items/Shield/ShieldButton.tscn" id="8_wb48c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6xrc4"]
 shader = ExtResource("2_ktq1t")
@@ -23,18 +26,6 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_size = 4
 shadow_offset = Vector2(4, 4)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8c6x"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 
 [node name="Items" type="CanvasLayer"]
 script = ExtResource("1_56j1j")
@@ -191,8 +182,114 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_i3axa")
 theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxFlat_t8c6x")
+theme_override_styles/normal = ExtResource("7_sn7ju")
 text = "Confirm (x8)"
+
+[node name="ShieldControl" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExitShieldButton" type="Button" parent="ShieldControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+
+[node name="Blur" type="ColorRect" parent="ShieldControl"]
+material = SubResource("ShaderMaterial_6xrc4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ShieldControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.490196)
+
+[node name="MarginContainer" type="MarginContainer" parent="ShieldControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ara7a")
+
+[node name="CenterContainer" type="CenterContainer" parent="ShieldControl/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ShieldControl/MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="ShieldControl/MarginContainer/CenterContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ll2ot")
+
+[node name="MarginContainer" type="MarginContainer" parent="ShieldControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShieldControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Question" type="Label" parent="ShieldControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_6vlfm")
+theme_override_font_sizes/font_size = 48
+text = "Use a shield to continue?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShieldControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="YesShieldButton" type="Button" parent="ShieldControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_i3axa")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("7_sn7ju")
+text = "Yes"
+
+[node name="NoShieldButton" type="Button" parent="ShieldControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_i3axa")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("7_sn7ju")
+text = "No"
+
+[node name="Note" type="Label" parent="ShieldControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_6vlfm")
+theme_override_font_sizes/font_size = 32
+text = "You will lose X activate hammers if you quit"
+horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -286,8 +383,80 @@ theme_override_font_sizes/font_size = 32
 text = "3"
 horizontal_alignment = 1
 
+[node name="ShieldButton" parent="MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("8_wb48c")]
+layout_mode = 2
+
+[node name="ExtraShields" type="Control" parent="MarginContainer/MarginContainer/VBoxContainer/ShieldButton"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Extra2" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer/ShieldButton/ExtraShields"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 128
+
+[node name="Shield" parent="MarginContainer/MarginContainer/VBoxContainer/ShieldButton/ExtraShields/Extra2" instance=ExtResource("8_ow40f")]
+layout_mode = 2
+
+[node name="Extra1" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer/ShieldButton/ExtraShields"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 64
+
+[node name="Shield" parent="MarginContainer/MarginContainer/VBoxContainer/ShieldButton/ExtraShields/Extra1" instance=ExtResource("8_ow40f")]
+layout_mode = 2
+
+[node name="InStock" type="Control" parent="MarginContainer/MarginContainer/VBoxContainer/ShieldButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer/ShieldButton/InStock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/ShieldButton/InStock/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_i3axa")
+theme_override_font_sizes/font_size = 32
+text = "3"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="HammerControl/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MinusAspectRatioContainer/MinusButton" to="." method="_on_minus_button_pressed"]
 [connection signal="pressed" from="HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PlusAspectRatioContainer/PlusButton" to="." method="_on_plus_button_pressed"]
 [connection signal="pressed" from="HammerControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="ShieldControl/ExitShieldButton" to="." method="_on_exit_shield_button_pressed"]
+[connection signal="pressed" from="ShieldControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/YesShieldButton" to="." method="_on_yes_shield_button_pressed"]
+[connection signal="pressed" from="ShieldControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/NoShieldButton" to="." method="_on_no_shield_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/HammerTextureButton" to="." method="_on_hammer_texture_button_pressed"]
