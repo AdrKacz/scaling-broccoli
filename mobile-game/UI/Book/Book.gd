@@ -16,22 +16,6 @@ func _on_card_pressed(file_name: String):
 func _on_card_full_screen_pressed():
 	$CardFullScreen.visible = false
 	
-
-func dir_contents(path):
-	var dir = DirAccess.open(path)
-	var file_names: Array[String] = []
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if not (dir.current_is_dir() or file_name.contains('.import')):
-				file_names.append(file_name)
-			file_name = dir.get_next()
-	else:
-		print("An error occurred when trying to access the path.") 
-	file_names.sort_custom(func(a, b): return a.naturalnocasecmp_to(b) < 0)
-	return file_names
-
 func _on_visibility_changed():
 	if not visible:
 		return
@@ -45,7 +29,8 @@ func _on_visibility_changed():
 	# Fine for now, we have just 20 cards
 	var unlocked_cards: Array[Node] = []
 	var locked_cards: Array[Node] = []  
-	for file_name in dir_contents(CARDS_FOLDER):
+	var all_cards: Array[String] = Constants.dir_contents(CARDS_FOLDER)
+	for file_name in Constants.dir_contents(CARDS_FOLDER):
 		if file_name in Memory.get_unlocked_cards():
 			var card = Card.instantiate()
 			card.file_name = file_name

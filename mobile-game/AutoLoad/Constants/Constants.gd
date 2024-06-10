@@ -41,3 +41,21 @@ func get_card_level(combo_required: int) -> int:
 		return 2
 	else:
 		return 3
+		
+func dir_contents(path, filter=null):
+	var dir = DirAccess.open(path)
+	var file_names: Dictionary = {}
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if not dir.current_is_dir():
+				if file_name.get_extension() == 'import' and (filter and file_name.contains(filter) or not filter):
+					file_names[file_name.replace('.import', '')] = true
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.")
+	var array: Array[String] = []
+	array.assign(file_names.keys())
+	array.sort_custom(func(a, b): return a.naturalnocasecmp_to(b) < 0)
+	return array
