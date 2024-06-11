@@ -72,6 +72,7 @@ func _on_game_miss_or_wrong():
 func _on_game_score() -> void:
 	$Control/GameUI.remove_introduction_text()
 	increment_combos_strike()
+	$Control/GameUI.update_countdown(combo_required_for_current_card - Constants.local_combos_strike)
 	
 	if Constants.local_combos_strike >= combo_required_for_current_card:
 		Constants.local_combos_strike = 0
@@ -120,6 +121,7 @@ func init_level() -> void:
 		else:
 			Memory.active_card = _get_random_card()
 	combo_required_for_current_card = int(Memory.active_card.get_slice('_', 0))
+	$Control/GameUI.update_countdown(combo_required_for_current_card)
 	$Control/Game.update_background_image(CARDS_FOLDER + "/" + Memory.active_card)
 	# Cracks
 	level_final_number_of_crack_circles = min(combo_required_for_current_card, randi_range(4, 6))
