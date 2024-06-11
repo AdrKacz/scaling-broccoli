@@ -11,6 +11,11 @@ func _ready():
 	# get position for bonus text
 	var computed_safe_area: Rect2 = $MarginContainer.computed_safe_area
 	
+	$Countdown.position = Vector2(
+		computed_safe_area.position.x + computed_safe_area.size.x * .5,
+		computed_safe_area.position.y + computed_safe_area.size.y * .05,
+	)
+	
 	$IntroductionText.position = Vector2(
 		computed_safe_area.position.x + computed_safe_area.size.x * .5,
 		computed_safe_area.position.y + computed_safe_area.size.y * .25,
@@ -69,20 +74,18 @@ func _on_store_exit():
 	$MarginContainer/UIControl/StoreMarginContainer.visible = true 
 	$MarginContainer/Store.visible = false
 
-
 func toggle_game_mode(is_game: bool):
 	# Display only information during Game
 	$MarginContainer/PauseControl.visible = is_game
 	$MarginContainer/UIControl.visible = not is_game
 	$MarginContainer/Items.toggle_game_mode(is_game)
-
+	$Countdown.visible = is_game
 
 func _on_pause_texture_button_pressed():
 	Session.click()
 	$MarginContainer/PauseControl.visible = false
 	$PauseDivider.visible = true
 	emit_signal("pause_game")
-
 
 func _on_continue_button_pressed():
 	Session.click()
@@ -95,3 +98,6 @@ func submit_shield():
 
 func _on_items_shield_submitted(use_shield):
 	emit_signal("shield_submitted", use_shield)
+	
+func update_countdown(value: int):
+	$Countdown.countdown = value
