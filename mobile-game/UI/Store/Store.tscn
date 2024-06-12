@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://1a16faoh6ypn"]
+[gd_scene load_steps=8 format=3 uid="uid://1a16faoh6ypn"]
 
 [ext_resource type="Shader" path="res://UI/Book/Blur.gdshader" id="1_o34g3"]
 [ext_resource type="Script" path="res://UI/Store/Store.gd" id="1_ylu17"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="3_1e4ue"]
 [ext_resource type="Texture2D" uid="uid://d23bhf40qscag" path="res://assets/exitRight.png" id="4_j7w7l"]
+[ext_resource type="PackedScene" uid="uid://bw17hhiggt2tt" path="res://UI/Store/Product/Product.tscn" id="5_epvxf"]
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="6_7vrtk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_62b8k"]
 shader = ExtResource("1_o34g3")
@@ -66,4 +68,61 @@ layout_mode = 2
 texture_normal = ExtResource("4_j7w7l")
 flip_h = true
 
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="HammerProduct" parent="Control/MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource("5_epvxf")]
+layout_mode = 2
+
+[node name="LoadingControl" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Blur" type="ColorRect" parent="LoadingControl"]
+material = SubResource("ShaderMaterial_62b8k")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="LoadingControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.490196)
+
+[node name="CenterContainer" type="CenterContainer" parent="LoadingControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="LoadingControl/CenterContainer"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+theme = ExtResource("6_7vrtk")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "Waiting for purchase to complete..."
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [connection signal="pressed" from="Control/MarginContainer/ExitMarginContainer/ExitTextureButton" to="." method="_on_exit_texture_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/CenterContainer/VBoxContainer/HammerProduct" to="." method="_on_hammer_product_pressed"]

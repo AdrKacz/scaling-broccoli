@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://bw17hhiggt2tt"]
+
+[ext_resource type="StyleBox" uid="uid://7hl7om67fheu" path="res://UI/Items/ControlPanel.tres" id="1_jw2nv"]
+[ext_resource type="Texture2D" uid="uid://be41a4uhebmqr" path="res://assets/tool_hammer.png" id="2_45faj"]
+[ext_resource type="Script" path="res://UI/Store/Product/Product.gd" id="2_wh3n2"]
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="3_0dun0"]
+[ext_resource type="FontFile" uid="uid://ddsrcnmbc0ew7" path="res://assets/fonts/Patrick_Hand_SC/PatrickHandSC-Regular.ttf" id="4_ap42y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_un6g8"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Product" type="PanelContainer"]
+theme_override_styles/panel = ExtResource("1_jw2nv")
+script = ExtResource("2_wh3n2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_45faj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_0dun0")
+theme_override_font_sizes/font_size = 64
+text = "10 hammers"
+
+[node name="Price" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_ap42y")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_un6g8")
+text = "0.99 €"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

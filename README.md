@@ -1,3 +1,8 @@
+TODO:
+- Check if needed to add "Sign in with iCloud, because I had to manually type my password"
+- Click events (and all other event relative to Apple and Store) looks to be logged twice (maybe just the logger of XCode)
+- When failure, it finises on the state "show waiting", but it shouldn't, and logs shows that "display true" was called AFTER "display false", it should be the opposite
+- Do action when purchase complete (add actual hammers to the balance) 
 # 🌈 Rainbow Rush
 # Develop
 Open `project.godot` with [**Godot**](https://godotengine.org/download/).
@@ -18,6 +23,38 @@ To add new card, follow the following format for names: `{combo_required}_{id}.j
 
 ## Play on mobile
 Follow [official guide](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_ios.html#active-development-considerations) to test on iOS.
+
+# In app purchases
+## Apple
+- [Plugins for iOS](https://docs.godotengine.org/en/stable/tutorials/platform/ios/plugins_for_ios.html)
+- [In-App Purchases](https://developer.apple.com/documentation/appstoreconnectapi/app_store/in-app_purchase/in-app_purchases)
+  - [Create an In-App Purchase](https://developer.apple.com/documentation/appstoreconnectapi/create_an_in-app_purchase)
+- [Create consumable or non-consumable in-app purchases](https://developer.apple.com/help/app-store-connect/manage-in-app-purchases/create-consumable-or-non-consumable-in-app-purchases/)
+- [Testing In-App Purchases with sandbox](https://developer.apple.com/documentation/storekit/in-app_purchase/testing_in-app_purchases_with_sandbox)
+- [Testing at all stages of development with Xcode and the sandbox](https://developer.apple.com/documentation/storekit/in-app_purchase/testing_at_all_stages_of_development_with_xcode_and_the_sandbox)
+
+> Product IDs are not sensitive data, you can store them in public ([see source](https://stackoverflow.com/questions/56367735/is-app-store-product-id-a-sensitive-data))
+
+### Build your plugin
+See more in this Github issue: https://github.com/godotengine/godot-ios-plugins/issues/47
+
+```sh
+brew install scons
+```
+
+```sh
+git clone --recursive https://github.com/godotengine/godot-ios-plugins.git
+cd godot-ios-plugins/godot
+git fetch
+git checkout 15073afe3856abd2aa1622492fe50026c7d63dc1 # commit from 4.2.2
+scons platform=ios target=template_debug # ^C after headers are built
+cd ../
+scons target=release_debug arch=arm64 simulator=no plugin=inappstore version=4.0
+./scripts/generate_static_library.sh inappstore release_debug 4.0
+./scripts/generate_xcframework.sh inappstore release_debug 4.0
+```
+
+Update the `.gdip` and output from `bin/`.
 
 # How to export?
 Export to iOS is automatically manage when you merge in **main**, you'll receive your latest version in **Testflight**.

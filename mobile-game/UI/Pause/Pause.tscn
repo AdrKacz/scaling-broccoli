@@ -12,23 +12,23 @@ shader_parameter/blur_quality = 3.0
 shader_parameter/blur_size = 16.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0f02n"]
+content_margin_left = 16.0
+content_margin_top = 32.0
+content_margin_right = 16.0
+content_margin_bottom = 32.0
 bg_color = Color(1, 1, 1, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-expand_margin_left = 12.0
-expand_margin_top = 12.0
-expand_margin_right = 12.0
-expand_margin_bottom = 12.0
 shadow_color = Color(0, 0, 0, 0.588235)
-shadow_size = 8
-shadow_offset = Vector2(8, 8)
+shadow_size = 4
+shadow_offset = Vector2(4, 4)
 
 [node name="Pause" type="CanvasLayer"]
 
