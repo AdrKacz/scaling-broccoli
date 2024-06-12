@@ -26,7 +26,3 @@ var number_of_visible: int:
 		else:
 			for child in $CenterContainer/HBoxContainer.get_children():
 				child.visible = false
-
-
-func _ready():
-	number_of_visible = 3
