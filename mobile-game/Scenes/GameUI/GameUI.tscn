@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b5a8hcvmbiai0"]
+[gd_scene load_steps=19 format=3 uid="uid://b5a8hcvmbiai0"]
 
 [ext_resource type="Script" path="res://Scenes/GameUI/GameUI.gd" id="1_1j4ix"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="1_42cip"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bkyi6nop5h5e7" path="res://Scenes/BonusText/BonusText.tscn" id="2_2t8mw"]
 [ext_resource type="PackedScene" uid="uid://pp33xbgsxk1" path="res://Scenes/GameUI/IntroductionText/IntroductionText.tscn" id="4_vn6yi"]
 [ext_resource type="PackedScene" uid="uid://cy5lgbmvkm64u" path="res://Scenes/GameUI/Countdown/Countdown.tscn" id="5_vsywg"]
+[ext_resource type="PackedScene" uid="uid://cmg0k2ab5xkp5" path="res://Scenes/GameUI/Stars/Stars.tscn" id="6_a3wni"]
 [ext_resource type="Texture2D" uid="uid://djd0bbfp18u8d" path="res://assets/gear.png" id="7_ijvbw"]
 [ext_resource type="Texture2D" uid="uid://4x328o3ivuls" path="res://assets/pause.png" id="7_l6vmo"]
 [ext_resource type="Texture2D" uid="uid://dr1uvtml7ha5e" path="res://assets/book_closed.png" id="8_a1os5"]
@@ -59,6 +60,8 @@ BonusText = ExtResource("2_2t8mw")
 use_parent_material = true
 
 [node name="Countdown" parent="." instance=ExtResource("5_vsywg")]
+
+[node name="Stars" parent="." instance=ExtResource("6_a3wni")]
 
 [node name="PauseDivider" type="Control" parent="."]
 visible = false

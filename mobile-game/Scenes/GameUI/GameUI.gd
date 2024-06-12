@@ -11,6 +11,11 @@ func _ready():
 	# get position for bonus text
 	var computed_safe_area: Rect2 = $MarginContainer.computed_safe_area
 	
+	$Stars.position = Vector2(
+		computed_safe_area.position.x + computed_safe_area.size.x * .5,
+		computed_safe_area.position.y + computed_safe_area.size.y * .05,
+	)
+	
 	$Countdown.position = Vector2(
 		computed_safe_area.position.x + computed_safe_area.size.x * .5,
 		computed_safe_area.position.y + computed_safe_area.size.y * .5,
@@ -106,3 +111,6 @@ func _on_items_shield_submitted(use_shield):
 	
 func update_countdown(value: int):
 	$Countdown.countdown = value
+
+func update_stars(value: int):
+	$Stars.number_of_visible = value

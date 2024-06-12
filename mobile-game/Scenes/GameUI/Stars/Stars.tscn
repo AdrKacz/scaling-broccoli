@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmg0k2ab5xkp5"]
+
+[ext_resource type="Texture2D" uid="uid://b08j7mgfqtqrl" path="res://assets/star.png" id="1_6d6lv"]
+[ext_resource type="Script" path="res://Scenes/GameUI/Stars/Stars.gd" id="1_b8mif"]
+
+[node name="Stars" type="Sprite2D"]
+script = ExtResource("1_b8mif")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Star1" type="TextureRect" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_6d6lv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Star2" type="TextureRect" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_6d6lv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Star3" type="TextureRect" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_6d6lv")
+expand_mode = 1
+stretch_mode = 5
