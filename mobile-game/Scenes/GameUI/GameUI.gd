@@ -11,9 +11,14 @@ func _ready():
 	# get position for bonus text
 	var computed_safe_area: Rect2 = $MarginContainer.computed_safe_area
 	
-	$Countdown.position = Vector2(
+	$Stars.position = Vector2(
 		computed_safe_area.position.x + computed_safe_area.size.x * .5,
 		computed_safe_area.position.y + computed_safe_area.size.y * .05,
+	)
+	
+	$Countdown.position = Vector2(
+		computed_safe_area.position.x + computed_safe_area.size.x * .5,
+		computed_safe_area.position.y + computed_safe_area.size.y * .5,
 	)
 	
 	$IntroductionText.position = Vector2(
@@ -25,6 +30,12 @@ func _ready():
 		computed_safe_area.position.x + computed_safe_area.size.x * .5,
 		computed_safe_area.position.y + computed_safe_area.size.y * .8,
 	)
+	
+	_on_Session_update_show_countdown(Session.show_countdown)
+	Session.update_show_countdown.connect(_on_Session_update_show_countdown)
+
+func _on_Session_update_show_countdown(value: bool):
+	$Countdown.visible = value
 
 func _on_settings_button_pressed():
 	Session.click()
@@ -79,7 +90,6 @@ func toggle_game_mode(is_game: bool):
 	$MarginContainer/PauseControl.visible = is_game
 	$MarginContainer/UIControl.visible = not is_game
 	$MarginContainer/Items.toggle_game_mode(is_game)
-	$Countdown.visible = is_game
 
 func _on_pause_texture_button_pressed():
 	Session.click()
@@ -101,3 +111,6 @@ func _on_items_shield_submitted(use_shield):
 	
 func update_countdown(value: int):
 	$Countdown.countdown = value
+
+func update_stars(value: int):
+	$Stars.number_of_visible = value

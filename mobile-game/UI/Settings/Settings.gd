@@ -19,9 +19,12 @@ func _on_sound_effect_check_box_toggled(button_pressed):
 	AudioManager.sound_effects_on = button_pressed
 
 func _on_vibration_check_box_toggled(button_pressed):
-	print('Vibration')
 	Session.click()
 	Session.vibration_on = button_pressed
 
 func _on_exit_clicked():
 	emit_signal("exit")
+
+func _on_countdown_check_box_toggled(toggled_on):
+	Session.click()
+	Session.show_countdown = toggled_on

@@ -56,6 +56,7 @@ func reset_combos_strike():
 	
 func fail():
 	reset_combos_strike()
+	$Control/GameUI.update_countdown(combo_required_for_current_card)
 	$Control/Game.reset_crack()
 	Memory.active_hammers = 0
 	Session.active_shields = min(3, Memory.shields)
@@ -122,6 +123,7 @@ func init_level() -> void:
 			Memory.active_card = _get_random_card()
 	combo_required_for_current_card = int(Memory.active_card.get_slice('_', 0))
 	$Control/GameUI.update_countdown(combo_required_for_current_card)
+	$Control/GameUI.update_stars(Constants.get_card_level(combo_required_for_current_card))
 	$Control/Game.update_background_image(CARDS_FOLDER + "/" + Memory.active_card)
 	# Cracks
 	level_final_number_of_crack_circles = min(combo_required_for_current_card, randi_range(4, 6))

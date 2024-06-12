@@ -1,5 +1,6 @@
 extends Node
 signal update_active_shields(value: int)
+signal update_show_countdown(value: bool)
 
 @export var GameMaster: PackedScene
 @export var SettingsMenu: PackedScene
@@ -45,3 +46,11 @@ var active_shields: int:
 	set(value):
 		active_shields = clamp(value, 0, 3)
 		emit_signal("update_active_shields", active_shields)
+		
+var show_countdown: bool = true:
+	get:
+		return show_countdown
+	set(value):
+		show_countdown = value
+		emit_signal("update_show_countdown", show_countdown)
+	
