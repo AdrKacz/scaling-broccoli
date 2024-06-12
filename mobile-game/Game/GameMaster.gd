@@ -56,6 +56,7 @@ func reset_combos_strike():
 	
 func fail():
 	reset_combos_strike()
+	$Control/GameUI.update_countdown(combo_required_for_current_card)
 	$Control/Game.reset_crack()
 	Memory.active_hammers = 0
 	Session.active_shields = min(3, Memory.shields)

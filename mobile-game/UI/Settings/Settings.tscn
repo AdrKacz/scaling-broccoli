@@ -83,10 +83,17 @@ button_pressed = true
 text = "Vibrations
 "
 
+[node name="CountdownCheckBox" type="CheckBox" parent="Control/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Countdown
+"
+
 [node name="Exit" parent="Control/MarginContainer" instance=ExtResource("4_nct6u")]
 layout_mode = 2
 
 [connection signal="toggled" from="Control/MarginContainer/CenterContainer/VBoxContainer/MusicCheckBox" to="." method="_on_music_check_box_toggled"]
 [connection signal="toggled" from="Control/MarginContainer/CenterContainer/VBoxContainer/SoundEffectCheckBox" to="." method="_on_sound_effect_check_box_toggled"]
 [connection signal="toggled" from="Control/MarginContainer/CenterContainer/VBoxContainer/VibrationsCheckBox" to="." method="_on_vibration_check_box_toggled"]
+[connection signal="toggled" from="Control/MarginContainer/CenterContainer/VBoxContainer/CountdownCheckBox" to="." method="_on_countdown_check_box_toggled"]
 [connection signal="clicked" from="Control/MarginContainer/Exit" to="." method="_on_exit_clicked"]

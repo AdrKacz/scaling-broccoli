@@ -7,8 +7,16 @@ var countdown: int:
 		var previous = countdown
 		value = max(0, value)
 		$CenterContainer/Label.text = str(value)
-		if abs((previous - 1) / 10 - (value - 1) / 10) > 0:
-			# Only animate if you cross a 10s, you pulse on 0s, not on 9s, so you substract 1
+		
+		# Only animate if you cross a 10s, you pulse on 0s, not on 9s or 1s, so you substract/add 1
+		var animate: bool
+		if previous > countdown:
+			@warning_ignore("integer_division")
+			animate = abs((previous - 1) / 10 - (value - 1) / 10) > 0
+		else:
+			@warning_ignore("integer_division")
+			animate = abs((previous + 1) / 10 - (value + 1) / 10) > 0
+		if animate:
 			if $AnimationPlayer.is_playing():
 				$AnimationPlayer.stop()
 			$AnimationPlayer.play("pulse")
