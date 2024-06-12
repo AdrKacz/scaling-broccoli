@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfrtcaos81ck4"]
+
+[ext_resource type="Script" path="res://AutoLoad/Apple/Apple.gd" id="1_64vce"]
+
+[node name="Apple" type="Node"]
+script = ExtResource("1_64vce")
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
