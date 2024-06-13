@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bw17hhiggt2tt"]
+[gd_scene load_steps=8 format=3 uid="uid://dg8fkvd3qg1gf"]
 
-[ext_resource type="StyleBox" uid="uid://doxb0672k85dq" path="res://UI/Store/Product/Product.tres" id="1_l6o2y"]
-[ext_resource type="Texture2D" uid="uid://be41a4uhebmqr" path="res://assets/tool_hammer.png" id="2_45faj"]
-[ext_resource type="Script" path="res://UI/Store/Product/Product.gd" id="2_wh3n2"]
-[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="3_0dun0"]
-[ext_resource type="FontFile" uid="uid://ddsrcnmbc0ew7" path="res://assets/fonts/Patrick_Hand_SC/PatrickHandSC-Regular.ttf" id="4_ap42y"]
+[ext_resource type="StyleBox" uid="uid://doxb0672k85dq" path="res://UI/Store/Products/Product.tres" id="1_2unrg"]
+[ext_resource type="Script" path="res://UI/Store/Products/Product.gd" id="2_nqmvt"]
+[ext_resource type="Texture2D" uid="uid://skfpua6eoxdh" path="res://assets/shield.png" id="3_xscge"]
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="4_fhsih"]
+[ext_resource type="FontFile" uid="uid://ddsrcnmbc0ew7" path="res://assets/fonts/Patrick_Hand_SC/PatrickHandSC-Regular.ttf" id="5_6hjix"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_un6g8"]
 content_margin_left = 8.0
@@ -21,8 +21,9 @@ expand_margin_bottom = 8.0
 bg_color = Color(0.6, 0.6, 0.6, 0.784314)
 
 [node name="Product" type="PanelContainer"]
-theme_override_styles/panel = ExtResource("1_l6o2y")
-script = ExtResource("2_wh3n2")
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("1_2unrg")
+script = ExtResource("2_nqmvt")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -30,22 +31,41 @@ theme_override_constants/separation = 16
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("2_45faj")
+texture = ExtResource("3_xscge")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/TextureRect"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_xscge")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3_0dun0")
+theme = ExtResource("4_fhsih")
 theme_override_font_sizes/font_size = 64
-text = "10 hammers"
+text = "10 shields"
 
 [node name="Price" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_ap42y")
+theme_override_fonts/font = ExtResource("5_6hjix")
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxFlat_un6g8")
 text = "0.99 €"

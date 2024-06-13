@@ -11,7 +11,7 @@ func _ready():
 	if Engine.has_singleton("InAppStore"):
 		in_app_store = Engine.get_singleton("InAppStore")
 		$Timer.start()
-		in_app_store.request_product_info({ "product_ids": ["hammers_10"] })
+		in_app_store.request_product_info({ "product_ids": ["hammers_10", "shields_10"] })
 	else:
 		print("iOS IAP plugin is not available on this platform.")
 

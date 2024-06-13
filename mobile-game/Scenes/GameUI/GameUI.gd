@@ -16,11 +16,6 @@ func _ready():
 		computed_safe_area.position.y + computed_safe_area.size.y * .05,
 	)
 	
-	$Countdown.position = Vector2(
-		computed_safe_area.position.x + computed_safe_area.size.x * .5,
-		computed_safe_area.position.y + computed_safe_area.size.y * .5,
-	)
-	
 	$IntroductionText.position = Vector2(
 		computed_safe_area.position.x + computed_safe_area.size.x * .5,
 		computed_safe_area.position.y + computed_safe_area.size.y * .25,
