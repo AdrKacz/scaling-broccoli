@@ -26,6 +26,7 @@ StateManager="*res://AutoLoad/StateManager/StateManager.gd"
 AudioManager="*res://AutoLoad/AudioManager/AudioManager.tscn"
 sp="*res://addons/awesome_splash/utils_splash.gd"
 gd="*res://addons/godot-action/utils_gd_action.tscn"
+Apple="*res://AutoLoad/Apple/Apple.tscn"
 
 [display]
 

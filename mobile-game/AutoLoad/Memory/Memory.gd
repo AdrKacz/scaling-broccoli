@@ -16,7 +16,7 @@ func _ready():
 		shields = 0
 		reset_unlocked_cards()
 	# DEBUG
-	hammers = 10
+	hammers = 0
 	active_hammers = 0
 	shields = 10
 	# reset_unlocked_cards() # Uncomment to start from beginning at each iteration

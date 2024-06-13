@@ -57,7 +57,7 @@ var quantity: int = 1:
 			plus_button.visible = true
 
 func _on_Memory_update_active_hammers(value: int):
-	hammer_button.self_modulate.a = 1.0 - 0.5 * float(0 == 0)
+	hammer_button.self_modulate.a = 1.0 - 0.5 * float(value == 0)
 	hammer_extra_1.visible = value > 1
 	hammer_extra_2.visible = value > 2
 	

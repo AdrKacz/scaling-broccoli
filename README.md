@@ -19,6 +19,48 @@ To add new card, follow the following format for names: `{combo_required}_{id}.j
 ## Play on mobile
 Follow [official guide](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_ios.html#active-development-considerations) to test on iOS.
 
+If you want to test the **In App Purchase**, do the following after export:
+1. Open XCode
+2. Create a new file, search for **StoreKit Configuration**
+3. Name it **Products** and select **Sync** and your project.
+4. Select the correct **Target** and hit **Create**
+5. Go to **Signing & Capabilities**
+6. Select **Automatically manage signing**
+7. Select your team
+8. Hit play with a connected physical device
+
+# In app purchases
+## Apple
+- [Plugins for iOS](https://docs.godotengine.org/en/stable/tutorials/platform/ios/plugins_for_ios.html)
+- [In-App Purchases](https://developer.apple.com/documentation/appstoreconnectapi/app_store/in-app_purchase/in-app_purchases)
+  - [Create an In-App Purchase](https://developer.apple.com/documentation/appstoreconnectapi/create_an_in-app_purchase)
+- [Create consumable or non-consumable in-app purchases](https://developer.apple.com/help/app-store-connect/manage-in-app-purchases/create-consumable-or-non-consumable-in-app-purchases/)
+- [Testing In-App Purchases with sandbox](https://developer.apple.com/documentation/storekit/in-app_purchase/testing_in-app_purchases_with_sandbox)
+- [Testing at all stages of development with Xcode and the sandbox](https://developer.apple.com/documentation/storekit/in-app_purchase/testing_at_all_stages_of_development_with_xcode_and_the_sandbox)
+
+> Product IDs are not sensitive data, you can store them in public ([see source](https://stackoverflow.com/questions/56367735/is-app-store-product-id-a-sensitive-data))
+
+### Build your plugin
+See more in this Github issue: https://github.com/godotengine/godot-ios-plugins/issues/47
+
+```sh
+brew install scons
+```
+
+```sh
+git clone --recursive https://github.com/godotengine/godot-ios-plugins.git
+cd godot-ios-plugins/godot
+git fetch
+git checkout 15073afe3856abd2aa1622492fe50026c7d63dc1 # commit from 4.2.2
+scons platform=ios target=template_debug # ^C after headers are built
+cd ../
+scons target=release_debug arch=arm64 simulator=no plugin=inappstore version=4.0
+./scripts/generate_static_library.sh inappstore release_debug 4.0
+./scripts/generate_xcframework.sh inappstore release_debug 4.0
+```
+
+Update the `.gdip` and output from `bin/`.
+
 # How to export?
 Export to iOS is automatically manage when you merge in **main**, you'll receive your latest version in **Testflight**.
 You can still build manually if you want to test your feature on mobile before merging. You will very rarely have to manually create an **Archive** though.

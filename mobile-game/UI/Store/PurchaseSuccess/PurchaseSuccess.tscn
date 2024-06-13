@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://v2j0rn05t8e1"]
+
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="1_v6new"]
+[ext_resource type="StyleBox" uid="uid://7hl7om67fheu" path="res://UI/Items/ControlPanel.tres" id="2_4wjdt"]
+[ext_resource type="Script" path="res://UI/Store/PurchaseSuccess/PurchaseSuccess.gd" id="3_43iyv"]
+[ext_resource type="Texture2D" uid="uid://hp77mepirdgx" path="res://assets/flip_head.png" id="3_qkj6n"]
+
+[node name="PurchaseSuccess" type="PanelContainer"]
+mouse_filter = 2
+theme = ExtResource("1_v6new")
+theme_override_styles/panel = ExtResource("2_4wjdt")
+script = ExtResource("3_43iyv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Your purchase succeeded!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_qkj6n")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Items" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "10 hammers"
+horizontal_alignment = 1
