@@ -8,6 +8,8 @@ See [tween cheat sheet](https://raw.githubusercontent.com/godotengine/godot-docs
 
 Use [CloudConvert](https://cloudconvert.com/svg-to-png) to convert SVG to PNG.
 
+Use [VectorPaint](https://vectorpaint.yaks.co.nz) on **Safari** to edit SVG.
+
 To add new card, follow the following format for names: `{combo_required}_{id}.jpeg`. `id` can be a name without space or just a number, make sure it's unique across all cards.
 
 ## Resources for shaders

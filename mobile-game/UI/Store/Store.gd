@@ -1,6 +1,7 @@
 extends CanvasLayer
 signal exit
 
+var latest_product_id: String
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$PurchaseResult.visible = false
@@ -15,11 +16,13 @@ func _on_exit_texture_button_pressed():
 func _on_hammers_pressed():
 	print('Buy hammers')
 	Apple.purchase("hammers_10")
+	latest_product_id = "hammers_10"
 	toggle_buttons(false)
 	
 func _on_shields_pressed():
 	print('Buy shields')
 	Apple.purchase("shields_10")
+	latest_product_id = "shields_10"
 	toggle_buttons(false)
 
 func _on_Apple_purchase_success(product_id: String):
@@ -31,6 +34,7 @@ func _on_Apple_purchase_success(product_id: String):
 		Apple.finish_transaction(product_id)
 	elif product_id == "shields_10":
 		Memory.shields += 10
+		Session.active_shields = min(3, Memory.shields)
 		items = "10 Shields"
 		Apple.finish_transaction(product_id)
 	else:
@@ -56,7 +60,8 @@ func _on_exit_purchase_result_pressed():
 
 func _on_purchase_error_retry():
 	$PurchaseResult.visible = false
-	_on_hammers_pressed()
+	Apple.purchase(latest_product_id)
+	toggle_buttons(false)
 	
 func toggle_purchase_result(on: bool, items: String = "", with_success: bool = true):
 	$PurchaseResult/CenterContainer/PurchaseSuccess.items = items
