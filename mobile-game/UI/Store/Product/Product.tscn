@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bw17hhiggt2tt"]
+[gd_scene load_steps=8 format=3 uid="uid://bw17hhiggt2tt"]
 
-[ext_resource type="StyleBox" uid="uid://7hl7om67fheu" path="res://UI/Items/ControlPanel.tres" id="1_jw2nv"]
+[ext_resource type="StyleBox" uid="uid://doxb0672k85dq" path="res://UI/Store/Product/Product.tres" id="1_l6o2y"]
 [ext_resource type="Texture2D" uid="uid://be41a4uhebmqr" path="res://assets/tool_hammer.png" id="2_45faj"]
 [ext_resource type="Script" path="res://UI/Store/Product/Product.gd" id="2_wh3n2"]
 [ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="3_0dun0"]
@@ -12,13 +12,16 @@ content_margin_top = 8.0
 content_margin_right = 8.0
 content_margin_bottom = 8.0
 bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ts8s"]
+bg_color = Color(0.6, 0.6, 0.6, 0.784314)
 
 [node name="Product" type="PanelContainer"]
-theme_override_styles/panel = ExtResource("1_jw2nv")
+theme_override_styles/panel = ExtResource("1_l6o2y")
 script = ExtResource("2_wh3n2")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -50,5 +53,10 @@ text = "0.99 €"
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
 flat = true
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ts8s")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

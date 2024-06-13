@@ -1,8 +1,3 @@
-TODO:
-- Check if needed to add "Sign in with iCloud, because I had to manually type my password"
-- Click events (and all other event relative to Apple and Store) looks to be logged twice (maybe just the logger of XCode)
-- When failure, it finises on the state "show waiting", but it shouldn't, and logs shows that "display true" was called AFTER "display false", it should be the opposite
-- Do action when purchase complete (add actual hammers to the balance) 
 # 🌈 Rainbow Rush
 # Develop
 Open `project.godot` with [**Godot**](https://godotengine.org/download/).
@@ -23,6 +18,16 @@ To add new card, follow the following format for names: `{combo_required}_{id}.j
 
 ## Play on mobile
 Follow [official guide](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_ios.html#active-development-considerations) to test on iOS.
+
+If you want to test the **In App Purchase**, do the following after export:
+1. Open XCode
+2. Create a new file, search for **StoreKit Configuration**
+3. Name it **Products** and select **Sync** and your project.
+4. Select the correct **Target** and hit **Create**
+5. Go to **Signing & Capabilities**
+6. Select **Automatically manage signing**
+7. Select your team
+8. Hit play with a connected physical device
 
 # In app purchases
 ## Apple

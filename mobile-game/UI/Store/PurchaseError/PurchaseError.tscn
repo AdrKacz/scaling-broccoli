@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bndy2htkgy6l5"]
+
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="1_s6vwv"]
+[ext_resource type="StyleBox" uid="uid://7hl7om67fheu" path="res://UI/Items/ControlPanel.tres" id="2_4rydo"]
+[ext_resource type="Script" path="res://UI/Store/PurchaseError/PurchaseError.gd" id="3_bshaw"]
+[ext_resource type="Texture2D" uid="uid://d01crjnxpr0k0" path="res://assets/flip_tails.png" id="3_m561k"]
+[ext_resource type="StyleBox" uid="uid://b387w3gu5d7q" path="res://UI/Items/YesNoButton.tres" id="4_caqo2"]
+
+[node name="PurchaseError" type="PanelContainer"]
+theme = ExtResource("1_s6vwv")
+theme_override_styles/panel = ExtResource("2_4rydo")
+script = ExtResource("3_bshaw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Your purchase failed"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_m561k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Items" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "10 hammers"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("4_caqo2")
+text = "Retry"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
