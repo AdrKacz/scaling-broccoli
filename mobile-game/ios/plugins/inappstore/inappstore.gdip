@@ -1,6 +1,6 @@
 [config]
 name="InAppStore"
-binary="bin/inappstore.release_debug.xcframework"
+binary="bin/inappstore.release.xcframework"
 
 initialization="register_inappstore_types"
 deinitialization="unregister_inappstore_types"

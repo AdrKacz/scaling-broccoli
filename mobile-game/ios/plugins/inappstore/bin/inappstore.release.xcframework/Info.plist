@@ -6,11 +6,11 @@
 	<array>
 		<dict>
 			<key>BinaryPath</key>
-			<string>inappstore-device.release_debug.a</string>
+			<string>inappstore-device.release.a</string>
 			<key>LibraryIdentifier</key>
 			<string>ios-arm64_armv7</string>
 			<key>LibraryPath</key>
-			<string>inappstore-device.release_debug.a</string>
+			<string>inappstore-device.release.a</string>
 			<key>SupportedArchitectures</key>
 			<array>
 				<string>arm64</string>
@@ -21,11 +21,11 @@
 		</dict>
 		<dict>
 			<key>BinaryPath</key>
-			<string>inappstore-simulator.release_debug.a</string>
+			<string>inappstore-simulator.release.a</string>
 			<key>LibraryIdentifier</key>
 			<string>ios-arm64_x86_64-simulator</string>
 			<key>LibraryPath</key>
-			<string>inappstore-simulator.release_debug.a</string>
+			<string>inappstore-simulator.release.a</string>
 			<key>SupportedArchitectures</key>
 			<array>
 				<string>arm64</string>
