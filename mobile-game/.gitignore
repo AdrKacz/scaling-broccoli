@@ -383,9 +383,9 @@ $RECYCLE.BIN/
 
 !ios/plugins/inappstore/bin/
 !ios/plugins/inappstore/bin/*
-!ios/plugins/inappstore/bin/inappstore.release_debug.xcframework/
-!ios/plugins/inappstore/bin/inappstore.release_debug.xcframework/*
-!ios/plugins/inappstore/bin/inappstore.release_debug.xcframework/ios-arm64_armv7/
-!ios/plugins/inappstore/bin/inappstore.release_debug.xcframework/ios-arm64_armv7/*
-!ios/plugins/inappstore/bin/inappstore.release_debug.xcframework/ios-arm64_x86_64-simulator/
-!ios/plugins/inappstore/bin/inappstore.release_debug.xcframework/ios-arm64_x86_64-simulator/*
+!ios/plugins/inappstore/bin/inappstore.release.xcframework/
+!ios/plugins/inappstore/bin/inappstore.release.xcframework/*
+!ios/plugins/inappstore/bin/inappstore.release.xcframework/ios-arm64_armv7/
+!ios/plugins/inappstore/bin/inappstore.release.xcframework/ios-arm64_armv7/*
+!ios/plugins/inappstore/bin/inappstore.release.xcframework/ios-arm64_x86_64-simulator/
+!ios/plugins/inappstore/bin/inappstore.release.xcframework/ios-arm64_x86_64-simulator/*
