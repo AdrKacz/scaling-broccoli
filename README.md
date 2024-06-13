@@ -54,9 +54,9 @@ git fetch
 git checkout 15073afe3856abd2aa1622492fe50026c7d63dc1 # commit from 4.2.2
 scons platform=ios target=template_debug # ^C after headers are built
 cd ../
-scons target=release_debug arch=arm64 simulator=no plugin=inappstore version=4.0
-./scripts/generate_static_library.sh inappstore release_debug 4.0
-./scripts/generate_xcframework.sh inappstore release_debug 4.0
+scons target=release arch=arm64 simulator=no plugin=inappstore version=4.0
+./scripts/generate_static_library.sh inappstore release 4.0
+./scripts/generate_xcframework.sh inappstore release 4.0
 ```
 
 Update the `.gdip` and output from `bin/`.
