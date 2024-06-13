@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://1a16faoh6ypn"]
+[gd_scene load_steps=10 format=3 uid="uid://1a16faoh6ypn"]
 
 [ext_resource type="Shader" path="res://UI/Book/Blur.gdshader" id="1_o34g3"]
 [ext_resource type="Script" path="res://UI/Store/Store.gd" id="1_ylu17"]
 [ext_resource type="Script" path="res://UI/SafeControl/safe_control.gd" id="3_1e4ue"]
 [ext_resource type="Texture2D" uid="uid://d23bhf40qscag" path="res://assets/exitRight.png" id="4_j7w7l"]
-[ext_resource type="PackedScene" uid="uid://bw17hhiggt2tt" path="res://UI/Store/Product/Product.tscn" id="5_epvxf"]
+[ext_resource type="PackedScene" uid="uid://bw17hhiggt2tt" path="res://UI/Store/Products/Hammers/Hammers.tscn" id="5_g46cx"]
 [ext_resource type="PackedScene" uid="uid://v2j0rn05t8e1" path="res://UI/Store/PurchaseSuccess/PurchaseSuccess.tscn" id="6_3lydr"]
+[ext_resource type="PackedScene" uid="uid://dg8fkvd3qg1gf" path="res://UI/Store/Products/Shields/Shields.tscn" id="6_h3ti3"]
 [ext_resource type="PackedScene" uid="uid://bndy2htkgy6l5" path="res://UI/Store/PurchaseError/PurchaseError.tscn" id="7_sirm5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_62b8k"]
@@ -75,11 +76,17 @@ mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/CenterContainer"]
 layout_mode = 2
+theme_override_constants/separation = 54
+alignment = 1
 
-[node name="HammerProduct" parent="Control/MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource("5_epvxf")]
+[node name="Hammers" parent="Control/MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource("5_g46cx")]
+layout_mode = 2
+
+[node name="Shields" parent="Control/MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource("6_h3ti3")]
 layout_mode = 2
 
 [node name="PurchaseResult" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -133,6 +140,7 @@ layout_mode = 2
 layout_mode = 2
 
 [connection signal="pressed" from="Control/MarginContainer/ExitMarginContainer/ExitTextureButton" to="." method="_on_exit_texture_button_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/CenterContainer/VBoxContainer/HammerProduct" to="." method="_on_hammer_product_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/CenterContainer/VBoxContainer/Hammers" to="." method="_on_hammers_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/CenterContainer/VBoxContainer/Shields" to="." method="_on_shields_pressed"]
 [connection signal="pressed" from="PurchaseResult/ExitPurchaseResult" to="." method="_on_exit_purchase_result_pressed"]
 [connection signal="retry" from="PurchaseResult/CenterContainer/PurchaseError" to="." method="_on_purchase_error_retry"]

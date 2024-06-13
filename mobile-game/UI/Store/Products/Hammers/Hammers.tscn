@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://bw17hhiggt2tt"]
+
+[ext_resource type="StyleBox" uid="uid://doxb0672k85dq" path="res://UI/Store/Products/Product.tres" id="1_qe7bf"]
+[ext_resource type="Script" path="res://UI/Store/Products/Product.gd" id="2_j0csw"]
+[ext_resource type="Texture2D" uid="uid://be41a4uhebmqr" path="res://assets/tool_hammer.png" id="3_42tpb"]
+[ext_resource type="Theme" uid="uid://dsgu4tme5hp8f" path="res://Themes/Menu/menu_theme.tres" id="4_p26ge"]
+[ext_resource type="FontFile" uid="uid://ddsrcnmbc0ew7" path="res://assets/fonts/Patrick_Hand_SC/PatrickHandSC-Regular.ttf" id="5_pw63d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_un6g8"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ts8s"]
+bg_color = Color(0.6, 0.6, 0.6, 0.784314)
+
+[node name="Product" type="PanelContainer"]
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("1_qe7bf")
+script = ExtResource("2_j0csw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_42tpb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_p26ge")
+theme_override_font_sizes/font_size = 64
+text = "10 hammers"
+
+[node name="Price" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_pw63d")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_un6g8")
+text = "0.99 €"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+flat = true
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ts8s")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
