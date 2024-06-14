@@ -60,7 +60,6 @@ BonusText = ExtResource("2_2t8mw")
 use_parent_material = true
 
 [node name="Countdown" parent="." instance=ExtResource("5_vsywg")]
-position = Vector2(360, 640)
 
 [node name="Stars" parent="." instance=ExtResource("6_a3wni")]
 
