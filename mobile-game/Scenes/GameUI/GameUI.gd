@@ -11,6 +11,8 @@ func _ready():
 	# get position for bonus text
 	var computed_safe_area: Rect2 = $MarginContainer.computed_safe_area
 	
+	$Countdown.position = get_parent_area_size() / 2
+	
 	$Stars.position = Vector2(
 		computed_safe_area.position.x + computed_safe_area.size.x * .5,
 		computed_safe_area.position.y + computed_safe_area.size.y * .05,
