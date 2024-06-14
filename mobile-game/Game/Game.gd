@@ -97,9 +97,12 @@ func _on_character_tap():
 		$Character.shake()
 		emit_signal("wrong")
 		# Let the player breath after failure, force next match
-		paused = true
-		$Character.state = background_state
-		Constants.state_matches = true
+		wait_for_tap()
+		
+func wait_for_tap():
+	paused = true
+	$Character.state = background_state
+	Constants.state_matches = true
 
 func _on_swap_background_timer_timeout():
 	if Constants.state_matches:

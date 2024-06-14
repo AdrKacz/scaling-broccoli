@@ -37,6 +37,7 @@ func unlock_card():
 		tween.kill()
 	Session.active_shields = min(3, Memory.shields)
 	Memory.unlock_active_card() # side-effect: reset active card
+	$Control/GameUI.toggle_countdown(false) # Hide countdown
 	$Control/Game.paused = true
 	$Control/Game.emit_neutral_hit = true # Wait for signal to move on to next card
 	$Control/Game.character_visible = false
@@ -110,7 +111,6 @@ func _get_next_tutorial_card():
 			return tutorial_card
 
 func init_level() -> void:
-	$Control/Game.paused = false
 	$Control/Game.character_visible = true
 	$Control/Game.hide_background_image() # add glass
 	$Control/Game.background_abberation = 0
@@ -122,6 +122,7 @@ func init_level() -> void:
 		else:
 			Memory.active_card = _get_random_card()
 	combo_required_for_current_card = int(Memory.active_card.get_slice('_', 0))
+	$Control/GameUI.toggle_countdown(true) # Show countdown (only if activated in settings)
 	$Control/GameUI.update_countdown(combo_required_for_current_card)
 	$Control/GameUI.update_stars(Constants.get_card_level(combo_required_for_current_card))
 	$Control/Game.update_background_image(CARDS_FOLDER + "/" + Memory.active_card)
@@ -129,6 +130,8 @@ func init_level() -> void:
 	level_final_number_of_crack_circles = min(combo_required_for_current_card, randi_range(4, 6))
 	level_final_number_of_crack_lines = min(combo_required_for_current_card * 2, randi_range(15, 20))
 	$Control/Game.generate_crack(level_final_number_of_crack_circles)
+	# Wait for the user to tap to start
+	$Control/Game.wait_for_tap()
 
 func _on_game_neutral_hit():
 	if not $Control/Game.paused:
