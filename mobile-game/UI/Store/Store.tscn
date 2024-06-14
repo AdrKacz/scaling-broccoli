@@ -139,6 +139,7 @@ layout_mode = 2
 [node name="PurchaseError" parent="PurchaseResult/CenterContainer" instance=ExtResource("7_sirm5")]
 layout_mode = 2
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Control/MarginContainer/ExitMarginContainer/ExitTextureButton" to="." method="_on_exit_texture_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/CenterContainer/VBoxContainer/Hammers" to="." method="_on_hammers_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/CenterContainer/VBoxContainer/Shields" to="." method="_on_shields_pressed"]

@@ -6,6 +6,7 @@ signal purchase_error(product_id: String)
 signal finish_transaction_in_progress(product_id: String)
 signal finish_transaction_error(product_id: String)
 
+var products: Dictionary = {}
 var in_app_store
 func _ready():
 	if Engine.has_singleton("InAppStore"):
@@ -49,6 +50,12 @@ func check_events():
 			else:
 				print('Cannot complete purchase')
 				emit_signal("purchase_error", event.product_id)
+		elif event.type == "product_info":
+			if event.result == "ok":
+				var ids: Array = event.ids
+				var prices: Array = event.localized_prices # use localizsed to have currency too, prices only have number
+				for i in ids.size():
+					products[ids[i]] = prices[i]
 
 func _on_timer_timeout():
 	check_events()

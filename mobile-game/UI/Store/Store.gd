@@ -77,3 +77,10 @@ func toggle_purchase_result(on: bool, items: String = "", with_success: bool = t
 func toggle_buttons(button_enabled: bool):
 	$Control/MarginContainer/CenterContainer/VBoxContainer/Hammers.disabled = not button_enabled
 	$Control/MarginContainer/CenterContainer/VBoxContainer/Shields.disabled = not button_enabled
+
+
+func _on_visibility_changed():
+	if not visible:
+		return # Only check product availability when store opens
+	$Control/MarginContainer/CenterContainer/VBoxContainer/Hammers.init()
+	$Control/MarginContainer/CenterContainer/VBoxContainer/Shields.init()
