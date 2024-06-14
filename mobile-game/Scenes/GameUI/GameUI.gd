@@ -28,12 +28,6 @@ func _ready():
 		computed_safe_area.position.y + computed_safe_area.size.y * .8,
 	)
 	
-	_on_Session_update_show_countdown(Session.show_countdown)
-	Session.update_show_countdown.connect(_on_Session_update_show_countdown)
-
-func _on_Session_update_show_countdown(value: bool):
-	$Countdown.visible = value
-
 func _on_settings_button_pressed():
 	Session.click()
 	get_tree().paused = true
@@ -87,6 +81,9 @@ func toggle_game_mode(is_game: bool):
 	$MarginContainer/PauseControl.visible = is_game
 	$MarginContainer/UIControl.visible = not is_game
 	$MarginContainer/Items.toggle_game_mode(is_game)
+
+func toggle_countdown(is_activated: bool):
+	$Countdown.activated = is_activated
 
 func _on_pause_texture_button_pressed():
 	Session.click()

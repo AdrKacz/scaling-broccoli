@@ -20,3 +20,17 @@ var countdown: int:
 			if $AnimationPlayer.is_playing():
 				$AnimationPlayer.stop()
 			$AnimationPlayer.play("pulse")
+			
+var activated: bool = false:
+	get:
+		return activated
+	set(value):
+		activated = value
+		visible = activated and Session.show_countdown
+			
+func _ready():
+	_on_Session_update_show_countdown(Session.show_countdown)
+	Session.update_show_countdown.connect(_on_Session_update_show_countdown)
+	
+func _on_Session_update_show_countdown(_value: bool):
+	activated = activated # Reset visible
