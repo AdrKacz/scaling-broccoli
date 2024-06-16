@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dsngmds587kx2" path="res://Scenes/Character/Character.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://bkyi6nop5h5e7" path="res://Scenes/BonusText/BonusText.tscn" id="3"]
 [ext_resource type="Shader" path="res://Game/Background.gdshader" id="3_fsrnv"]
-[ext_resource type="Texture2D" uid="uid://1xa5cs6m2jx7" path="res://assets/Cards/1_Tutorial1.jpeg" id="4_jrrvg"]
+[ext_resource type="Texture2D" uid="uid://1xa5cs6m2jx7" path="res://assets/Cards/2_0-Tutorial1.jpeg" id="4_jrrvg"]
 [ext_resource type="Script" path="res://Game/Game.gd" id="5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eu7oe"]

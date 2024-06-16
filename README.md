@@ -1,4 +1,35 @@
 # 🌈 Rainbow Rush
+# Cards
+> The level of a card is the number of smash you need to unlock it.
+
+We store `best_without_failures` and choose among card that requires less than that for the next one. If there is none, take one at random among the **2** next increment.
+
+The tutorial slowly ramps up to card level **10**. Tutorial cards ids start with `0-Tutorial`, the `0-` is to kep alphabetical order when level **10** or above.
+
+We have cards from level **10** to **100** with increment **5**:
+| Card Level | Number of cards |
+| --- | --- |
+| 10 | 19 |
+| 15 | 18 |
+| 20 | 17 |
+| 25 | 16 |
+| 30 | 15 |
+| 35 | 14 |
+| 40 | 13 |
+| 45 | 12 |
+| 50 | 11 |
+| 55 | 10 |
+| 60 | 9 |
+| 65 | 8 |
+| 70 | 7 |
+| 75 | 6 |
+| 80 | 5 |
+| 85 | 4 |
+| 90 | 3 |
+| 95 | 2 |
+| 100 | 1 |
+| **Total** | **190** |
+
 # Develop
 Open `project.godot` with [**Godot**](https://godotengine.org/download/).
 

@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cggekypp78p31"
-path.s3tc="res://.godot/imported/4_Tutorial4.jpeg-2a99dd8e8ce8f5706f2907032ca262b5.s3tc.ctex"
-path.etc2="res://.godot/imported/4_Tutorial4.jpeg-2a99dd8e8ce8f5706f2907032ca262b5.etc2.ctex"
+uid="uid://x00rb350n7as"
+path.s3tc="res://.godot/imported/10_3.png-157d355f90f06ef7148266ba4281b081.s3tc.ctex"
+path.etc2="res://.godot/imported/10_3.png-157d355f90f06ef7148266ba4281b081.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Cards/4_Tutorial4.jpeg"
-dest_files=["res://.godot/imported/4_Tutorial4.jpeg-2a99dd8e8ce8f5706f2907032ca262b5.s3tc.ctex", "res://.godot/imported/4_Tutorial4.jpeg-2a99dd8e8ce8f5706f2907032ca262b5.etc2.ctex"]
+source_file="res://assets/Cards/10_3.png"
+dest_files=["res://.godot/imported/10_3.png-157d355f90f06ef7148266ba4281b081.s3tc.ctex", "res://.godot/imported/10_3.png-157d355f90f06ef7148266ba4281b081.etc2.ctex"]
 
 [params]
 
