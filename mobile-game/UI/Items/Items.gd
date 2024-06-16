@@ -15,6 +15,7 @@ signal shield_submitted(use_shield: bool)
 @onready var shield_label: Label = $MarginContainer/MarginContainer/VBoxContainer/ShieldButton/InStock/MarginContainer/Label
 @onready var shield_extra_1: MarginContainer = $MarginContainer/MarginContainer/VBoxContainer/ShieldButton/ExtraShields/Extra1
 @onready var shield_extra_2: MarginContainer = $MarginContainer/MarginContainer/VBoxContainer/ShieldButton/ExtraShields/Extra2
+@onready var shield_info: Label = $ShieldControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Info
 @onready var shield_note: Label = $ShieldControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Note
 
 # Called when the node enters the scene tree for the first time.
@@ -92,8 +93,9 @@ func _on_confirm_button_pressed():
 # ===== ===== ===== 
 # SHIELD
 # ===== ===== =====
-func show_shield_contol():
+func show_shield_contol(smash_left: int):
 	shield_note.visible = Memory.active_hammers > 0
+	shield_info.text = "%d smash left to unlock the card!" % [smash_left]
 	if Memory.active_hammers > 1:
 		shield_note.text = "You will lose your %d activated hammers if you quit" % [Memory.active_hammers]
 	else:
