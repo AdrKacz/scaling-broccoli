@@ -5,7 +5,8 @@ signal pause_game
 
 @export var BonusText: PackedScene
 
-var display_bonus_text_position: Vector2
+var display_bonus_text_position_down: Vector2
+var display_bonus_text_position_up: Vector2
 
 func _ready():
 	# get position for bonus text
@@ -23,9 +24,14 @@ func _ready():
 		computed_safe_area.position.y + computed_safe_area.size.y * .25,
 	)
 
-	display_bonus_text_position = Vector2(
+	display_bonus_text_position_down = Vector2(
 		computed_safe_area.position.x + computed_safe_area.size.x * .5,
 		computed_safe_area.position.y + computed_safe_area.size.y * .8,
+	)
+	
+	display_bonus_text_position_up = Vector2(
+		computed_safe_area.position.x + computed_safe_area.size.x * .5,
+		computed_safe_area.position.y + computed_safe_area.size.y * .2,
 	)
 	
 func _on_settings_button_pressed():
@@ -47,7 +53,13 @@ func remove_introduction_text():
 func display_bonus_text(text):
 	var bonus_text = BonusText.instantiate()
 	bonus_text.text = text
-	bonus_text.position = display_bonus_text_position + Vector2(randf_range(-64, 64), randf_range(-64, 64)) # randomise
+	# Assign base position
+	if randi_range(0, 1) == 0:
+		bonus_text.position = display_bonus_text_position_down
+	else:
+		bonus_text.position = display_bonus_text_position_up
+	# Randomise position
+	bonus_text.position += Vector2(randf_range(-64, 64), randf_range(-64, 64))
 	add_child(bonus_text)
 
 
