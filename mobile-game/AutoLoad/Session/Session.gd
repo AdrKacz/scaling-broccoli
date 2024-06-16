@@ -47,7 +47,7 @@ var active_shields: int:
 		active_shields = clamp(value, 0, 3)
 		emit_signal("update_active_shields", active_shields)
 		
-var show_countdown: bool = true:
+var show_countdown: bool = false:
 	get:
 		return show_countdown
 	set(value):

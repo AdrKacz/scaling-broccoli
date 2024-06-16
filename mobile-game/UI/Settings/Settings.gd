@@ -5,10 +5,12 @@ func _ready():
 	var music_check_box: CheckBox = $Control/MarginContainer/CenterContainer/VBoxContainer/MusicCheckBox
 	var sound_effects_check_box: CheckBox = $Control/MarginContainer/CenterContainer/VBoxContainer/SoundEffectCheckBox
 	var vibrations_check_box: CheckBox = $Control/MarginContainer/CenterContainer/VBoxContainer/VibrationsCheckBox
+	var countdown_check_box: CheckBox = $Control/MarginContainer/CenterContainer/VBoxContainer/CountdownCheckBox
 	
 	music_check_box.set_pressed_no_signal(AudioManager.music_on)
 	sound_effects_check_box.set_pressed_no_signal(AudioManager.sound_effects_on)
 	vibrations_check_box.set_pressed_no_signal(Session.vibration_on)
+	countdown_check_box.set_pressed_no_signal(Session.show_countdown)
 
 func _on_music_check_box_toggled(button_pressed):
 	Session.click()
