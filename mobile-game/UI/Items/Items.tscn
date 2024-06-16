@@ -238,6 +238,13 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 theme_override_constants/separation = 16
 
+[node name="Info" type="Label" parent="ShieldControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_6vlfm")
+theme_override_font_sizes/font_size = 48
+text = "40 smash left to unlock the card!"
+horizontal_alignment = 1
+
 [node name="Question" type="Label" parent="ShieldControl/MarginContainer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_6vlfm")

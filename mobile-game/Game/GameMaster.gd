@@ -67,7 +67,7 @@ func _on_game_miss_or_wrong():
 		# Offer the player the possiblity to use a shield to continue
 		$Control/Game.paused = true
 		wait_for_shield_submit = true
-		$Control/GameUI.submit_shield()
+		$Control/GameUI.submit_shield(combo_required_for_current_card - Constants.local_combos_strike)
 	else:
 		fail()
 
