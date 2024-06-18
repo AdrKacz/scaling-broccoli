@@ -51,6 +51,14 @@ var active_card: String:
 		config.set_value('memory', 'active_card', value)
 		config.save("user://memory.cfg")
 		emit_signal("update_active_card", value)
+		
+var best_without_failure: int: # this is different than best combo as it doesn't count bonus from hammers of shields 
+	get:
+		return config.get_value('memory', 'best_without_failure', 0)
+	set(value):
+		value = max(best_without_failure, value)
+		config.set_value('memory', 'best_without_failure', value)
+		config.save("user://memory.cfg")
 
 # TODO: As the number of cards scale, it would be more efficient using a Set instead
 func get_unlocked_cards() -> Array[String]:

@@ -11,6 +11,7 @@ const CARDS_FOLDER: String = "res://assets/Cards"
 @onready var tutorial_cards: Array[String] = Constants.dir_contents(CARDS_FOLDER, 'Tutorial')
 
 func _ready():
+	Constants.smash_strike = 0
 	Constants.combos_strike = 0
 	Constants.local_combos_strike = 0
 	$Control/Game.reset_crack()
@@ -22,6 +23,8 @@ func increment_combos_strike():
 	var increment: int = int(pow(2, Memory.active_hammers))
 	Constants.combos_strike += increment
 	Constants.local_combos_strike += increment
+	Constants.smash_strike += 1
+	Memory.best_without_failure = Constants.smash_strike # NOTE: won't update if smaller than latest best without failure
 	
 	if Constants.combos_strike >= 2:
 		@warning_ignore("integer_division")
@@ -63,6 +66,7 @@ func fail():
 	Session.active_shields = min(3, Memory.shields)
 
 func _on_game_miss_or_wrong():
+	Constants.smash_strike = 0 # reset current smash strike even if a shield is used (combo won't be reset though, smash strike is invisible to player, we use it to evaluate their proficiency)
 	if Session.active_shields > 0:
 		# Offer the player the possiblity to use a shield to continue
 		$Control/Game.paused = true
@@ -82,27 +86,49 @@ func _on_game_score() -> void:
 	else:
 		var circle_step: float = float(combo_required_for_current_card - 1) / float(level_final_number_of_crack_circles)
 		var line_step: float = float(combo_required_for_current_card - 1) / float(level_final_number_of_crack_lines)
-		# circle_step and line_step will never be null`
+		# circle_step and line_step will never be null
 		# if combo_required_for_current_card is 1, then it's catched in first condition
 		# as local_combos_strike will always be equal or greater than 1 after you score
 		var new_number_of_circle: int = int(Constants.local_combos_strike / circle_step)
 		var new_number_of_line: int = int(Constants.local_combos_strike / line_step)
 		$Control/Game.update_crack(new_number_of_circle, new_number_of_line)
 
-func _get_random_card() -> String:
+func _get_next_card() -> String:
 	# TODO: Don't return a card too hard if the player if not good enough
 	var all_cards: Array[String] = Constants.dir_contents(CARDS_FOLDER)
+	# Remove unlocked cards
 	var unlocked_cards: Array[String] = Memory.get_unlocked_cards()
 	var locked_cards: Array[String] = []
 	for card in all_cards:
 		if not card in unlocked_cards:
 			locked_cards.append(card)
-	if locked_cards.size() > 0:
-		return locked_cards.pick_random()
-	else:  
-		# TODO: handle when no more cards
-		print('All cards unlocked, redo a random one.')
+	if locked_cards.size() == 0: # All unlocked, return one at random
 		return all_cards.pick_random()
+	# Only keep cards without difficulty reach
+	var achievable_cards: Array[String] = []
+	var not_achievable_cards: Array[String] = []
+	for card in locked_cards:
+		var card_difficulty: int = int(card.get_slice('_', 0))
+		if card_difficulty <= Memory.best_without_failure:
+			achievable_cards.append(card)
+		else:
+			not_achievable_cards.append(card)
+	if achievable_cards.size() > 0:
+		return achievable_cards.pick_random()
+	# No card achievable, look at the next two difficulty increment
+	# NOTE: not_achievable_cards cannot be null as achievable_cards is null and achievable_cards + not_achievable_cards is locked_cards which is not null 
+	not_achievable_cards.sort_custom(func(a, b): return a.naturalnocasecmp_to(b) < 0)
+	var achievable_increments: Array[int] = [int(not_achievable_cards[0].get_slice('_', 0))]
+	var almost_achievable_cards: Array[String] = [] # will at least contains the card at index 0
+	for card in not_achievable_cards:
+		var card_difficulty: int = int(card.get_slice('_', 0))
+		if card_difficulty > achievable_increments[-1]:
+			achievable_increments.append(card_difficulty)
+		if achievable_increments.size() > 2:
+			break # only look at the next two increments
+		if card_difficulty == achievable_increments[-1]:
+			almost_achievable_cards.append(card)
+	return almost_achievable_cards.pick_random()
 
 func _get_next_tutorial_card():
 	var unlocked_cards: Array[String] = Memory.get_unlocked_cards()
@@ -120,7 +146,7 @@ func init_level() -> void:
 		if next_tutorial_card:  # Tutorial not finished yet
 			Memory.active_card = next_tutorial_card
 		else:
-			Memory.active_card = _get_random_card()
+			Memory.active_card = _get_next_card()
 	combo_required_for_current_card = int(Memory.active_card.get_slice('_', 0))
 	$Control/GameUI.toggle_countdown(true) # Show countdown (only if activated in settings)
 	$Control/GameUI.update_countdown(combo_required_for_current_card)
