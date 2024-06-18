@@ -15,7 +15,8 @@ func _ready():
 		active_hammers = 0
 		shields = 0
 		reset_unlocked_cards()
-	# reset_unlocked_cards() # Uncomment to start from beginning at each iteration
+	hammers = 10
+	reset_unlocked_cards() # Uncomment to start from beginning at each iteration
 	
 var hammers: int:
 	get:
@@ -51,6 +52,21 @@ var active_card: String:
 		config.set_value('memory', 'active_card', value)
 		config.save("user://memory.cfg")
 		emit_signal("update_active_card", value)
+		
+var best_without_failure: int:
+	get:
+		return config.get_value('memory', 'best_without_failure', 0)
+	set(value):
+		value = max(best_without_failure, value)
+		config.set_value('memory', 'best_without_failure', value)
+		config.save("user://memory.cfg")
+
+var current_without_failure: int:
+	get:
+		return config.get_value('memory', 'current_without_failure', 0)
+	set(value):
+		config.set_value('memory', 'current_without_failure', value)
+		config.save("user://memory.cfg")
 
 # TODO: As the number of cards scale, it would be more efficient using a Set instead
 func get_unlocked_cards() -> Array[String]:
