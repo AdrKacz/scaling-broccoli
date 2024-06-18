@@ -31,6 +31,7 @@ const State = {
 
 # ==== ===== =====
 # Variables definitions
+var smash_strike: int = 0 # different than combo strike as it doesn't count bonus from hammers
 var combos_strike: int = 0
 var local_combos_strike: int = 0 # used only within a stage to know when to go to next one
 
