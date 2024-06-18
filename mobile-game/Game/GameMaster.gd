@@ -1,5 +1,4 @@
 extends CanvasLayer
-
 signal on_screen
 
 var level_final_number_of_crack_circles: int

@@ -22,3 +22,8 @@ func leave():
 	tween.tween_property(self, "scale", Vector2(0, 0), 1)
 	tween.tween_callback(self.queue_free)
 
+func force_enter():
+	# Debug only, enter immediately without animation
+	if tween:
+		tween.kill()
+	scale = Vector2(1, 1)

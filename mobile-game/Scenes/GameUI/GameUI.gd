@@ -120,3 +120,9 @@ func update_countdown(value: int):
 
 func update_stars(value: int):
 	$Stars.number_of_visible = value
+	
+func set_immediate_update_stars():
+	# For debug only, prevent animation when stars enter
+	$Stars.animation_duration = 0
+	$Stars.interval_duration = 0
+	$Stars.initial_interval_duration = 0

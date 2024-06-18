@@ -2,7 +2,7 @@
 # Cards
 > The level of a card is the number of smash you need to unlock it.
 
-We store `best_without_failures` and choose among card that requires less than that for the next one. If there is none, take one at random among the **2** next increment.
+We store `best_without_failures` and choose among card that requires less than or equal than that for the next one. If there is none, take one at random among the **2** next increment.
 
 The tutorial slowly ramps up to card level **10**. Tutorial cards ids start with `0-Tutorial`, the `0-` is to kep alphabetical order when level **10** or above.
 

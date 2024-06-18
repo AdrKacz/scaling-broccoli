@@ -78,9 +78,10 @@ uniform float radius = 1;
 uniform float edge = 0.6;
 uniform float noise_bigness = 0.05;
 uniform float speed = 1.5;
+uniform float time_seed = 28.22;
 
 void fragment() {
-	float time = 28.22+speed*TIME;
+	float time = time_seed + speed * TIME;
     float bignessScale = 1.0/noise_bigness;
 	vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
 	vec2 p = FRAGCOORD.xy / iResolution.y;

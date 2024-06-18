@@ -9,6 +9,7 @@ shader_parameter/radius = 5.0
 shader_parameter/edge = 0.6
 shader_parameter/noise_bigness = 0.05
 shader_parameter/speed = 1.5
+shader_parameter/time_seed = 28.22
 
 [node name="SpeedLines" type="ColorRect"]
 material = SubResource("ShaderMaterial_pdl2w")
