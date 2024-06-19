@@ -8,12 +8,14 @@
 
 [node name="Images" type="Node"]
 script = ExtResource("1_6iqln")
+load_on_ready = true
 card_texture = ExtResource("2_168x2")
 is_in_game = true
 background_state = 1
 character_state = 2
 display_bonus_text = true
 bonus_value = 24
+bonus_position_delta = Vector2(43, -24)
 
 [node name="Game" parent="." instance=ExtResource("1_tmkwv")]
 

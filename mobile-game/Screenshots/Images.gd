@@ -1,5 +1,6 @@
 extends Node
 
+@export var load_on_ready: bool
 @export var card_texture: Texture2D
 @export var is_in_game: bool
 @export var show_unlocked_image: bool # if true, is_in_game switch automatically to false
@@ -10,6 +11,8 @@ extends Node
 @export_subgroup("Bonus")
 @export var display_bonus_text: bool
 @export_range(1, 999) var bonus_value: int
+@export_enum("UP", "DOWN") var bonus_position: int
+@export var bonus_position_delta: Vector2 # Try to keep it between -64, 64
 @export_subgroup("Speed Lines")
 @export_range(-1, 2) var speed_lines_level: int # 2 is MAX_LEVELS in SpeedLines.gd
 @export var speed_lines_seed: float = 28.22 # Speed lines are static in this mode, change how they look by changing the seed
@@ -23,6 +26,10 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if load_on_ready:
+		load_image()
+	
+func load_image():
 	# Load card
 	$Game.update_background_image(card_texture.resource_path)
 	var combo_required: int = int(card_texture.resource_name.get_file().get_slice('_', 0))
@@ -55,5 +62,5 @@ func _ready():
 	else:
 		$GameUI.remove_introduction_text()
 	if display_bonus_text:
-		$GameUI.display_immediate_bonus_text('x' + str(bonus_value))
+		$GameUI.display_immediate_bonus_text('x' + str(bonus_value), bonus_position == 1, bonus_position_delta)
 		

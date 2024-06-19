@@ -130,15 +130,15 @@ func set_immediate_update_stars():
 	$Stars.interval_duration = 0
 	$Stars.initial_interval_duration = 0
 	
-func display_immediate_bonus_text(text):
+func display_immediate_bonus_text(text: String, is_down: bool, delta: Vector2):
 	var bonus_text = BonusText.instantiate()
 	bonus_text.text = text
 	# Assign base position
-	if randi_range(0, 1) == 0:
+	if is_down:
 		bonus_text.position = display_bonus_text_position_down
 	else:
 		bonus_text.position = display_bonus_text_position_up
 	# Randomise position
-	bonus_text.position += Vector2(randf_range(-64, 64), randf_range(-64, 64))
+	bonus_text.position += delta
 	add_child(bonus_text)
 	bonus_text.keep_on_screen()
