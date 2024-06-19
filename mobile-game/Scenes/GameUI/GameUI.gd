@@ -120,9 +120,25 @@ func update_countdown(value: int):
 
 func update_stars(value: int):
 	$Stars.number_of_visible = value
-	
+
+# ===== ===== =====
+# For debug only, used to generate screenshot
+# ===== ===== =====
 func set_immediate_update_stars():
-	# For debug only, prevent animation when stars enter
+	# Prevent animation when stars enter
 	$Stars.animation_duration = 0
 	$Stars.interval_duration = 0
 	$Stars.initial_interval_duration = 0
+	
+func display_immediate_bonus_text(text):
+	var bonus_text = BonusText.instantiate()
+	bonus_text.text = text
+	# Assign base position
+	if randi_range(0, 1) == 0:
+		bonus_text.position = display_bonus_text_position_down
+	else:
+		bonus_text.position = display_bonus_text_position_up
+	# Randomise position
+	bonus_text.position += Vector2(randf_range(-64, 64), randf_range(-64, 64))
+	add_child(bonus_text)
+	bonus_text.keep_on_screen()
