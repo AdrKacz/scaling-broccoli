@@ -1,3 +1,5 @@
+DEBUG WITH COMMAND  godot --headless Screenshots/Images/ImagesGenerator/ImagesGenerator.tscn
+SCREENSHOTS DON'T WORK IN HEADLESS, SEE https://github.com/godotengine/godot-proposals/issues/5790
 # 🌈 Rainbow Rush
 # Cards
 > The level of a card is the number of smash you need to unlock it.
