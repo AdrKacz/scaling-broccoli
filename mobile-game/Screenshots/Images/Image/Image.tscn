@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bulg1wg40d4rk"]
+
+[ext_resource type="Script" path="res://Screenshots/Images/Image/Image.gd" id="1_yvxom"]
+[ext_resource type="Texture2D" uid="uid://qg6wf6f8jur4" path="res://assets/Cards/4_0-Tutorial2.jpeg" id="2_w8fik"]
+[ext_resource type="PackedScene" uid="uid://ba724pdrff37e" path="res://Game/Game.tscn" id="3_untqe"]
+[ext_resource type="PackedScene" uid="uid://pt2ge8rnffl0" path="res://Scenes/SpeedLines/SpeedLines.tscn" id="4_e4wo8"]
+[ext_resource type="PackedScene" uid="uid://b5a8hcvmbiai0" path="res://Scenes/GameUI/GameUI.tscn" id="5_ijgdh"]
+
+[node name="Image" type="Node"]
+script = ExtResource("1_yvxom")
+load_on_ready = true
+card_texture = ExtResource("2_w8fik")
+is_in_game = true
+background_state = 1
+character_state = 2
+display_bonus_text = true
+bonus_value = 24
+bonus_position_delta = Vector2(43, -24)
+
+[node name="Game" parent="." instance=ExtResource("3_untqe")]
+
+[node name="SpeedLines" parent="." instance=ExtResource("4_e4wo8")]
+
+[node name="GameUI" parent="." instance=ExtResource("5_ijgdh")]
