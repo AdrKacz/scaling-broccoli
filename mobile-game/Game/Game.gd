@@ -44,8 +44,7 @@ var background_state: int = 0:
 		background_state = value
 		
 func _ready():
-	# center character on screen
-	$Character.position = get_parent_area_size() / 2
+	_on_item_rect_changed()
 	
 	# get random state
 	var state = Constants.StateEnum.values().pick_random()
@@ -140,3 +139,7 @@ func generate_crack(final_number_of_circles: int, minimum_circle_radius: float =
 func reset_crack() -> void:
 	$MarginContainer/Background.material.set_shader_parameter('current_number_of_circles', 0)
 	$MarginContainer/Background.material.set_shader_parameter('number_of_lines', 0)
+
+func _on_item_rect_changed():
+	# center character on screen
+	$Character.position = get_parent_area_size() / 2

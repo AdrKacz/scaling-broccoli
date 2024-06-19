@@ -68,4 +68,5 @@ position = Vector2(360, 640)
 one_shot = true
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="item_rect_changed" from="." to="." method="_on_item_rect_changed"]
 [connection signal="timeout" from="SwapBackgroundTimer" to="." method="_on_swap_background_timer_timeout"]

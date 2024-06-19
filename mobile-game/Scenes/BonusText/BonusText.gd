@@ -1,5 +1,10 @@
 extends Node2D
+class_name BonusText
 @export var text = 0
+
+# Use on screen resize
+var is_down: int
+var delta: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

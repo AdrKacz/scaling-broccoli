@@ -1,10 +1,15 @@
 extends MarginContainer
+signal update_computed_safe_area
 # Called when the node enters the scene tree for the first time.
 
 var computed_safe_area: Rect2
 var factors: Vector2
 
 func _ready():
+	_on_item_rect_changed()
+	item_rect_changed.connect(_on_item_rect_changed)
+
+func _on_item_rect_changed():
 	var safe_area = DisplayServer.get_display_safe_area()
 	var screen_size = DisplayServer.screen_get_size()
 	
@@ -37,3 +42,4 @@ func _ready():
 		safe_area.size.y * y_factor,
 	)
 	factors = Vector2(x_factor, y_factor)
+	emit_signal("update_computed_safe_area")

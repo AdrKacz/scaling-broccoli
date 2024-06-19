@@ -1,3 +1,74 @@
-[gd_scene format=3 uid="uid://bno3ps6tycv5a"]
+[gd_scene load_steps=10 format=3 uid="uid://bno3ps6tycv5a"]
 
-[node name="Generator" type="Node"]
+[ext_resource type="Script" path="res://Screenshots/Images/ImagesGenerator/ImagesGenerator.gd" id="1_a4y5r"]
+[ext_resource type="PackedScene" uid="uid://bulg1wg40d4rk" path="res://Screenshots/Images/Image/Image.tscn" id="2_j2lgb"]
+[ext_resource type="Texture2D" uid="uid://c2ouwn4j661bf" path="res://assets/Cards/10_2.png" id="2_xbj8f"]
+[ext_resource type="Script" path="res://Screenshots/Images/Image/ImageConfiguration.gd" id="3_k6wyo"]
+[ext_resource type="Texture2D" uid="uid://c2fae6yuedkfp" path="res://assets/Cards/70_0.png" id="4_rbndx"]
+[ext_resource type="Texture2D" uid="uid://b3uhjkjuqxacv" path="res://assets/Cards/50_0.png" id="5_sxoj2"]
+
+[sub_resource type="Resource" id="Resource_jlt6w"]
+script = ExtResource("3_k6wyo")
+card_texture = ExtResource("2_xbj8f")
+is_in_game = true
+background_state = 3
+character_state = 3
+display_introduction_text = true
+display_bonus_text = false
+bonus_value = 24
+bonus_position = 0
+bonus_position_delta = Vector2(24, -43)
+speed_lines_level = -1
+speed_lines_seed = 28.22
+show_unlocked_image = false
+image_abberation = 0.0
+hammers = 3
+active_hammers = 3
+shields = 3
+active_shields = 3
+
+[sub_resource type="Resource" id="Resource_k46l7"]
+script = ExtResource("3_k6wyo")
+card_texture = ExtResource("4_rbndx")
+is_in_game = true
+background_state = 1
+character_state = 2
+display_introduction_text = false
+display_bonus_text = true
+bonus_value = 24
+bonus_position = 0
+bonus_position_delta = Vector2(0, 0)
+speed_lines_level = 1
+speed_lines_seed = 28.22
+show_unlocked_image = false
+image_abberation = 0.0
+hammers = 0
+active_hammers = 0
+shields = 0
+active_shields = 0
+
+[sub_resource type="Resource" id="Resource_d2v88"]
+script = ExtResource("3_k6wyo")
+card_texture = ExtResource("5_sxoj2")
+is_in_game = false
+background_state = 0
+character_state = 0
+display_introduction_text = false
+display_bonus_text = false
+bonus_value = 24
+bonus_position = 0
+bonus_position_delta = Vector2(24, -43)
+speed_lines_level = -1
+speed_lines_seed = 28.22
+show_unlocked_image = true
+image_abberation = 0.01
+hammers = 10
+active_hammers = 3
+shields = 10
+active_shields = 3
+
+[node name="ImagesGenerator" type="Node"]
+script = ExtResource("1_a4y5r")
+configurations = Array[ExtResource("3_k6wyo")]([SubResource("Resource_jlt6w"), SubResource("Resource_k46l7"), SubResource("Resource_d2v88")])
+
+[node name="Image" parent="." instance=ExtResource("2_j2lgb")]

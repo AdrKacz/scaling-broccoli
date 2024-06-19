@@ -1,21 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://bulg1wg40d4rk"]
+[gd_scene load_steps=8 format=3 uid="uid://bulg1wg40d4rk"]
 
 [ext_resource type="Script" path="res://Screenshots/Images/Image/Image.gd" id="1_yvxom"]
-[ext_resource type="Texture2D" uid="uid://qg6wf6f8jur4" path="res://assets/Cards/4_0-Tutorial2.jpeg" id="2_w8fik"]
+[ext_resource type="Texture2D" uid="uid://5d3yoy86f6db" path="res://assets/Cards/40_0.png" id="2_xjh14"]
+[ext_resource type="Script" path="res://Screenshots/Images/Image/ImageConfiguration.gd" id="3_c5jeg"]
 [ext_resource type="PackedScene" uid="uid://ba724pdrff37e" path="res://Game/Game.tscn" id="3_untqe"]
 [ext_resource type="PackedScene" uid="uid://pt2ge8rnffl0" path="res://Scenes/SpeedLines/SpeedLines.tscn" id="4_e4wo8"]
 [ext_resource type="PackedScene" uid="uid://b5a8hcvmbiai0" path="res://Scenes/GameUI/GameUI.tscn" id="5_ijgdh"]
 
-[node name="Image" type="Node"]
-script = ExtResource("1_yvxom")
-load_on_ready = true
-card_texture = ExtResource("2_w8fik")
+[sub_resource type="Resource" id="Resource_okjlq"]
+script = ExtResource("3_c5jeg")
+card_texture = ExtResource("2_xjh14")
 is_in_game = true
-background_state = 1
-character_state = 2
+background_state = 0
+character_state = 0
+display_introduction_text = false
 display_bonus_text = true
 bonus_value = 24
-bonus_position_delta = Vector2(43, -24)
+bonus_position = 0
+bonus_position_delta = Vector2(24, -43)
+speed_lines_level = 0
+speed_lines_seed = 28.22
+show_unlocked_image = false
+image_abberation = 0.0
+hammers = 0
+active_hammers = 0
+shields = 0
+active_shields = 0
+
+[node name="Image" type="Node"]
+script = ExtResource("1_yvxom")
+debug_configuration = SubResource("Resource_okjlq")
 
 [node name="Game" parent="." instance=ExtResource("3_untqe")]
 

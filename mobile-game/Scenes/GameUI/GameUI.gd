@@ -3,36 +3,13 @@ signal shield_submitted(use_shield: bool)
 signal continue_game
 signal pause_game
 
-@export var BonusText: PackedScene
+@export var bonus_text: PackedScene
 
 var display_bonus_text_position_down: Vector2
 var display_bonus_text_position_up: Vector2
 
 func _ready():
-	# get position for bonus text
-	var computed_safe_area: Rect2 = $MarginContainer.computed_safe_area
-	
-	$Countdown.position = get_parent_area_size() / 2
-	
-	$Stars.position = Vector2(
-		computed_safe_area.position.x + computed_safe_area.size.x * .5,
-		computed_safe_area.position.y + computed_safe_area.size.y * .05,
-	)
-	
-	$IntroductionText.position = Vector2(
-		computed_safe_area.position.x + computed_safe_area.size.x * .5,
-		computed_safe_area.position.y + computed_safe_area.size.y * .25,
-	)
-
-	display_bonus_text_position_down = Vector2(
-		computed_safe_area.position.x + computed_safe_area.size.x * .5,
-		computed_safe_area.position.y + computed_safe_area.size.y * .8,
-	)
-	
-	display_bonus_text_position_up = Vector2(
-		computed_safe_area.position.x + computed_safe_area.size.x * .5,
-		computed_safe_area.position.y + computed_safe_area.size.y * .2,
-	)
+	_on_margin_container_update_computed_safe_area()
 	
 func _on_settings_button_pressed():
 	Session.click()
@@ -49,18 +26,18 @@ func _on_settings_exit():
 func remove_introduction_text():
 	if find_child('IntroductionText', false):
 		$IntroductionText.leave()
-
+		
 func display_bonus_text(text):
-	var bonus_text = BonusText.instantiate()
-	bonus_text.text = text
+	var node = bonus_text.instantiate()
+	node.text = text
 	# Assign base position
 	if randi_range(0, 1) == 0:
-		bonus_text.position = display_bonus_text_position_down
+		node.position = display_bonus_text_position_down
 	else:
-		bonus_text.position = display_bonus_text_position_up
+		node.position = display_bonus_text_position_up
 	# Randomise position
-	bonus_text.position += Vector2(randf_range(-64, 64), randf_range(-64, 64))
-	add_child(bonus_text)
+	node.position += Vector2(randf_range(-64, 64), randf_range(-64, 64))
+	add_child(node)
 
 
 func _on_book_texture_button_pressed():
@@ -131,14 +108,61 @@ func set_immediate_update_stars():
 	$Stars.initial_interval_duration = 0
 	
 func display_immediate_bonus_text(text: String, is_down: bool, delta: Vector2):
-	var bonus_text = BonusText.instantiate()
-	bonus_text.text = text
+	var node = bonus_text.instantiate()
+	node.text = text
 	# Assign base position
-	if is_down:
-		bonus_text.position = display_bonus_text_position_down
+	node.is_down = is_down
+	if node.is_down:
+		node.position = display_bonus_text_position_down
 	else:
-		bonus_text.position = display_bonus_text_position_up
+		node.position = display_bonus_text_position_up
 	# Randomise position
-	bonus_text.position += delta
-	add_child(bonus_text)
-	bonus_text.keep_on_screen()
+	node.delta = delta
+	node.position += node.delta
+	add_child(node)
+	node.keep_on_screen()
+	
+func clean_bonus_text():
+	for child in get_children():
+		if child is BonusText:
+			child.queue_free()
+	
+
+func toggle_introduction_text(value: bool):
+	if find_child('IntroductionText', false):
+		$IntroductionText.visible = value
+
+func _on_margin_container_update_computed_safe_area():
+	var computed_safe_area: Rect2 = $MarginContainer.computed_safe_area
+	
+	$Countdown.position = get_parent_area_size() / 2
+	
+	$Stars.position = Vector2(
+		computed_safe_area.position.x + computed_safe_area.size.x * .5,
+		computed_safe_area.position.y + computed_safe_area.size.y * .05,
+	)
+	
+	if find_child('IntroductionText', false): 
+		$IntroductionText.position = Vector2(
+			computed_safe_area.position.x + computed_safe_area.size.x * .5,
+			computed_safe_area.position.y + computed_safe_area.size.y * .25,
+		)
+
+	display_bonus_text_position_down = Vector2(
+		computed_safe_area.position.x + computed_safe_area.size.x * .5,
+		computed_safe_area.position.y + computed_safe_area.size.y * .8,
+	)
+	
+	display_bonus_text_position_up = Vector2(
+		computed_safe_area.position.x + computed_safe_area.size.x * .5,
+		computed_safe_area.position.y + computed_safe_area.size.y * .2,
+	)
+	
+	for child in get_children():
+		if child is BonusText:
+			if child.is_down:
+				child.position = display_bonus_text_position_down
+			else:
+				child.position = display_bonus_text_position_up
+			child.position += child.delta
+				
