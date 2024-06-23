@@ -5,8 +5,8 @@
 - You can now challenge yourself once a day!
 
 ## App name
-Rainbow Rush
-> Rainbow Rush Arcade for the Apple Store
+Matchy Matchy
+> Matchy Matchy Arcade for the Apple Store in U.S. and Canada (active claim)
 
 ## Subtitle
 Tap to match, keep pace
@@ -21,11 +21,11 @@ Arcade,Action,Color Matching,Reflexes,Fast-paced,Reactive
 Match the Colors in this Fast-Paced Arcade Game!
 
 ## Full description
-Get ready for an exhilarating color-matching challenge in Rainbow Rush! Put your reflexes to the test as you tap your way through a vibrant world of changing hues. The objective is simple: touch the square when its color matches the background color. But don't be fooled by its simplicity—this fast-paced arcade-like game will keep you on your toes!
+Get ready for an exhilarating color-matching challenge in Matchy Matchy! Put your reflexes to the test as you tap your way through a vibrant world of changing hues. The objective is simple: touch the square when its color matches the background color. But don't be fooled by its simplicity—this fast-paced arcade-like game will keep you on your toes!
 
-Rainbow Rush offers a perfect blend of excitement and agility. Stay focused and be lightning-fast to beat your high score and climb the leaderboard. As the challenge intensifies, you'll face new obstacles and surprises that will test your reaction time and color-matching skills.
+Matchy Matchy offers a perfect blend of excitement and agility. Stay focused and be lightning-fast to beat your high score and climb the leaderboard. As the challenge intensifies, you'll face new obstacles and surprises that will test your reaction time and color-matching skills.
 
-Are you up for the ultimate color-matching challenge? Download Rainbow Rush now and put your reflexes to the test in this addictive, vibrant, and action-packed arcade game!
+Are you up for the ultimate color-matching challenge? Download Matchy Matchy now and put your reflexes to the test in this addictive, vibrant, and action-packed arcade game!
 
 ## Graphics for Apple Store
 

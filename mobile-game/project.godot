@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Rainbow Rush"
+config/name="Matchy Matchy"
 run/main_scene="res://SplashScreen/SplashScreen.tscn"
 config/features=PackedStringArray("4.2")
 boot_splash/bg_color=Color(0, 0, 0, 1)

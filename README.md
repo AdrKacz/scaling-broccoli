@@ -1,4 +1,4 @@
-# 🌈 Rainbow Rush
+# 🌈 Matchy Matchy
 # Cards
 > The level of a card is the number of smash you need to unlock it.
 
@@ -270,7 +270,7 @@ You won't be able to upload videos directly. You must create a Youtube video and
 - Kenney [Game Icons](https://www.kenney.nl/assets/game-icons) and [Board Game Icons](https://www.kenney.nl/assets/board-game-icons)
 
 # The game
-Rainbow Rush is a mobile arcade-like video game where you have to touch a square when its colour matches the colour of the background.
+Matchy Matchy is a mobile arcade-like video game where you have to touch a square when its colour matches the colour of the background.
 The square will keep its colour until you touch it when it has the same colour as the background.
 The background keeps changing colour, and you must be fast and reactive!
 
