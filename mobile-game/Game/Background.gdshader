@@ -3,7 +3,7 @@ shader_type canvas_item;
 uniform float seed: hint_range(0.0, 1.0, 0.01) = 0.12345678;
 uniform bool use_cracks_and_glass = true;
 uniform bool use_color = true;
-uniform vec4 color: source_color = vec4(0.584314, 0.345098, 0.945098, 1.);
+uniform vec3 color: source_color = vec3(0.584314, 0.345098, 0.945098);
 
 group_uniforms Cracks.Sprite;
 uniform float resolution: hint_range(2, 128, .1) = 128.;
@@ -19,7 +19,6 @@ group_uniforms;
 group_uniforms Cracks.Lighting;
 uniform vec2 refraction_offset = vec2(-16., -16.);
 uniform vec2 reflection_offset = vec2(4., 4.);
-uniform vec4 reflection_color: source_color = vec4(0.584314, 0.345098, 0.945098, 1.);
 group_uniforms;
 
 group_uniforms Glass;
@@ -192,13 +191,15 @@ void fragment() {
 		float adjacent_crack_color = crack(scaled_uv + TEXTURE_PIXEL_SIZE * scaled_reflection_offset, TEXTURE_PIXEL_SIZE);
 		 if (abs(adjacent_crack_color  - 1.) < 0.001) {
 			// Light relection in cracks (use color)
-			COLOR = mix(image(TEXTURE, UV), reflection_color, reflection_color.a);
+			COLOR = image(TEXTURE, UV);
 		} else if (abs(crack_color  - 1.) < 0.001) {
 			// Refraction (use adjacent color)
 			COLOR = image(TEXTURE, UV + TEXTURE_PIXEL_SIZE * scaled_refraction_offset);
 		} else {
 			// Normal (use blur color)
 			COLOR = image_blur(TEXTURE, UV, TEXTURE_PIXEL_SIZE);
+			// Normal (use color)
+			COLOR = vec4(color, 1.0);
 		}
 	}
 }

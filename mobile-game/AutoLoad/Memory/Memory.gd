@@ -15,7 +15,7 @@ func _ready():
 		active_hammers = 0
 		shields = 0
 		reset_unlocked_cards()
-	# reset_unlocked_cards() # Uncomment to start from beginning at each iteration
+	reset_unlocked_cards() # Uncomment to start from beginning at each iteration
 	
 var hammers: int:
 	get:
